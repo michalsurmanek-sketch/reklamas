@@ -1,323 +1,273 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reklamas.cz – Hrdina vaší reklamy ve městě</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --yellow:#FACC15; /* žluté pozadí */
-      --black:#111;
-      --pink:#db2777;
-      --muted:#444;
-      --card:#fff9d6;
-      --border:#0000001a;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Montserrat,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--black)}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1180px;margin:0 auto;padding:0 16px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:16px;font-weight:600}
-    .btn-dark{background:#000;color:#ffd54f}
-    .btn-pink{background:var(--pink);color:#fff}
-    .chip{display:inline-block;background:#fff9;backdrop-filter:saturate(180%) blur(4px);border:1px solid var(--border);padding:8px 10px;border-radius:12px;font-size:14px}
-    .grid{display:grid;gap:24px}
-    /* HEADER */
-    header{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--yellow) 90%, white 10%);border-bottom:1px solid var(--border)}
-    .top{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand-badge{width:40px;height:40px;border-radius:14px;background:#000;color:#ffd54f;display:grid;place-items:center;font-weight:800}
-    nav{display:none;gap:20px;font-weight:600}
-    @media(min-width:768px){nav{display:flex}}
-    /* HERO */
-    .hero{background:var(--yellow)}
-    .hero-wrap{display:grid;gap:40px;grid-template-columns:1fr}
-    @media(min-width:900px){.hero-wrap{grid-template-columns:1fr 1fr}}
-    h1{font-size:40px;line-height:1.1;margin:0}
-    @media(min-width:900px){h1{font-size:64px}}
-    .underline{box-shadow:inset 0 -10px 0 var(--pink)}
-    .lead{margin:18px 0 0;font-size:18px;max-width:560px;color:var(--muted)}
-    .hero-tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
-    .mascot{position:relative}
-    .card{background:#fff;border:1px solid var(--border);border-radius:26px;box-shadow:0 20px 40px #0000001a;padding:24px;min-height:380px;display:grid;place-items:center;text-align:center}
-    .price-note{position:absolute;left:-12px;bottom:-12px;transform:rotate(-6deg);background:#000;color:#ffd54f;border-radius:12px;padding:8px 12px;font-size:14px;box-shadow:0 10px 20px #00000033}
-    /* SECTION */
-    section{padding:56px 0}
-    section.alt{background:#fff}
-    section.gray{background:#fff}
-    h2{font-size:34px;margin:0 0 8px}
-    p.muted{color:var(--muted);margin:6px 0 0}
-    /* SERVICE CARDS */
-    .cards{grid-template-columns:1fr}
-    @media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card-svc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px}
-    .tag{display:inline-block;background:#000;color:#ffd54f;border-radius:8px;padding:4px 8px;font-size:12px;margin-bottom:8px}
-    .card-svc h3{margin:4px 0 6px}
-    .card-svc p{margin:0 0 10px;color:#333;font-size:14px}
-    /* GALLERY */
-    .gallery{grid-template-columns:repeat(2,1fr)}
-    @media(min-width:900px){.gallery{grid-template-columns:repeat(4,1fr)}}
-    .gal-item{aspect-ratio:1/1;border:1px solid var(--border);border-radius:16px;display:grid;place-items:center;color:#666;background:#fff}
-    /* TABLE */
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    thead{background:#fff1a8}
-    th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left}
-    tr:nth-child(even){background:#fffdf0}
-    .box{background:#fff7bf;border:1px solid var(--border);border-radius:20px;padding:20px}
-    /* FORM */
-    .form{background:#fff;border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:0 8px 18px #00000012}
-    .form input,.form select,.form textarea{width:100%;padding:10px 12px;border:1px solid #00000033;border-radius:12px;font:inherit}
-    .form textarea{min-height:120px}
-    .tiny{font-size:12px;color:#666}
-    /* FOOTER */
-    footer{background:#000;color:#ffd54f}
-    .foot{display:grid;gap:20px;grid-template-columns:1fr}
-    @media(min-width:900px){.foot{grid-template-columns:repeat(4,1fr)}}
-    .foot small{color:#ffd54fcc}
-    .copy{border-top:1px solid #ffd54f33;text-align:center;padding:14px 0;color:#ffd54fb3;font-size:12px}
-    /* UTIL */
-    .row{display:flex;gap:12px;flex-wrap:wrap}
-  </style>
-</head>
-<body>
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-  <!-- HEADER -->
-  <header>
-    <div class="container top">
-      <div class="brand">
-        <div class="brand-badge">R</div>
-        <div>
-          <div style="font-weight:800">Reklamas.cz</div>
-          <div style="font-size:12px;margin-top:-2px">Hrdina vaší reklamy ve městě</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#sluzby">Služby</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#cenik">Ceník</a>
-        <a href="#kontakt">Kontakt</a>
-        <a class="btn btn-dark" href="#objednat">Objednat</a>
-      </nav>
-    </div>
-  </header>
+export default function ReklamasHome() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-wrap" style="padding:56px 0 80px">
-      <div>
-        <h1>Reklamas — <span class="underline">hrdina</span> vaší reklamy ve městě</h1>
-        <p class="lead">Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.</p>
-        <div class="row" style="margin-top:20px">
-          <a class="btn btn-dark" href="#objednat">Objednat reklamu</a>
-          <a class="btn btn-pink" href="#potisk">Chci potisk triček</a>
-        </div>
-        <div class="grid hero-tags">
-          <span class="chip">Mobilní billboardy</span>
-          <span class="chip">Reklama na eventech</span>
-          <span class="chip">QR měření zásahu</span>
-        </div>
-      </div>
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
-      <div class="mascot">
-        <div class="card">
+  const services = [
+    {
+      key: "mobilni-reklama",
+      title: "Mobilní reklama",
+      desc: "Kola, trojkolky a chodci s billboardem. Ideální do center měst a akcí.",
+      cta: "Zjistit víc",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor" aria-hidden>
+          <path d="M5 16a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm14-2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM2 5h10a3 3 0 0 1 3 3v8h-2V8a1 1 0 0 0-1-1H2V5Zm20 6h-5a1 1 0 1 0 0 2h4v6h2v-7a1 1 0 0 0-1-1Z"/>
+        </svg>
+      ),
+    },
+    {
+      key: "auto-billboard",
+      title: "Auto billboard",
+      desc: "Reklama na střešním rámu auta. Celodenní trasa po vašich lokalitách.",
+      cta: "Trasy a ceny",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor" aria-hidden>
+          <path d="M3 13h2l2-3h8l2 3h2a2 2 0 0 1 2 2v5h-2a3 3 0 1 1-6 0H9a3 3 0 1 1-6 0H1v-3a4 4 0 0 1 2-4Zm3 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm12 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
+        </svg>
+      ),
+    },
+    {
+      key: "potisk",
+      title: "Potisk textilu",
+      desc: "Trička, mikiny, vesty i merch. QR kód + logo, rychlá výroba.",
+      cta: "Objednat potisk",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor" aria-hidden>
+          <path d="M7 2h10l3 4v12a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6l3-4Zm1 6v12h8V8H8Zm9-2-1.5-2h-7L7 6h10Z"/>
+        </svg>
+      ),
+    },
+    {
+      key: "eventy",
+      title: "Eventy a promo",
+      desc: "Reklamas jako maskot, showman a moderátor. Fotky + videa z akce v ceně.",
+      cta: "Domluvit akci",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor" aria-hidden>
+          <path d="M12 2 7 7h3v6h4V7h3l-5-5Zm-9 9h4v11H3V11Zm15 0h4v11h-4V11Zm-9 4h6v7H9v-7Z"/>
+        </svg>
+      ),
+    },
+    {
+      key: "qr-sledovani",
+      title: "QR sledování kampaně",
+      desc: "Kolik lidí naskenovalo, odkud přišli a co udělali. Přehledný dashboard.",
+      cta: "Jak to měříme",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor" aria-hidden>
+          <path d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm6 6h8v8h-8v-8Zm2 2v4h4v-4h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Zm11-12h5v5h-2V5h-3V3Z"/>
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Header */}
+      <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-2xl bg-yellow-400 grid place-items-center shadow">
+              <span className="font-extrabold text-gray-900">R</span>
+            </div>
+            <span className="font-black tracking-tight text-lg">Reklamas.cz</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#sluzby" className="hover:text-gray-700">Služby</a>
+            <a href="#jak" className="hover:text-gray-700">Jak to funguje</a>
+            <a href="#cenik" className="hover:text-gray-700">Ceník</a>
+            <a href="#kontakt" className="hover:text-gray-700">Kontakt</a>
+            <a href="#objednat" className="px-4 py-2 rounded-xl bg-yellow-400 font-semibold shadow hover:shadow-md">OBJEDNAT</a>
+          </nav>
+          <button aria-label="Menu" className="md:hidden" onClick={() => setMenuOpen(v=>!v)}>
+            <div className="w-6 h-0.5 bg-gray-900 mb-1"/>
+            <div className="w-6 h-0.5 bg-gray-900 mb-1"/>
+            <div className="w-6 h-0.5 bg-gray-900"/>
+          </button>
+        </div>
+        {menuOpen && (
+          <div className="md:hidden border-t border-gray-200">
+            <div className="px-4 py-3 flex flex-col gap-3">
+              <a href="#sluzby">Služby</a>
+              <a href="#jak">Jak to funguje</a>
+              <a href="#cenik">Ceník</a>
+              <a href="#kontakt">Kontakt</a>
+              <a href="#objednat" className="px-4 py-2 rounded-xl bg-yellow-400 font-semibold text-center">OBJEDNAT</a>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+              <h1 className="text-4xl sm:text-5xl font-black leading-tight">
+                Reklamas — hrdina <span className="bg-yellow-300 px-2 rounded">vaší reklamy</span> ve městě
+              </h1>
+              <p className="mt-5 text-lg text-gray-700">
+                Vaše značka v pohybu: kola, auta, lidé, show a QR sledování. Přivezeme pozornost tam, kde ji potřebujete.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#objednat" className="px-6 py-3 rounded-2xl bg-gray-900 text-white font-semibold shadow hover:shadow-lg">Objednat kampaň</a>
+                <a href="#sluzby" className="px-6 py-3 rounded-2xl bg-pink-500/10 text-pink-600 font-semibold border border-pink-200 hover:bg-pink-50">Zobrazit služby</a>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2 text-sm text-gray-600">
+                <span className="px-3 py-1 rounded-full bg-gray-100">Rychlý start do 48 h</span>
+                <span className="px-3 py-1 rounded-full bg-gray-100">Fotky & videa z akce</span>
+                <span className="px-3 py-1 rounded-full bg-gray-100">Měření přes QR</span>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-yellow-200 via-white to-pink-100 border border-yellow-300/40 shadow-xl grid place-items-center">
+                <div className="text-center">
+                  <div className="text-7xl">🦸‍♂️</div>
+                  <p className="mt-3 font-semibold">Maskot Reklamas v akci</p>
+                  <p className="text-sm text-gray-600">(Sem dáme video / slideshow z města)</p>
+                </div>
+                <div className="absolute -right-6 -top-6 rotate-6 px-3 py-1 rounded-xl bg-pink-500 text-white text-xs shadow">SHOWTIME</div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="sluzby" className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-3xl sm:text-4xl font-black">Nabídka služeb</motion.h2>
+          <p className="mt-3 text-gray-600 max-w-2xl">Vyberte si formu, která vaší značce sedí. Umíme statické i velmi nápadné mobilní provedení – a všechno měříme.</p>
+          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <motion.div key={s.key} initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="group rounded-3xl border border-gray-200 bg-gray-50 hover:bg-white hover:border-yellow-300 transition-all shadow-sm hover:shadow-md p-6 flex flex-col">
+                <div className="w-12 h-12 rounded-2xl bg-yellow-300/40 text-gray-900 grid place-items-center mb-4">{s.icon}</div>
+                <h3 className="text-xl font-extrabold">{s.title}</h3>
+                <p className="mt-2 text-gray-600 leading-relaxed flex-1">{s.desc}</p>
+                <button className="mt-5 self-start px-4 py-2 rounded-xl bg-gray-900 text-white text-sm font-semibold group-hover:bg-yellow-400 group-hover:text-gray-900 transition">{s.cta}</button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section id="jak" className="py-16 sm:py-20 bg-gray-50 border-t border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-3xl sm:text-4xl font-black">Jak Reklamas šíří reklamu</motion.h2>
+        <div className="mt-10 grid md:grid-cols-4 gap-6">
+            {[
+              {n:1, t:"Brief & cíl", d:"Krátký formulář: kde, kdy, koho zasáhnout, odhad rozpočtu."},
+              {n:2, t:"Výběr formy", d:"Kolo, auto, maskot, potisk, QR. Připravíme trasu a čas."},
+              {n:3, t:"Realizace", d:"Jdeme do ulic. Fotíme, točíme, bavíme lidi a sbíráme skeny."},
+              {n:4, t:"Výsledky", d:"Report se statistikami – počty skenů, trasy, fotky a videa."},
+            ].map((step) => (
+              <motion.div key={step.n} initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="rounded-3xl bg-white border border-gray-200 p-6">
+                <div className="w-9 h-9 rounded-xl bg-pink-500 text-white grid place-items-center font-bold">{step.n}</div>
+                <h3 className="mt-3 font-extrabold">{step.t}</h3>
+                <p className="mt-1 text-sm text-gray-600">{step.d}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-3xl sm:text-4xl font-black">Galerie</motion.h2>
+          <p className="mt-3 text-gray-600">Ukázky z měst, eventů a potisků (zatím makety – nahradíme reálnými fotkami):</p>
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[...Array(6)].map((_,i)=> (
+              <div key={i} className="aspect-[4/3] rounded-2xl bg-gray-100 border border-gray-200 grid place-items-center text-gray-500">Fotka {i+1}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="cenik" className="py-16 sm:py-20 bg-gray-50 border-t border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-3xl sm:text-4xl font-black">Ceník (od)</motion.h2>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {[
+              {t:"Mobilní reklama – den", c:"490 Kč", d:"Kolo / chodec s billboardem, fotky v ceně."},
+              {t:"Auto billboard – den", c:"890 Kč", d:"Trasa po městě dle plánu, foto + video."},
+              {t:"Potisk trička", c:"249 Kč", d:"Jednobarevný motiv + QR kód."},
+            ].map((p,i)=> (
+              <div key={i} className="rounded-3xl bg-white border border-gray-200 p-6">
+                <h3 className="font-extrabold">{p.t}</h3>
+                <div className="mt-2 text-3xl font-black">{p.c}</div>
+                <p className="mt-2 text-sm text-gray-600">{p.d}</p>
+                <button className="mt-5 px-4 py-2 rounded-xl bg-yellow-400 font-semibold">Mám zájem</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="kontakt" className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-3xl sm:text-4xl font-black">Kontakt</motion.h2>
+          <div className="mt-8 grid lg:grid-cols-2 gap-8">
+            <div className="rounded-3xl border border-gray-200 p-6 bg-gray-50">
+              <p className="text-sm text-gray-600">Základna: Uherské Hradiště / Zlín</p>
+              <p className="mt-1 text-sm text-gray-600">Telefon: <span className="font-semibold">+420 000 000 000</span></p>
+              <p className="text-sm text-gray-600">E‑mail: <span className="font-semibold">info@reklamas.cz</span></p>
+              <div className="mt-6 aspect-video rounded-2xl bg-gray-100 border border-gray-200 grid place-items-center text-gray-500">Mapa</div>
+            </div>
+            <form id="objednat" className="rounded-3xl border border-gray-200 p-6 bg-white">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm text-gray-600">Jméno / Firma</label>
+                  <input className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Vaše jméno"/>
+                </div>
+                <div>
+                  <label className="text-sm text-gray-600">E‑mail</label>
+                  <input className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="name@firma.cz"/>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="text-sm text-gray-600">Služba</label>
+                  <select className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                    <option>Mobilní reklama</option>
+                    <option>Auto billboard</option>
+                    <option>Potisk textilu</option>
+                    <option>Eventy a promo</option>
+                    <option>QR sledování kampaně</option>
+                  </select>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="text-sm text-gray-600">Zpráva</label>
+                  <textarea rows={4} className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Kde, kdy, rozpočet…"/>
+                </div>
+              </div>
+              <button type="button" className="mt-4 px-6 py-3 rounded-2xl bg-gray-900 text-white font-semibold">Odeslat poptávku</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-10 bg-gray-900 text-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <div style="font-size:84px">🦸‍♂️</div>
-            <div style="margin-top:12px;font-weight:600">Maskot Reklamas</div>
-            <div style="color:#666;font-size:14px">Žlutý plášť, skrytá reklama, showman styl</div>
+            <div className="font-black text-white">Reklamas.cz</div>
+            <p className="text-sm text-gray-400">© {new Date().getFullYear()} Reklamas – hrdina vaší reklamy</p>
+          </div>
+          <div className="flex gap-4 text-sm">
+            <a href="#sluzby" className="hover:text-white">Služby</a>
+            <a href="#cenik" className="hover:text-white">Ceník</a>
+            <a href="#kontakt" className="hover:text-white">Kontakt</a>
           </div>
         </div>
-        <div class="price-note">od 490 Kč / den</div>
-      </div>
+      </footer>
     </div>
-  </section>
-
-  <!-- SLUŽBY -->
-  <section id="sluzby" class="alt">
-    <div class="container">
-      <h2>Služby</h2>
-      <p class="muted">Vyberte si, jak chcete rozhýbat svou značku. Vše nastavíme na míru městu, akci i rozpočtu.</p>
-
-      <div class="grid cards" style="margin-top:26px">
-        <div class="card-svc">
-          <span class="tag">Top volba</span>
-          <h3>Mobilní reklama</h3>
-          <p>Kola, trojkolky a auta s billboardem. Ideální pro městské centrum a trasy s vysokou návštěvností.</p>
-          <a class="btn btn-dark" href="#objednat">Zjistit víc</a>
-        </div>
-
-        <div id="potisk" class="card-svc">
-          <h3>Potisk triček a oblečení</h3>
-          <p>Trička, mikiny, vesty i pracovní oblečení. Logo, text, QR kód – od 1 ks.</p>
-          <a class="btn btn-dark" href="#objednat">Zjistit víc</a>
-        </div>
-
-        <div class="card-svc">
-          <h3>Reklama na eventech</h3>
-          <p>Festivaly, sport, městské slavnosti. Reklamas dělá show a přitahuje pozornost.</p>
-          <a class="btn btn-dark" href="#objednat">Zjistit víc</a>
-        </div>
-
-        <div class="card-svc">
-          <h3>Pronájem Reklamase</h3>
-          <p>Maskot na promo, focení, video. Přidáme kostýmy a rekvizity.</p>
-          <a class="btn btn-dark" href="#objednat">Zjistit víc</a>
-        </div>
-
-        <div class="card-svc">
-          <h3>QR sledování kampaně</h3>
-          <p>Měříme skeny a návštěvy. Report po akci s fotkami a trasou.</p>
-          <a class="btn btn-dark" href="#objednat">Zjistit víc</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERIE -->
-  <section id="galerie" class="gray">
-    <div class="container">
-      <div class="top" style="padding:0">
-        <div>
-          <h2>Galerie &amp; Reference</h2>
-          <p class="muted">Ukázky z měst a akcí. Klik pro detail.</p>
-        </div>
-        <a class="btn btn-pink" href="#kontakt" style="display:none">Chci fotoreport</a>
-      </div>
-
-      <div class="grid gallery" style="margin-top:24px">
-        <div class="gal-item">foto 1</div><div class="gal-item">foto 2</div>
-        <div class="gal-item">foto 3</div><div class="gal-item">foto 4</div>
-        <div class="gal-item">foto 5</div><div class="gal-item">foto 6</div>
-        <div class="gal-item">foto 7</div><div class="gal-item">foto 8</div>
-      </div>
-
-      <p class="muted" style="margin-top:8px">Příklad: „Reklamas v Uherském Hradišti — 15 000 zhlédnutí / víkend“</p>
-    </div>
-  </section>
-
-  <!-- CENÍK -->
-  <section id="cenik" class="alt">
-    <div class="container">
-      <h2>Ceník</h2>
-      <p class="muted">Základní orientační ceny bez DPH. Připravíme kalkulaci na míru podle trasy, času a materiálů.</p>
-
-      <div class="grid" style="grid-template-columns:1fr; margin-top:24px">
-        <div style="overflow:auto;border:1px solid var(--border);border-radius:16px">
-          <table>
-            <thead>
-              <tr><th>Služba</th><th>Cena od</th><th>Popis</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Mobilní reklama – den</strong></td><td>490 Kč</td><td>Kolo / chodec s billboardem</td></tr>
-              <tr><td><strong>Auto billboard – den</strong></td><td>890 Kč</td><td>Pohyblivá reklama po městě</td></tr>
-              <tr><td><strong>Potisk trička</strong></td><td>249 Kč</td><td>Logo, text, QR kód</td></tr>
-              <tr><td><strong>Maskot Reklamas – akce</strong></td><td>1 200 Kč</td><td>2 h promo s fotkami</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="box">
-          <h3 style="margin:0 0 8px">Co je v ceně</h3>
-          <ul style="margin:8px 0 12px 18px">
-            <li>Trasa a harmonogram dle dohody</li>
-            <li>Fotodokumentace a krátké video</li>
-            <li>QR kód pro měření skenů</li>
-            <li>Report po akci (základní)</li>
-          </ul>
-          <div class="muted">Doplňky: tisk plakátů, výroba QR, extra hodiny, cestovné mimo region.</div>
-          <div style="margin-top:12px">
-            <a class="btn btn-dark" href="#objednat">Chci kalkulaci na míru</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" class="gray">
-    <div class="container" style="display:grid;gap:28px;grid-template-columns:1fr;align-items:start">
-      <div>
-        <h2>Kontakt</h2>
-        <p class="muted">Uherské Hradiště / Zlín a okolí. Napište nám, ozveme se obratem.</p>
-        <div style="margin-top:16px;display:grid;gap:8px;font-size:14px">
-          <div><strong>E-mail:</strong> <a href="mailto:info@reklamas.cz">info@reklamas.cz</a></div>
-          <div><strong>Telefon:</strong> <a href="tel:+420000000000">+420 000 000 000</a></div>
-          <div><strong>WhatsApp:</strong> <a target="_blank" rel="noreferrer" href="https://wa.me/420000000000">+420 000 000 000</a></div>
-          <div class="chip">QR kontakt (doplníme)</div>
-        </div>
-      </div>
-
-      <form id="objednat" class="form" onsubmit="return sendMailto(this)">
-        <h3 style="margin:0 0 10px">Nezávazná poptávka</h3>
-        <div class="grid" style="grid-template-columns:1fr;gap:10px">
-          <input name="jmeno" placeholder="Jméno" required>
-          <input name="kontakt" placeholder="E-mail / Telefon" required>
-          <select name="sluzba">
-            <option>Mobilní reklama</option>
-            <option>Auto billboard</option>
-            <option>Potisk triček</option>
-            <option>Reklama na eventech</option>
-            <option>Pronájem Reklamase</option>
-            <option>QR měření kampaně</option>
-          </select>
-          <textarea name="zprava" placeholder="Popište krátce svou poptávku (město, termín, cíle)"></textarea>
-          <button class="btn btn-pink" type="submit">Odeslat poptávku</button>
-          <div class="tiny">Odesláním souhlasíte se zpracováním údajů za účelem reakce na poptávku.</div>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container foot" style="padding:28px 0">
-      <div>
-        <div style="font-weight:800">Reklamas.cz</div>
-        <small>Rozhýbáme vaši značku: kola, auta, show a QR měření.</small>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:6px">Služby</div>
-        <small>Mobilní reklama</small><br>
-        <small>Potisk triček</small><br>
-        <small>Eventy a promo</small>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:6px">Dokumenty</div>
-        <small>Ceník PDF</small><br>
-        <small>Obchodní podmínky</small><br>
-        <small>Ochrana údajů</small>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:6px">Kontakt</div>
-        <small>info@reklamas.cz</small><br>
-        <small>Uherské Hradiště / Zlín</small>
-      </div>
-    </div>
-    <div class="copy">© <span id="year"></span> Reklamas.cz</div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function sendMailto(form){
-      var data = new FormData(form);
-      var jmeno = data.get('jmeno') || '';
-      var kontakt = data.get('kontakt') || '';
-      var sluzba = data.get('sluzba') || '';
-      var zprava = data.get('zprava') || '';
-      var subject = encodeURIComponent('Poptávka – ' + sluzba);
-      var body = encodeURIComponent(
-        'Jméno: ' + jmeno + '\n' +
-        'Kontakt: ' + kontakt + '\n' +
-        'Služba: ' + sluzba + '\n\n' +
-        'Zpráva:\n' + zprava
-      );
-      window.location.href = 'mailto:info@reklamas.cz?subject=' + subject + '&body=' + body;
-      return false; // neodesílat na server
-    }
-  </script>
-</body>
-</html>
+  );
+}
