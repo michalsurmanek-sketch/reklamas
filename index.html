@@ -13,10 +13,10 @@
   </style>
 </head>
 <body class="min-h-screen bg-yellow-400 text-black">
-  <!-- Header -->
+  <!-- Top bar -->
   <header id="site-header" class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3 cursor-pointer" data-goto="#top" title="Na začátek">
+      <a href="#top" data-goto="#top" class="flex items-center gap-3 cursor-pointer" title="Na začátek">
         <div class="w-10 h-10 rounded-2xl bg-black text-yellow-400 grid place-items-center font-bold">R</div>
         <div class="leading-tight">
           <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
@@ -76,16 +76,16 @@
         </ul>
       </div>
 
-      <!-- Mascot mock -->
+      <!-- Mascot box -->
       <div class="relative">
-        <div class="aspect-[4/5] rounded-3xl bg-white shadow-2xl border border-black/10 p-6 grid place-items-center">
+        <div class="aspect-[4/5] rounded-3xl bg-white shadow-2xl border border-black/10 p-6 grid place-items-center w-[280px] md:w-[340px] lg:w-[380px] max-h-[420px] mx-auto">
           <div class="text-center">
-            <div class="text-8xl">🦸‍♂️</div>
+            <div class="text-6xl md:text-7xl">🦸‍♂️</div>
             <div class="mt-4 font-semibold">Maskot Reklamas</div>
             <div class="text-sm text-black/70">Žlutý plášť, skrytá reklama, showman styl</div>
           </div>
         </div>
-        <div class="absolute -left-6 -bottom-6 rotate-[-6deg] rounded-2xl bg-black text-yellow-300 px-4 py-2 text-sm shadow-lg">od 490 Kč / den</div>
+        <div class="absolute right-3 bottom-3 md:right-4 md:bottom-4 rotate-[-6deg] rounded-2xl bg-black text-yellow-300 px-4 py-2 text-sm shadow-lg">od 490 Kč / den</div>
       </div>
     </div>
   </section>
@@ -107,21 +107,36 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <h2 class="text-3xl md:text-4xl font-extrabold">Služby</h2>
       <p class="mt-2 text-black/70 max-w-2xl">Vyberte si, jak chcete rozhýbat svou značku. Vše nastavíme na míru městu, akci i rozpočtu.</p>
+
       <div class="mt-8 grid md:grid-cols-3 gap-6">
         <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
-          <span class="inline-block text-xs px-2 py-1 rounded-md bg-black text-yellow-300 mb-3">Top volba</span>
+          <div class="inline-block text-xs px-2 py-1 rounded-md bg-black text-yellow-300 mb-3">Top volba</div>
           <h3 class="font-bold text-xl">Mobilní reklama</h3>
           <p class="mt-2 text-sm text-black/70">Kola, trojkolky a auta s billboardem. Ideální pro městské centrum a trasy s vysokou návštěvností.</p>
           <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
         </div>
-        <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50" id="potisk">
+
+        <div id="potisk" class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
           <h3 class="font-bold text-xl">Potisk triček a oblečení</h3>
           <p class="mt-2 text-sm text-black/70">Trička, mikiny, vesty i pracovní oblečení. Logo, text, QR kód – od 1 ks.</p>
           <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
         </div>
+
         <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
           <h3 class="font-bold text-xl">Reklama na eventech</h3>
           <p class="mt-2 text-sm text-black/70">Festivaly, sport, městské slavnosti. Reklamas dělá show a přitahuje pozornost.</p>
+          <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
+        </div>
+
+        <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
+          <h3 class="font-bold text-xl">Pronájem Reklamase</h3>
+          <p class="mt-2 text-sm text-black/70">Maskot na promo, focení, video. Přidáme kostýmy a rekvizity.</p>
+          <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
+        </div>
+
+        <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
+          <h3 class="font-bold text-xl">QR sledování kampaně</h3>
+          <p class="mt-2 text-sm text-black/70">Měříme skeny a návštěvy. Report po akci s fotkami a trasou.</p>
           <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
         </div>
       </div>
@@ -138,8 +153,8 @@
         </div>
         <a href="#kontakt" data-goto="#kontakt" class="hidden md:inline-block px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold">Chci fotoreport</a>
       </div>
+
       <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <!-- Placeholdery fotek -->
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 1</div>
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 2</div>
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 3</div>
@@ -149,6 +164,7 @@
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 7</div>
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 8</div>
       </div>
+
       <div class="mt-4 text-sm text-black/70">Příklad: „Reklamas v Uherském Hradišti — 15 000 zhlédnutí / víkend“</div>
     </div>
   </section>
@@ -158,6 +174,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <h2 class="text-3xl md:text-4xl font-extrabold">Ceník</h2>
       <p class="mt-2 text-black/70">Základní orientační ceny bez DPH. Připravíme kalkulaci na míru podle trasy, času a materiálů.</p>
+
       <div class="mt-8 grid md:grid-cols-2 gap-6">
         <div class="rounded-2xl border border-black/10 overflow-hidden">
           <table class="w-full text-left text-sm">
@@ -192,6 +209,7 @@
             </tbody>
           </table>
         </div>
+
         <div class="rounded-2xl border border-black/10 p-6 bg-yellow-50">
           <h3 class="font-bold text-xl">Co je v ceně</h3>
           <ul class="mt-3 space-y-2 list-disc list-inside text-sm text-black/80">
@@ -207,7 +225,7 @@
     </div>
   </section>
 
-  <!-- Kontakt + formulář -->
+  <!-- Kontakt -->
   <section id="kontakt" class="scroll-mt-24 md:scroll-mt-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10">
       <div>
@@ -224,9 +242,9 @@
       <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm">
         <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
         <div class="mt-4 grid grid-cols-1 gap-3">
-          <input class="px-3 py-2 rounded-2xl border border-black/20" placeholder="Jméno" />
-          <input class="px-3 py-2 rounded-2xl border border-black/20" placeholder="E-mail / Telefon" />
-          <select class="px-3 py-2 rounded-2xl border border-black/20">
+          <input class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno" />
+          <input class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail / Telefon" />
+          <select class="px-3 py-2 rounded-xl border border-black/20">
             <option>Mobilní reklama</option>
             <option>Auto billboard</option>
             <option>Potisk triček</option>
@@ -234,8 +252,8 @@
             <option>Pronájem Reklamase</option>
             <option>QR měření kampaně</option>
           </select>
-          <textarea class="px-3 py-2 rounded-2xl border border-black/20 min-h-[120px]" placeholder="Popište krátce svou poptávku (město, termín, cíle)"></textarea>
-          <button class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold" type="button">Odeslat poptávku</button>
+          <textarea class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce svou poptávku (město, termín, cíle)"></textarea>
+          <button type="button" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Odeslat poptávku</button>
           <div class="text-xs text-black/60">Odesláním souhlasíte se zpracováním údajů za účelem reakce na poptávku.</div>
         </div>
       </form>
@@ -280,22 +298,24 @@
     // Aktuální rok ve footeru
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Burger menu
+    // Burger menu toggle
     const burger = document.getElementById('burger');
     const panel = document.getElementById('mobile-panel');
     const b1 = document.getElementById('b1');
     const b2 = document.getElementById('b2');
     let open = false;
-    const toggleMenu = () => {
-      open = !open;
+
+    const setOpen = (state) => {
+      open = state;
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       panel.classList.toggle('hidden', !open);
-      // ikonka "X"
       if (open) { b1.classList.add('rotate-45','translate-y-[2px]'); b2.classList.add('-rotate-45','-translate-y-[2px]'); }
       else { b1.classList.remove('rotate-45','translate-y-[2px]'); b2.classList.remove('-rotate-45','-translate-y-[2px]'); }
     };
-    burger.addEventListener('click', toggleMenu);
-    window.addEventListener('resize', () => { if (window.innerWidth >= 768 && open){ toggleMenu(); }});
+
+    burger.addEventListener('click', () => setOpen(!open));
+    window.addEventListener('resize', () => { if (window.innerWidth >= 768) setOpen(false); });
+    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') setOpen(false); });
 
     // Smooth scroll s offsetem podle výšky headeru
     const header = document.getElementById('site-header');
@@ -308,7 +328,7 @@
       const headerH = header ? header.offsetHeight : 0;
       const top = rect.top + scrollTop - (headerH + 8);
       window.scrollTo({ top, behavior: 'smooth' });
-      if (open) toggleMenu();
+      setOpen(false);
     }
     goLinks.forEach(a=>{
       a.addEventListener('click', (e)=>{
