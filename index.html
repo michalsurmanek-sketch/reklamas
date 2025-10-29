@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reklamas — hrdina vaší reklamy ve městě</title>
-  <!-- Google Font -->
+  <title>Reklamas.cz — hrdina vaší reklamy ve městě</title>
+
+  <!-- Google Font (volitelně) -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -13,7 +15,7 @@
   </style>
 </head>
 <body class="min-h-screen bg-yellow-400 text-black">
-  <!-- Top bar -->
+  <!-- Header -->
   <header id="site-header" class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <a href="#top" data-goto="#top" class="flex items-center gap-3 cursor-pointer" title="Na začátek">
@@ -43,7 +45,7 @@
       </button>
     </div>
 
-    <!-- Mobile panel (white) -->
+    <!-- Mobile panel -->
     <div id="mobile-panel" class="hidden md:hidden absolute left-0 right-0 border-t border-black/10 bg-white text-black shadow-xl">
       <div class="mx-auto max-w-7xl px-4 py-4 space-y-2 text-base">
         <a href="#sluzby" data-goto="#sluzby" class="block py-2">Služby</a>
@@ -51,6 +53,18 @@
         <a href="#cenik" data-goto="#cenik" class="block py-2">Ceník</a>
         <a href="#kontakt" data-goto="#kontakt" class="block py-2">Kontakt</a>
         <a href="#objednat" data-goto="#objednat" class="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-yellow-300 font-extrabold py-3">OBJEDNAT</a>
+        <!-- Socials -->
+        <div class="flex justify-center gap-6 mt-6">
+          <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="w-6 h-6" />
+          </a>
+          <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="w-6 h-6" />
+          </a>
+          <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="w-6 h-6" />
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -67,6 +81,7 @@
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="#objednat" data-goto="#objednat" class="px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold">Objednat reklamu</a>
+          <!-- POZOR: dle posledního kódu odkazuje na #potisk, nechávám beze změny -->
           <a href="#potisk" data-goto="#potisk" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Chci potisk triček</a>
         </div>
         <ul class="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
@@ -76,7 +91,7 @@
         </ul>
       </div>
 
-      <!-- Mascot box -->
+      <!-- Mascot -->
       <div class="relative">
         <div class="aspect-[4/5] rounded-3xl bg-white shadow-2xl border border-black/10 p-6 grid place-items-center w-[280px] md:w-[340px] lg:w-[380px] max-h-[420px] mx-auto">
           <div class="text-center">
@@ -153,7 +168,6 @@
         </div>
         <a href="#kontakt" data-goto="#kontakt" class="hidden md:inline-block px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold">Chci fotoreport</a>
       </div>
-
       <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 1</div>
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 2</div>
@@ -164,7 +178,6 @@
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 7</div>
         <div class="aspect-square rounded-2xl bg-white border border-black/10 grid place-items-center text-sm text-black/60">foto 8</div>
       </div>
-
       <div class="mt-4 text-sm text-black/70">Příklad: „Reklamas v Uherském Hradišti — 15 000 zhlédnutí / víkend“</div>
     </div>
   </section>
@@ -174,7 +187,6 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <h2 class="text-3xl md:text-4xl font-extrabold">Ceník</h2>
       <p class="mt-2 text-black/70">Základní orientační ceny bez DPH. Připravíme kalkulaci na míru podle trasy, času a materiálů.</p>
-
       <div class="mt-8 grid md:grid-cols-2 gap-6">
         <div class="rounded-2xl border border-black/10 overflow-hidden">
           <table class="w-full text-left text-sm">
@@ -209,7 +221,6 @@
             </tbody>
           </table>
         </div>
-
         <div class="rounded-2xl border border-black/10 p-6 bg-yellow-50">
           <h3 class="font-bold text-xl">Co je v ceně</h3>
           <ul class="mt-3 space-y-2 list-disc list-inside text-sm text-black/80">
@@ -295,33 +306,36 @@
   </footer>
 
   <script>
-    // Aktuální rok ve footeru
+    // Rok ve footeru
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Burger menu toggle
+    // Burger toggle
     const burger = document.getElementById('burger');
     const panel = document.getElementById('mobile-panel');
     const b1 = document.getElementById('b1');
     const b2 = document.getElementById('b2');
     let open = false;
 
-    const setOpen = (state) => {
+    function setOpen(state){
       open = state;
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       panel.classList.toggle('hidden', !open);
       if (open) { b1.classList.add('rotate-45','translate-y-[2px]'); b2.classList.add('-rotate-45','-translate-y-[2px]'); }
       else { b1.classList.remove('rotate-45','translate-y-[2px]'); b2.classList.remove('-rotate-45','-translate-y-[2px]'); }
-    };
+    }
 
-    burger.addEventListener('click', () => setOpen(!open));
-    window.addEventListener('resize', () => { if (window.innerWidth >= 768) setOpen(false); });
-    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') setOpen(false); });
+    burger.addEventListener('click', ()=> setOpen(!open));
 
-    // Smooth scroll s offsetem podle výšky headeru
+    // Auto-close: klik mimo header, Escape, resize
     const header = document.getElementById('site-header');
+    window.addEventListener('click', (e)=> { if (open && !header.contains(e.target)) setOpen(false); });
+    window.addEventListener('keydown', (e)=> { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', ()=> { if (window.innerWidth >= 768) setOpen(false); });
+
+    // Smooth scroll s offsetem headeru
     const goLinks = document.querySelectorAll('[data-goto]');
-    function scrollWithOffset(targetId){
-      const el = document.querySelector(targetId);
+    function scrollWithOffset(id){
+      const el = document.querySelector(id);
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -331,7 +345,7 @@
       setOpen(false);
     }
     goLinks.forEach(a=>{
-      a.addEventListener('click', (e)=>{
+      a.addEventListener('click',(e)=>{
         const id = a.getAttribute('data-goto');
         if (id){ e.preventDefault(); scrollWithOffset(id); }
       });
