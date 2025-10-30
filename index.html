@@ -9,7 +9,63 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com">    // --- Odeslání formuláře ---
+    (function(){
+      const FORM_ENDPOINT = null; // nastav URL (např. Formspree, vlastní API). Když zůstane null, použije se e‑mail.
+      const form = document.getElementById('objednat');
+      const statusEl = document.getElementById('form-status');
+
+      function setStatus(msg, ok=true){
+        if(!statusEl) return;
+        statusEl.textContent = msg;
+        statusEl.className = 'text-sm mt-2 ' + (ok ? 'text-green-700' : 'text-red-700');
+      }
+
+      form?.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const fd = new FormData(form);
+        // honeypot
+        if ((fd.get('company')||'').toString().trim() !== '') return;
+        // povinná pole quick check
+        if(!fd.get('name') || !fd.get('contact') || !fd.get('service')){
+          setStatus('Vyplňte prosím povinná pole (jméno, kontakt, služba).', false);
+          return;
+        }
+
+        const data = Object.fromEntries(fd.entries());
+        const subject = encodeURIComponent('Poptávka – ' + (data.service||'Služba'));
+        const body = encodeURIComponent(
+          `Jméno/Firma: ${data.name}
+Kontakt: ${data.contact}
+Služba: ${data.service}
+Město: ${data.city||''}
+Termín: ${data.date||''}
+
+Zpráva:
+${data.message||''}`
+        );
+
+        try{
+          if (FORM_ENDPOINT){
+            const res = await fetch(FORM_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+            if(!res.ok) throw new Error('HTTP '+res.status);
+            setStatus('Díky! Poptávka byla odeslána. Ozveme se co nejdřív.');
+            form.reset();
+          } else {
+            // Fallback: otevře e‑mailového klienta
+            window.location.href = `mailto:info@reklamas.cz?subject=${subject}&body=${body}`;
+            setStatus('Otevřel se e‑mail s vyplněnou zprávou. Pokud se neotevřel, napište na info@reklamas.cz.');
+          }
+        } catch(err){
+          setStatus('Nepodařilo se odeslat. Zkuste to prosím znovu nebo napište na info@reklamas.cz.', false);
+        }
+      });
+    })();
+  </script>
   <style>
     html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
   </style>
@@ -250,12 +306,13 @@
         </div>
       </div>
 
-      <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm">
+      <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm" novalidate>
         <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
         <div class="mt-4 grid grid-cols-1 gap-3">
-          <input class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno" />
-          <input class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail / Telefon" />
-          <select class="px-3 py-2 rounded-xl border border-black/20">
+          <input name="name" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno a firma" required />
+          <input name="contact" class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail nebo telefon" required />
+          <select name="service" class="px-3 py-2 rounded-xl border border-black/20" required>
+            <option value="">Vyberte službu…</option>
             <option>Mobilní reklama</option>
             <option>Auto billboard</option>
             <option>Potisk triček</option>
@@ -263,9 +320,21 @@
             <option>Pronájem Reklamase</option>
             <option>QR měření kampaně</option>
           </select>
-          <textarea class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce svou poptávku (město, termín, cíle)"></textarea>
-          <button type="button" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Odeslat poptávku</button>
-          <div class="text-xs text-black/60">Odesláním souhlasíte se zpracováním údajů za účelem reakce na poptávku.</div>
+          <div class="grid grid-cols-2 gap-3">
+            <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Termín" />
+            <input name="city" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Město / Lokalita" />
+          </div>
+          <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce poptávku (trasa, čas, cíl)"></textarea>
+
+          <!-- Honeypot proti botům -->
+          <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <label class="flex items-start gap-2 text-xs text-black/70">
+            <input name="consent" type="checkbox" required class="mt-1" /> Souhlasím se zpracováním údajů za účelem reakce na poptávku.
+          </label>
+
+          <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Odeslat poptávku</button>
+          <div id="form-status" class="text-sm"></div>
         </div>
       </form>
     </div>
