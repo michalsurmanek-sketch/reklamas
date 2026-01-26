@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VOZÍK — Půjč si. Jezdi. Vydělávej.</title>
+  <meta name="description" content="VOZÍK — pronájem gastro vozíku bez keců. 1 999 Kč/den. Bez kauce. Vyber město, rezervuj termín, vyzvedni a jedeš." />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { color-scheme: dark; }
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    .glass{background:rgba(255,255,255,.06);backdrop-filter: blur(12px);-webkit-backdrop-filter: blur(12px);border:1px solid rgba(255,255,255,.10);}
+    .ring-soft{box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 20px 60px rgba(0,0,0,.45);}
+    .gridline{
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(closest-side, rgba(0,0,0,.9), rgba(0,0,0,0));
+      -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,.9), rgba(0,0,0,0));
+    }
+    .btn { transition: transform .08s ease, filter .15s ease; }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .badge { border:1px solid rgba(255,255,255,.12); }
+    .shadow-float{box-shadow: 0 10px 40px rgba(0,0,0,.55);}
+    .focus-ring:focus{outline:none;box-shadow:0 0 0 3px rgba(245,158,11,.35), 0 0 0 1px rgba(245,158,11,.55) inset;}
+    .divider{background:linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);}
+    .muted{color:rgba(255,255,255,.72)}
+  </style>
+</head>
+
+<body class="bg-[#07070a] text-white selection:bg-amber-500/30 selection:text-white">
+  <!-- BG -->
+  <div class="fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-[radial-gradient(1200px_700px_at_20%_10%,rgba(245,158,11,.18),transparent_60%),radial-gradient(1000px_600px_at_80%_20%,rgba(59,130,246,.12),transparent_60%),radial-gradient(1000px_700px_at_50%_90%,rgba(16,185,129,.08),transparent_60%)]"></div>
+    <div class="absolute inset-0 gridline opacity-60"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/35 to-black/70"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40">
+    <div class="mx-auto max-w-6xl px-4 py-3">
+      <div class="glass ring-soft rounded-2xl px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/10">
+            <span class="text-lg font-extrabold tracking-tight">V</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold tracking-tight text-lg">VOZÍK</span>
+              <span class="badge rounded-full px-2 py-0.5 text-[11px] text-amber-200/90 bg-amber-500/10">bez kauce</span>
+              <span class="badge rounded-full px-2 py-0.5 text-[11px] text-white/80 bg-white/5">1 999 Kč / den</span>
+            </div>
+            <div class="text-xs text-white/65">Půjč si. Jezdi. Vydělávej.</div>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+          <a class="hover:text-white" href="#jak-to-funguje">Jak to funguje</a>
+          <a class="hover:text-white" href="#cenik">Ceník</a>
+          <a class="hover:text-white" href="#rezervace">Rezervace</a>
+          <a class="hover:text-white" href="#faq">FAQ</a>
+          <a class="hover:text-white" href="#kontakt">Kontakt</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button id="btnScrollReserve" class="btn focus-ring rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:brightness-110">
+            Rezervovat
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 pt-10 pb-8">
+    <div class="grid lg:grid-cols-12 gap-6 items-start">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1.5 border border-white/10 text-xs text-white/80">
+          <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+          Síť gastro vozíků — vyzvedneš a jedeš
+        </div>
+
+        <h1 class="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+          Pronájem gastro vozíku <span class="text-amber-300">bez keců</span>.
+        </h1>
+
+        <p class="mt-4 text-base md:text-lg muted max-w-xl">
+          Vypadá profi. Stojí málo. Funguje hned. Bez kauce, s rychlým předáním a jasnými balíčky.
+          Ideální pro test streetfoodu, víkendové akce i měsíční rozjezd.
+        </p>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a href="#rezervace" class="btn focus-ring rounded-2xl bg-amber-500 px-5 py-3 font-semibold text-black hover:brightness-110 inline-flex items-center justify-center">
+            Chci termín za 1 999 Kč
+          </a>
+          <a href="#cenik" class="btn focus-ring rounded-2xl bg-white/5 px-5 py-3 font-semibold text-white hover:bg-white/8 border border-white/10 inline-flex items-center justify-center">
+            Zobrazit balíčky (zisk)
+          </a>
+        </div>
+
+        <div class="mt-6 grid sm:grid-cols-3 gap-3 max-w-2xl">
+          <div class="glass rounded-2xl p-4">
+            <div class="text-sm font-semibold">Bez kauce</div>
+            <div class="text-xs text-white/70 mt-1">Krytí řeší SAFE pack + fotky</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-sm font-semibold">10 min předání</div>
+            <div class="text-xs text-white/70 mt-1">Check-in checklist + QR</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-sm font-semibold">Plug & play</div>
+            <div class="text-xs text-white/70 mt-1">Moduly, žádné vestavby</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Reservation teaser -->
+      <div class="lg:col-span-5">
+        <div class="glass rounded-3xl p-5 ring-soft shadow-float">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm font-semibold">Rychlá rezervace</div>
+              <div class="text-xs text-white/70 mt-1">Vyber město, termín, balíčky → hotovo</div>
+            </div>
+            <div class="badge rounded-full px-2 py-1 text-xs bg-white/5 text-white/80">pilot</div>
+          </div>
+
+          <div class="divider h-px my-4"></div>
+
+          <div class="grid gap-3">
+            <label class="text-xs text-white/70">Město</label>
+            <select id="cityQuick" class="focus-ring rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm">
+              <option value="uh">Uherské Hradiště</option>
+              <option value="zl">Zlín</option>
+              <option value="br">Brno</option>
+              <option value="pr">Praha</option>
+            </select>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="text-xs text-white/70">Od</label>
+                <input id="dateFromQuick" type="date" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" />
+              </div>
+              <div>
+                <label class="text-xs text-white/70">Do</label>
+                <input id="dateToQuick" type="date" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" />
+              </div>
+            </div>
+
+            <button id="btnGoReserve" class="btn focus-ring rounded-2xl bg-amber-500 px-4 py-3 font-semibold text-black hover:brightness-110">
+              Pokračovat do rezervace
+            </button>
+
+            <div class="text-xs text-white/65">
+              Tip: Víkendy bývají nejrychleji pryč. Když si nejsi jistý, hoď poznámku do rezervace.
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 glass rounded-3xl p-5">
+          <div class="text-sm font-semibold">Co přesně pronajímáš?</div>
+          <div class="mt-2 text-sm text-white/75 leading-relaxed">
+            Pronájem techniky / gastro vozíku. Neprodáváme jídlo. Ty si vybereš koncept, suroviny a provoz.
+            My dodáme čistý funkční vozík + balíčky.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="jak-to-funguje" class="mx-auto max-w-6xl px-4 py-10">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Jak to funguje</h2>
+        <p class="mt-2 muted max-w-2xl">Jednoduché jako půjčení nářadí. Jen vyděláváš víc.</p>
+      </div>
+      <div class="hidden md:flex items-center gap-2 text-xs text-white/70">
+        <span class="badge rounded-full px-3 py-1 bg-white/5">checklist</span>
+        <span class="badge rounded-full px-3 py-1 bg-white/5">fotodokumentace</span>
+        <span class="badge rounded-full px-3 py-1 bg-white/5">rychlospojky</span>
+      </div>
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-4 gap-4">
+      <div class="glass rounded-3xl p-5">
+        <div class="text-xs text-white/65">Krok 1</div>
+        <div class="mt-1 font-semibold">Vybereš město</div>
+        <div class="mt-2 text-sm text-white/75">Vyzvednutí na domluveném místě (parkoviště / dvůr).</div>
+      </div>
+      <div class="glass rounded-3xl p-5">
+        <div class="text-xs text-white/65">Krok 2</div>
+        <div class="mt-1 font-semibold">Zvolíš termín</div>
+        <div class="mt-2 text-sm text-white/75">Kalendář dostupnosti + rychlá rezervace.</div>
+      </div>
+      <div class="glass rounded-3xl p-5">
+        <div class="text-xs text-white/65">Krok 3</div>
+        <div class="mt-1 font-semibold">Přidáš balíčky</div>
+        <div class="mt-2 text-sm text-white/75">PRO / CLEAN / SAFE – ať jedeš bez stresu.</div>
+      </div>
+      <div class="glass rounded-3xl p-5">
+        <div class="text-xs text-white/65">Krok 4</div>
+        <div class="mt-1 font-semibold">Vezmeš & jedeš</div>
+        <div class="mt-2 text-sm text-white/75">Předání do 10 minut. Pak už jen tržby.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="cenik" class="mx-auto max-w-6xl px-4 py-10">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Ceník & balíčky</h2>
+        <p class="mt-2 muted max-w-2xl">1999 je magnet. Balíčky jsou jistota a profit (pro tebe i pro zákazníka).</p>
+      </div>
+    </div>
+
+    <div class="mt-6 grid lg:grid-cols-12 gap-4">
+      <!-- Basic -->
+      <div class="lg:col-span-4 glass rounded-3xl p-6 ring-soft">
+        <div class="flex items-center justify-between">
+          <div class="text-sm font-semibold">VOZÍK BASIC</div>
+          <span class="badge rounded-full px-2 py-1 text-xs bg-amber-500/10 text-amber-200">TOP</span>
+        </div>
+        <div class="mt-3 text-4xl font-extrabold tracking-tight">1 999 <span class="text-base font-semibold text-white/70">Kč</span></div>
+        <div class="text-sm text-white/70">/ den</div>
+
+        <ul class="mt-5 space-y-2 text-sm text-white/80">
+          <li>✔ gastro vozík + pracovní plochy</li>
+          <li>✔ základní elektro přívod</li>
+          <li>✔ LED světlo (základ)</li>
+          <li>✔ předání s checklistem</li>
+          <li>✔ bez kauce</li>
+        </ul>
+
+        <a href="#rezervace" class="btn focus-ring mt-6 w-full rounded-2xl bg-amber-500 px-4 py-3 text-center font-semibold text-black hover:brightness-110">
+          Rezervovat BASIC
+        </a>
+
+        <div class="mt-4 text-xs text-white/60">
+          Pozn.: Suviny a personál si řeší nájemce. My půjčujeme techniku.
+        </div>
+      </div>
+
+      <!-- Packs -->
+      <div class="lg:col-span-8 grid md:grid-cols-2 gap-4">
+        <div class="glass rounded-3xl p-6">
+          <div class="flex items-center justify-between">
+            <div class="font-semibold">STARTER PACK</div>
+            <div class="text-amber-200 font-semibold">+ 499 Kč</div>
+          </div>
+          <p class="mt-2 text-sm text-white/75">Chceš to mít „hned dobré“. Světlo, zásuvky, kontrola.</p>
+          <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <li>✔ profi LED osvětlení</li>
+            <li>✔ průmyslová zásuvková lišta</li>
+            <li>✔ rozšířený check-in / check-out</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-3xl p-6">
+          <div class="flex items-center justify-between">
+            <div class="font-semibold">PRO PACK</div>
+            <div class="text-amber-200 font-semibold">+ 999 Kč</div>
+          </div>
+          <p class="mt-2 text-sm text-white/75">Víkendová akce? Chceš výkon. Moduly: gril/plotna + chlazení.</p>
+          <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <li>✔ stolní gril / plotna (dle dostupnosti)</li>
+            <li>✔ lednice / chladicí box (dle dostupnosti)</li>
+            <li>✔ rozšířená elektro kapacita</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-3xl p-6">
+          <div class="flex items-center justify-between">
+            <div class="font-semibold">CLEAN & GO</div>
+            <div class="text-amber-200 font-semibold">+ 399 Kč</div>
+          </div>
+          <p class="mt-2 text-sm text-white/75">Nechceš čistit po akci. Vrátíš „jak je“ a jedeš domů.</p>
+          <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <li>✔ základní úklid a dezinfekce</li>
+            <li>✔ odpad řešíme my (v rámci limitu)</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-3xl p-6">
+          <div class="flex items-center justify-between">
+            <div class="font-semibold">SAFE PACK</div>
+            <div class="text-amber-200 font-semibold">+ 599 Kč</div>
+          </div>
+          <p class="mt-2 text-sm text-white/75">Bez kauce, ale krytí drobných škod + fotky. Klid v hlavě.</p>
+          <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <li>✔ fotodokumentace před/po</li>
+            <li>✔ krytí drobných škod (limit)</li>
+            <li>✔ rychlé řešení bez hádek</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 glass rounded-3xl p-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="font-semibold">Hotové kombinace (nejčastější)</div>
+          <div class="text-sm text-white/70 mt-1">Klikneš – a máš to. Ty i zákazník víte, co dostáváte.</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge rounded-full px-3 py-1 text-xs bg-white/5">START: 2 498 Kč / den</span>
+          <span class="badge rounded-full px-3 py-1 text-xs bg-white/5">VÍKEND PRO: 3 597 Kč / den</span>
+          <span class="badge rounded-full px-3 py-1 text-xs bg-white/5">FULL RIDE: 3 996 Kč / den</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation -->
+  <section id="rezervace" class="mx-auto max-w-6xl px-4 py-10">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Rezervace</h2>
+        <p class="mt-2 muted max-w-2xl">Tady to celé poskládáš. Výsledek: jasná objednávka + rekapitulace ceny.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 grid lg:grid-cols-12 gap-4">
+      <!-- Form -->
+      <div class="lg:col-span-7 glass rounded-3xl p-6 ring-soft">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs text-white/70">Město</label>
+            <select id="city" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm">
+              <option value="uh">Uherské Hradiště (pilot)</option>
+              <option value="zl">Zlín</option>
+              <option value="br">Brno</option>
+              <option value="pr">Praha</option>
+            </select>
+            <p id="pickupHint" class="mt-2 text-xs text-white/60">Vyzvednutí: domluvené parkoviště / dvůr (po potvrzení termínu).</p>
+          </div>
+
+          <div class="glass rounded-2xl p-4">
+            <div class="text-xs text-white/70">Dostupnost</div>
+            <div class="mt-2 text-sm text-white/80">
+              <span class="inline-flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span> volno
+              </span>
+              <span class="ml-4 inline-flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-rose-400"></span> obsazeno
+              </span>
+            </div>
+            <div class="mt-3 text-xs text-white/60">Kalendář níž je demo (pro MVP). Reálně se napojí na databázi.</div>
+          </div>
+
+          <div>
+            <label class="text-xs text-white/70">Od</label>
+            <input id="dateFrom" type="date" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" />
+          </div>
+
+          <div>
+            <label class="text-xs text-white/70">Do</label>
+            <input id="dateTo" type="date" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" />
+          </div>
+        </div>
+
+        <div class="divider h-px my-6"></div>
+
+        <div class="grid gap-3">
+          <div class="text-sm font-semibold">Balíčky</div>
+
+          <label class="glass rounded-2xl p-4 flex items-start gap-3 cursor-pointer hover:bg-white/7">
+            <input id="packStarter" type="checkbox" class="mt-1 accent-amber-500" />
+            <div class="flex-1">
+              <div class="flex items-center justify-between gap-3">
+                <div class="font-semibold">STARTER PACK</div>
+                <div class="text-amber-200 font-semibold">+ 499 Kč / den</div>
+              </div>
+              <div class="text-sm text-white/70 mt-1">Profi světlo, zásuvky, rozšířený check-in.</div>
+            </div>
+          </label>
+
+          <label class="glass rounded-2xl p-4 flex items-start gap-3 cursor-pointer hover:bg-white/7">
+            <input id="packPro" type="checkbox" class="mt-1 accent-amber-500" />
+            <div class="flex-1">
+              <div class="flex items-center justify-between gap-3">
+                <div class="font-semibold">PRO PACK</div>
+                <div class="text-amber-200 font-semibold">+ 999 Kč / den</div>
+              </div>
+              <div class="text-sm text-white/70 mt-1">Gril/plotna + chlazení (dle dostupnosti) + výkon.</div>
+            </div>
+          </label>
+
+          <label class="glass rounded-2xl p-4 flex items-start gap-3 cursor-pointer hover:bg-white/7">
+            <input id="packClean" type="checkbox" class="mt-1 accent-amber-500" />
+            <div class="flex-1">
+              <div class="flex items-center justify-between gap-3">
+                <div class="font-semibold">CLEAN & GO</div>
+                <div class="text-amber-200 font-semibold">+ 399 Kč / den</div>
+              </div>
+              <div class="text-sm text-white/70 mt-1">Vrátíš „jak je“. Úklid řešíme my.</div>
+            </div>
+          </label>
+
+          <label class="glass rounded-2xl p-4 flex items-start gap-3 cursor-pointer hover:bg-white/7">
+            <input id="packSafe" type="checkbox" class="mt-1 accent-amber-500" checked />
+            <div class="flex-1">
+              <div class="flex items-center justify-between gap-3">
+                <div class="font-semibold">SAFE PACK</div>
+                <div class="text-amber-200 font-semibold">+ 599 Kč / den</div>
+              </div>
+              <div class="text-sm text-white/70 mt-1">Fotky před/po + krytí drobných škod (limit). Doporučeno.</div>
+            </div>
+          </label>
+
+          <div>
+            <label class="text-xs text-white/70">Poznámka (co chceš vařit / jaká akce)</label>
+            <textarea id="note" rows="3" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" placeholder="Např. víkendový street food, burgery, festival, měsíční test..."></textarea>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs text-white/70">Jméno</label>
+              <input id="name" type="text" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" placeholder="Jan Novák" />
+            </div>
+            <div>
+              <label class="text-xs text-white/70">Telefon</label>
+              <input id="phone" type="tel" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" placeholder="+420 777 123 456" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs text-white/70">E-mail</label>
+              <input id="email" type="email" class="focus-ring mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3 text-sm" placeholder="email@domena.cz" />
+            </div>
+          </div>
+
+          <button id="btnSubmit" class="btn focus-ring mt-2 rounded-2xl bg-amber-500 px-5 py-3 font-semibold text-black hover:brightness-110">
+            Odeslat poptávku / rezervaci
+          </button>
+
+          <p class="text-xs text-white/60">
+            Odesláním souhlasíš s tím, že tě kontaktujeme k potvrzení termínu a místa vyzvednutí.
+            (MVP verze — bez platební brány.)
+          </p>
+        </div>
+      </div>
+
+      <!-- Summary + Calendar -->
+      <div class="lg:col-span-5 grid gap-4">
+        <div class="glass rounded-3xl p-6 ring-soft">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm font-semibold">Rekapitulace</div>
+              <div class="text-xs text-white/70 mt-1">Cena se počítá automaticky.</div>
+            </div>
+            <span class="badge rounded-full px-2 py-1 text-xs bg-white/5 text-white/80" id="daysBadge">0 dní</span>
+          </div>
+
+          <div class="divider h-px my-4"></div>
+
+          <div class="space-y-2 text-sm text-white/80">
+            <div class="flex items-center justify-between">
+              <span>BASIC</span>
+              <span id="sumBasic">0 Kč</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Balíčky</span>
+              <span id="sumPacks">0 Kč</span>
+            </div>
+            <div class="divider h-px my-3"></div>
+            <div class="flex items-center justify-between text-base font-extrabold">
+              <span>Celkem</span>
+              <span id="sumTotal">0 Kč</span>
+            </div>
+          </div>
+
+          <div class="mt-4 glass rounded-2xl p-4">
+            <div class="text-xs text-white/70">Tip na maximum výkonu</div>
+            <div class="mt-1 text-sm text-white/80">
+              Většina lidí bere <span class="text-amber-200 font-semibold">SAFE</span> + <span class="text-amber-200 font-semibold">PRO</span>.
+              Máš klid a jedeš bez stresu.
+            </div>
+          </div>
+
+          <div class="mt-4 text-xs text-white/60" id="availabilityNote">
+            Dostupnost: demo. Reálně se napojí na kalendář (Supabase) + notifikace.
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-6">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm font-semibold">Kalendář (demo)</div>
+              <div class="text-xs text-white/70 mt-1">Klikni na datum a uvidíš stav.</div>
+            </div>
+            <span class="badge rounded-full px-2 py-1 text-xs bg-white/5 text-white/80" id="calMonthLabel">—</span>
+          </div>
+
+          <div class="mt-4 grid grid-cols-7 gap-2 text-xs text-white/60">
+            <div class="text-center">Po</div><div class="text-center">Út</div><div class="text-center">St</div><div class="text-center">Čt</div><div class="text-center">Pá</div><div class="text-center">So</div><div class="text-center">Ne</div>
+          </div>
+
+          <div id="calendar" class="mt-2 grid grid-cols-7 gap-2"></div>
+
+          <div class="mt-4 text-xs text-white/60">
+            Zelené = volno, červené = obsazeno. (V demo verzi je to náhodně.)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/70"></div>
+      <div class="relative w-full max-w-xl glass rounded-3xl p-6 ring-soft">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="text-lg font-extrabold">Hotovo ✅</div>
+            <div class="text-sm text-white/75 mt-1">Tvoje poptávka je připravená. Takhle to půjde do SMS / e-mailu.</div>
+          </div>
+          <button id="modalClose" class="focus-ring rounded-xl bg-white/5 px-3 py-2 text-sm border border-white/10 hover:bg-white/8">Zavřít</button>
+        </div>
+        <div class="divider h-px my-4"></div>
+        <pre id="modalText" class="text-xs bg-black/40 border border-white/10 rounded-2xl p-4 overflow-auto whitespace-pre-wrap"></pre>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button id="copyBtn" class="btn focus-ring rounded-2xl bg-amber-500 px-4 py-3 font-semibold text-black hover:brightness-110">
+            Kopírovat text
+          </button>
+          <a href="#kontakt" class="btn focus-ring rounded-2xl bg-white/5 px-4 py-3 font-semibold text-white hover:bg-white/8 border border-white/10 text-center">
+            Chci to doladit telefonem
+          </a>
+        </div>
+        <div class="mt-3 text-xs text-white/60">
+          (V ostré verzi: automatické odeslání + potvrzení + platební záloha.)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust / Details -->
+  <section class="mx-auto max-w-6xl px-4 py-10">
+    <div class="grid lg:grid-cols-12 gap-4">
+      <div class="lg:col-span-5 glass rounded-3xl p-6">
+        <h3 class="text-lg font-extrabold">Co je uvnitř (low-cost, ale profi)</h3>
+        <p class="mt-2 text-sm text-white/75 leading-relaxed">
+          Minimalistický interiér: nerez, modulární spotřebiče, LED světlo. Žádné drahé vestavby.
+          Když se něco rozbije, vymění se kus — ne celý vozík.
+        </p>
+        <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">Nerez</div>
+            <div class="text-xs text-white/65 mt-1">hygiena + výdrž</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">LED</div>
+            <div class="text-xs text-white/65 mt-1">vypadá draze</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">Moduly</div>
+            <div class="text-xs text-white/65 mt-1">rychlá výměna</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">Check-in</div>
+            <div class="text-xs text-white/65 mt-1">10 min předání</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 glass rounded-3xl p-6 ring-soft">
+        <h3 class="text-lg font-extrabold">Pro koho to je</h3>
+        <div class="mt-4 grid md:grid-cols-3 gap-3">
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">Začátečník</div>
+            <div class="text-xs text-white/65 mt-1">Otestuješ nápad bez dluhů</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">Akce / víkend</div>
+            <div class="text-xs text-white/65 mt-1">PRO + SAFE a jedeš</div>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="font-semibold">Měsíční rozjezd</div>
+            <div class="text-xs text-white/65 mt-1">Stabilní režim + jistota</div>
+          </div>
+        </div>
+
+        <div class="divider h-px my-5"></div>
+
+        <h3 class="text-lg font-extrabold">Proč bez kauce funguje</h3>
+        <p class="mt-2 text-sm text-white/75 leading-relaxed">
+          „Bez kauce“ je pro zákazníka svoboda. Pro tebe to musí být systém:
+          SAFE pack + fotodokumentace + checklist + jasné podmínky.
+          Výsledek: méně frikce, více rezervací.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-6xl px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">FAQ</h2>
+    <p class="mt-2 muted max-w-2xl">Nejčastější dotazy. Jasně, stručně.</p>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-4">
+      <details class="glass rounded-3xl p-6">
+        <summary class="cursor-pointer font-semibold">Prodáváte jídlo?</summary>
+        <p class="mt-3 text-sm text-white/75">
+          Ne. Půjčujeme gastro vozík / techniku. Ty si řešíš provoz, koncept, suroviny a případné povinnosti.
+        </p>
+      </details>
+
+      <details class="glass rounded-3xl p-6">
+        <summary class="cursor-pointer font-semibold">Proč „bez kauce“?</summary>
+        <p class="mt-3 text-sm text-white/75">
+          Aby se rezervovalo rychle a bez bariér. Krytí řeší SAFE pack + fotky před/po + checklist.
+        </p>
+      </details>
+
+      <details class="glass rounded-3xl p-6">
+        <summary class="cursor-pointer font-semibold">Jak rychle se předává?</summary>
+        <p class="mt-3 text-sm text-white/75">
+          Standardně do 10 minut: kontrola, fotky, podpis, vysvětlení a hotovo.
+        </p>
+      </details>
+
+      <details class="glass rounded-3xl p-6">
+        <summary class="cursor-pointer font-semibold">Je to vhodné pro začátečníka?</summary>
+        <p class="mt-3 text-sm text-white/75">
+          Ano. Právě pro test. Za pár dní zjistíš poptávku, ceny, tempo práce i reálné tržby.
+        </p>
+      </details>
+
+      <details class="glass rounded-3xl p-6">
+        <summary class="cursor-pointer font-semibold">Co když něco rozbiju?</summary>
+        <p class="mt-3 text-sm text-white/75">
+          Drobnosti řeší SAFE pack v rámci limitu. Větší škody se řeší standardně dle podmínek pronájmu.
+        </p>
+      </details>
+
+      <details class="glass rounded-3xl p-6">
+        <summary class="cursor-pointer font-semibold">Dá se to půjčit na měsíc?</summary>
+        <p class="mt-3 text-sm text-white/75">
+          Ano. Dlouhodobé pronájmy mají lepší cenu / den. Napiš do poznámky „měsíční“.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="kontakt" class="mx-auto max-w-6xl px-4 py-10">
+    <div class="glass rounded-3xl p-6 ring-soft">
+      <div class="grid md:grid-cols-3 gap-4 items-start">
+        <div class="md:col-span-2">
+          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Kontakt</h2>
+          <p class="mt-2 muted max-w-2xl">
+            MVP verze: telefon / WhatsApp. Ostrá verze: automatická rezervace + platební záloha.
+          </p>
+
+          <div class="mt-5 grid sm:grid-cols-2 gap-3">
+            <div class="glass rounded-2xl p-4">
+              <div class="text-xs text-white/65">Telefon / WhatsApp</div>
+              <div class="mt-1 font-semibold">+420 777 123 456</div>
+              <div class="mt-2 text-xs text-white/60">Sem dáš reálné číslo.</div>
+            </div>
+            <div class="glass rounded-2xl p-4">
+              <div class="text-xs text-white/65">E-mail</div>
+              <div class="mt-1 font-semibold">rezervace@vozik.cz</div>
+              <div class="mt-2 text-xs text-white/60">Sem dáš reálný e-mail.</div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-xs text-white/60">
+            Pozn.: Domény a e-maily si můžeš směrovat přes Cloudflare Email Routing do jednoho Gmailu (jak používáš standardně).
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-5">
+          <div class="font-semibold">Pro rychlý start</div>
+          <p class="mt-2 text-sm text-white/75">
+            Jediná věc, co potřebuješ: 1 místo ve městě (parkoviště / dvůr) a jeden funkční vozík.
+            Pak už jedeš kopírování modelu.
+          </p>
+          <a href="#rezervace" class="btn focus-ring mt-4 block rounded-2xl bg-amber-500 px-4 py-3 text-center font-semibold text-black hover:brightness-110">
+            Spustit první rezervaci
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mx-auto max-w-6xl px-4 pb-10 pt-4">
+    <div class="divider h-px my-6"></div>
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-white/60">
+      <div>
+        <div class="font-semibold text-white/80">VOZÍK</div>
+        <div class="text-xs mt-1">Půjč si. Jezdi. Vydělávej.</div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#cenik" class="hover:text-white">Ceník</a>
+        <a href="#rezervace" class="hover:text-white">Rezervace</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="#kontakt" class="hover:text-white">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky bottom CTA -->
+  <div class="fixed bottom-3 left-0 right-0 z-40">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="glass ring-soft rounded-2xl px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="text-sm">
+          <span class="font-semibold">1 999 Kč / den</span> <span class="text-white/70">• bez kauce • předání do 10 min</span>
+        </div>
+        <div class="flex gap-2">
+          <a href="#rezervace" class="btn focus-ring rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:brightness-110">Rezervovat</a>
+          <a href="#cenik" class="btn focus-ring rounded-xl bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/8 border border-white/10">Balíčky</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------- Helpers
+    const fmt = (n) => new Intl.NumberFormat('cs-CZ').format(Math.max(0, Math.round(n))) + " Kč";
+    const daysBetween = (from, to) => {
+      if (!from || !to) return 0;
+      const a = new Date(from + "T00:00:00");
+      const b = new Date(to + "T00:00:00");
+      const ms = b - a;
+      const d = Math.floor(ms / (1000*60*60*24)) + 1; // inclusive
+      return isFinite(d) && d > 0 ? d : 0;
+    };
+
+    // -------- Elements
+    const cityQuick = document.getElementById("cityQuick");
+    const dateFromQuick = document.getElementById("dateFromQuick");
+    const dateToQuick = document.getElementById("dateToQuick");
+    const btnGoReserve = document.getElementById("btnGoReserve");
+    const btnScrollReserve = document.getElementById("btnScrollReserve");
+
+    const city = document.getElementById("city");
+    const dateFrom = document.getElementById("dateFrom");
+    const dateTo = document.getElementById("dateTo");
+    const pickupHint = document.getElementById("pickupHint");
+
+    const packStarter = document.getElementById("packStarter");
+    const packPro = document.getElementById("packPro");
+    const packClean = document.getElementById("packClean");
+    const packSafe = document.getElementById("packSafe");
+
+    const sumBasic = document.getElementById("sumBasic");
+    const sumPacks = document.getElementById("sumPacks");
+    const sumTotal = document.getElementById("sumTotal");
+    const daysBadge = document.getElementById("daysBadge");
+
+    const btnSubmit = document.getElementById("btnSubmit");
+    const modal = document.getElementById("modal");
+    const modalText = document.getElementById("modalText");
+    const modalClose = document.getElementById("modalClose");
+    const copyBtn = document.getElementById("copyBtn");
+
+    const calWrap = document.getElementById("calendar");
+    const calMonthLabel = document.getElementById("calMonthLabel");
+
+    // -------- Default dates (today + 1)
+    const today = new Date();
+    const pad = (x) => String(x).padStart(2, "0");
+    const toISO = (d) => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    const d1 = new Date(today); d1.setDate(d1.getDate()+1);
+    const d2 = new Date(today); d2.setDate(d2.getDate()+2);
+    const minISO = toISO(d1);
+
+    [dateFromQuick, dateToQuick, dateFrom, dateTo].forEach(inp => inp.min = minISO);
+
+    dateFromQuick.value = toISO(d1);
+    dateToQuick.value = toISO(d2);
+    dateFrom.value = toISO(d1);
+    dateTo.value = toISO(d2);
+
+    // -------- City pickup hints
+    const pickupByCity = {
+      uh: "Vyzvednutí: Uherské Hradiště — domluvené parkoviště / dvůr (po potvrzení termínu).",
+      zl: "Vyzvednutí: Zlín — domluvené parkoviště / dvůr (po potvrzení termínu).",
+      br: "Vyzvednutí: Brno — domluvené parkoviště / dvůr (po potvrzení termínu).",
+      pr: "Vyzvednutí: Praha — domluvené parkoviště / dvůr (po potvrzení termínu).",
+    };
+
+    function syncCity() {
+      pickupHint.textContent = pickupByCity[city.value] || pickupByCity.uh;
+      renderCalendar(); // demo: different pattern per city
+      calc();
+    }
+
+    // -------- Pricing
+    const BASIC = 1999;
+    const PACKS = {
+      starter: 499,
+      pro: 999,
+      clean: 399,
+      safe: 599
+    };
+
+    function calc() {
+      const days = daysBetween(dateFrom.value, dateTo.value);
+      daysBadge.textContent = days + (days === 1 ? " den" : (days < 5 ? " dny" : " dní"));
+
+      const packsPerDay =
+        (packStarter.checked ? PACKS.starter : 0) +
+        (packPro.checked ? PACKS.pro : 0) +
+        (packClean.checked ? PACKS.clean : 0) +
+        (packSafe.checked ? PACKS.safe : 0);
+
+      const basicTotal = days * BASIC;
+      const packsTotal = days * packsPerDay;
+      const total = basicTotal + packsTotal;
+
+      sumBasic.textContent = fmt(basicTotal);
+      sumPacks.textContent = fmt(packsTotal);
+      sumTotal.textContent = fmt(total);
+    }
+
+    // -------- Calendar demo renderer (current month)
+    function renderCalendar() {
+      calWrap.innerHTML = "";
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const first = new Date(year, month, 1);
+      const last = new Date(year, month + 1, 0);
+      const monthName = now.toLocaleDateString("cs-CZ", { month: "long", year: "numeric" });
+      calMonthLabel.textContent = monthName;
+
+      // Monday-first offset
+      const dow = (first.getDay() + 6) % 7; // 0=Mon..6=Sun
+      for (let i = 0; i < dow; i++) {
+        const s = document.createElement("div");
+        s.className = "h-10";
+        calWrap.appendChild(s);
+      }
+
+      // deterministic pseudo-random based on city to keep stable per city
+      const seed = (city.value || "uh").split("").reduce((a,c)=>a + c.charCodeAt(0), 0);
+
+      for (let day = 1; day <= last.getDate(); day++) {
+        const d = new Date(year, month, day);
+        const iso = toISO(d);
+
+        // demo: 25% booked
+        const hash = (day * 9301 + seed * 49297) % 233280;
+        const booked = (hash / 233280) < 0.25;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.dataset.iso = iso;
+        btn.className = "h-10 rounded-xl border text-sm font-semibold transition focus-ring";
+        btn.classList.add(booked ? "bg-rose-500/10 border-rose-500/25 text-rose-200" : "bg-emerald-500/10 border-emerald-500/25 text-emerald-200");
+        btn.textContent = day;
+
+        btn.addEventListener("click", () => {
+          alert(`${iso}\nStav: ${booked ? "obsazeno" : "volno"} (demo)`);
+        });
+
+        calWrap.appendChild(btn);
+      }
+    }
+
+    // -------- Submission (MVP: show message)
+    function buildMessage() {
+      const dFrom = dateFrom.value || "—";
+      const dTo = dateTo.value || "—";
+      const days = daysBetween(dFrom, dTo);
+
+      const packs = [];
+      if (packStarter.checked) packs.push("STARTER (+499/den)");
+      if (packPro.checked) packs.push("PRO (+999/den)");
+      if (packClean.checked) packs.push("CLEAN (+399/den)");
+      if (packSafe.checked) packs.push("SAFE (+599/den)");
+
+      const packsText = packs.length ? packs.join(", ") : "Žádné";
+
+      const note = document.getElementById("note").value?.trim() || "—";
+      const name = document.getElementById("name").value?.trim() || "—";
+      const phone = document.getElementById("phone").value?.trim() || "—";
+      const email = document.getElementById("email").value?.trim() || "—";
+
+      const total = sumTotal.textContent;
+
+      const cityLabel = city.options[city.selectedIndex]?.textContent || "—";
+
+      return [
+        "VOZÍK — Rezervace / poptávka",
+        "---------------------------",
+        `Město: ${cityLabel}`,
+        `Termín: ${dFrom} → ${dTo} (${days} dní)`,
+        `Balíčky: ${packsText}`,
+        `Rekapitulace: ${total}`,
+        "",
+        `Kontakt: ${name}`,
+        `Telefon: ${phone}`,
+        `E-mail: ${email}`,
+        "",
+        "Poznámka:",
+        note,
+        "",
+        "Pozn.: MVP — prosím potvrďte dostupnost a místo vyzvednutí."
+      ].join("\n");
+    }
+
+    function openModal(text) {
+      modalText.textContent = text;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+    function closeModal() {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    // -------- Events
+    [city, dateFrom, dateTo, packStarter, packPro, packClean, packSafe].forEach(el => {
+      el.addEventListener("change", () => {
+        // keep dateTo >= dateFrom
+        if (dateFrom.value && dateTo.value && dateTo.value < dateFrom.value) dateTo.value = dateFrom.value;
+        calc();
+      });
+    });
+
+    city.addEventListener("change", syncCity);
+
+    btnSubmit.addEventListener("click", () => {
+      // ultra-basic validation
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      if (!dateFrom.value || !dateTo.value) return alert("Vyber termín (Od / Do).");
+      if (!phone && !email) return alert("Zadej telefon nebo e-mail (aspoň jeden).");
+      openModal(buildMessage());
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(modalText.textContent);
+        copyBtn.textContent = "Zkopírováno ✅";
+        setTimeout(()=>copyBtn.textContent="Kopírovat text", 1200);
+      } catch {
+        alert("Nepodařilo se kopírovat. Označ text ručně.");
+      }
+    });
+
+    btnGoReserve.addEventListener("click", () => {
+      city.value = cityQuick.value;
+      dateFrom.value = dateFromQuick.value;
+      dateTo.value = dateToQuick.value;
+      syncCity();
+      document.getElementById("rezervace").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    btnScrollReserve.addEventListener("click", () => {
+      document.getElementById("rezervace").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    // init
+    syncCity();
+    calc();
+    renderCalendar();
+  </script>
+</body>
+</html>
