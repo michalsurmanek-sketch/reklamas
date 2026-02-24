@@ -84,66 +84,64 @@ ${data.message||''}`
 <header id="site-header" class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
     
+    <!-- Logo -->
     <a href="#top" data-goto="#top" class="flex items-center gap-3 cursor-pointer" title="Na začátek">
-      
-      <!-- LOGO SVG z GitHub Pages / lokální složky -->
       <img 
         src="/reklamas-logo.svg" 
         alt="Reklamas logo"
         class="w-10 h-10 object-contain"
       />
-
       <div class="leading-tight">
         <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
         <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
       </div>
-
     </a>
+
+    <!-- Desktop menu -->
+    <nav class="hidden md:flex items-center gap-6 font-medium">
+      <a href="#sluzby" data-goto="#sluzby" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Služby</a>
+      <a href="#jak" data-goto="#jak" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Jak to funguje</a>
+      <a href="#cenik" data-goto="#cenik" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Ceník</a>
+      <a href="#kontakt" data-goto="#kontakt" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Kontakt</a>
+      <a href="#objednat" data-goto="#objednat" class="px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition">Objednat</a>
+    </nav>
+
+    <!-- Mobile burger -->
+    <button id="burger" aria-label="Menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-black/20">
+      <span class="sr-only">Otevřít menu</span>
+      <div class="w-5 h-[2px] bg-black relative">
+        <span id="b1" class="absolute left-0 -top-1.5 w-5 h-[2px] bg-black transition"></span>
+        <span id="b2" class="absolute left-0 top-1.5 w-5 h-[2px] bg-black transition"></span>
+      </div>
+    </button>
 
   </div>
 
-      <!-- Desktop menu -->
-      <nav class="hidden md:flex items-center gap-6 font-medium">
-        <a href="#sluzby" data-goto="#sluzby" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Služby</a>
-        <a href="#jak" data-goto="#jak" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Jak to funguje</a>
-        <a href="#cenik" data-goto="#cenik" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Ceník</a>
-        <a href="#kontakt" data-goto="#kontakt" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Kontakt</a>
-        <a href="#objednat" data-goto="#objednat" class="px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition">Objednat</a>
-      </nav>
+  <!-- Mobile panel -->
+  <div id="mobile-panel" class="hidden md:hidden absolute left-0 right-0 border-t border-black/10 bg-white text-black shadow-xl">
+    <div class="mx-auto max-w-7xl px-4 py-4 space-y-2 text-base">
+      <a href="#sluzby" data-goto="#sluzby" class="block py-2">Služby</a>
+      <a href="#jak" data-goto="#jak" class="block py-2">Jak to funguje</a>
+      <a href="#cenik" data-goto="#cenik" class="block py-2">Ceník</a>
+      <a href="#kontakt" data-goto="#kontakt" class="block py-2">Kontakt</a>
+      <a href="#objednat" data-goto="#objednat" class="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-yellow-300 font-extrabold py-3">OBJEDNAT</a>
 
-      <!-- Mobile burger -->
-      <button id="burger" aria-label="Menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-black/20">
-        <span class="sr-only">Otevřít menu</span>
-        <div class="w-5 h-[2px] bg-black relative">
-          <span id="b1" class="absolute left-0 -top-1.5 w-5 h-[2px] bg-black transition"></span>
-          <span id="b2" class="absolute left-0 top-1.5 w-5 h-[2px] bg-black transition"></span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Mobile panel -->
-    <div id="mobile-panel" class="hidden md:hidden absolute left-0 right-0 border-t border-black/10 bg-white text-black shadow-xl">
-      <div class="mx-auto max-w-7xl px-4 py-4 space-y-2 text-base">
-        <a href="#sluzby" data-goto="#sluzby" class="block py-2">Služby</a>
-        <a href="#jak" data-goto="#jak" class="block py-2">Jak to funguje</a>
-        <a href="#cenik" data-goto="#cenik" class="block py-2">Ceník</a>
-        <a href="#kontakt" data-goto="#kontakt" class="block py-2">Kontakt</a>
-        <a href="#objednat" data-goto="#objednat" class="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-yellow-300 font-extrabold py-3">OBJEDNAT</a>
-        <!-- Socials -->
-        <div class="flex justify-center gap-6 mt-6">
-          <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="w-6 h-6" />
-          </a>
-          <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="w-6 h-6" />
-          </a>
-          <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform">
-            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="w-6 h-6" />
-          </a>
-        </div>
+      <!-- Socials -->
+      <div class="flex justify-center gap-6 mt-6">
+        <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="w-6 h-6" />
+        </a>
+        <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="w-6 h-6" />
+        </a>
+        <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" class="w-6 h-6" />
+        </a>
       </div>
     </div>
-  </header>
+  </div>
+
+</header>
 
   <!-- Hero -->
   <section id="top" class="relative overflow-hidden">
