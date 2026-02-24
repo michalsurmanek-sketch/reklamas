@@ -81,15 +81,26 @@ ${data.message||''}`
 </head>
 <body class="min-h-screen bg-yellow-400 text-black">
   <!-- Header -->
-  <header id="site-header" class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <a href="#top" data-goto="#top" class="flex items-center gap-3 cursor-pointer" title="Na začátek">
-        <div class="w-10 h-10 rounded-2xl bg-black text-yellow-400 grid place-items-center font-bold">R</div>
-        <div class="leading-tight">
-          <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
-          <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
-        </div>
-      </a>
+<header id="site-header" class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    
+    <a href="#top" data-goto="#top" class="flex items-center gap-3 cursor-pointer" title="Na začátek">
+      
+      <!-- LOGO SVG z GitHub Pages / lokální složky -->
+      <img 
+        src="/reklamas-logo.svg" 
+        alt="Reklamas logo"
+        class="w-10 h-10 object-contain"
+      />
+
+      <div class="leading-tight">
+        <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
+        <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
+      </div>
+
+    </a>
+
+  </div>
 
       <!-- Desktop menu -->
       <nav class="hidden md:flex items-center gap-6 font-medium">
