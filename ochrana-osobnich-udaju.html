@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ochrana osobních údajů • Reklamas.cz</title>
+  <meta name="description" content="Informace o zpracování osobních údajů (GDPR) pro Reklamas.cz." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
+  </style>
+</head>
+<body class="min-h-screen bg-yellow-400 text-black">
+
+  <!-- Header (jednoduchý) -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" title="Zpět na Reklamas.cz">
+        <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
+        <div class="leading-tight">
+          <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
+          <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <a href="/obchodni-podminky.html" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-white/70 border border-black/10 hover:bg-white transition text-sm font-semibold">Obchodní podmínky</a>
+        <a href="/#objednat" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition text-sm font-semibold">Nezávazně poptat</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <div class="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-black text-yellow-300">Dokument</div>
+      <h1 class="mt-4 text-3xl md:text-5xl font-extrabold">Ochrana osobních údajů (GDPR)</h1>
+      <p class="mt-3 text-black/70 max-w-3xl">
+        Jak nakládáme s osobními údaji, které nám pošlete v poptávce nebo e-mailem. Text je připravený jako
+        <strong>praktická šablona</strong> pro web Reklamas.cz – doplň si identifikační údaje (IČO, adresa).
+      </p>
+      <div class="mt-5 text-sm text-black/60">Poslední aktualizace: <span id="updated"></span></div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="bg-white/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <div class="grid lg:grid-cols-[280px,1fr] gap-8">
+
+        <!-- TOC -->
+        <aside class="lg:sticky lg:top-24 h-max">
+          <div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+            <div class="font-extrabold">Obsah</div>
+            <nav class="mt-3 text-sm space-y-2">
+              <a class="block underline hover:text-pink-600" href="#1">1. Správce údajů</a>
+              <a class="block underline hover:text-pink-600" href="#2">2. Jaké údaje zpracováváme</a>
+              <a class="block underline hover:text-pink-600" href="#3">3. Účely a právní základy</a>
+              <a class="block underline hover:text-pink-600" href="#4">4. Odkud údaje máme</a>
+              <a class="block underline hover:text-pink-600" href="#5">5. Příjemci a zpracovatelé</a>
+              <a class="block underline hover:text-pink-600" href="#6">6. Doba uchování</a>
+              <a class="block underline hover:text-pink-600" href="#7">7. Cookies a měření</a>
+              <a class="block underline hover:text-pink-600" href="#8">8. Vaše práva</a>
+              <a class="block underline hover:text-pink-600" href="#9">9. Bezpečnost</a>
+              <a class="block underline hover:text-pink-600" href="#10">10. Kontakt</a>
+            </nav>
+          </div>
+
+          <div class="mt-4 rounded-2xl border border-black/10 bg-yellow-50 p-5">
+            <div class="font-bold">Rychlé doplnění</div>
+            <div class="text-sm text-black/70 mt-1">Stačí mi poslat <strong>název + IČO + adresu</strong> a doplním ti to do ostré verze bez placeholderů.</div>
+          </div>
+        </aside>
+
+        <!-- Text -->
+        <article class="rounded-2xl border border-black/10 bg-white p-6 md:p-8 shadow-sm">
+
+          <section id="1" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">1. Správce osobních údajů</h2>
+            <div class="mt-3 text-sm text-black/80 space-y-1">
+              <div><strong>Název:</strong> Reklamas.cz (doplnit)</div>
+              <div><strong>Sídlo:</strong> Uherské Hradiště (doplnit přesnou adresu)</div>
+              <div><strong>IČO:</strong> (doplnit)</div>
+              <div><strong>Kontaktní e-mail:</strong> <a class="underline hover:text-pink-600" href="mailto:info@reklamas.cz">info@reklamas.cz</a></div>
+            </div>
+            <p class="mt-3 text-black/80">Správce určuje, jak budou osobní údaje zpracovány, k jakému účelu, jak dlouho a kdo k nim může mít přístup.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="2" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">2. Jaké osobní údaje zpracováváme</h2>
+            <p class="mt-3 text-black/80">Zpracováváme pouze údaje, které nám sami poskytnete (nejčastěji v poptávkovém formuláři nebo e-mailem):</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>jméno a případně název firmy,</li>
+              <li>kontaktní údaje (e-mail, telefon),</li>
+              <li>město/lokalita a termín kampaně,</li>
+              <li>obsah zprávy (popis poptávky),</li>
+              <li>případně další údaje, které nám dobrovolně doplníte.</li>
+            </ul>
+            <p class="mt-3 text-black/80">Na webu nevyžadujeme rodné číslo ani citlivé údaje (zdravotní, politické apod.). Pokud byste je poslali, zpracujeme je jen v nezbytném rozsahu pro vyřízení požadavku.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="3" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">3. Účely a právní základy zpracování</h2>
+
+            <div class="mt-4 rounded-2xl border border-black/10 bg-yellow-50 p-5">
+              <div class="font-bold">A) Vyřízení poptávky a komunikace</div>
+              <div class="text-sm text-black/80 mt-1">Účel: odpověď na poptávku, příprava nabídky, domluva realizace.</div>
+              <div class="text-sm text-black/70 mt-1">Právní základ: <strong>oprávněný zájem</strong> nebo <strong>jednání o smlouvě</strong> (čl. 6 odst. 1 písm. b/f GDPR).</div>
+            </div>
+
+            <div class="mt-4 rounded-2xl border border-black/10 bg-yellow-50 p-5">
+              <div class="font-bold">B) Plnění smlouvy a fakturace</div>
+              <div class="text-sm text-black/80 mt-1">Účel: realizace služby, účetnictví, vystavení dokladů.</div>
+              <div class="text-sm text-black/70 mt-1">Právní základ: <strong>plnění smlouvy</strong> a <strong>právní povinnost</strong> (čl. 6 odst. 1 písm. b/c GDPR).</div>
+            </div>
+
+            <div class="mt-4 rounded-2xl border border-black/10 bg-yellow-50 p-5">
+              <div class="font-bold">C) Reference (fotky/video z realizace)</div>
+              <div class="text-sm text-black/80 mt-1">Účel: prezentace realizací (např. fotografie kampaní), pokud se na tom dohodneme nebo pokud je to bez osobních údajů.</div>
+              <div class="text-sm text-black/70 mt-1">Právní základ: <strong>oprávněný zájem</strong> / <strong>souhlas</strong> (dle situace).</div>
+            </div>
+
+            <p class="mt-4 text-black/80">Souhlas (checkbox ve formuláři) slouží primárně jako potvrzení, že můžeme vaše údaje použít k reakci na poptávku. Souhlas můžete kdykoli odvolat – tím ale může zaniknout možnost poptávku vyřídit.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="4" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">4. Odkud údaje máme</h2>
+            <p class="mt-3 text-black/80">Údaje získáváme přímo od vás (poptávka, e-mail, telefonická komunikace). Neprovádíme nákup databází ani automatizované obohacování kontaktů.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="5" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">5. Příjemci a zpracovatelé</h2>
+            <p class="mt-3 text-black/80">Vaše údaje mohou zpracovávat ověření dodavatelé (zpracovatelé), kteří nám pomáhají s provozem webu a komunikací, např.:</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>hosting a infrastruktura (např. GitHub Pages / Cloudflare – dle nasazení),</li>
+              <li>e-mailová služba (např. Gmail / přesměrování e-mailů),</li>
+              <li>formulářová služba (pokud bude použita – např. Formspree / vlastní API),</li>
+              <li>účetní / daňové služby (při fakturaci).</li>
+            </ul>
+            <p class="mt-3 text-black/80">Osobní údaje nepředáváme třetím stranám pro jejich marketing.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="6" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">6. Doba uchování</h2>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li><strong>Poptávky bez realizace:</strong> typicky 6–12 měsíců (doplnit, jak chceš), kvůli navazující komunikaci.</li>
+              <li><strong>Smluvní spolupráce a fakturace:</strong> dle zákonných lhůt (účetní doklady obvykle 5–10 let).</li>
+              <li><strong>Reference:</strong> po dobu prezentace referencí, nebo do odvolání souhlasu / námitky.</li>
+            </ul>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="7" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">7. Cookies a měření</h2>
+            <p class="mt-3 text-black/80">Aktuálně web může běžet bez analytických cookies. Pokud v budoucnu nasadíme měření (např. návštěvnost, konverze), doplníme zde:</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>jaké nástroje používáme (např. GA4 / Matomo),</li>
+              <li>jaké cookies ukládají,</li>
+              <li>jak udělit/odmítnout souhlas.</li>
+            </ul>
+            <p class="mt-3 text-black/80">Pozn.: QR měření kampaní (po realizaci) se typicky váže na skeny QR a návštěvy odkazů. Pokud bude měření anonymní, nemusí se jednat o osobní údaje – záleží na nastavení.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="8" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">8. Vaše práva</h2>
+            <p class="mt-3 text-black/80">Máte právo:</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>na přístup k osobním údajům,</li>
+              <li>na opravu nepřesných údajů,</li>
+              <li>na výmaz (pokud už není důvod údaje držet),</li>
+              <li>na omezení zpracování,</li>
+              <li>vznést námitku proti zpracování,</li>
+              <li>na přenositelnost (v relevantních případech),</li>
+              <li>podat stížnost u dozorového úřadu (ÚOOÚ).</li>
+            </ul>
+            <div class="mt-4 rounded-2xl border border-black/10 bg-black text-yellow-300 p-5">
+              <div class="font-bold">Jak uplatnit práva?</div>
+              <div class="text-sm text-yellow-200/80 mt-1">Napište nám na <a class="underline" href="mailto:info@reklamas.cz">info@reklamas.cz</a>. Odpovíme bez zbytečného odkladu.</div>
+            </div>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="9" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">9. Bezpečnost</h2>
+            <p class="mt-3 text-black/80">Přijímáme přiměřená technická a organizační opatření, aby nedošlo k neoprávněnému přístupu, ztrátě nebo zneužití údajů (např. omezení přístupů, zabezpečené účty, pravidelné aktualizace).</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="10" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">10. Kontakt</h2>
+            <div class="mt-3 text-sm text-black/80 space-y-1">
+              <div><strong>E-mail:</strong> <a class="underline hover:text-pink-600" href="mailto:info@reklamas.cz">info@reklamas.cz</a></div>
+              <div><strong>Lokalita:</strong> Uherské Hradiště</div>
+            </div>
+            <p class="mt-3 text-black/80">Pokud si přejete upřesnění ohledně cookies nebo měření, napište – doplníme konkrétní nástroje a nastavení.</p>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-black text-yellow-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-sm text-yellow-200/80">© <span id="year"></span> Reklamas.cz</div>
+      <div class="text-sm">
+        <a class="underline hover:text-pink-400" href="/">Zpět na web</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/obchodni-podminky.html">Obchodní podmínky</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const d = new Date();
+    const pad = (n)=> String(n).padStart(2,'0');
+    document.getElementById('updated').textContent = `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`;
+  </script>
+</body>
+</html>
