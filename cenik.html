@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ceník • Reklamas.cz</title>
+  <meta name="description" content="Ceník služeb Reklamas.cz – mobilní reklama, auto billboard, potisk, maskot, eventy a QR měření." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
+  </style>
+</head>
+<body class="min-h-screen bg-yellow-400 text-black">
+
+  <!-- Header (jednoduchý) -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" title="Zpět na Reklamas.cz">
+        <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
+        <div class="leading-tight">
+          <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
+          <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <a href="/cenik.pdf" target="_blank" rel="noopener" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-white/70 border border-black/10 hover:bg-white transition text-sm font-semibold">Stáhnout PDF</a>
+        <a href="/#objednat" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition text-sm font-semibold">Nezávazně poptat</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-black text-yellow-300">Ceník</div>
+          <h1 class="mt-4 text-3xl md:text-5xl font-extrabold">Ceník služeb</h1>
+          <p class="mt-3 text-black/70 max-w-3xl">Orientační ceny bez DPH. Přesnou kalkulaci ti uděláme podle <strong>města</strong>, <strong>trasy</strong>, <strong>času</strong> a <strong>materiálů</strong>. Než se dohodneme, je to nezávazné.</p>
+          <div class="mt-5 text-sm text-black/60">Poslední aktualizace: <span id="updated"></span></div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/cenik.pdf" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-white border border-black/10 font-semibold hover:bg-white/80 transition">Stáhnout ceník (PDF)</a>
+          <a href="/#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-[-2px] transition">Chci kalkulaci na míru</a>
+        </div>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-black/10 bg-white/70 p-4">
+          <div class="text-xs text-black/60">Nejrychlejší start</div>
+          <div class="mt-1 font-extrabold text-lg">Mobilní reklama od 490 Kč</div>
+          <div class="mt-1 text-sm text-black/70">kolo / chodec s billboardem</div>
+        </div>
+        <div class="rounded-2xl border border-black/10 bg-white/70 p-4">
+          <div class="text-xs text-black/60">Největší zásah</div>
+          <div class="mt-1 font-extrabold text-lg">Auto billboard od 890 Kč</div>
+          <div class="mt-1 text-sm text-black/70">pohyblivá reklama po městě</div>
+        </div>
+        <div class="rounded-2xl border border-black/10 bg-white/70 p-4">
+          <div class="text-xs text-black/60">Pro týmy & brand</div>
+          <div class="mt-1 font-extrabold text-lg">Potisk od 249 Kč</div>
+          <div class="mt-1 text-sm text-black/70">logo, text, QR kód</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-white/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14 space-y-10">
+
+      <!-- Tabulka cen -->
+      <section class="rounded-2xl border border-black/10 bg-white shadow-sm overflow-hidden">
+        <div class="p-6 md:p-8 flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold">Orientační ceník</h2>
+            <p class="mt-2 text-black/70">Ceny jsou „od“. Ve finále může rozhodovat délka kampaně, kilometráž, výroba podkladů a čas v terénu.</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-yellow-100">
+              <tr>
+                <th class="p-3">Služba</th>
+                <th class="p-3">Cena od</th>
+                <th class="p-3">Co zahrnuje</th>
+                <th class="p-3">Typicky pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="odd:bg-white even:bg-yellow-50">
+                <td class="p-3 font-semibold">Mobilní reklama</td>
+                <td class="p-3">490 Kč</td>
+                <td class="p-3 text-black/70">kolo/chodec + základní report</td>
+                <td class="p-3 text-black/70">rychlé promo ve městě</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-yellow-50">
+                <td class="p-3 font-semibold">Auto billboard</td>
+                <td class="p-3">890 Kč</td>
+                <td class="p-3 text-black/70">trasa + fotky + report</td>
+                <td class="p-3 text-black/70">větší zásah, větší viditelnost</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-yellow-50">
+                <td class="p-3 font-semibold">Maskot Reklamas</td>
+                <td class="p-3">1 200 Kč</td>
+                <td class="p-3 text-black/70">2 h promo + fotky</td>
+                <td class="p-3 text-black/70">otevíračky, výlohy, eventy</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-yellow-50">
+                <td class="p-3 font-semibold">Reklama na eventech</td>
+                <td class="p-3">dle akce</td>
+                <td class="p-3 text-black/70">brand presence + show</td>
+                <td class="p-3 text-black/70">festival, sport, slavnosti</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-yellow-50">
+                <td class="p-3 font-semibold">Potisk triček</td>
+                <td class="p-3">249 Kč</td>
+                <td class="p-3 text-black/70">potisk (1 ks+) dle velikosti</td>
+                <td class="p-3 text-black/70">tým, promo, provozovna</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-yellow-50">
+                <td class="p-3 font-semibold">QR měření kampaně</td>
+                <td class="p-3">v ceně / příplatek</td>
+                <td class="p-3 text-black/70">QR + základní statistiky</td>
+                <td class="p-3 text-black/70">když chceš čísla a důkaz</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="p-6 md:p-8 border-t border-black/10 text-sm text-black/70">
+          <div class="font-semibold text-black">Poznámky:</div>
+          <ul class="mt-2 list-disc list-inside space-y-1">
+            <li>Výroba plakátů, grafika, cestovné mimo region a nadstandardní hodiny se účtují zvlášť dle dohody.</li>
+            <li>U potisku se cena liší podle typu textilu, velikosti potisku a barev.</li>
+            <li>U eventů děláme nabídku vždy individuálně (rozsah, čas, rekvizity, backstage).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Balíčky -->
+      <section>
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold">Balíčky (rychlá volba)</h2>
+            <p class="mt-2 text-black/70">Když nechceš řešit detail – vybereš balíček a jen doplníš město + termín.</p>
+          </div>
+          <a href="/#objednat" class="hidden md:inline-flex px-4 py-2 rounded-xl bg-black text-yellow-300 font-semibold hover:translate-y-[-2px] transition">Vybrat balíček</a>
+        </div>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+            <div class="inline-flex text-xs px-2 py-1 rounded-md bg-black text-yellow-300">Start</div>
+            <div class="mt-3 text-xl font-extrabold">Město na zkoušku</div>
+            <div class="mt-2 text-sm text-black/70">Krátká kampaň na test + základní report.</div>
+            <ul class="mt-4 text-sm text-black/80 space-y-2 list-disc list-inside">
+              <li>1 lokalita / město</li>
+              <li>mobilní reklama</li>
+              <li>fotky + QR</li>
+            </ul>
+            <div class="mt-5 flex items-end justify-between">
+              <div>
+                <div class="text-xs text-black/60">Cena od</div>
+                <div class="text-2xl font-extrabold">(doplnit)</div>
+              </div>
+              <a href="/#objednat" class="px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold">Chci</a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-black/10 bg-yellow-50 p-6 shadow-sm">
+            <div class="inline-flex text-xs px-2 py-1 rounded-md bg-black text-yellow-300">Nejčastější</div>
+            <div class="mt-3 text-xl font-extrabold">Vidět a měřit</div>
+            <div class="mt-2 text-sm text-black/70">Silnější zásah + měření výsledků.</div>
+            <ul class="mt-4 text-sm text-black/80 space-y-2 list-disc list-inside">
+              <li>mobilní nebo auto billboard</li>
+              <li>QR měření</li>
+              <li>report + fotky/video</li>
+            </ul>
+            <div class="mt-5 flex items-end justify-between">
+              <div>
+                <div class="text-xs text-black/60">Cena od</div>
+                <div class="text-2xl font-extrabold">(doplnit)</div>
+              </div>
+              <a href="/#objednat" class="px-4 py-2 rounded-xl bg-black text-yellow-300 font-semibold">Chci</a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+            <div class="inline-flex text-xs px-2 py-1 rounded-md bg-black text-yellow-300">Show</div>
+            <div class="mt-3 text-xl font-extrabold">Event & maskot</div>
+            <div class="mt-2 text-sm text-black/70">Promo na akci: maskot + rekvizity.</div>
+            <ul class="mt-4 text-sm text-black/80 space-y-2 list-disc list-inside">
+              <li>maskot Reklamas</li>
+              <li>focení s lidmi</li>
+              <li>fotoreport</li>
+            </ul>
+            <div class="mt-5 flex items-end justify-between">
+              <div>
+                <div class="text-xs text-black/60">Cena od</div>
+                <div class="text-2xl font-extrabold">(doplnit)</div>
+              </div>
+              <a href="/#objednat" class="px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold">Chci</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Co je v ceně + doplňky -->
+      <section class="grid lg:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+          <h2 class="text-2xl font-extrabold">Co je v ceně (standard)</h2>
+          <ul class="mt-4 text-sm text-black/80 space-y-2 list-disc list-inside">
+            <li>domluvený čas v terénu (dle nabídky)</li>
+            <li>fotodokumentace (základ)</li>
+            <li>základní report (kdy/kde, fotky, shrnutí)</li>
+            <li>QR odkaz (pokud chceš měřit)</li>
+          </ul>
+          <div class="mt-4 text-xs text-black/60">Pozn.: U některých kampaní dává smysl video – dáme do nabídky.</div>
+        </div>
+        <div class="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+          <h2 class="text-2xl font-extrabold">Doplňky (na přání)</h2>
+          <ul class="mt-4 text-sm text-black/80 space-y-2 list-disc list-inside">
+            <li>grafika / návrh plakátu</li>
+            <li>tisk plakátů / polepů</li>
+            <li>navýšení času / více dní</li>
+            <li>více lokalit / více měst</li>
+            <li>extra rekvizity na event</li>
+          </ul>
+          <div class="mt-4 text-xs text-black/60">Dáme jasně do nabídky dopředu – žádné překvapení.</div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="rounded-2xl border border-black/10 bg-white p-6 md:p-8 shadow-sm">
+        <h2 class="text-2xl md:text-3xl font-extrabold">Časté dotazy</h2>
+        <div class="mt-6 space-y-4">
+
+          <details class="group rounded-2xl border border-black/10 bg-yellow-50 p-5">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+              <span class="font-semibold">Kolik to stojí v mém městě?</span>
+              <span class="text-black/60 group-open:rotate-180 transition">▾</span>
+            </summary>
+            <div class="mt-3 text-sm text-black/80">Napiš město + termín + co chceš propagovat. Pošleme trasu a cenu do 24 h.</div>
+          </details>
+
+          <details class="group rounded-2xl border border-black/10 bg-yellow-50 p-5">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+              <span class="font-semibold">Děláte i grafiku a tisk?</span>
+              <span class="text-black/60 group-open:rotate-180 transition">▾</span>
+            </summary>
+            <div class="mt-3 text-sm text-black/80">Ano. Pokud nemáš podklady, uděláme návrh a zajistíme tisk (dle dohody).</div>
+          </details>
+
+          <details class="group rounded-2xl border border-black/10 bg-yellow-50 p-5">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+              <span class="font-semibold">Jak funguje QR měření?</span>
+              <span class="text-black/60 group-open:rotate-180 transition">▾</span>
+            </summary>
+            <div class="mt-3 text-sm text-black/80">Dáme QR kód na vizuál. Po kampani dostaneš počet skenů a základní statistiky (dle nastavení odkazu).</div>
+          </details>
+
+          <details class="group rounded-2xl border borderblack/10 bg-yellow-50 p-5">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+              <span class="font-semibold">Můžu to zrušit nebo přesunout?</span>
+              <span class="text-black/60 group-open:rotate-180 transition">▾</span>
+            </summary>
+            <div class="mt-3 text-sm text-black/80">Ano, storno podmínky jsou v <a class="underline hover:text-pink-600" href="/obchodni-podminky.html">obchodních podmínkách</a>. U kampaní se snažíme najít náhradní termín.</div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="rounded-2xl border border-black/10 bg-black text-yellow-300 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="text-2xl font-extrabold">Chceš přesnou cenu pro Uherské Hradiště?</div>
+          <div class="mt-1 text-yellow-200/80 text-sm">Pošli termín + co propaguješ. Odpověď do 24 h.</div>
+        </div>
+        <a href="/#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-yellow-300 text-black font-semibold hover:translate-y-[-2px] transition">Nezávazně poptat</a>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bg-black text-yellow-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-sm text-yellow-200/80">© <span id="year"></span> Reklamas.cz</div>
+      <div class="text-sm">
+        <a class="underline hover:text-pink-400" href="/">Zpět na web</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/obchodni-podminky.html">Obchodní podmínky</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/ochrana-osobnich-udaju.html">Ochrana údajů</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const d = new Date();
+    const pad = (n)=> String(n).padStart(2,'0');
+    document.getElementById('updated').textContent = `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`;
+  </script>
+</body>
+</html>
