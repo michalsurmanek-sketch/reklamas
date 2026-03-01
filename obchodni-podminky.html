@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Obchodní podmínky • Reklamas.cz</title>
+  <meta name="description" content="Obchodní podmínky pro služby Reklamas.cz (mobilní reklama, eventy, potisk, maskot, QR měření)." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
+  </style>
+</head>
+<body class="min-h-screen bg-yellow-400 text-black">
+
+  <!-- Header (jednoduchý) -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" title="Zpět na Reklamas.cz">
+        <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
+        <div class="leading-tight">
+          <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
+          <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
+        </div>
+      </a>
+
+      <a href="/#objednat" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition font-semibold">Nezávazně poptat</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <div class="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-black text-yellow-300">Dokument</div>
+      <h1 class="mt-4 text-3xl md:text-5xl font-extrabold">Obchodní podmínky</h1>
+      <p class="mt-3 text-black/70 max-w-3xl">Tento dokument upravuje pravidla pro objednávky a realizaci služeb Reklamas.cz. Text je připravený jako <strong>šablona</strong> – doplň si IČO, adresu, přesné ceny a detaily dle reality.</p>
+      <div class="mt-5 text-sm text-black/60">Poslední aktualizace: <span id="updated"></span></div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="bg-white/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+
+      <div class="grid lg:grid-cols-[280px,1fr] gap-8">
+
+        <!-- TOC -->
+        <aside class="lg:sticky lg:top-24 h-max">
+          <div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+            <div class="font-extrabold">Obsah</div>
+            <nav class="mt-3 text-sm space-y-2">
+              <a class="block underline hover:text-pink-600" href="#1">1. Identifikace poskytovatele</a>
+              <a class="block underline hover:text-pink-600" href="#2">2. Vymezení služeb</a>
+              <a class="block underline hover:text-pink-600" href="#3">3. Objednávka a uzavření smlouvy</a>
+              <a class="block underline hover:text-pink-600" href="#4">4. Cena a platební podmínky</a>
+              <a class="block underline hover:text-pink-600" href="#5">5. Dodání/realizace a součinnost</a>
+              <a class="block underline hover:text-pink-600" href="#6">6. Storno a změny termínu</a>
+              <a class="block underline hover:text-pink-600" href="#7">7. Reklamace</a>
+              <a class="block underline hover:text-pink-600" href="#8">8. Odpovědnost a vyšší moc</a>
+              <a class="block underline hover:text-pink-600" href="#9">9. Autorská práva a podklady</a>
+              <a class="block underline hover:text-pink-600" href="#10">10. Ochrana osobních údajů</a>
+              <a class="block underline hover:text-pink-600" href="#11">11. Závěrečná ustanovení</a>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Text -->
+        <article class="rounded-2xl border border-black/10 bg-white p-6 md:p-8 shadow-sm">
+
+          <section id="1" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">1. Identifikace poskytovatele</h2>
+            <div class="mt-3 text-sm text-black/80 space-y-1">
+              <div><strong>Název:</strong> Reklamas.cz (doplnit)</div>
+              <div><strong>Sídlo:</strong> Uherské Hradiště (doplnit přesnou adresu)</div>
+              <div><strong>IČO:</strong> (doplnit)</div>
+              <div><strong>E-mail:</strong> <a class="underline" href="mailto:info@reklamas.cz">info@reklamas.cz</a></div>
+              <div><strong>Telefon:</strong> (doplnit)</div>
+            </div>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="2" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">2. Vymezení služeb</h2>
+            <p class="mt-3 text-black/80">Poskytovatel nabízí zejména:</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>Mobilní reklamu (kolo, trojkolka, chodec, auto billboard)</li>
+              <li>Reklamu na eventech a promo akce</li>
+              <li>Pronájem maskota „Reklamas“</li>
+              <li>Potisk triček a oblečení</li>
+              <li>QR měření kampaně a základní report</li>
+            </ul>
+            <p class="mt-3 text-black/80">Rozsah, termíny, lokalita a materiály se sjednávají individuálně dle poptávky.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="3" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">3. Objednávka a uzavření smlouvy</h2>
+            <ol class="mt-3 list-decimal list-inside text-black/80 space-y-2">
+              <li>Zákazník odešle poptávku (web, e-mail, telefon).</li>
+              <li>Poskytovatel zašle návrh řešení a cenovou nabídku.</li>
+              <li>Smlouva je uzavřena potvrzením nabídky (e-mailem / podpisem / úhradou zálohy – dle dohody).</li>
+            </ol>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="4" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">4. Cena a platební podmínky</h2>
+            <p class="mt-3 text-black/80">Ceny jsou smluvní. Orientační ceník je na webu; konečná cena se může lišit dle lokality, délky kampaně, výroby materiálů a souvisejících nákladů.</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>Možná záloha před realizací (doplnit pravidla).</li>
+              <li>Fakturace po realizaci / dle milníků (doplnit).</li>
+              <li>U potisku: výroba až po schválení grafiky a úhradě (doplnit).</li>
+            </ul>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="5" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">5. Dodání/realizace a součinnost</h2>
+            <p class="mt-3 text-black/80">Zákazník poskytne včas podklady (loga, texty, grafiku, QR odkaz), schválí návrhy a zajistí součinnost (např. přístup do prostor na eventu).</p>
+            <p class="mt-3 text-black/80">Pokud zákazník neposkytne součinnost, může dojít ke změně termínu nebo rozsahu.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="6" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">6. Storno a změny termínu</h2>
+            <p class="mt-3 text-black/80">Storno podmínky doporučuju nastavit jasně (např. 7/3/1 den předem). Níže je bezpečná šablona:</p>
+            <ul class="mt-3 list-disc list-inside text-black/80 space-y-1">
+              <li>Storno více než 7 dní předem: bez poplatku / administrativní poplatek (doplnit).</li>
+              <li>3–7 dní předem: poplatek (doplnit %).</li>
+              <li>Méně než 72 hodin: poplatek (doplnit %), protože jsou blokované kapacity.</li>
+            </ul>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="7" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">7. Reklamace</h2>
+            <p class="mt-3 text-black/80">Reklamace se uplatňuje bez zbytečného odkladu e-mailem. Poskytovatel navrhne řešení (oprava, sleva, náhradní plnění) dle povahy vady.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="8" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">8. Odpovědnost a vyšší moc</h2>
+            <p class="mt-3 text-black/80">Poskytovatel neodpovídá za nemožnost plnění způsobenou okolnostmi mimo jeho kontrolu (např. extrémní počasí, zásahy úřadů, mimořádné události). V takovém případě se strany dohodnou na náhradním termínu nebo úpravě plnění.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="9" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">9. Autorská práva a podklady</h2>
+            <p class="mt-3 text-black/80">Zákazník prohlašuje, že má práva k dodaným podkladům (logo, fotky, texty). Poskytovatel může použít výstupy (fotky/video z realizace) jako reference, pokud se strany nedohodnou jinak.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="10" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">10. Ochrana osobních údajů</h2>
+            <p class="mt-3 text-black/80">Zpracování osobních údajů se řídí dokumentem <a class="underline hover:text-pink-600" href="/ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>.</p>
+          </section>
+
+          <hr class="my-8 border-black/10" />
+
+          <section id="11" class="scroll-mt-28">
+            <h2 class="text-2xl font-extrabold">11. Závěrečná ustanovení</h2>
+            <p class="mt-3 text-black/80">Tyto obchodní podmínky jsou platné od data uvedeného výše a mohou být aktualizovány. Vztahy neupravené podmínkami se řídí právem ČR.</p>
+          </section>
+
+          <div class="mt-10 rounded-2xl border border-black/10 bg-yellow-50 p-5">
+            <div class="font-bold">Chceš to dotáhnout do 100% právně?</div>
+            <div class="text-sm text-black/70 mt-1">Pošli mi IČO, název, sídlo a jak chceš storno (např. 7/3/1) – doplním to do ostré verze.</div>
+          </div>
+
+        </article>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-black text-yellow-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-sm text-yellow-200/80">© <span id="year"></span> Reklamas.cz</div>
+      <div class="text-sm">
+        <a class="underline hover:text-pink-400" href="/">Zpět na web</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/ochrana-osobnich-udaju.html">Ochrana údajů</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // jednoduché datum "dnes" (můžeš přepsat ručně)
+    const d = new Date();
+    const pad = (n)=> String(n).padStart(2,'0');
+    document.getElementById('updated').textContent = `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`;
+  </script>
+</body>
+</html>
