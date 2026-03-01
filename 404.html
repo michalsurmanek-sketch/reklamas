@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stránka nenalezena • Reklamas.cz</title>
+  <meta name="description" content="Chybová stránka 404 – stránka nenalezena." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
+  </style>
+</head>
+<body class="min-h-screen bg-yellow-400 text-black">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" title="Zpět na Reklamas.cz">
+        <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
+        <div class="leading-tight">
+          <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
+          <div class="text-xs -mt-0.5">Hrdina vaší reklamy ve městě</div>
+        </div>
+      </a>
+      <a href="/" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition font-semibold">Zpět na web</a>
+    </div>
+  </header>
+
+  <!-- 404 -->
+  <main>
+    <section class="relative overflow-hidden">
+      <!-- dekorace -->
+      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/30 blur-2xl"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-pink-500/20 blur-2xl"></div>
+
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+          <!-- Text -->
+          <div class="rounded-3xl border border-black/10 bg-white/80 backdrop-blur shadow-sm p-6 md:p-10">
+            <div class="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-black text-yellow-300">Chyba 404</div>
+            <h1 class="mt-4 text-4xl md:text-6xl font-extrabold leading-tight">Stránka nenalezena</h1>
+            <p class="mt-4 text-black/70 text-lg">Možná je odkaz špatně, nebo se stránka přesunula. Nevadí – pošleme tě zpátky do akce.</p>
+
+            <div class="mt-7 flex flex-col sm:flex-row gap-3">
+              <a href="/" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold hover:translate-y-[-2px] transition">Zpět na hlavní stránku</a>
+              <a href="/#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-[-2px] transition">Nezávazně poptat</a>
+            </div>
+
+            <div class="mt-7 rounded-2xl border border-black/10 bg-yellow-50 p-5">
+              <div class="font-extrabold">Rychlé odkazy</div>
+              <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+                <a class="rounded-xl border border-black/10 bg-white px-4 py-3 hover:shadow-sm transition" href="/#sluzby">Služby</a>
+                <a class="rounded-xl border border-black/10 bg-white px-4 py-3 hover:shadow-sm transition" href="/#galerie">Galerie</a>
+                <a class="rounded-xl border border-black/10 bg-white px-4 py-3 hover:shadow-sm transition" href="/#cenik">Ceník</a>
+                <a class="rounded-xl border border-black/10 bg-white px-4 py-3 hover:shadow-sm transition" href="/#kontakt">Kontakt</a>
+              </div>
+            </div>
+
+            <p class="mt-4 text-xs text-black/60">Tip: Pokud ses sem dostal z reklamy/QR, napiš nám – zkontrolujeme odkaz a opravíme.</p>
+          </div>
+
+          <!-- Visual card -->
+          <div class="relative">
+            <div class="rounded-3xl border border-black/10 bg-white shadow-2xl p-7 md:p-10">
+              <div class="text-center">
+                <div class="text-[84px] md:text-[110px] font-extrabold leading-none">404</div>
+                <div class="mt-2 text-black/70">Tuhle stránku jsme v ulicích nenašli.</div>
+              </div>
+
+              <div class="mt-8 grid gap-3">
+                <div class="rounded-2xl border border-black/10 bg-yellow-50 p-4">
+                  <div class="text-xs text-black/60">Co můžeš udělat</div>
+                  <div class="mt-1 font-extrabold">Zkus hlavní stránku</div>
+                  <div class="mt-1 text-sm text-black/70">nebo rovnou odešli poptávku</div>
+                </div>
+                <div class="rounded-2xl border border-black/10 bg-black text-yellow-300 p-4">
+                  <div class="text-xs text-yellow-200/80">Nechceš čekat?</div>
+                  <div class="mt-1 font-extrabold">info@reklamas.cz</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute right-4 bottom-4 rotate-[-6deg] rounded-2xl bg-black text-yellow-300 px-4 py-2 text-sm shadow-lg">Reklamas tě navede zpět</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-black text-yellow-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-sm text-yellow-200/80">© <span id="year"></span> Reklamas.cz</div>
+      <div class="text-sm">
+        <a class="underline hover:text-pink-400" href="/">Zpět na web</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/cenik.html">Ceník</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/obchodni-podminky.html">Obchodní podmínky</a>
+        <span class="mx-2 text-yellow-200/60">•</span>
+        <a class="underline hover:text-pink-400" href="/ochrana-osobnich-udaju.html">Ochrana údajů</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // pokud 404 běží na GitHub Pages, anchor odkazy na /#... fungují z rootu.
+    // U jiného hostingu to taky obvykle OK.
+  </script>
+</body>
+</html>
