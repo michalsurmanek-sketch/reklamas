@@ -32,9 +32,11 @@
       60% { transform: translateX(calc(50vw - 90px)); }
       100% { transform: translateX(calc(100vw + 180px)); }
     }
-      100% { transform: translateX(calc(100vw + 140px)); }
-    }
+
     @keyframes carBob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-1px); }
+    } {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-1px); }
     }
@@ -54,7 +56,6 @@
       48% { transform: rotateY(55deg); }
       58% { transform: rotateY(55deg); }
       66%, 100% { transform: rotateY(0deg); }
-    }
     }
 
     .footer-car {
@@ -529,12 +530,16 @@
           <!-- stín -->
           <ellipse cx="110" cy="74" rx="86" ry="7" fill="rgba(0,0,0,.25)"/>
 
-          <!-- billboard -->
-          <rect x="28" y="6" width="126" height="36" rx="10" fill="#111"/>
-          <rect x="36" y="14" width="110" height="20" rx="8" fill="#facc15"/>
-          <rect x="36" y="14" width="110" height="20" rx="8" fill="url(#shine)" opacity=".35"/>
-          <rect x="18" y="38" width="10" height="26" rx="4" fill="#111"/>
-          <rect x="154" y="38" width="10" height="26" rx="4" fill="#111"/>
+          <!-- billboard (dominantnější promo panel) -->
+          <rect x="64" y="2" width="80" height="34" rx="12" fill="#111"/>
+          <rect x="70" y="8" width="68" height="22" rx="9" fill="#ec4899"/>
+          <rect x="70" y="8" width="68" height="22" rx="9" fill="url(#shine)" opacity=".25"/>
+          
+          <!-- text REKLAMAS -->
+          <text x="104" y="23" text-anchor="middle" font-size="10" font-weight="700" fill="#111" font-family="Montserrat, Arial">REKLAMAS</text>
+
+          <rect x="58" y="34" width="6" height="20" rx="3" fill="#111"/>
+          <rect x="144" y="34" width="6" height="20" rx="3" fill="#111"/>
 
           <!-- karoserie -->
           <path d="M52 44h96c14 0 26 9 30 22l2 6H30l2-6c4-13 16-22 20-22Z" fill="#facc15"/>
