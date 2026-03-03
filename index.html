@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#D4AF37">
   <title>Reklamas.cz • hrdina vaší reklamy ve městě</title>
 
   <!-- Google Font -->
@@ -162,27 +163,41 @@
         <p class="mt-5 text-lg md:text-xl max-w-xl">
           Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap gap-3 items-start">
           <a href="#objednat" data-goto="#objednat" class="px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold">Objednat reklamu</a>
-          <a href="#potisk" data-goto="#potisk" class="relative px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">
-            Chci potisk triček
 
-            <!-- Nátlak nápis + šipka (mobil + desktop) -->
-            <span class="absolute -top-14 md:-top-16 left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] md:text-[26px] leading-none text-black/60 hand cta-nudge">
-              Potřebujete udělat? <span class="font-bold">Využijte AKCI</span>
-            </span>
-            <span class="absolute -top-10 md:-top-12 left-1/2 -translate-x-1/2 cta-nudge" aria-hidden="true">
-              <svg width="170" height="60" viewBox="0 0 170 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 12c30 0 50 12 70 28 18 14 36 18 80 18" stroke="rgba(0,0,0,.55)" stroke-width="3" stroke-linecap="round"/>
-                <path d="M147 50l10-3-6-8" fill="none" stroke="rgba(0,0,0,.55)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- MOBIL: ručně psaný nudge nad tlačítkem (čitelné, neseká se) -->
+          <div class="md:hidden w-full -mt-1">
+            <div class="hand text-[22px] leading-tight text-black/60 cta-nudge text-center px-2">
+              Potřebujete potisk? <span class="font-bold">Využijte AKCI</span>
+            </div>
+            <div class="mt-1 flex justify-center" aria-hidden="true">
+              <svg width="170" height="42" viewBox="0 0 170 42" fill="none" xmlns="http://www.w3.org/2000/svg" class="cta-nudge">
+                <path d="M10 10c36 0 56 10 78 22 16 9 34 10 74 10" stroke="rgba(0,0,0,.55)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M146 38l10-3-6-8" fill="none" stroke="rgba(0,0,0,.55)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </span>
+            </div>
+          </div>
 
-            <!-- Badge AKCE -->
-            <span class="absolute -top-3 -right-3 px-3 py-1 rounded-full bg-black text-yellow-300 text-xs font-extrabold shadow-lg border border-yellow-400/60">
-              AKCE
-            </span>
-          </a>
+          <!-- Potisk tlačítko (desktop má nudge přímo u tlačítka) -->
+          <div class="relative inline-flex">
+            <a href="/potisk-tricek.html" class="relative px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">
+              Chci potisk triček
+              <!-- Badge AKCE -->
+              <span class="absolute -top-3 -right-3 px-3 py-1 rounded-full bg-black text-yellow-300 text-xs font-extrabold shadow-lg border border-yellow-400/60">AKCE</span>
+
+              <!-- DESKTOP: ručně psaný nudge + šipka -->
+              <span class="hidden md:block absolute -top-16 left-1/2 -translate-x-1/2 whitespace-nowrap text-[26px] leading-none text-black/60 hand cta-nudge">
+                Potřebujete udělat? <span class="font-bold">Využijte AKCI</span>
+              </span>
+              <span class="hidden md:block absolute -top-12 left-1/2 -translate-x-1/2 cta-nudge" aria-hidden="true">
+                <svg width="170" height="60" viewBox="0 0 170 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 12c30 0 50 12 70 28 18 14 36 18 80 18" stroke="rgba(0,0,0,.55)" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M147 50l10-3-6-8" fill="none" stroke="rgba(0,0,0,.55)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </div>
         </div>
         <ul class="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
           <li class="bg-white/70 rounded-xl p-3 border border-black/10">Mobilní billboardy</li>
@@ -300,7 +315,7 @@
         <div id="potisk" class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
           <h3 class="font-bold text-xl">Potisk triček a oblečení</h3>
           <p class="mt-2 text-sm text-black/70">Trička, mikiny, vesty i pracovní oblečení. Logo, text, QR kód – od 1 ks.</p>
-          <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
+          <a href="/potisk-tricek.html" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
         </div>
 
         <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
