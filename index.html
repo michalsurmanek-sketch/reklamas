@@ -29,6 +29,30 @@
     .hand{font-family:"Caveat",cursive;}
     .cta-nudge{filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));}
 
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 18px rgba(0,0,0,.18); }
+      50% { transform: scale(1.08); box-shadow: 0 10px 22px rgba(236,72,153,.28); }
+    }
+
+    .badge-akce{
+      animation: badgePulse 1.8s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    /* Impuls kroků 1‑2‑3 */
+    @keyframes stepPulse {
+      0% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+      8% { transform: scale(1.3); box-shadow:0 0 14px rgba(250,204,21,.9); }
+      16% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+      100% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+    }
+      50% { transform: scale(1.25); box-shadow:0 0 12px rgba(250,204,21,.8); }
+    }
+
+    .step-animate{
+      animation: stepPulse 4s infinite;
+    }
+
     
     /* Auto animace ve footeru */
     @keyframes driveAcross {
@@ -170,15 +194,10 @@
 
           <!-- Potisk tlačítko (text absolutně, neovlivňuje zarovnání) -->
           <div class="relative inline-block">
-            <div class="hidden md:block hand absolute bottom-full mb-4 left-1/2 -translate-x-1/2 text-[20px] text-black/70 whitespace-nowrap pointer-events-none">
-              <span class="relative inline-block">
-                Trička? Uděláme.
-                
-              </span>
-            </div>
+            
             <a href="/potisk-tricek.html" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold relative inline-block">
               Chci potisk triček
-              <span class="absolute -top-3 -right-3 px-3 py-1 rounded-full bg-black text-yellow-300 text-xs font-extrabold shadow-lg border border-yellow-400/60">AKCE</span>
+              <span class="badge-akce absolute -top-3 -right-3 px-3 py-1 rounded-full bg-black text-yellow-300 text-xs font-extrabold shadow-lg border border-yellow-400/60">AKCE</span>
             </a>
           </div>
         </div>
@@ -213,11 +232,11 @@
         <h2 class="text-3xl md:text-4xl font-extrabold">Jak to funguje</h2>
         <div class="hidden md:flex items-center gap-2 text-sm text-black/60">
           <span>Krok</span>
-          <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold">1</span>
+          <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:0s">1</span>
           <span>→</span>
-          <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold">2</span>
+          <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:.6s">2</span>
           <span>→</span>
-          <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold">3</span>
+          <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:1.2s">3</span>
         </div>
       </div>
 
