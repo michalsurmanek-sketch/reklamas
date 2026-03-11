@@ -22,24 +22,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body{
-  position: relative;
-  background-color: #facc15; /* stejné jako bg-yellow-400 */
-}
-
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  background-image: url("reklamas-mobil.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.30;
-  z-index: -1;
-  pointer-events: none;
-}
-
     html,body{
       font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
     }
@@ -129,6 +111,24 @@ body::before{
       .footer-car svg{ animation: none; }
       .footer-car .wheel{ animation: none; }
     }
+    body{
+  position: relative;
+  background-color: #facc15;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background-image: url("reklamas-mobil.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.30;
+  z-index: -1;
+  pointer-events: none;
+}
+
   </style>
 </head>
 
