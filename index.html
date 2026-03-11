@@ -22,7 +22,86 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body{
+  html,body{
+    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+  }
+
+  .hand{font-family:"Caveat",cursive;}
+  .cta-nudge{filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));}
+
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 18px rgba(0,0,0,.18); }
+    50% { transform: scale(1.08); box-shadow: 0 10px 22px rgba(236,72,153,.28); }
+  }
+
+  .badge-akce{
+    animation: badgePulse 1.8s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes stepPulse {
+    0% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+    8% { transform: scale(1.3); box-shadow:0 0 14px rgba(250,204,21,.9); }
+    16% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+    100% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+  }
+
+  .step-animate{
+    animation: stepPulse 4s infinite;
+  }
+
+  @keyframes driveAcross {
+    0% { transform: translateX(-180px); }
+    40% { transform: translateX(calc(50vw - 90px)); }
+    60% { transform: translateX(calc(50vw - 90px)); }
+    100% { transform: translateX(calc(100vw + 180px)); }
+  }
+
+  @keyframes carBob {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-1px); }
+  }
+
+  @keyframes wheelSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes mascotPop {
+    0%, 40% { transform: translateY(18px); opacity: 0; }
+    48% { transform: translateY(0); opacity: 1; }
+    58% { transform: translateY(0); opacity: 1; }
+    66%, 100% { transform: translateY(18px); opacity: 0; }
+  }
+
+  @keyframes doorOpen {
+    0%, 40% { transform: rotateY(0deg); }
+    48% { transform: rotateY(55deg); }
+    58% { transform: rotateY(55deg); }
+    66%, 100% { transform: rotateY(0deg); }
+  }
+
+  .footer-car {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    animation: driveAcross 10s linear infinite;
+    pointer-events: none;
+  }
+
+  .footer-car svg{ animation: carBob .55s ease-in-out infinite; }
+  .footer-car .wheel{ transform-box: fill-box; transform-origin: center; animation: wheelSpin .7s linear infinite; }
+  .footer-car .door{ transform-origin: 106px 60px; transform-box: fill-box; animation: doorOpen 10s linear infinite; }
+  .footer-car .mascot{ transform-box: fill-box; transform-origin: center; animation: mascotPop 10s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-car { animation: none; }
+    .footer-car svg{ animation: none; }
+    .footer-car .wheel{ animation: none; }
+    .footer-car .door{ animation: none; }
+    .footer-car .mascot{ animation: none; opacity: 1; transform: translateY(0); }
+  }
+
+  body{
     position: relative;
     background-color: #facc15;
   }
@@ -39,96 +118,8 @@
     z-index: -1;
     pointer-events: none;
   }
-    html,body{
-      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
-    }
-
-    .hand{font-family:"Caveat",cursive;}
-    .cta-nudge{filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));}
-
-    @keyframes badgePulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 8px 18px rgba(0,0,0,.18); }
-      50% { transform: scale(1.08); box-shadow: 0 10px 22px rgba(236,72,153,.28); }
-    }
-
-    .badge-akce{
-      animation: badgePulse 1.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    /* Impuls kroků 1‑2‑3 */
-    @keyframes stepPulse {
-      0% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
-      8% { transform: scale(1.3); box-shadow:0 0 14px rgba(250,204,21,.9); }
-      16% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
-      100% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
-    }
-      50% { transform: scale(1.25); box-shadow:0 0 12px rgba(250,204,21,.8); }
-    }
-
-    .step-animate{
-      animation: stepPulse 4s infinite;
-    }
-
-    
-    /* Auto animace ve footeru */
-    @keyframes driveAcross {
-      0% { transform: translateX(-180px); }
-      40% { transform: translateX(calc(50vw - 90px)); }
-      60% { transform: translateX(calc(50vw - 90px)); }
-      100% { transform: translateX(calc(100vw + 180px)); }
-    }
-
-    @keyframes carBob {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-1px); }
-    } {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-1px); }
-    }
-    @keyframes wheelSpin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes mascotPop {
-      0%, 40% { transform: translateY(18px); opacity: 0; }
-      48% { transform: translateY(0); opacity: 1; }
-      58% { transform: translateY(0); opacity: 1; }
-      66%, 100% { transform: translateY(18px); opacity: 0; }
-    }
-
-    @keyframes doorOpen {
-      0%, 40% { transform: rotateY(0deg); }
-      48% { transform: rotateY(55deg); }
-      58% { transform: rotateY(55deg); }
-      66%, 100% { transform: rotateY(0deg); }
-    }
-
-    .footer-car {
-      position: absolute;
-      bottom: 8px;
-      left: 0;
-      animation: driveAcross 10s linear infinite;
-      pointer-events: none;
-    }
-    .footer-car svg{ animation: carBob .55s ease-in-out infinite; }
-    .footer-car .wheel{ transform-box: fill-box; transform-origin: center; animation: wheelSpin .7s linear infinite; }
-    .footer-car .door{ transform-origin: 106px 60px; transform-box: fill-box; animation: doorOpen 10s linear infinite; }
-    .footer-car .mascot{ transform-box: fill-box; transform-origin: center; animation: mascotPop 10s linear infinite; }
-    .footer-car svg{ animation: carBob .55s ease-in-out infinite; }
-    .footer-car .wheel{ transform-box: fill-box; transform-origin: center; animation: wheelSpin .7s linear infinite; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .footer-car { animation: none; }
-      .footer-car svg{ animation: none; }
-      .footer-car .wheel{ animation: none; }
-      .footer-car .door{ animation: none; }
-      .footer-car .mascot{ animation: none; opacity: 1; transform: translateY(0); }
-    }
-      .footer-car svg{ animation: none; }
-      .footer-car .wheel{ animation: none; }
-    }
 </style>
+
 
 </head>
 
