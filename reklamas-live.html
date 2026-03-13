@@ -32,8 +32,8 @@
   <style>
     :root {
       --bg: #000000;
-      --panel: rgba(255,255,255,.05);
-      --line: rgba(255,255,255,.10);
+      --panel: rgba(255,255,255,.12);
+      --line: rgba(255,255,255,.18);
       --text-soft: rgba(255,255,255,.70);
       --text-fade: rgba(255,255,255,.50);
       --brand: #ff004c;
@@ -64,7 +64,7 @@
       background-image: url('/mapa-cesty.png');
       background-size: cover;
       background-position: center;
-      opacity: 0.55;
+      opacity: 0.50;
       pointer-events: none;
       z-index: 0;
       filter: grayscale(15%) contrast(1.25) brightness(0.9);
@@ -266,7 +266,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap gap-3 pt-2">
+      <div class="grid grid-cols-2 gap-3 pt-2 sm:flex sm:flex-wrap">
         <a href="/#objednat"
            class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-pink-600 text-white font-bold hover:scale-105 transition">
           Chci kampaň
