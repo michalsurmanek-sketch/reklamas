@@ -49,6 +49,97 @@
         var(--bg);
       color: #fff;
       scroll-behavior: smooth;
+      position: relative;
+    }
+
+    body {
+      isolation: isolate;
+    }
+
+    /* mapa v pozadí stránky (30 % viditelnost) */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('/mapa-cesty.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+      filter: grayscale(15%) contrast(1.25) brightness(0.9);
+    }
+
+    /* pulzující body měst nad mapou */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 35% 42%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px),
+        radial-gradient(circle at 58% 63%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px),
+        radial-gradient(circle at 73% 46%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px),
+        radial-gradient(circle at 48% 33%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px);
+      animation: cityPulse 3.6s ease-in-out infinite;
+      opacity: .92;
+      filter: drop-shadow(0 0 10px rgba(255,0,76,.35));
+    }
+
+    @keyframes cityPulse {
+      0%   { transform: scale(1); opacity: .68; }
+      50%  { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: .68; }
+    }
+
+    .map-flow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .38;
+      background:
+        linear-gradient(112deg,
+          transparent 0%,
+          transparent 30%,
+          rgba(255,255,255,0) 34%,
+          rgba(255,255,255,.95) 36%,
+          rgba(255,255,255,0) 38%,
+          transparent 42%,
+          transparent 100%),
+        linear-gradient(140deg,
+          transparent 0%,
+          transparent 52%,
+          rgba(255,255,255,0) 56%,
+          rgba(255,255,255,.85) 58%,
+          rgba(255,255,255,0) 60%,
+          transparent 64%,
+          transparent 100%),
+        linear-gradient(78deg,
+          transparent 0%,
+          transparent 61%,
+          rgba(255,255,255,0) 65%,
+          rgba(255,255,255,.75) 67%,
+          rgba(255,255,255,0) 69%,
+          transparent 73%,
+          transparent 100%);
+      background-size: 180% 180%;
+      animation: routeFlow 8s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes routeFlow {
+      0%   { background-position: -25% 0%, 120% 10%, -10% 100%; }
+      100% { background-position: 120% 0%, -20% 10%, 120% 100%; }
+    }
+      50%  { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: .6; }
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     .live-dot {
@@ -119,6 +210,7 @@
   </style>
 </head>
 <body class="min-h-screen">
+  <div class="map-flow" aria-hidden="true"></div>
 
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-xl">Přeskočit na obsah</a>
 
