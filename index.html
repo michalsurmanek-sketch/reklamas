@@ -1130,5 +1130,28 @@ fetch('/menu-reklama.html')
     document.getElementById('menu-reklama').innerHTML = data;
   });
 </script>
+  <script>
+  lucide.createIcons();
+
+  const burger = document.getElementById('burger');
+  const mobilePanel = document.getElementById('mobile-panel');
+  const b1 = document.getElementById('b1');
+  const b2 = document.getElementById('b2');
+
+  burger?.addEventListener('click', () => {
+    const isOpen = !mobilePanel.classList.contains('hidden');
+
+    mobilePanel.classList.toggle('hidden');
+    burger.setAttribute('aria-expanded', String(!isOpen));
+
+    if (!isOpen) {
+      b1.style.transform = 'translateY(6px) rotate(45deg)';
+      b2.style.transform = 'translateY(-6px) rotate(-45deg)';
+    } else {
+      b1.style.transform = '';
+      b2.style.transform = '';
+    }
+  });
+</script>
 </body>
 </html>
