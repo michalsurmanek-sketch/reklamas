@@ -4,6 +4,19 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>LIVE kampaň • Reklamas.cz</title>
+
+ <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- FAVICON & PWA -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png">
+  <meta name="theme-color" content="#0033cc">
+  <link rel="manifest" href="/site.webmanifest">
+  
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -16,14 +29,20 @@ html,body{font-family:"Montserrat",system-ui,sans-serif;background:#000;color:#f
 
 <header class="border-b border-white/10 bg-black/80 backdrop-blur sticky top-0">
 <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
+<a href="/" class="flex items-center gap-3" title="Zpět na hlavní stránku">
 <img src="/reklamas-logo.svg" class="w-10 h-10"/>
 <div>
-<div class="font-extrabold">Reklamas LIVE</div>
+<div class="font-extrabold hover:text-pink-500 transition">Reklamas LIVE</div>
 <div class="text-xs opacity-60">Přímý přenos reklamní kampaně</div>
 </div>
-</div>
+</a>
+<div class="hidden md:flex items-center gap-4">
+<a href="/" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold hover:bg-white/20 transition">
+<span class="text-lg">←</span>
+<span>Zpět na Reklamas.cz</span>
+</a>
 <div class="text-sm opacity-70">Uherské Hradiště</div>
+</div>
 </div>
 </header>
 
