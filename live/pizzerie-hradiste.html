@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LIVE kampaň • Reklamas.cz</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+html,body{font-family:"Montserrat",system-ui,sans-serif;background:#000;color:#fff}
+.live-dot{width:10px;height:10px;border-radius:50%;background:#ff004c;display:inline-block;margin-right:8px;animation:pulse 1.4s infinite}
+@keyframes pulse{0%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}100%{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="border-b border-white/10 bg-black/80 backdrop-blur sticky top-0">
+<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img src="/reklamas-logo.svg" class="w-10 h-10"/>
+<div>
+<div class="font-extrabold">Reklamas LIVE</div>
+<div class="text-xs opacity-60">Přímý přenos reklamní kampaně</div>
+</div>
+</div>
+<div class="text-sm opacity-70">Uherské Hradiště</div>
+</div>
+</header>
+
+<section class="max-w-7xl mx-auto px-4 py-10">
+
+<div class="flex items-center gap-2 text-sm font-bold text-pink-500">
+<span class="live-dot"></span>LIVE
+<span class="text-white/60">probíhá kampaň</span>
+</div>
+
+<h1 class="text-3xl md:text-5xl font-extrabold mt-4">Živý přenos z reklamní akce</h1>
+<p class="mt-3 text-white/70 max-w-3xl">Sleduj přímo z terénu jak probíhá reklamní kampaň klienta. Mobilní reklama, maskot Reklamas a promo tým přímo v ulicích.</p>
+
+<div class="mt-8 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+
+<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/jfKfPfyJRdk" title="live" frameborder="0" allowfullscreen></iframe>
+
+</div>
+
+<div class="grid md:grid-cols-3 gap-6 mt-10">
+
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<div class="text-sm opacity-60">Kampaň</div>
+<div class="text-xl font-bold mt-1">Promo města</div>
+<div class="text-sm opacity-70 mt-2">Mobilní reklama + maskot</div>
+</div>
+
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<div class="text-sm opacity-60">Lokace</div>
+<div class="text-xl font-bold mt-1">Masarykovo náměstí</div>
+<div class="text-sm opacity-70 mt-2">Uherské Hradiště</div>
+</div>
+
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<div class="text-sm opacity-60">Právě teď</div>
+<div class="text-xl font-bold mt-1">Promo v ulicích</div>
+<div class="text-sm opacity-70 mt-2">Focení + QR skeny</div>
+</div>
+
+</div>
+
+<div class="mt-12 grid md:grid-cols-2 gap-6">
+
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<h2 class="font-bold text-xl">Mapa kampaně</h2>
+<p class="text-sm opacity-70 mt-2">Trasa kde se reklama právě pohybuje.</p>
+<div class="mt-4 h-48 bg-black/60 rounded-xl flex items-center justify-center text-sm opacity-60">Mapa trasy</div>
+</div>
+
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<h2 class="font-bold text-xl">Výsledky</h2>
+<div class="mt-4 space-y-2 text-sm">
+<div>👁 Zhlédnutí streamu: <span class="font-bold">1 248</span></div>
+<div>📷 Fotky z akce: <span class="font-bold">36</span></div>
+<div>📱 QR skeny: <span class="font-bold">94</span></div>
+</div>
+</div>
+
+</div>
+
+<div class="mt-12 text-center">
+<a href="/#objednat" class="inline-flex px-6 py-4 rounded-2xl bg-pink-600 text-white font-bold hover:scale-105 transition">Chci také takovou kampaň</a>
+</div>
+
+</section>
+
+<footer class="border-t border-white/10 mt-16">
+<div class="max-w-7xl mx-auto px-4 py-6 text-sm opacity-60">© Reklamas.cz LIVE</div>
+</footer>
+
+</body>
+</html>
