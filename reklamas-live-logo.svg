@@ -1,0 +1,57 @@
+<svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="livePink" x1="96" y1="24" x2="96" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF4D8D"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFE27A"/>
+      <stop offset="1" stop-color="#FACC15"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.925  0 1 0 0 0.282  0 0 1 0 0.600  0 0 0 0.35 0" result="pinkGlow"/>
+      <feMerge>
+        <feMergeNode in="pinkGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="goldSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.98  0 1 0 0 0.80  0 0 1 0 0.08  0 0 0 0.35 0" result="goldGlowFx"/>
+      <feMerge>
+        <feMergeNode in="goldGlowFx"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- icon -->
+  <g transform="translate(24,24)">
+    <circle cx="72" cy="72" r="66" fill="#070707" stroke="url(#goldGlow)" stroke-width="4"/>
+    <circle cx="72" cy="72" r="52" fill="#0E0E0E" stroke="#1F1F1F" stroke-width="2"/>
+
+    <!-- live ring -->
+    <circle cx="72" cy="72" r="63" stroke="#EC4899" stroke-opacity="0.35" stroke-width="3"/>
+    <circle cx="72" cy="72" r="63" stroke="#EC4899" stroke-width="5" stroke-linecap="round" stroke-dasharray="46 350" transform="rotate(-38 72 72)" filter="url(#softGlow)"/>
+
+    <!-- play shield -->
+    <path d="M72 28L103 42V68C103 95 87 115 72 122C57 115 41 95 41 68V42L72 28Z" fill="url(#livePink)" filter="url(#softGlow)"/>
+    <path d="M66 52V82L87 67L66 52Z" fill="white"/>
+
+    <!-- live dot -->
+    <circle cx="112" cy="34" r="10" fill="#EC4899" filter="url(#softGlow)"/>
+    <circle cx="112" cy="34" r="4" fill="white" fill-opacity="0.95"/>
+
+    <!-- subtle hero cape accent -->
+    <path d="M26 95C33 80 45 71 58 68C54 80 54 96 62 109C46 109 34 106 26 95Z" fill="#FACC15" fill-opacity="0.95" filter="url(#goldSoft)"/>
+  </g>
+
+  <!-- wordmark -->
+  <g transform="translate(178,44)">
+    <text x="0" y="58" fill="white" font-family="Montserrat, Arial, sans-serif" font-size="60" font-weight="800" letter-spacing="0.5">Reklamas</text>
+    <text x="328" y="58" fill="#EC4899" font-family="Montserrat, Arial, sans-serif" font-size="60" font-weight="800">LIVE</text>
+    <rect x="1" y="78" width="240" height="4" rx="2" fill="url(#goldGlow)"/>
+    <text x="0" y="118" fill="#FFFFFF" fill-opacity="0.66" font-family="Montserrat, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="2.2">PŘÍMÝ PŘENOS KAMPANĚ</text>
+  </g>
+</svg>
