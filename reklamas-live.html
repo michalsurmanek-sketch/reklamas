@@ -3,30 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LIVE mobilní reklama v Uherském Hradišti | Reklamas.cz</title>
-  <meta name="description" content="Sleduj živě mobilní reklamní kampaň Reklamas.cz přímo z terénu. Přenos z akce, lokace, průběh kampaně a výsledky na jednom místě." />
 
+  <title>LIVE mobilní reklama v Uherském Hradišti | Reklamas.cz</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Sleduj živě mobilní reklamní kampaň Reklamas.cz přímo z terénu. Přenos z akce, lokace, průběh kampaně a výsledky na jednom místě." />
+  <link rel="canonical" href="https://reklamas.cz/live" />
+
+  <!-- Open Graph (Facebook, LinkedIn, Messenger) -->
   <meta property="og:title" content="LIVE mobilní reklama v Uherském Hradišti | Reklamas.cz" />
   <meta property="og:description" content="Živý přenos z reklamní akce Reklamas.cz. Sleduj průběh kampaně, lokaci a výsledky přímo z terénu." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-live.jpg" />
+  <meta property="og:url" content="https://reklamas.cz/live" />
+  <meta property="og:image" content="https://reklamas.cz/og-live.jpg" />
   <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:site_name" content="Reklamas.cz" />
 
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LIVE mobilní reklama v Uherském Hradišti | Reklamas.cz" />
   <meta name="twitter:description" content="Živý přenos z reklamní akce Reklamas.cz přímo z terénu." />
-  <meta name="twitter:image" content="/og-live.jpg" />
+  <meta name="twitter:image" content="https://reklamas.cz/og-live.jpg" />
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- Icons -->
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
   <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png" />
+
   <meta name="theme-color" content="#0033cc" />
   <link rel="manifest" href="/site.webmanifest" />
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -34,11 +46,7 @@
       --bg: #000000;
       --panel: rgba(255,255,255,.12);
       --line: rgba(255,255,255,.18);
-      --text-soft: rgba(255,255,255,.70);
-      --text-fade: rgba(255,255,255,.50);
       --brand: #ff004c;
-      --brand-dark: #cc003d;
-      --brand-blue: #0033cc;
     }
 
     html, body {
@@ -52,11 +60,8 @@
       position: relative;
     }
 
-    body {
-      isolation: isolate;
-    }
+    body { isolation: isolate; }
 
-    /* mapa v pozadí stránky (30 % viditelnost) */
     body::before {
       content: "";
       position: fixed;
@@ -70,7 +75,6 @@
       filter: grayscale(15%) contrast(1.25) brightness(0.9);
     }
 
-    /* pulzující body měst nad mapou */
     body::after {
       content: "";
       position: fixed;
@@ -93,17 +97,7 @@
       100% { transform: scale(1); opacity: .68; }
     }
 
-    
-      100% { background-position: 120% 0%, -20% 10%, 120% 100%; }
-    }
-      50%  { transform: scale(1.08); opacity: 1; }
-      100% { transform: scale(1); opacity: .6; }
-    }
-
-    body > * {
-      position: relative;
-      z-index: 1;
-    }
+    body > * { position: relative; z-index: 1; }
 
     .live-dot {
       width: 10px;
@@ -122,56 +116,14 @@
       box-shadow: 0 20px 50px rgba(0,0,0,.25);
     }
 
-    .soft-grid {
-      background-image:
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: 22px 22px;
-    }
-
-    .map-demo {
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
-        radial-gradient(circle at 20% 30%, rgba(255,0,76,.18), transparent 22%),
-        radial-gradient(circle at 80% 70%, rgba(0,51,204,.16), transparent 24%),
-        #0b0b0b;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .map-route {
-      position: absolute;
-      inset: 0;
-      opacity: .7;
-      background-image: linear-gradient(120deg, transparent 0 18%, rgba(255,255,255,.15) 18% 19%, transparent 19% 38%, rgba(255,255,255,.12) 38% 39%, transparent 39% 58%, rgba(255,255,255,.10) 58% 59%, transparent 59% 100%);
-      transform: rotate(-8deg) scale(1.2);
-    }
-
-    .map-pin {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: var(--brand);
-      box-shadow: 0 0 0 8px rgba(255,0,76,.15), 0 0 28px rgba(255,0,76,.45);
-      animation: pulse 1.4s infinite;
-    }
-
-    .stat-card strong {
-      font-variant-numeric: tabular-nums;
-    }
-
     @keyframes pulse {
       0% { opacity: 1; transform: scale(1); }
       50% { opacity: .4; transform: scale(1.6); }
       100% { opacity: 1; transform: scale(1); }
     }
-  
-    /* vypnutí kurzívy na celém webu */
-    i, em {
-      font-style: normal !important;
-    }
-  
-    /* zajistí, že video je úplně neprůhledné a čisté */
+
+    i, em { font-style: normal !important; }
+
     .video-clean {
       position: relative;
       z-index: 2;
@@ -187,7 +139,6 @@
       display:block;
     }
 
-    /* jistota že nic z pozadí neprosvítá přes video */
     .video-clean::before{
       content:"";
       position:absolute;
@@ -199,204 +150,114 @@
   </style>
 </head>
 <body class="min-h-screen">
-  
 
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-xl">Přeskočit na obsah</a>
+<header class="border-b border-white/10 bg-black/80 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 
-  <header class="border-b border-white/10 bg-black/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-3 min-w-0" title="Zpět na hlavní stránku">
-        <img src="/reklamas-live.svg" alt="Logo Reklamas LIVE" class="w-10 h-10 object-contain" />
-        <div class="min-w-0">
-          <div class="font-extrabold hover:text-pink-500 transition truncate">Reklamas LIVE</div>
-          <div class="text-xs opacity-60">Přímý přenos reklamní kampaně</div>
-        </div>
-      </a>
-
-      <div class="hidden md:flex items-center gap-4 shrink-0">
-        <a href="/" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold hover:bg-white/20 transition">
-          <span class="text-lg">←</span>
-          <span>Zpět na Reklamas.cz</span>
-        </a>
-        <button id="shareLive" type="button" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/20 transition">Sdílet LIVE</button>
-        <div class="text-sm opacity-70">Uherské Hradiště</div>
+    <a href="/" class="flex items-center gap-3">
+      <img src="/reklamas-live.svg" alt="Logo Reklamas LIVE" class="w-10 h-10" />
+      <div>
+        <div class="font-extrabold">Reklamas LIVE</div>
+        <div class="text-xs opacity-60">Přímý přenos reklamní kampaně</div>
       </div>
-    </div>
-  </header>
-
-  <main id="main" data-campaign-city="Uherské Hradiště" data-campaign-name="Promo města" data-campaign-location="Masarykovo náměstí" data-campaign-status="Právě běží">
-    <section class="max-w-7xl mx-auto px-4 pt-10 pb-8">
-
-  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-
-    <div class="inline-flex items-center gap-2 text-sm font-bold text-pink-500 glass rounded-full px-4 py-2 w-fit">
-      <span class="live-dot"></span>
-      LIVE <span class="text-white/60">probíhá kampaň</span>
-    </div>
-
-    <div class="text-sm text-white/50">Poslední aktualizace: <span id="lastUpdated">právě teď</span></div>
+    </a>
 
   </div>
+</header>
 
-  <div class="mt-8 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-start">
+<main class="max-w-7xl mx-auto px-4 pt-10">
 
-    <div class="space-y-6">
+<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
-      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-        Živý přenos z mobilní reklamní akce
-      </h1>
-
-      <p class="text-white/70 max-w-2xl text-base md:text-lg">
-        Sleduj přímo z terénu, jak probíhá reklamní kampaň klienta.
-        Mobilní reklama, maskot Reklamas a promo tým přímo v ulicích
-        města v reálném čase.
-      </p>
-
-      <div class="hidden md:flex flex-wrap gap-3 text-sm">
-        <div class="glass rounded-full px-4 py-2">
-          Město: <span class="font-bold text-white" data-city>Uherské Hradiště</span>
-        </div>
-
-        <div class="glass rounded-full px-4 py-2">
-          Typ akce: <span class="font-bold text-white">Mobilní promo</span>
-        </div>
-
-        <div class="glass rounded-full px-4 py-2">
-          Stav: <span class="font-bold text-pink-400" data-status>Právě běží</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 gap-3 pt-2 sm:flex sm:flex-wrap">
-        <a href="/#objednat"
-           class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-pink-600 text-white font-bold hover:scale-105 transition">
-          Chci kampaň
-        </a>
-
-        <a href="#vysledky"
-           class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white/10 border border-white/15 text-white font-semibold hover:bg-white/15 transition">
-          Výsledky kampaně
-        </a>
-      </div>
-
-    </div>
-
-    <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black video-clean">
-        <iframe
-          class="w-full aspect-video"
-          src="https://www.youtube.com/embed/jfKfPfyJRdk"
-          title="Živý přenos reklamní kampaně Reklamas.cz"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-
+  <div class="inline-flex items-center gap-2 text-sm font-bold text-pink-500 glass rounded-full px-4 py-2 w-fit">
+    <span class="live-dot"></span>
+    LIVE <span class="text-white/60">probíhá kampaň</span>
   </div>
+
+  <div class="text-sm text-white/50">Poslední aktualizace: právě teď</div>
+
+</div>
+
+<div class="mt-8 grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-start">
+
+<div class="space-y-6">
+
+<h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+Živý přenos z mobilní reklamní akce
+</h1>
+
+<p class="text-white/70 max-w-2xl text-base md:text-lg">
+Sleduj přímo z terénu, jak probíhá reklamní kampaň klienta.
+Mobilní reklama, maskot Reklamas a promo tým přímo v ulicích města.
+</p>
+
+<div class="grid grid-cols-2 gap-3 pt-2 sm:flex sm:flex-wrap">
+
+<a href="/#objednat"
+class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-pink-600 text-white font-bold hover:scale-105 transition">
+Chci kampaň
+</a>
+
+<a href="#vysledky"
+class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-black/70 border border-white/30 text-white font-semibold hover:bg-black/80 transition">
+Výsledky kampaně
+</a>
+
+</div>
+
+</div>
+
+<div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black video-clean">
+
+<iframe
+class="w-full aspect-video"
+src="https://www.youtube.com/embed/jfKfPfyJRdk"
+title="Živý přenos reklamní kampaně Reklamas.cz"
+loading="lazy"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<section class="mt-12 grid md:grid-cols-2 gap-6">
+
+<article class="glass rounded-2xl p-6">
+<h2 class="font-bold text-xl">Mapa kampaně</h2>
+<p class="text-sm opacity-70 mt-2">Zde může být živá mapa nebo lokace akce.</p>
+</article>
+
+<article id="vysledky" class="glass rounded-2xl p-6">
+<h2 class="font-bold text-xl">Výsledky kampaně</h2>
+
+<div class="mt-5 grid gap-3 text-sm">
+
+<div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex justify-between">
+<span>👁 Zhlédnutí streamu</span>
+<strong>1 248</strong>
+</div>
+
+<div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex justify-between">
+<span>📷 Fotky z akce</span>
+<strong>36</strong>
+</div>
+
+<div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex justify-between">
+<span>📱 QR skeny</span>
+<strong>94</strong>
+</div>
+
+</div>
+</article>
 
 </section>
 
-    
+</main>
 
-    
+<footer class="border-t border-white/10 mt-10">
+<div class="max-w-7xl mx-auto px-4 py-6 text-sm opacity-60">© Reklamas.cz LIVE</div>
+</footer>
 
-    <section class="max-w-7xl mx-auto px-4 py-6">
-      <div class="grid md:grid-cols-2 gap-6">
-        <article class="glass rounded-2xl p-6">
-          <h2 class="font-bold text-xl">Mapa kampaně</h2>
-          <p class="text-sm opacity-70 mt-2">Tady může být vložená živá mapa trasy, aktuální bod kampaně nebo statický náhled lokace.</p>
-          <div class="mt-4 h-56 rounded-xl overflow-hidden border border-white/10 map-demo flex items-center justify-center text-center px-6">
-            <div class="map-route"></div>
-            <div class="relative z-10 flex flex-col items-center">
-              <div class="map-pin"></div>
-              <div class="text-base font-bold mt-4">Právě zde: Masarykovo náměstí</div>
-              <div class="text-sm text-white/50 mt-2">Ukázkový vizuál mapy • později napojíš Mapbox nebo Google mapu</div>
-            </div>
-          </div>
-        </article>
-
-        <article id="vysledky" class="glass rounded-2xl p-6">
-          <h2 class="font-bold text-xl">Výsledky kampaně</h2>
-          <p class="text-sm opacity-70 mt-2">Teď jsou zobrazená ukázková data. Pro ostrou verzi je můžeš napojit dynamicky.</p>
-          <div class="mt-5 grid gap-3 text-sm">
-            <div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex items-center justify-between gap-4">
-              <span>👁 Zhlédnutí streamu</span>
-              <strong>1 248</strong>
-            </div>
-            <div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex items-center justify-between gap-4">
-              <span>📷 Fotky z akce</span>
-              <strong>36</strong>
-            </div>
-            <div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex items-center justify-between gap-4">
-              <span>📱 QR skeny</span>
-              <strong>94</strong>
-            </div>
-            <div class="stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex items-center justify-between gap-4">
-              <span>🕒 Doba vysílání</span>
-              <strong>2 h 15 min</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-4 py-8">
-      <div class="glass rounded-3xl p-8 text-center">
-        <h2 class="text-2xl md:text-3xl font-extrabold">Chceš také takovou reklamní kampaň?</h2>
-        <p class="mt-3 text-white/70 max-w-2xl mx-auto">Mobilní reklama, živý obsah, pozornost v ulicích a viditelný efekt pro značku, akci nebo provozovnu.</p>
-        <a href="/#objednat" class="inline-flex mt-6 px-6 py-4 rounded-2xl bg-pink-600 text-white font-bold hover:scale-105 transition">Chci také takovou kampaň</a>
-        <div class="mt-3 text-sm text-white/50">Rychlá poptávka • jednoduchá domluva • viditelný výsledek</div>
-      </div>
-    </section>
-  </main>
-
-  
-
-  <footer class="border-t border-white/10 mt-10">
-    <div class="max-w-7xl mx-auto px-4 py-6 text-sm opacity-60">© Reklamas.cz LIVE</div>
-  </footer>
-
-  <script>
-    (function () {
-      const now = new Date();
-      const formatted = now.toLocaleString('cs-CZ', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-
-      const lastUpdated = document.getElementById('lastUpdated');
-      const lastUpdatedCard = document.getElementById('lastUpdatedCard');
-      if (lastUpdated) lastUpdated.textContent = formatted;
-      if (lastUpdatedCard) lastUpdatedCard.textContent = formatted;
-
-      const shareBtn = document.getElementById('shareLive');
-      if (shareBtn) {
-        shareBtn.addEventListener('click', async () => {
-          const shareData = {
-            title: document.title,
-            text: 'Sleduj LIVE kampaň Reklamas.cz přímo z terénu.',
-            url: window.location.href
-          };
-
-          try {
-            if (navigator.share) {
-              await navigator.share(shareData);
-            } else if (navigator.clipboard) {
-              await navigator.clipboard.writeText(window.location.href);
-              shareBtn.textContent = 'Odkaz zkopírován';
-              setTimeout(() => {
-                shareBtn.textContent = 'Sdílet LIVE';
-              }, 1800);
-            }
-          } catch (e) {
-            console.warn('Sdílení se nepodařilo:', e);
-          }
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
