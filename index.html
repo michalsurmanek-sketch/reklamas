@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#D4AF37">
   <title>Reklamas.cz • hrdina vaší reklamy ve městě</title>
 
   <!-- Google Font -->
@@ -280,7 +279,7 @@ animation:pulse 1.4s infinite
       <div class="relative">
         <div class="aspect-[4/5] rounded-3xl bg-white shadow-2xl border border-black/10 p-6 grid place-items-center w-full max-w-[380px] md:w-[340px] lg:w-[380px] max-h-[420px] mx-auto">
           <div class="text-center">
-            <img src="reklamas.png" alt="reklamas" class="mx-auto max-h-[280px] w-auto object-contain" />
+            <img src="reklamas.png" alt="Maskot Reklamas ve žlutém plášti" class="mx-auto max-h-[280px] w-auto object-contain" />
             <div class="mt-4 font-semibold">Maskot Reklamas</div>
             <div class="text-sm text-black/70">Žlutý plášť, skrytá reklama, showman styl</div>
           </div>
@@ -831,6 +830,8 @@ animation:pulse 1.4s infinite
     window.addEventListener('keydown', (e)=> { if (e.key === 'Escape') setOpen(false); });
     window.addEventListener('resize', ()=> { if (window.innerWidth >= 768) setOpen(false); });
 
+    lucide.createIcons();
+
     // Smooth scroll s offsetem headeru
     const goLinks = document.querySelectorAll('[data-goto]');
     function scrollWithOffset(id){
@@ -917,7 +918,7 @@ ${data.message||''}`
             setStatus('Odesílám poptávku…');
 
             setTimeout(()=>{
-              window.location.href = '/dekujeme.html';
+              window.location.href = `mailto:info@reklamas.cz?subject=${subject}&body=${body}`;
             }, 1200);
           }
         } catch(err){
@@ -955,8 +956,6 @@ ${data.message||''}`
       const lbClose = document.getElementById('lightbox-close');
       const lbPrev = document.getElementById('lightbox-prev');
       const lbNext = document.getElementById('lightbox-next');
-
-      const toTop = document.getElementById('toTop');
 
       let lbIndex = 0;
       let gridShown = 0;
@@ -1110,50 +1109,24 @@ ${data.message||''}`
 
       renderMobileSlides();
 
-      // ToTop
-      function updateToTop(){
-        if(!toTop) return;
-        const show = window.scrollY > 500;
-        toTop.classList.toggle('hidden', !show);
-      }
-      window.addEventListener('scroll', updateToTop, {passive:true});
-      updateToTop();
-
-      toTop?.addEventListener('click', ()=>{
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      
 
     })();
   </script>
 <script>
-fetch('/menu-reklama.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('menu-reklama').innerHTML = data;
-  });
-</script>
-  <script>
-  lucide.createIcons();
-
-  const burger = document.getElementById('burger');
-  const mobilePanel = document.getElementById('mobile-panel');
-  const b1 = document.getElementById('b1');
-  const b2 = document.getElementById('b2');
-
-  burger?.addEventListener('click', () => {
-    const isOpen = !mobilePanel.classList.contains('hidden');
-
-    mobilePanel.classList.toggle('hidden');
-    burger.setAttribute('aria-expanded', String(!isOpen));
-
-    if (!isOpen) {
-      b1.style.transform = 'translateY(6px) rotate(45deg)';
-      b2.style.transform = 'translateY(-6px) rotate(-45deg)';
-    } else {
-      b1.style.transform = '';
-      b2.style.transform = '';
-    }
-  });
+  fetch('/menu-reklama.html')
+    .then(res => {
+      if (!res.ok) throw new Error('Soubor menu-reklama.html nebyl nalezen');
+      return res.text();
+    })
+    .then(data => {
+      const slot = document.getElementById('menu-reklama');
+      if (slot) slot.innerHTML = data;
+      lucide.createIcons();
+    })
+    .catch(err => {
+      console.warn('Menu reklama se nepodařilo načíst:', err);
+    });
 </script>
 </body>
 </html>
