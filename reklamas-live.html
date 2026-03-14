@@ -64,7 +64,7 @@
       background-image: url('/mapa-cesty.png');
       background-size: cover;
       background-position: center;
-      opacity: 0.40;
+      opacity: 0.50;
       pointer-events: none;
       z-index: 0;
       filter: grayscale(15%) contrast(1.25) brightness(0.9);
@@ -227,7 +227,7 @@
       LIVE <span class="text-white/60">probíhá kampaň</span>
     </div>
 
-    <div class="text-sm text-white/50">Poslední aktualizace: <span id="lastUpdated">právě teď</span></div>
+    <div class="hidden md:block text-sm text-white/50">Poslední aktualizace: <span id="lastUpdated">právě teď</span></div>
 
   </div>
 
@@ -235,9 +235,9 @@
 
     <div class="space-y-6">
 
-      <h1 class="text-white text-3xl md:text-5xl font-extrabold leading-tight">
-       Živý přenos z mobilní reklamní akce
-     </h1>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+        Živý přenos z mobilní reklamní akce
+      </h1>
 
       <p class="text-white/70 max-w-2xl text-base md:text-lg">
         Sleduj přímo z terénu, jak probíhá reklamní kampaň klienta.
@@ -284,6 +284,11 @@
           allowfullscreen>
         </iframe>
       </div>
+
+    <!-- poslední aktualizace pro mobil pod videem -->
+    <div class="md:hidden text-right text-xs text-white/50 mt-1 pr-1">
+      Poslední aktualizace: <span id="lastUpdatedMobile">právě teď</span>
+    </div>
 
   </div>
 
@@ -361,9 +366,9 @@
       });
 
       const lastUpdated = document.getElementById('lastUpdated');
-      const lastUpdatedCard = document.getElementById('lastUpdatedCard');
+      const lastUpdatedMobile = document.getElementById('lastUpdatedMobile');
       if (lastUpdated) lastUpdated.textContent = formatted;
-      if (lastUpdatedCard) lastUpdatedCard.textContent = formatted;
+      if (lastUpdatedMobile) lastUpdatedMobile.textContent = formatted;
 
       const shareBtn = document.getElementById('shareLive');
       if (shareBtn) {
