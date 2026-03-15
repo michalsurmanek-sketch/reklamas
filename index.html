@@ -135,8 +135,15 @@ animation:pulse 1.4s infinite
     z-index: -1;
     pointer-events: none;
   }
-    {
-  font-style: normal !important;
+ /* vypnout caret všude */
+* {
+  caret-color: transparent;
+}
+
+/* povolit caret jen tam, kde se píše */
+input,
+textarea {
+  caret-color: auto;
 }
 </style>
 
