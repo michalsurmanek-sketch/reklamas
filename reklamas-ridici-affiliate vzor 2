@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vydělávej jako řidič • Reklamas.cz</title>
+  <meta name="description" content="Vydělávej s Reklamas.cz jako řidič. Voz reklamu na autě, sbírej kampaně ve svém městě a získej odměnu za jízdu." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
+    .hand{font-family:"Caveat",cursive;}
+    .soft-glow{box-shadow:0 24px 60px rgba(0,0,0,.16);}
+    .hero-grid{
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:24px 24px;
+    }
+    .pulse-dot{animation:pulse 1.6s infinite;}
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(1.5);opacity:.45}
+    }
+    .money-float{animation:moneyFloat 4s ease-in-out infinite;}
+    @keyframes moneyFloat{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-6px)}
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-yellow-400 text-black">
+
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" title="Zpět na Reklamas.cz">
+        <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
+        <div class="leading-tight">
+          <div class="font-extrabold text-xl tracking-tight">Reklamas.cz</div>
+          <div class="text-xs -mt-0.5">Řidiči & affiliate systém</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#jak" class="px-4 py-2 rounded-xl bg-white/70 border border-black/10 font-semibold">Jak to funguje</a>
+        <a href="#registrace" class="px-4 py-2 rounded-xl bg-black text-yellow-300 font-semibold">Chci vydělávat</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden bg-black text-white">
+    <div class="absolute inset-0 hero-grid opacity-30"></div>
+    <div class="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-pink-600/25 blur-3xl"></div>
+    <div class="absolute right-0 bottom-0 w-72 h-72 rounded-full bg-yellow-300/10 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20 grid lg:grid-cols-[1.05fr,.95fr] gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-pink-400 text-xs font-extrabold tracking-wide">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-pink-500 pulse-dot"></span>
+          NABÍRÁME ŘIDIČE
+        </div>
+
+        <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">
+          Vydělávej se svým autem.
+          <span class="text-yellow-300">Voz reklamu po městě.</span>
+        </h1>
+
+        <p class="mt-5 text-lg md:text-xl text-white/75 max-w-2xl">
+          Přihlásíš se, dostaneš reklamní kampaň, vozíš billboard nebo promo panel a za jízdu dostaneš odměnu. Reklamas řeší klienty, trasy i dohled. Ty jezdíš a vyděláváš.
+        </p>
+
+        <div class="mt-6 hand text-[24px] md:text-[30px] text-white/70">Máš auto? Tak ať vydělává taky ✍️</div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#registrace" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-[-2px] transition">Chci se přidat jako řidič</a>
+          <a href="#vydelky" class="px-5 py-3 rounded-2xl bg-white/10 border border-white/15 text-white font-semibold hover:bg-white/15 transition">Kolik můžu vydělat?</a>
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-3 gap-4 text-sm">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-white/55 text-xs">Start</div>
+            <div class="mt-1 font-extrabold text-yellow-300">od pár jízd</div>
+            <div class="mt-1 text-white/70">podle města a kampaně</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-white/55 text-xs">Forma</div>
+            <div class="mt-1 font-extrabold text-yellow-300">auto + reklama</div>
+            <div class="mt-1 text-white/70">billboard / promo panel</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-white/55 text-xs">Výplata</div>
+            <div class="mt-1 font-extrabold text-yellow-300">za kampaň</div>
+            <div class="mt-1 text-white/70">nebo podle výkonu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-[32px] border border-white/10 bg-white/5 backdrop-blur p-6 md:p-8 soft-glow">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="text-sm text-white/55">Příklad výdělku</div>
+              <div class="text-3xl md:text-4xl font-extrabold">1 200 až 4 500 Kč</div>
+            </div>
+            <div class="money-float px-4 py-3 rounded-2xl bg-yellow-300 text-black font-extrabold">+ odměna</div>
+          </div>
+
+          <div class="mt-6 grid gap-4">
+            <div class="rounded-2xl bg-black/35 border border-white/10 p-4">
+              <div class="text-xs text-white/50">Model 1</div>
+              <div class="mt-1 font-bold text-lg">Lokální kampaň</div>
+              <div class="mt-1 text-white/70 text-sm">Krátká trasa ve městě, menší promo, nižší počet dní.</div>
+            </div>
+            <div class="rounded-2xl bg-black/35 border border-white/10 p-4">
+              <div class="text-xs text-white/50">Model 2</div>
+              <div class="mt-1 font-bold text-lg">Silnější týdenní zásah</div>
+              <div class="mt-1 text-white/70 text-sm">Více jízd, lepší lokalita, vyšší viditelnost, větší odměna.</div>
+            </div>
+            <div class="rounded-2xl bg-black/35 border border-white/10 p-4">
+              <div class="text-xs text-white/50">Model 3</div>
+              <div class="mt-1 font-bold text-lg">Event / speciální akce</div>
+              <div class="mt-1 text-white/70 text-sm">Top kampaně s vyšší odměnou za čas, výkon a viditelnost.</div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -right-2 -bottom-2 rotate-[-6deg] rounded-2xl bg-pink-600 text-white px-4 py-2 text-sm shadow-lg">řidič = partner kampaně</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="jak" class="bg-white/60">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Jak to funguje</h2>
+            <p class="mt-2 text-black/70 max-w-2xl">Jednoduchý model: klient platí reklamu, ty vozíš kampaň, Reklamas řeší obchod, trasu a kontrolu.</p>
+          </div>
+          <div class="hidden md:flex items-center gap-2 text-sm text-black/60">
+            <span>Krok</span>
+            <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold">1</span>
+            <span>→</span>
+            <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold">2</span>
+            <span>→</span>
+            <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold">3</span>
+          </div>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold">1</div>
+            <h3 class="mt-4 font-bold text-xl">Přihlásíš se</h3>
+            <p class="mt-2 text-sm text-black/70">Vyplníš město, auto, kolik zhruba jezdíš a jaké kampaně tě zajímají.</p>
+          </div>
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold">2</div>
+            <h3 class="mt-4 font-bold text-xl">Přiřadíme kampaň</h3>
+            <p class="mt-2 text-sm text-black/70">Jakmile bude kampaň pro tvé město a typ auta, ozveme se s nabídkou a podmínkami.</p>
+          </div>
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold">3</div>
+            <h3 class="mt-4 font-bold text-xl">Jezdíš a vyděláváš</h3>
+            <p class="mt-2 text-sm text-black/70">Vozíš reklamu, dodáš důkaz jízdy / fotky a po kampani dostaneš odměnu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vydelky">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-[1fr,420px] gap-8 items-start">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Jak na tom vyděláš</h2>
+            <p class="mt-2 text-black/70 max-w-3xl">Nejsi zaměstnanec billboardovky. Jsi partner kampaně. Reklamas řeší klienta a prodej, ty přinášíš viditelnost v reálném provozu.</p>
+
+            <div class="mt-8 grid md:grid-cols-3 gap-6">
+              <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+                <div class="text-xs text-black/50">Varianta A</div>
+                <div class="mt-2 font-extrabold text-xl">Městská trasa</div>
+                <div class="mt-3 text-sm text-black/70">Běžné jízdy po městě, menší kampaň, nižší rozsah.</div>
+                <div class="mt-4 text-2xl font-extrabold">od 1 200 Kč</div>
+              </div>
+              <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+                <div class="text-xs text-black/50">Varianta B</div>
+                <div class="mt-2 font-extrabold text-xl">Silnější týden</div>
+                <div class="mt-3 text-sm text-black/70">Lepší město, více jízd, aktivnější trasa, větší zásah.</div>
+                <div class="mt-4 text-2xl font-extrabold">od 2 500 Kč</div>
+              </div>
+              <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+                <div class="text-xs text-black/50">Varianta C</div>
+                <div class="mt-2 font-extrabold text-xl">Event / speciál</div>
+                <div class="mt-3 text-sm text-black/70">Top kampaně a větší promo akce s vyšší odměnou.</div>
+                <div class="mt-4 text-2xl font-extrabold">3 500+ Kč</div>
+              </div>
+            </div>
+
+            <div class="mt-8 rounded-3xl border border-black/10 bg-black text-yellow-300 p-6 md:p-8 soft-glow">
+              <div class="text-2xl font-extrabold">Proč to může fungovat líp než klasická brigáda?</div>
+              <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Jezdíš tak jako tak</div>
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Auto dělá i reklamu</div>
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Lokální kampaně = menší chaos</div>
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Větší důraz na důkaz a výkon</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-black/10 bg-white p-6 md:p-8 soft-glow">
+            <h3 class="text-2xl font-extrabold">Rychlá kalkulačka výdělku</h3>
+            <p class="mt-2 text-sm text-black/65">Orientační demo. Finální odměna se vždy řídí konkrétní kampaní.</p>
+
+            <div class="mt-6 space-y-5">
+              <div>
+                <label class="text-sm font-semibold">Kolik dní v týdnu jezdíš?</label>
+                <input id="daysRange" type="range" min="1" max="7" value="5" class="mt-2 w-full" />
+                <div class="mt-1 text-sm text-black/60"><span id="daysValue">5</span> dní</div>
+              </div>
+              <div>
+                <label class="text-sm font-semibold">Jak silné město / zóna?</label>
+                <select id="zoneSelect" class="mt-2 w-full rounded-2xl border border-black/15 bg-white px-4 py-3">
+                  <option value="1">menší město</option>
+                  <option value="1.3" selected>okresní město</option>
+                  <option value="1.7">větší město / top zóna</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-sm font-semibold">Typ kampaně</label>
+                <select id="campaignSelect" class="mt-2 w-full rounded-2xl border border-black/15 bg-white px-4 py-3">
+                  <option value="1">běžná trasa</option>
+                  <option value="1.35">silnější promo</option>
+                  <option value="1.75">event / speciál</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-8 rounded-3xl bg-yellow-50 border border-black/10 p-5">
+              <div class="text-xs text-black/50">Odhad výdělku za kampaň</div>
+              <div id="earningsValue" class="mt-2 text-4xl font-extrabold">2 925 Kč</div>
+              <div class="mt-1 text-sm text-black/65">Jen orientační výpočet. Skutečná odměna záleží na kampani, městě a rozsahu.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white/60">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Co budeme hlídat</h2>
+        <p class="mt-2 text-black/70 max-w-3xl">Aby to dávalo smysl klientovi i řidiči. Bez důkazu a systému to nefunguje dlouhodobě.</p>
+
+        <div class="mt-8 grid md:grid-cols-4 gap-6">
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="font-extrabold">Město</div>
+            <div class="mt-2 text-sm text-black/70">Kde auto skutečně jezdí.</div>
+          </div>
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="font-extrabold">Aktivita</div>
+            <div class="mt-2 text-sm text-black/70">Jak často a jak dlouho se jezdí.</div>
+          </div>
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="font-extrabold">Důkaz</div>
+            <div class="mt-2 text-sm text-black/70">Fotky, QR, live, kontrola kampaně.</div>
+          </div>
+          <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+            <div class="font-extrabold">Spolehlivost</div>
+            <div class="mt-2 text-sm text-black/70">Kdo jezdí dobře, dostává lepší kampaně.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="registrace">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid lg:grid-cols-[1fr,520px] gap-8 items-start">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold">Registrace řidiče</h2>
+          <p class="mt-2 text-black/70 max-w-3xl">Vyplň základ a zařadíme tě do systému. Když bude kampaň pro tvoje město a auto, ozveme se.</p>
+
+          <div class="mt-8 rounded-3xl border border-black/10 bg-black text-yellow-300 p-6 md:p-8 soft-glow">
+            <div class="text-2xl font-extrabold">Pro koho to je?</div>
+            <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Pro lidi, co často jezdí po městě</div>
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Pro řidiče s vlastním autem</div>
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Pro ty, kdo chtějí bokem vydělat</div>
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">Pro lokální kampaně i eventy</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="affiliate-form" class="rounded-3xl border border-black/10 bg-white p-6 md:p-8 soft-glow" novalidate>
+          <div class="text-center md:text-left mb-2">
+            <div class="hand text-[22px] md:text-[28px] text-black/60">Máš auto? Přidej se ✍️</div>
+          </div>
+          <h3 class="text-2xl font-extrabold">Nezávazná registrace</h3>
+          <p class="mt-2 text-sm text-black/65">Vyplň základ a zařadíme tě mezi řidiče pro budoucí kampaně.</p>
+
+          <div class="mt-6 grid gap-4">
+            <input name="name" class="px-4 py-3 rounded-2xl border border-black/15" placeholder="Jméno a příjmení" required />
+            <input name="contact" class="px-4 py-3 rounded-2xl border border-black/15" placeholder="Telefon nebo e-mail" required />
+            <div class="grid grid-cols-2 gap-4">
+              <input name="city" class="px-4 py-3 rounded-2xl border border-black/15" placeholder="Město" />
+              <input name="car" class="px-4 py-3 rounded-2xl border border-black/15" placeholder="Typ auta" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <select name="rides" class="px-4 py-3 rounded-2xl border border-black/15">
+                <option value="">Kolik jezdíš?</option>
+                <option>méně</option>
+                <option>běžně</option>
+                <option>hodně</option>
+              </select>
+              <select name="campaign" class="px-4 py-3 rounded-2xl border border-black/15">
+                <option value="">Typ kampaně</option>
+                <option>mobilní reklama</option>
+                <option>auto billboard</option>
+                <option>event</option>
+                <option>je mi to jedno</option>
+              </select>
+            </div>
+            <textarea name="message" class="px-4 py-3 rounded-2xl border border-black/15 min-h-[130px]" placeholder="Napiš, kde jezdíš, jak často a co by tě zajímalo…"></textarea>
+            <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
+            <label class="flex items-start gap-2 text-xs text-black/70">
+              <input name="consent" type="checkbox" required class="mt-1" /> Souhlasím se zpracováním údajů za účelem kontaktování kvůli řidičskému programu.
+            </label>
+            <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-[-1px] transition">Chci se zařadit mezi řidiče</button>
+            <div id="form-status" class="text-sm"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-black text-yellow-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="font-extrabold text-lg">Reklamas.cz</div>
+        <div class="text-yellow-200/80 text-sm mt-2">Affiliate systém pro řidiče a reálné kampaně v ulicích.</div>
+      </div>
+      <div>
+        <div class="font-bold mb-2">Rychlé odkazy</div>
+        <ul class="space-y-1 text-sm text-yellow-200/80">
+          <li><a href="/" class="hover:text-pink-400">Domů</a></li>
+          <li><a href="/reklamas-live.html" class="hover:text-pink-400">LIVE</a></li>
+          <li><a href="/reklamas-mapa.html" class="hover:text-pink-400">Mapa zásahu</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-bold mb-2">Dokumenty</div>
+        <ul class="space-y-1 text-sm text-yellow-200/80">
+          <li><a href="/obchodni-podminky.html" class="hover:text-pink-400">Obchodní podmínky</a></li>
+          <li><a href="/ochrana-osobnich-udaju.html" class="hover:text-pink-400">Ochrana údajů</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-bold mb-2">Kontakt</div>
+        <ul class="space-y-1 text-sm text-yellow-200/80">
+          <li><a href="mailto:info@reklamas.cz" class="hover:text-pink-400">info@reklamas.cz</a></li>
+          <li>Uherské Hradiště / Zlín / Brno</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-yellow-300/20 text-xs text-yellow-200/70 py-4 text-center">© <span id="year"></span> Reklamas.cz</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const daysRange = document.getElementById('daysRange');
+    const daysValue = document.getElementById('daysValue');
+    const zoneSelect = document.getElementById('zoneSelect');
+    const campaignSelect = document.getElementById('campaignSelect');
+    const earningsValue = document.getElementById('earningsValue');
+
+    function updateEarnings(){
+      const days = Number(daysRange.value);
+      const zone = Number(zoneSelect.value);
+      const campaign = Number(campaignSelect.value);
+      const base = 450;
+      const result = Math.round(days * base * zone * campaign);
+      daysValue.textContent = String(days);
+      earningsValue.textContent = result.toLocaleString('cs-CZ') + ' Kč';
+    }
+
+    daysRange.addEventListener('input', updateEarnings);
+    zoneSelect.addEventListener('change', updateEarnings);
+    campaignSelect.addEventListener('change', updateEarnings);
+    updateEarnings();
+
+    (function(){
+      const form = document.getElementById('affiliate-form');
+      const statusEl = document.getElementById('form-status');
+
+      function setStatus(msg, ok=true){
+        if(!statusEl) return;
+        statusEl.textContent = msg;
+        statusEl.className = 'text-sm ' + (ok ? 'text-green-700' : 'text-red-700');
+      }
+
+      form?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const fd = new FormData(form);
+
+        if ((fd.get('company')||'').toString().trim() !== '') return;
+        if(!fd.get('name') || !fd.get('contact')){
+          setStatus('Vyplň prosím jméno a kontakt.', false);
+          return;
+        }
+        if(!fd.get('consent')){
+          setStatus('Prosím potvrď souhlas se zpracováním údajů.', false);
+          return;
+        }
+
+        const btn = form.querySelector('button[type="submit"]');
+        if(btn){
+          btn.disabled = true;
+          btn.classList.add('opacity-70','cursor-not-allowed');
+          btn.textContent = 'Odesílám…';
+        }
+        setStatus('Odesílám registraci…');
+
+        setTimeout(()=>{
+          window.location.href = '/dekujeme.html';
+        }, 1200);
+      });
+    })();
+  </script>
+</body>
+</html>
