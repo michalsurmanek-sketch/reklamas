@@ -29,6 +29,23 @@
       0%,100%{transform:translateY(0)}
       50%{transform:translateY(-6px)}
     }
+
+    .map-pulse{animation:mapPulse 2.6s infinite;}
+    @keyframes mapPulse{
+      0%,100%{transform:scale(1);opacity:.95;box-shadow:0 0 0 0 rgba(236,72,153,.22)}
+      50%{transform:scale(1.18);opacity:.55;box-shadow:0 0 0 18px rgba(236,72,153,0)}
+    }
+
+    .map-pulse-gold{animation:mapPulseGold 3s infinite;}
+    @keyframes mapPulseGold{
+      0%,100%{transform:scale(1);opacity:.95;box-shadow:0 0 0 0 rgba(250,204,21,.22)}
+      50%{transform:scale(1.14);opacity:.6;box-shadow:0 0 0 16px rgba(250,204,21,0)}
+    }
+
+    .hero-map-line{filter:drop-shadow(0 0 10px rgba(236,72,153,.14));}
+    .hero-map-blur{filter:blur(2px);}
+      50%{transform:translateY(-6px)}
+    }
   </style>
 </head>
 <body class="min-h-screen bg-yellow-400 text-black">
@@ -53,6 +70,31 @@
     <div class="absolute inset-0 hero-grid opacity-30"></div>
     <div class="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-pink-600/25 blur-3xl"></div>
     <div class="absolute right-0 bottom-0 w-72 h-72 rounded-full bg-yellow-300/10 blur-3xl"></div>
+
+    <!-- mapa v pozadí -->
+    <div class="absolute inset-0 pointer-events-none opacity-20">
+      <img src="/mapa-cesty.png" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- mapa v pozadí -->
+    <div class="absolute inset-0 pointer-events-none opacity-45">
+      <svg viewBox="0 0 1600 900" class="w-full h-full hero-map-blur" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="hero-map-line" d="M120 610C240 560 320 490 430 470C560 448 650 512 790 485C940 456 1040 358 1180 304C1295 260 1390 252 1510 275" fill="none" stroke="#EC4899" stroke-opacity=".24" stroke-width="10" stroke-linecap="round"/>
+        <path class="hero-map-line" d="M170 250C290 300 395 320 535 306C665 292 760 220 874 196C1000 170 1130 182 1270 222" fill="none" stroke="#FACC15" stroke-opacity=".18" stroke-width="8" stroke-linecap="round"/>
+        <path class="hero-map-line" d="M280 720C420 662 560 628 745 630C930 632 1080 676 1290 748" fill="none" stroke="#ffffff" stroke-opacity=".08" stroke-width="6" stroke-linecap="round"/>
+        <path d="M500 380L560 420L650 412L730 462L840 442L930 390L1035 402L1130 338" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="2.5" stroke-dasharray="8 10"/>
+      </svg>
+
+      <div class="absolute left-[16%] top-[62%] w-3.5 h-3.5 rounded-full bg-pink-500 map-pulse"></div>
+      <div class="absolute left-[24%] top-[52%] w-3 h-3 rounded-full bg-yellow-300 map-pulse-gold"></div>
+      <div class="absolute left-[33%] top-[49%] w-4 h-4 rounded-full bg-pink-500 map-pulse"></div>
+      <div class="absolute left-[45%] top-[51%] w-3.5 h-3.5 rounded-full bg-yellow-300 map-pulse-gold"></div>
+      <div class="absolute left-[55%] top-[43%] w-4 h-4 rounded-full bg-pink-500 map-pulse"></div>
+      <div class="absolute left-[65%] top-[45%] w-3 h-3 rounded-full bg-yellow-300 map-pulse-gold"></div>
+      <div class="absolute left-[74%] top-[37%] w-4 h-4 rounded-full bg-pink-500 map-pulse"></div>
+      <div class="absolute left-[82%] top-[31%] w-3.5 h-3.5 rounded-full bg-yellow-300 map-pulse-gold"></div>
+      <div class="absolute left-[70%] top-[66%] w-3 h-3 rounded-full bg-pink-500 map-pulse"></div>
+    </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20 grid lg:grid-cols-[1.05fr,.95fr] gap-10 items-center">
       <div>
