@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Archiv kampaní | Reklamas.cz</title>
+  <meta name="description" content="Archiv reklamních kampaní Reklamas.cz. Přehled proběhlých akcí, měst, výsledků, fotek a detailů kampaní na jednom místě." />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta property="og:title" content="Archiv kampaní | Reklamas.cz" />
+  <meta property="og:description" content="Prohlédni si archiv reklamních kampaní Reklamas.cz včetně měst, výsledků a detailů akcí." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-live.jpg" />
+  <meta property="og:locale" content="cs_CZ" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #000000;
+      --panel: rgba(255,255,255,.12);
+      --line: rgba(255,255,255,.18);
+      --brand: #ff004c;
+      --brand-blue: #0033cc;
+    }
+
+    html, body {
+      font-family: "Montserrat", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255,0,76,.12), transparent 28%),
+        radial-gradient(circle at left center, rgba(0,51,204,.14), transparent 30%),
+        var(--bg);
+      color: #fff;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    body { isolation: isolate; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('/mapa-cesty.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.42;
+      pointer-events: none;
+      z-index: 0;
+      filter: grayscale(15%) contrast(1.2) brightness(0.82);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 34% 41%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px),
+        radial-gradient(circle at 58% 63%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px),
+        radial-gradient(circle at 72% 45%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px),
+        radial-gradient(circle at 47% 33%, rgba(255,0,76,1) 0px, rgba(255,0,76,.78) 4px, rgba(255,0,76,.22) 10px, transparent 20px);
+      animation: cityPulse 3.6s ease-in-out infinite;
+      opacity: .88;
+      filter: drop-shadow(0 0 10px rgba(255,0,76,.35));
+    }
+
+    @keyframes cityPulse {
+      0% { transform: scale(1); opacity: .68; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(1); opacity: .68; }
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+
+    .campaign-card {
+      background: rgba(0,0,0,.58);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .campaign-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.22);
+      background: rgba(0,0,0,.68);
+    }
+
+    .thumb {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01)),
+        radial-gradient(circle at top right, rgba(255,0,76,.25), transparent 30%),
+        #111;
+    }
+
+    .pill {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <header class="border-b border-white/10 bg-black/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <a href="/reklamas-live.html" class="flex items-center gap-3 min-w-0" title="Zpět na LIVE stránku">
+        <img src="/reklamas-live.svg" alt="Logo Reklamas LIVE" class="w-10 h-10 object-contain" />
+        <div class="min-w-0">
+          <div class="font-extrabold truncate">Reklamas LIVE</div>
+          <div class="text-xs opacity-60">Archiv kampaní</div>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="/reklamas-live.html" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/20 transition">← Zpět na LIVE</a>
+        <a href="/#objednat" class="px-4 py-2 rounded-full bg-pink-600 text-sm font-bold hover:scale-105 transition">Chci kampaň</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 pt-10 pb-12">
+    <section class="grid lg:grid-cols-[1.08fr_.92fr] gap-8 items-start">
+      <div>
+        <div class="inline-flex items-center gap-2 text-sm font-bold text-pink-400 glass rounded-full px-4 py-2 w-fit">ARCHIV</div>
+        <h1 class="mt-5 text-3xl md:text-5xl font-extrabold leading-tight">Archiv reklamních kampaní</h1>
+        <p class="mt-4 text-white/70 max-w-2xl text-base md:text-lg">Všechny proběhlé akce Reklamas.cz na jednom místě. Města, výsledky, ukázky kampaní, fotky, videa i detailní přehled jednotlivých realizací.</p>
+
+        <div class="mt-6 flex flex-wrap gap-3 text-sm">
+          <span class="pill rounded-full px-4 py-2">Mobilní promo</span>
+          <span class="pill rounded-full px-4 py-2">Střešní billboardy</span>
+          <span class="pill rounded-full px-4 py-2">QR měření</span>
+          <span class="pill rounded-full px-4 py-2">LIVE výstupy</span>
+        </div>
+      </div>
+
+      <div class="glass rounded-3xl p-6">
+        <div class="text-sm text-white/60">Souhrn archivu (demo)</div>
+        <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-2xl bg-black/30 border border-white/10 px-4 py-4">
+            <div class="text-white/50">Celkem kampaní</div>
+            <div class="mt-2 text-2xl font-extrabold">24</div>
+          </div>
+          <div class="rounded-2xl bg-black/30 border border-white/10 px-4 py-4">
+            <div class="text-white/50">Měst</div>
+            <div class="mt-2 text-2xl font-extrabold">9</div>
+          </div>
+          <div class="rounded-2xl bg-black/30 border border-white/10 px-4 py-4">
+            <div class="text-white/50">Zhlédnutí</div>
+            <div class="mt-2 text-2xl font-extrabold">18 420</div>
+          </div>
+          <div class="rounded-2xl bg-black/30 border border-white/10 px-4 py-4">
+            <div class="text-white/50">QR skeny</div>
+            <div class="mt-2 text-2xl font-extrabold">1 246</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10 glass rounded-3xl p-5 md:p-6">
+      <div class="grid md:grid-cols-[1fr_auto] gap-4 md:items-center">
+        <div>
+          <div class="text-sm text-white/55">Filtrace archivu</div>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <button class="px-4 py-2 rounded-2xl bg-pink-600 text-sm font-bold">Vše</button>
+            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Uherské Hradiště</button>
+            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Brno</button>
+            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Zlín</button>
+            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Promo akce</button>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <a href="https://www.reklamas.cz/reklamas-live.html" class="px-4 py-2 rounded-2xl bg-black/40 border border-white/10 text-sm inline-block">LIVE</a>
+          <button class="px-4 py-2 rounded-2xl bg-black/70 border border-white/20 text-sm">Archiv</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <article class="campaign-card rounded-3xl overflow-hidden">
+          <div class="thumb aspect-video flex items-end p-5">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-pink-600 text-xs font-bold">UHERSKÉ HRADIŠTĚ</div>
+              <div class="mt-3 text-2xl font-extrabold">Promo města</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-sm text-white/55">14. 03. 2026</div>
+            <p class="mt-3 text-white/72 text-sm leading-relaxed">Mobilní reklama v centru města, živý přenos, promo tým a QR sběr kontaktů.</p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-white/60">Zhlédnutí</span>
+              <strong>1 248</strong>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-sm">
+              <span class="text-white/60">QR skeny</span>
+              <strong>94</strong>
+            </div>
+            <div class="mt-5 flex gap-3">
+              <a href="/reklamas-live.html" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="campaign-card rounded-3xl overflow-hidden">
+          <div class="thumb aspect-video flex items-end p-5">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">BRNO</div>
+              <div class="mt-3 text-2xl font-extrabold">Promo pro provozovnu</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-sm text-white/55">03. 03. 2026</div>
+            <p class="mt-3 text-white/72 text-sm leading-relaxed">Akce zaměřená na průchodnost lokality, rozdávání pozvánek a lokální viditelnost značky.</p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-white/60">Zhlédnutí</span>
+              <strong>986</strong>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-sm">
+              <span class="text-white/60">QR skeny</span>
+              <strong>61</strong>
+            </div>
+            <div class="mt-5 flex gap-3">
+              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="campaign-card rounded-3xl overflow-hidden">
+          <div class="thumb aspect-video flex items-end p-5">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">ZLÍN</div>
+              <div class="mt-3 text-2xl font-extrabold">Mall promo akce</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-sm text-white/55">21. 02. 2026</div>
+            <p class="mt-3 text-white/72 text-sm leading-relaxed">Kampaň před obchodním centrem s vysokým pohybem lidí a podporou sociálních sítí.</p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-white/60">Zhlédnutí</span>
+              <strong>1 532</strong>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-sm">
+              <span class="text-white/60">QR skeny</span>
+              <strong>118</strong>
+            </div>
+            <div class="mt-5 flex gap-3">
+              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="campaign-card rounded-3xl overflow-hidden">
+          <div class="thumb aspect-video flex items-end p-5">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">OTROKOVICE</div>
+              <div class="mt-3 text-2xl font-extrabold">Event promo jízda</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-sm text-white/55">12. 02. 2026</div>
+            <p class="mt-3 text-white/72 text-sm leading-relaxed">Jízda po frekventovaných místech města s podporou eventové komunikace a online propagace.</p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-white/60">Zhlédnutí</span>
+              <strong>854</strong>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-sm">
+              <span class="text-white/60">QR skeny</span>
+              <strong>49</strong>
+            </div>
+            <div class="mt-5 flex gap-3">
+              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="campaign-card rounded-3xl overflow-hidden">
+          <div class="thumb aspect-video flex items-end p-5">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">STARÉ MĚSTO</div>
+              <div class="mt-3 text-2xl font-extrabold">Lokální branding</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-sm text-white/55">28. 01. 2026</div>
+            <p class="mt-3 text-white/72 text-sm leading-relaxed">Podpora lokální značky v centru města s důrazem na vizibilitu a zachycení zájmu přes QR.</p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-white/60">Zhlédnutí</span>
+              <strong>1 104</strong>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-sm">
+              <span class="text-white/60">QR skeny</span>
+              <strong>77</strong>
+            </div>
+            <div class="mt-5 flex gap-3">
+              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="campaign-card rounded-3xl overflow-hidden">
+          <div class="thumb aspect-video flex items-end p-5">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">HODONÍN</div>
+              <div class="mt-3 text-2xl font-extrabold">Pěší promo akce</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-sm text-white/55">10. 01. 2026</div>
+            <p class="mt-3 text-white/72 text-sm leading-relaxed">Kombinace pěšího promo a mobilního nosiče v centru města s návazností na sociální sítě.</p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-white/60">Zhlédnutí</span>
+              <strong>742</strong>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-sm">
+              <span class="text-white/60">QR skeny</span>
+              <strong>38</strong>
+            </div>
+            <div class="mt-5 flex gap-3">
+              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-12 glass rounded-3xl p-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-extrabold">Chceš vlastní kampaň i s výsledky v archivu?</h2>
+      <p class="mt-3 text-white/70 max-w-2xl mx-auto">Naplánujeme tvoji reklamní akci, připravíme LIVE stránku, výstupy i přehledný archiv kampaně.</p>
+      <a href="/#objednat" class="inline-flex mt-6 px-6 py-4 rounded-2xl bg-pink-600 text-white font-bold hover:scale-105 transition">Chci svoji kampaň</a>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 mt-10">
+    <div class="max-w-7xl mx-auto px-4 py-6 text-sm opacity-60">© Reklamas.cz • Archiv kampaní</div>
+  </footer>
+</body>
+</html>
