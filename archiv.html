@@ -172,25 +172,27 @@
       <div class="grid md:grid-cols-[1fr_auto] gap-4 md:items-center">
         <div>
           <div class="text-sm text-white/55">Filtrace archivu</div>
-          <div class="mt-3 flex flex-wrap gap-3">
-            <button class="px-4 py-2 rounded-2xl bg-pink-600 text-sm font-bold">Vše</button>
-            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Uherské Hradiště</button>
-            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Brno</button>
-            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Zlín</button>
-            <button class="px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Promo akce</button>
+          <div class="mt-3 flex flex-wrap gap-3" id="archiveFilters">
+            <button type="button" data-filter="all" class="filter-btn px-4 py-2 rounded-2xl bg-pink-600 text-sm font-bold">Vše</button>
+            <button type="button" data-filter="uherské hradiště" class="filter-btn px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Uherské Hradiště</button>
+            <button type="button" data-filter="brno" class="filter-btn px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Brno</button>
+            <button type="button" data-filter="zlín" class="filter-btn px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Zlín</button>
+            <button type="button" data-filter="promo" class="filter-btn px-4 py-2 rounded-2xl bg-black/50 border border-white/10 text-sm">Promo akce</button>
           </div>
         </div>
 
         <div class="flex gap-3">
-          <a href="https://www.reklamas.cz/reklamas-live.html" class="px-4 py-2 rounded-2xl bg-black/40 border border-white/10 text-sm inline-block">LIVE</a>
-          <button class="px-4 py-2 rounded-2xl bg-black/70 border border-white/20 text-sm">Archiv</button>
+          <a href="/reklamas-live.html" class="px-4 py-2 rounded-2xl bg-black/40 border border-white/10 text-sm inline-block hover:bg-white/10 transition">LIVE</a>
+          <a href="/archiv.html" aria-current="page" class="px-4 py-2 rounded-2xl bg-white/15 border border-white/20 text-sm inline-block font-semibold">Archiv</a>
+          <a href="/reklamas-live.html" class="px-4 py-2 rounded-2xl bg-black/40 border border-white/10 text-sm inline-block hover:bg-white/10 transition">LIVE</a>
+          <a href="/archiv.html" aria-current="page" class="px-4 py-2 rounded-2xl bg-white/15 border border-white/20 text-sm inline-block font-semibold">Archiv</a>
         </div>
       </div>
     </section>
 
     <section class="mt-8">
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-        <article class="campaign-card rounded-3xl overflow-hidden">
+        <article class="campaign-card rounded-3xl overflow-hidden" data-city="uherské hradiště" data-type="promo">
           <div class="thumb aspect-video flex items-end p-5">
             <div>
               <div class="inline-flex px-3 py-1 rounded-full bg-pink-600 text-xs font-bold">UHERSKÉ HRADIŠTĚ</div>
@@ -215,7 +217,7 @@
           </div>
         </article>
 
-        <article class="campaign-card rounded-3xl overflow-hidden">
+        <article class="campaign-card rounded-3xl overflow-hidden" data-city="brno" data-type="promo">
           <div class="thumb aspect-video flex items-end p-5">
             <div>
               <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">BRNO</div>
@@ -234,13 +236,13 @@
               <strong>61</strong>
             </div>
             <div class="mt-5 flex gap-3">
-              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="/reklamas-live.html" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
               <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
             </div>
           </div>
         </article>
 
-        <article class="campaign-card rounded-3xl overflow-hidden">
+        <article class="campaign-card rounded-3xl overflow-hidden" data-city="zlín" data-type="promo">
           <div class="thumb aspect-video flex items-end p-5">
             <div>
               <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">ZLÍN</div>
@@ -259,13 +261,13 @@
               <strong>118</strong>
             </div>
             <div class="mt-5 flex gap-3">
-              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="/reklamas-live.html" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
               <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
             </div>
           </div>
         </article>
 
-        <article class="campaign-card rounded-3xl overflow-hidden">
+        <article class="campaign-card rounded-3xl overflow-hidden" data-city="otrokovice" data-type="promo">
           <div class="thumb aspect-video flex items-end p-5">
             <div>
               <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">OTROKOVICE</div>
@@ -284,13 +286,13 @@
               <strong>49</strong>
             </div>
             <div class="mt-5 flex gap-3">
-              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="/reklamas-live.html" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
               <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
             </div>
           </div>
         </article>
 
-        <article class="campaign-card rounded-3xl overflow-hidden">
+        <article class="campaign-card rounded-3xl overflow-hidden" data-city="staré město" data-type="promo">
           <div class="thumb aspect-video flex items-end p-5">
             <div>
               <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">STARÉ MĚSTO</div>
@@ -309,13 +311,13 @@
               <strong>77</strong>
             </div>
             <div class="mt-5 flex gap-3">
-              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="/reklamas-live.html" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
               <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
             </div>
           </div>
         </article>
 
-        <article class="campaign-card rounded-3xl overflow-hidden">
+        <article class="campaign-card rounded-3xl overflow-hidden" data-city="hodonín" data-type="promo">
           <div class="thumb aspect-video flex items-end p-5">
             <div>
               <div class="inline-flex px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold">HODONÍN</div>
@@ -334,7 +336,7 @@
               <strong>38</strong>
             </div>
             <div class="mt-5 flex gap-3">
-              <a href="#" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
+              <a href="/reklamas-live.html" class="flex-1 text-center px-4 py-3 rounded-2xl bg-pink-600 font-bold">Otevřít detail</a>
               <a href="#" class="px-4 py-3 rounded-2xl bg-black/70 border border-white/20 font-semibold">Fotky</a>
             </div>
           </div>
@@ -352,5 +354,38 @@
   <footer class="border-t border-white/10 mt-10">
     <div class="max-w-7xl mx-auto px-4 py-6 text-sm opacity-60">© Reklamas.cz • Archiv kampaní</div>
   </footer>
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.campaign-card');
+
+    function applyFilter(filter) {
+      cards.forEach(card => {
+        const city = (card.dataset.city || '').toLowerCase();
+        const type = (card.dataset.type || '').toLowerCase();
+
+        const matchAll = filter === 'all';
+        const matchCity = city === filter;
+        const matchType = type === filter;
+
+        card.style.display = (matchAll || matchCity || matchType) ? 'block' : 'none';
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-pink-600', 'font-bold');
+          b.classList.add('bg-black/50', 'border', 'border-white/10');
+        });
+
+        btn.classList.remove('bg-black/50', 'border', 'border-white/10');
+        btn.classList.add('bg-pink-600', 'font-bold');
+
+        applyFilter((btn.dataset.filter || 'all').toLowerCase());
+      });
+    });
+
+    applyFilter('all');
+  </script>
 </body>
 </html>
