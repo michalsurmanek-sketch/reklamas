@@ -11,7 +11,26 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body{font-family:Montserrat,system-ui;background:#000;color:#fff}
+    body{
+      font-family:Montserrat,system-ui;
+      background:#000;
+      color:#fff;
+      position:relative;
+      isolation:isolate;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)),
+        url('/brno.png') center/cover no-repeat;
+      opacity:.30;
+      pointer-events:none;
+      z-index:0;
+      filter:contrast(1.05) brightness(.9);
+    }
+    body > *{position:relative;z-index:1}
     .glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}
   </style>
 </head>
