@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vydělávej jako řidič • Reklamas.cz</title>
   <meta name="description" content="Vydělávej s Reklamas.cz jako řidič. Voz reklamu na autě, sbírej kampaně ve svém městě a získej odměnu za jízdu." />
+  <meta name="theme-color" content="#D4AF37">
 
-  <meta name="theme-color" content="#D4AF37"> 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- FAVICON & PWA -->
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
   <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png">
-  <meta name="theme-color" content="#0033cc">
   <link rel="manifest" href="/site.webmanifest">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -81,12 +78,10 @@
     <div class="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-pink-600/25 blur-3xl"></div>
     <div class="absolute right-0 bottom-0 w-72 h-72 rounded-full bg-yellow-300/10 blur-3xl"></div>
 
-    <!-- mapa v pozadí -->
     <div class="absolute inset-0 pointer-events-none opacity-20">
-      <img src="/mapa-cesty.png" class="w-full h-full object-cover" />
+      <img src="/mapa-cesty.png" class="w-full h-full object-cover" alt="">
     </div>
 
-    <!-- mapa v pozadí -->
     <div class="absolute inset-0 pointer-events-none opacity-45">
       <svg viewBox="0 0 1600 900" class="w-full h-full hero-map-blur" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path class="hero-map-line" d="M120 610C240 560 320 490 430 470C560 448 650 512 790 485C940 456 1040 358 1180 304C1295 260 1390 252 1510 275" fill="none" stroke="#EC4899" stroke-opacity=".24" stroke-width="10" stroke-linecap="round"/>
@@ -200,7 +195,6 @@
         </div>
 
         <div class="mt-8 relative grid md:grid-cols-3 gap-6">
-          <!-- design cesta 1 → 2 → 3 -->
           <div class="hidden md:block absolute inset-x-0 top-10 pointer-events-none">
             <svg viewBox="0 0 1200 180" class="w-full h-[120px]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M140 90 C 250 18, 360 18, 470 90 S 690 162, 810 90 S 1015 18, 1110 90" fill="none" stroke="#EC4899" stroke-opacity=".22" stroke-width="10" stroke-linecap="round"/>
@@ -208,16 +202,19 @@
             </svg>
           </div>
           <div class="md:hidden absolute left-1/2 -translate-x-1/2 top-12 bottom-12 w-px bg-gradient-to-b from-pink-500/0 via-pink-500/35 to-pink-500/0 pointer-events-none"></div>
+
           <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
             <div class="inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold">1</div>
             <h3 class="mt-4 font-bold text-xl">Přihlásíš se</h3>
             <p class="mt-2 text-sm text-black/70">Vyplníš město, auto, kolik zhruba jezdíš a jaké kampaně tě zajímají.</p>
           </div>
+
           <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
             <div class="inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold">2</div>
             <h3 class="mt-4 font-bold text-xl">Přiřadíme kampaň</h3>
             <p class="mt-2 text-sm text-black/70">Jakmile bude kampaň pro tvé město a typ auta, ozveme se s nabídkou a podmínkami.</p>
           </div>
+
           <div class="rounded-3xl border border-black/10 bg-white p-6 soft-glow">
             <div class="inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold">3</div>
             <h3 class="mt-4 font-bold text-xl">Jezdíš a vyděláváš</h3>
@@ -235,62 +232,38 @@
             <p class="mt-2 text-black/70 max-w-3xl">Nejsi zaměstnanec billboardovky. Jsi partner kampaně. Reklamas řeší klienta a prodej, ty přinášíš viditelnost v reálném provozu.</p>
 
             <div class="mt-8 grid md:grid-cols-3 gap-6">
+              <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25" style="background-image: url('/mestska.png');"></div>
+                <div class="absolute inset-0 bg-white/80"></div>
+                <div class="relative z-10">
+                  <div class="text-xs text-black/50">Varianta A</div>
+                  <div class="mt-2 font-extrabold text-xl">Městská trasa</div>
+                  <div class="mt-3 text-sm text-black/70">Běžné jízdy po městě, menší kampaň, nižší rozsah.</div>
+                  <div class="mt-4 text-2xl font-extrabold">od 1 200 Kč</div>
+                </div>
+              </div>
 
-  <!-- VARIANTA A -->
-  <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-6 soft-glow">
-    
-    <!-- BG obrázek -->
-    <div class="absolute inset-0 bg-cover bg-center opacity-25"
-      style="background-image: url('mestska.png');"></div>
+              <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25" style="background-image: url('/silnejsi.png');"></div>
+                <div class="absolute inset-0 bg-white/80"></div>
+                <div class="relative z-10">
+                  <div class="text-xs text-black/50">Varianta B</div>
+                  <div class="mt-2 font-extrabold text-xl">Silnější týden</div>
+                  <div class="mt-3 text-sm text-black/70">Lepší město, více jízd, aktivnější trasa, větší zásah.</div>
+                  <div class="mt-4 text-2xl font-extrabold">od 2 500 Kč</div>
+                </div>
+              </div>
 
-    <!-- overlay pro čitelnost -->
-    <div class="absolute inset-0 bg-white/80"></div>
-
-    <!-- obsah -->
-    <div class="relative z-10">
-      <div class="text-xs text-black/50">Varianta A</div>
-      <div class="mt-2 font-extrabold text-xl">Městská trasa</div>
-      <div class="mt-3 text-sm text-black/70">Běžné jízdy po městě, menší kampaň, nižší rozsah.</div>
-      <div class="mt-4 text-2xl font-extrabold">od 1 200 Kč</div>
-    </div>
-
-  </div>
-
-  <!-- VARIANTA B -->
-  <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-6 soft-glow">
-    
-    <div class="absolute inset-0 bg-cover bg-center opacity-25"
-      style="background-image: url('silnejsi.png');"></div>
-
-    <div class="absolute inset-0 bg-white/80"></div>
-
-    <div class="relative z-10">
-      <div class="text-xs text-black/50">Varianta B</div>
-      <div class="mt-2 font-extrabold text-xl">Silnější týden</div>
-      <div class="mt-3 text-sm text-black/70">Lepší město, více jízd, aktivnější trasa, větší zásah.</div>
-      <div class="mt-4 text-2xl font-extrabold">od 2 500 Kč</div>
-    </div>
-
-  </div>
-
-  <!-- VARIANTA C -->
-  <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-6 soft-glow">
-    
-    <div class="absolute inset-0 bg-cover bg-center opacity-25"
-      style="background-image: url('event.png');"></div>
-
-    <div class="absolute inset-0 bg-white/80"></div>
-
-    <div class="relative z-10">
-      <div class="text-xs text-black/50">Varianta C</div>
-      <div class="mt-2 font-extrabold text-xl">Event / speciál</div>
-      <div class="mt-3 text-sm text-black/70">Top kampaně a větší promo akce s vyšší odměnou.</div>
-      <div class="mt-4 text-2xl font-extrabold">3 500+ Kč</div>
-    </div>
-
-  </div>
-
-</div>
+              <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-6 soft-glow">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25" style="background-image: url('/event.png');"></div>
+                <div class="absolute inset-0 bg-white/80"></div>
+                <div class="relative z-10">
+                  <div class="text-xs text-black/50">Varianta C</div>
+                  <div class="mt-2 font-extrabold text-xl">Event / speciál</div>
+                  <div class="mt-3 text-sm text-black/70">Top kampaně a větší promo akce s vyšší odměnou.</div>
+                  <div class="mt-4 text-2xl font-extrabold">3 500+ Kč</div>
+                </div>
+              </div>
             </div>
 
             <div class="mt-8 rounded-3xl border border-black/10 bg-black text-yellow-300 p-6 md:p-8 soft-glow">
@@ -314,6 +287,7 @@
                 <input id="daysRange" type="range" min="1" max="7" value="5" class="mt-2 w-full" />
                 <div class="mt-1 text-sm text-black/60"><span id="daysValue">5</span> dní</div>
               </div>
+
               <div>
                 <label class="text-sm font-semibold">Jak silné město / zóna?</label>
                 <select id="zoneSelect" class="mt-2 w-full rounded-2xl border border-black/15 bg-white px-4 py-3">
@@ -322,36 +296,24 @@
                   <option value="1.7">větší město / top zóna</option>
                 </select>
               </div>
-              <div class="relative">
-  
-  <!-- BACKGROUND -->
-  <div id="campaignBg" 
-       class="absolute inset-0 rounded-2xl bg-center bg-cover opacity-25 pointer-events-none transition-all duration-500"
-       style="background-image: url('mestska.png');">
-  </div>
 
-  <!-- OBSAH -->
-  <div class="relative z-10">
-    <label class="text-sm font-semibold">Typ kampaně</label>
-    
-    <select id="campaignSelect" 
-      class="mt-2 w-full rounded-2xl border border-black/15 bg-white px-4 py-3">
-      <option value="mestska.png">běžná trasa</option>
-      <option value="silnejsi.png">silnější promo</option>
-      <option value="event.png">event / speciál</option>
-    </select>
-  </div>
+              <div class="relative overflow-hidden rounded-2xl">
+                <div id="campaignBg"
+                     class="absolute inset-0 bg-center bg-cover opacity-25 pointer-events-none transition-all duration-500"
+                     style="background-image: url('/mestska.png');"></div>
 
-</div>
+                <div class="absolute inset-0 bg-white/80 pointer-events-none"></div>
 
-<script>
-  const campaignSelectBg = document.getElementById('campaignSelect');
-  const bg = document.getElementById('campaignBg');
-
-  campaignSelectBg.addEventListener('change', function() {
-    bg.style.backgroundImage = `url('${this.value}')`;
-  });
-</script>
+                <div class="relative z-10 p-0">
+                  <label class="text-sm font-semibold">Typ kampaně</label>
+                  <select id="campaignSelect" class="mt-2 w-full rounded-2xl border border-black/15 bg-white px-4 py-3">
+                    <option value="1" data-bg="/mestska.png">běžná trasa</option>
+                    <option value="1.35" data-bg="/silnejsi.png">silnější promo</option>
+                    <option value="1.75" data-bg="/event.png">event / speciál</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
             <div class="mt-8 rounded-3xl bg-yellow-50 border border-black/10 p-5">
               <div class="text-xs text-black/50">Odhad výdělku za kampaň</div>
@@ -487,21 +449,32 @@
     const daysValue = document.getElementById('daysValue');
     const zoneSelect = document.getElementById('zoneSelect');
     const campaignSelect = document.getElementById('campaignSelect');
+    const campaignBg = document.getElementById('campaignBg');
     const earningsValue = document.getElementById('earningsValue');
 
-    function updateEarnings(){
+    function updateCampaignBg() {
+      const selected = campaignSelect.options[campaignSelect.selectedIndex];
+      const bgUrl = selected.dataset.bg;
+      campaignBg.style.backgroundImage = `url('${bgUrl}')`;
+    }
+
+    function updateEarnings() {
       const days = Number(daysRange.value);
       const zone = Number(zoneSelect.value);
       const campaign = Number(campaignSelect.value) || 1;
       const base = 450;
       const result = Math.round(days * base * zone * campaign);
+
       daysValue.textContent = String(days);
       earningsValue.textContent = result.toLocaleString('cs-CZ') + ' Kč';
+
+      updateCampaignBg();
     }
 
     daysRange.addEventListener('input', updateEarnings);
     zoneSelect.addEventListener('change', updateEarnings);
     campaignSelect.addEventListener('change', updateEarnings);
+
     updateEarnings();
 
     (function(){
