@@ -293,9 +293,10 @@
           zones:[
             {name:'Centrum Kunovice', coords:[49.0448,17.4701], type:'centrum', priceBase:590, text:'Lokální centrum se stabilním pohybem.', cls:'pin-pink', cardTag:'LOKAL'},
             {name:'Průmyslová zóna', coords:[49.0467092,17.4349894], type:'B2B zásah', priceBase:890, text:'Vhodné pro firmy, nábor a průmyslové služby.', cls:'pin-black', cardTag:'B2B'},
+            {name:'Parkoviště Albert hypermarket', coords:[49.0505444,17.4649872], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'},
             {name:'Tah na UH', coords:[49.0509,17.4768], type:'dopravní tah', priceBase:690, text:'Dobré pro frekvenční průjezd.', cls:'pin-pink', cardTag:'FLOW'}
           ],
-          route:[[49.0418,17.4639],[49.0448,17.4701],[49.0509,17.4768]]
+          route:[[49.0326294,17.4599244],[49.0352075,17.4610069],[49.0377114,17.4618975],[49.0401097,17.4641719],[49.0419314,17.4661461],[49.0422969,17.4617150],[49.0428878,17.4570586],[49.0428597,17.4554708],[49.0457150,17.4531428],[49.0473253,17.4519194],[49.0484081,17.4497844],[49.0489425,17.4444417],[49.0484350,17.4390964],[49.0480917,17.4362489],[49.0478469,17.4356975],[49.0473111,17.4353756],[49.0464744,17.4353436],[49.0471494,17.4345281],[49.0478469,17.4356969],[49.0480917,17.4362494],[49.0484350,17.4390967],[49.0489428,17.4444411],[49.0484083,17.4497839],[49.0473253,17.4519189],[49.0457147,17.4531422],[49.0428594,17.4554703],[49.0428875,17.4570581],[49.0422969,17.4617144],[49.0419314,17.4661456],[49.0399269,17.4798569],[49.0392911,17.4855775],[49.0417100,17.4857900],[49.0434356,17.4852025],[49.0423383,17.4750853],[49.0428097,17.4730897],[49.0426303,17.4726686],[49.0426303,17.4720436],[49.0422697,17.4716967],[49.0428958,17.4672908],[49.0439683,17.4676931],[49.0450428,17.4679828],[49.0471258,17.4676342],[49.0487167,17.4669769],[49.0490792,17.4654600],[49.0502269,17.4655150],[49.0507767,17.4655333],[49.0507822,17.4644181],[49.0493689,17.4643542],[49.0490792,17.4654606],[49.0487167,17.4669769],[49.0496331,17.4664747],[49.0507933,17.4664717],[49.0506253,17.4660286],[49.0498172,17.4659578],[49.0496331,17.4664747],[49.0450428,17.4679828],[49.0439683, 17.4676931],[49.0428958, 17.4672908],[49.0401094,17.4641714],[49.0419314, 17.4661456],[49.0419314, 17.4661456],[49.0377117,17.4618969],[49.0352078,17.4610064],[49.0326294,17.4599242]]     
         },
         'Brno': {
           coords:[49.1951,16.6068], zoom:12, short:'BR', badge:'VELKÉ MĚSTO',
@@ -304,7 +305,7 @@
             {name:'Hlavní nádraží', coords:[49.191,16.6113], type:'dopravní uzel', priceBase:1290, text:'Silný průchod i přestupní flow.', cls:'pin-black', cardTag:'FLOW'},
             {name:'Výstaviště / event', coords:[49.1874,16.5825], type:'event', priceBase:1890, text:'Vhodné pro promo, akce a wow efekt.', cls:'pin-pink', cardTag:'EVENT'}
           ],
-          route:[[49.191,16.6113],[49.1969,16.6089],[49.1874,16.5825]]
+          route:[[49.1910,16.6113],[49.1969,16.6089],[49.1874,16.5825]]
         }
       };
 
@@ -559,6 +560,8 @@
       console.assert(mapCityOptions.length > 0, 'mapový dropdown musí mít možnosti');
       console.assert(sidebarCityOptions.length > 0, 'hlavní dropdown musí mít možnosti');
       console.assert(topTypeButtons.length === 3, 'horní přepínač musí mít 3 volby');
+      console.assert(Array.isArray(cityViews['Kunovice'].route), 'Kunovice route musí být pole');
+      console.assert(cityViews['Kunovice'].route.every(p => Array.isArray(p) && p.length === 2 && p.every(n => typeof n === 'number')), 'Kunovice route musí obsahovat jen číselné souřadnice');
       console.assert(typeof formatPrice(890) === 'string', 'formatPrice musí vrátit text');
       console.assert(typeof intensityText(3) === 'string', 'intensityText musí vrátit text');
     });
