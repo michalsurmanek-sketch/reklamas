@@ -4,45 +4,77 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Reklamas mapa • kde jezdíme a kolik to stojí</title>
-  <meta name="theme-color" content="#D4AF37">
+  <meta name="theme-color" content="#D4AF37" />
   <meta name="description" content="Interaktivní mapa Reklamas.cz – kde jezdíme, typy zásahu, města, orientační ceny a zóny reklamních tras." />
 
-  <!-- FAVICON & PWA -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png">
-  <meta name="theme-color" content="#0033cc">
-  <link rel="manifest" href="/site.webmanifest">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <style>
-    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
-    .hand{font-family:"Caveat",cursive;}
-    .glass{backdrop-filter: blur(14px); background: rgba(255,255,255,.72);}
-    .float-card{box-shadow:0 24px 60px rgba(0,0,0,.16);}
-    #uh-map{min-height:560px;}
-    .leaflet-container{font-family:"Montserrat",system-ui,sans-serif;}
-    .leaflet-popup-content-wrapper{border-radius:18px;}
-    .custom-pin{width:18px;height:18px;border-radius:999px;border:4px solid #fff;box-shadow:0 10px 24px rgba(0,0,0,.18);}
-    .pin-pink{background:#ec4899;}
-    .pin-black{background:#111827;border-color:#facc15;}
-    .map-overlay{pointer-events:none; z-index:2000 !important; position:absolute;}
-    .map-overlay > *{pointer-events:auto;}
-    .pulse-point{animation:pulse 2.4s infinite;}
-    @keyframes pulse{
-      0%,100%{transform:scale(1); box-shadow:0 0 0 0 rgba(236,72,153,.32)}
-      50%{transform:scale(1.08); box-shadow:0 0 0 12px rgba(236,72,153,0)}
-    }
+    html,body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji"}
+    .hand{font-family:"Caveat",cursive}
+    .glass{backdrop-filter:blur(14px);background:rgba(255,255,255,.72)}
+    .float-card{box-shadow:0 24px 60px rgba(0,0,0,.16)}
+    .sidebar-card{border-radius:28px;border:1px solid rgba(17,24,39,.10);background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,248,220,.72));box-shadow:0 24px 60px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.8)}
+    .filter-block{display:flex;flex-direction:column;gap:8px}
+    .filter-label,.map-select-label{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:rgba(17,24,39,.62)}
+    .filter-help{font-size:12px;color:rgba(17,24,39,.56);line-height:1.4}
+    .filter-divider{height:1px;background:linear-gradient(90deg,rgba(17,24,39,.08),rgba(17,24,39,.03));margin:2px 0}
+    .price-box{border-radius:24px;background:linear-gradient(180deg,rgba(255,248,220,.96),rgba(255,255,255,.86));border:1px solid rgba(17,24,39,.10);padding:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 12px 24px rgba(17,24,39,.08)}
+
+    .dropdown{position:relative}
+    .dropdown-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:18px;border:1px solid rgba(17,24,39,.12);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(248,250,252,.96));padding:12px 14px;font-size:15px;font-weight:700;color:#111827;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 6px 18px rgba(17,24,39,.08);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background .18s ease}
+    .dropdown-trigger:hover{border-color:rgba(236,72,153,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 8px 20px rgba(17,24,39,.10)}
+    .dropdown-trigger:focus-visible{outline:none;border-color:rgba(236,72,153,.7);box-shadow:0 0 0 4px rgba(236,72,153,.14),inset 0 1px 0 rgba(255,255,255,.95),0 10px 24px rgba(17,24,39,.10)}
+    .dropdown-caret{width:18px;height:18px;flex:0 0 18px;opacity:.6;transition:transform .18s ease,opacity .18s ease}
+    .dropdown.open .dropdown-caret{transform:rotate(180deg);opacity:.9}
+    .dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:1200;border-radius:20px;border:1px solid rgba(17,24,39,.10);background:rgba(255,255,255,.98);box-shadow:0 22px 50px rgba(17,24,39,.18),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(12px);padding:8px;display:none;max-height:320px;overflow:auto}
+    .dropdown.open .dropdown-menu{display:block;animation:dropdownIn .16s ease-out}
+    .dropdown-option{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border:0;background:transparent;border-radius:14px;padding:11px 12px;text-align:left;font-size:14px;font-weight:600;color:#111827;transition:background .16s ease,color .16s ease}
+    .dropdown-option:hover{background:#fff3c4}
+    .dropdown-option.is-active{background:#facc15;color:#111827}
+    .dropdown-option-badge{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:#111827;color:#facc15}
+    .dropdown-option-sub{font-size:11px;font-weight:600;color:rgba(17,24,39,.52);margin-top:2px}
+
+    .campaign-btn{border-radius:18px;border:1px solid rgba(17,24,39,.10);background:rgba(255,255,255,.88);padding:12px 14px;font-size:14px;font-weight:700;line-height:1.25;text-align:left;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}
+    .campaign-btn:hover{transform:translateY(-1px);border-color:rgba(236,72,153,.24);box-shadow:0 10px 20px rgba(17,24,39,.08)}
+    .campaign-btn-active{background:#111827;color:#facc15;border-color:#111827;box-shadow:0 14px 24px rgba(17,24,39,.18)}
+    .campaign-btn-sub{display:block;margin-top:4px;font-size:11px;font-weight:600;opacity:.62}
+
+    .top-type-btn{padding:.45rem .8rem;border-radius:.7rem;font-size:.95rem;font-weight:700;line-height:1;border:1px solid transparent;transition:background .16s ease,color .16s ease,border-color .16s ease,transform .16s ease}
+    .top-type-btn:hover{transform:translateY(-1px)}
+    .top-type-btn-active{background:#111827;color:#facc15;border-color:#111827}
+
+    .intensity-shell{border-radius:22px;border:1px solid rgba(17,24,39,.10);background:rgba(255,255,255,.72);padding:14px 14px 12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .intensity-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}
+    .intensity-value{font-weight:800;color:#111827}
+    .intensity-side{color:rgba(17,24,39,.54)}
+
+    #uh-map{min-height:560px}
+    .leaflet-container{font-family:"Montserrat",system-ui,sans-serif}
+    .leaflet-popup-content-wrapper{border-radius:18px}
+    .leaflet-pane,.leaflet-top,.leaflet-bottom,.leaflet-control{z-index:400!important}
+    .custom-pin{width:18px;height:18px;border-radius:999px;border:4px solid #fff;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+    .pin-pink{background:#ec4899}
+    .pin-black{background:#111827;border-color:#facc15}
+    .map-overlay{pointer-events:none;z-index:800!important;position:absolute}
+    .map-overlay>*{pointer-events:auto}
+    .pulse-point{animation:pulse 2.4s infinite}
+
+    @keyframes dropdownIn{from{opacity:0;transform:translateY(-6px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(236,72,153,.32)}50%{transform:scale(1.08);box-shadow:0 0 0 12px rgba(236,72,153,0)}}
   </style>
 </head>
 <body class="min-h-screen bg-yellow-400 text-black">
-
-  <header class="sticky top-0 z-50 border-b border-black/10 bg-yellow-400/95 backdrop-blur">
+  <header class="sticky top-0 z-[4000] border-b border-black/10 bg-yellow-400/95 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3" title="Zpět na Reklamas.cz">
         <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
@@ -73,46 +105,59 @@
   <main>
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
       <div class="grid lg:grid-cols-[320px,1fr] gap-6 items-start">
-
-        <aside class="glass float-card rounded-3xl border border-black/10 p-5 lg:sticky lg:top-24">
+        <aside class="sidebar-card p-5 lg:sticky lg:top-24">
           <div class="flex items-center justify-between gap-3">
-            <h2 class="text-2xl font-extrabold">Filtr mapy</h2>
+            <div>
+              <h2 class="text-2xl font-extrabold">Filtr mapy</h2>
+              <div class="mt-1 text-sm text-black/60">Vyber oblast, typ kampaně a sílu zásahu.</div>
+            </div>
             <span class="px-2 py-1 rounded-full bg-black text-yellow-300 text-xs font-bold">LIVE DEMO</span>
           </div>
 
           <div class="mt-5 space-y-4">
-            <div>
-              <label class="text-sm font-semibold">Město / oblast</label>
-              <select id="citySelect" class="mt-2 w-full rounded-2xl border border-black/15 bg-white px-4 py-3">
-                <option>Uherské Hradiště</option>
-                <option>Zlín</option>
-                <option>Staré Město</option>
-                <option>Kunovice</option>
-                <option>Brno</option>
-              </select>
+            <div class="filter-block">
+              <label class="filter-label">Město / oblast</label>
+              <div class="dropdown" id="sidebarCityDropdown">
+                <button type="button" id="sidebarCityTrigger" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="sidebarCityLabel">Uherské Hradiště</span>
+                  <svg class="dropdown-caret" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="dropdown-menu" id="sidebarCityMenu" role="listbox" aria-labelledby="sidebarCityTrigger">
+                  <button type="button" class="dropdown-option sidebar-dropdown-option is-active" data-city="Uherské Hradiště" role="option" aria-selected="true"><span><span>Uherské Hradiště</span><div class="dropdown-option-sub">centrum + retail + nádraží</div></span><span class="dropdown-option-badge">UH</span></button>
+                  <button type="button" class="dropdown-option sidebar-dropdown-option" data-city="Zlín" role="option" aria-selected="false"><span><span>Zlín</span><div class="dropdown-option-sub">krajské centrum a silné tahy</div></span><span class="dropdown-option-badge">ZL</span></button>
+                  <button type="button" class="dropdown-option sidebar-dropdown-option" data-city="Staré Město" role="option" aria-selected="false"><span><span>Staré Město</span><div class="dropdown-option-sub">lokální flow a propojení s UH</div></span><span class="dropdown-option-badge">SM</span></button>
+                  <button type="button" class="dropdown-option sidebar-dropdown-option" data-city="Kunovice" role="option" aria-selected="false"><span><span>Kunovice</span><div class="dropdown-option-sub">průmysl + město</div></span><span class="dropdown-option-badge">KU</span></button>
+                  <button type="button" class="dropdown-option sidebar-dropdown-option" data-city="Brno" role="option" aria-selected="false"><span><span>Brno</span><div class="dropdown-option-sub">velké město a vyšší zásah</div></span><span class="dropdown-option-badge">BR</span></button>
+                </div>
+              </div>
+              <div class="filter-help">Stejný výběr jako v mapě, jen ve výraznější verzi pro hlavní filtr.</div>
             </div>
 
-            <div>
-              <label class="text-sm font-semibold">Typ kampaně</label>
-              <div class="mt-2 grid grid-cols-2 gap-2 text-sm">
-                <button type="button" data-type="mobil" class="campaign-btn rounded-2xl bg-black text-yellow-300 px-3 py-3 font-semibold">Mobilní reklama</button>
-                <button type="button" data-type="auto" class="campaign-btn rounded-2xl bg-white border border-black/10 px-3 py-3">Auto billboard</button>
-                <button type="button" data-type="event" class="campaign-btn rounded-2xl bg-white border border-black/10 px-3 py-3">Event</button>
-                <button type="button" data-type="maskot" class="campaign-btn rounded-2xl bg-white border border-black/10 px-3 py-3">Maskot</button>
+            <div class="filter-divider"></div>
+
+            <div class="filter-block">
+              <label class="filter-label">Typ kampaně</label>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <button type="button" data-type="mobil" class="campaign-btn campaign-btn-active"><span>Mobilní reklama</span><span class="campaign-btn-sub">pěší a městský zásah</span></button>
+                <button type="button" data-type="auto" class="campaign-btn"><span>Auto billboard</span><span class="campaign-btn-sub">silnice a delší flow</span></button>
+                <button type="button" data-type="event" class="campaign-btn"><span>Event</span><span class="campaign-btn-sub">akce, promo a wow efekt</span></button>
+                <button type="button" data-type="maskot" class="campaign-btn"><span>Maskot</span><span class="campaign-btn-sub">výrazná kontaktní forma</span></button>
               </div>
             </div>
 
-            <div>
-              <label class="text-sm font-semibold">Intenzita zásahu</label>
-              <div class="mt-2 space-y-2 text-sm">
-                <div class="flex items-center justify-between"><span>Lehká</span><span id="intensityLabel" class="text-black/50">3 hod / standard</span></div>
-                <input id="intensityRange" type="range" min="1" max="5" value="3" class="w-full" />
-                <div class="flex items-center justify-between"><span>Silná</span><span class="text-black/50">vícedenní / top flow</span></div>
+            <div class="filter-divider"></div>
+
+            <div class="filter-block">
+              <label class="filter-label">Intenzita zásahu</label>
+              <div class="intensity-shell">
+                <div class="intensity-meta"><span class="intensity-side">Lehká</span><span id="intensityLabel" class="intensity-value">3 hod / standard</span></div>
+                <input id="intensityRange" type="range" min="1" max="5" value="3" class="mt-3 w-full" />
+                <div class="mt-2 flex items-center justify-between text-xs"><span class="intensity-side">rychlý průchod</span><span class="intensity-side">vícedenní / top flow</span></div>
               </div>
             </div>
 
-            <div class="rounded-2xl bg-yellow-50 border border-black/10 p-4">
-              <div class="text-xs text-black/60">Orientačně od</div>
+            <div class="price-box">
+              <div class="text-xs text-black/60 uppercase tracking-[.08em] font-bold">Orientačně od</div>
               <div id="priceValue" class="mt-1 text-3xl font-extrabold">890 Kč</div>
               <div id="priceHint" class="mt-1 text-sm text-black/70">pro centrum + viditelnou trasu</div>
             </div>
@@ -126,37 +171,47 @@
             <div class="relative">
               <div id="uh-map" class="w-full"></div>
 
-              <div class="map-overlay absolute right-4 top-4 glass rounded-2xl border border-black/10 p-4 w-[220px] hidden md:block">
-                <div class="text-sm font-bold">Legenda mapy</div>
-                <div class="mt-3 space-y-2 text-sm">
-                  <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-pink-600 inline-block"></span> vysoká pozornost</div>
-                  <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-black border border-yellow-300 inline-block"></span> prémiová zóna</div>
-                  <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-yellow-300 border border-black inline-block"></span> promo / event zóna</div>
-                </div>
+              <div id="topTypeSwitch" class="map-overlay absolute top-3 left-1/2 -translate-x-1/2 glass rounded-xl border border-black/10 px-2 py-1 flex gap-2 shadow">
+                <button type="button" data-type="mobil" class="top-type-btn top-type-btn-active">🚶</button>
+                <button type="button" data-type="auto" class="top-type-btn">🚗</button>
+                <button type="button" data-type="maskot" class="top-type-btn">🚴</button>
               </div>
 
-              <div id="overlayCard" class="map-overlay absolute left-4 bottom-4 right-4 md:right-auto md:w-[380px] glass rounded-3xl border border-black/10 p-5">
+              <div id="legendBox" class="map-overlay absolute right-3 top-3 glass rounded-xl border border-black/10 px-3 py-2 flex flex-col gap-2 text-xs shadow hidden md:flex">
+                <button type="button" data-legend="vysoka" class="legend-item flex items-center gap-2 cursor-pointer hover:opacity-90 text-left"><span class="w-2.5 h-2.5 rounded-full bg-pink-600 inline-block"></span><span class="text-black/70">silná pozornost (centrum)</span></button>
+                <button type="button" data-legend="flow" class="legend-item flex items-center gap-2 cursor-pointer hover:opacity-90 text-left"><span class="w-2.5 h-2.5 rounded-full bg-black border border-yellow-300 inline-block"></span><span class="text-black/70">prémiový tah (flow)</span></button>
+                <button type="button" data-legend="event" class="legend-item flex items-center gap-2 cursor-pointer hover:opacity-90 text-left"><span class="w-2.5 h-2.5 rounded-full bg-yellow-300 border border-black inline-block"></span><span class="text-black/70">event / promo zóna</span></button>
+              </div>
+
+              <div id="overlayCard" class="map-overlay absolute left-3 top-3 glass rounded-xl border border-black/10 px-3 py-2 flex flex-col gap-2 shadow w-[280px] max-w-[calc(100%-1.5rem)]">
                 <div class="flex items-center justify-between gap-3">
                   <div>
-                    <div class="text-xs text-black/55">Výchozí oblast</div>
-                    <div id="overlayTitle" class="text-2xl font-extrabold">Uherské Hradiště</div>
+                    <div class="text-xs text-black/50">Oblast</div>
+                    <div id="overlayTitle" class="font-extrabold">Uherské Hradiště</div>
                   </div>
-                  <div id="overlayBadge" class="px-3 py-1 rounded-full bg-pink-600 text-white text-xs font-bold">REÁLNÁ MAPA</div>
+                  <div id="overlayBadge" class="px-2 py-1 rounded-full bg-pink-600 text-white text-xs font-bold">REÁLNÁ MAPA</div>
                 </div>
-                <div id="overlayText" class="mt-2 text-sm text-black/70">Klikni na body v mapě. Body jsou připravené jako první ostrá verze pro centrum, nádraží, stadion a retail zónu.</div>
-                <div class="mt-3 grid grid-cols-3 gap-3 text-sm">
-                  <div class="rounded-2xl bg-white/80 p-3 border border-black/10">
-                    <div class="text-black/50 text-xs">Město</div>
-                    <div id="overlayCity" class="font-extrabold">UH</div>
+
+                <div>
+                  <div class="map-select-label">Rychlá změna oblasti</div>
+                  <div class="dropdown" id="mapCityDropdown">
+                    <button type="button" id="mapCityTrigger" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span id="mapCityLabel">Uherské Hradiště</span>
+                      <svg class="dropdown-caret" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="dropdown-menu" id="mapCityMenu" role="listbox" aria-labelledby="mapCityTrigger">
+                      <button type="button" class="dropdown-option map-dropdown-option is-active" data-city="Uherské Hradiště" role="option" aria-selected="true"><span><span>Uherské Hradiště</span><div class="dropdown-option-sub">centrum + retail + nádraží</div></span><span class="dropdown-option-badge">UH</span></button>
+                      <button type="button" class="dropdown-option map-dropdown-option" data-city="Zlín" role="option" aria-selected="false"><span><span>Zlín</span><div class="dropdown-option-sub">krajské centrum a silné tahy</div></span><span class="dropdown-option-badge">ZL</span></button>
+                      <button type="button" class="dropdown-option map-dropdown-option" data-city="Staré Město" role="option" aria-selected="false"><span><span>Staré Město</span><div class="dropdown-option-sub">lokální flow a propojení s UH</div></span><span class="dropdown-option-badge">SM</span></button>
+                      <button type="button" class="dropdown-option map-dropdown-option" data-city="Kunovice" role="option" aria-selected="false"><span><span>Kunovice</span><div class="dropdown-option-sub">průmysl + město</div></span><span class="dropdown-option-badge">KU</span></button>
+                      <button type="button" class="dropdown-option map-dropdown-option" data-city="Brno" role="option" aria-selected="false"><span><span>Brno</span><div class="dropdown-option-sub">velké město a vyšší zásah</div></span><span class="dropdown-option-badge">BR</span></button>
+                    </div>
                   </div>
-                  <div class="rounded-2xl bg-white/80 p-3 border border-black/10">
-                    <div class="text-black/50 text-xs">Typ</div>
-                    <div id="overlayType" class="font-extrabold">mobilní reklama</div>
-                  </div>
-                  <div class="rounded-2xl bg-white/80 p-3 border border-black/10">
-                    <div class="text-black/50 text-xs">Cena od</div>
-                    <div id="overlayPrice" class="font-extrabold">890 Kč</div>
-                  </div>
+                </div>
+
+                <div class="hidden md:flex items-center gap-4 text-sm">
+                  <div><span class="text-black/50">Typ:</span> <span id="overlayType" class="font-semibold">mobilní reklama</span></div>
+                  <div><span class="text-black/50">Cena:</span> <span id="overlayPrice" class="font-extrabold">890 Kč</span></div>
                 </div>
               </div>
             </div>
@@ -191,270 +246,322 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    const cityViews = {
-      "Uherské Hradiště": {
-        coords:[49.0698,17.4597], zoom:14, short:'UH', badge:'REÁLNÁ MAPA',
-        overlay:'Klikni na body v mapě. Body jsou připravené jako první ostrá verze pro centrum, nádraží, stadion a retail zónu.',
-        zones:[
-          {name:'Parkoviště Tesco', coords:[49.0609706, 17.4678219], type:'vysoká pozornost', priceBase:890, text:'Centrum města, pěší tah, ideální pro mobilní reklamu a fotodokumentaci.', cls:'pin-pink', cardTag:'TOP'},
-          {name:'Nádražní oblast', coords:[49.0686,17.4666], type:'prémiová zóna', priceBase:690, text:'Silný průchod lidí a dopravy. Dobré pro rychlou frekvenci zásahu.', cls:'pin-black', cardTag:'FLOW'},
-          {name:'Stadion / sportovní zóna', coords:[49.0725,17.4544], type:'promo / event', priceBase:1200, text:'Vhodné pro event, maskota, promo tým a QR měření.', cls:'pin-pink', cardTag:'EVENT'},
-          {name:'Retail zóna východ', coords:[49.0749,17.4717], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'}
-        ],
-        route:[[49.05025924641249, 17.46642916836106],
-               [49.06812366755747, 17.466311030371198],
-               [49.06936079550338, 17.47337941005421],
-               
-               [49.068140385764494, 17.46636206569524],
-               
-               [49.069611560915234, 17.466566206622044],
-               
-               [49.070380566952885, 17.465902748609924],
-               
-               [49.07049758856732, 17.462202694311564],
-               
-               [49.07185167577249, 17.45939575656797],
-               
-               [49.07265408040484, 17.458936439482663],
-               
-               [49.07258721385406, 17.45643571293298],
-               
-               [49.070765065515126, 17.45156184830548],
-               
-               [49.06991247774571, 17.45475155028683],
-               
-               [49.06670260433219, 17.458170910810832],
-               
-               [49.06633479309529, 17.459319203524117],
-               
-               [49.06539853402492, 17.459650932530177],
-               
-               [49.06499727473742, 17.456946065249994],
-               
-               [49.06481336314779, 17.45477706790268],
-               
-               [49.067271034525, 17.447249371226693],
-               
-               [49.06768899373071, 17.445871419768867],
-               
-               [49.06730447136989, 17.443778975269105],
-               
-               [49.06549884831773, 17.44365138718985],
-               
-               [49.065950260231936, 17.45115356624998],
-               
-               [49.0675218104612, 17.455236384786108],
-               
-               [49.06501399391632, 17.45692054743226],
-               
-               [49.06586666571494, 17.466362065482784],
-    
-               [49.050105014321645, 17.46626339005926]]
-               
-      },
-      "Zlín": {
-        coords:[49.2244,17.6628], zoom:13, short:'ZL', badge:'KRAJSKÁ ZÓNA',
-        overlay:'Zlín je silný na centrum, obchodní tahy a eventy. Vhodné pro auto billboard i mobilní zásah.',
-        zones:[
-          {name:'Náměstí Míru', coords:[49.2247,17.6663], type:'centrum', priceBase:990, text:'Pěší tah a městský pohyb. Silný brand recall.', cls:'pin-pink', cardTag:'TOP'},
-          {name:'Třída T. Bati', coords:[49.2222,17.6624], type:'dopravní tah', priceBase:790, text:'Dlouhá viditelnost pro auto billboard.', cls:'pin-black', cardTag:'FLOW'},
-          {name:'Sportovní hala / event', coords:[49.2277,17.6595], type:'event', priceBase:1350, text:'Vhodné pro promo, maskota a QR akci.', cls:'pin-pink', cardTag:'EVENT'}
-        ],
-        route:[[49.2222,17.6624],[49.2247,17.6663],[49.2277,17.6595]]
-      },
-      "Staré Město": {
-        coords:[49.0752,17.4335], zoom:14, short:'SM', badge:'MÍSTNÍ FLOW',
-        overlay:'Staré Město funguje pro lokální zásah, retail a propojení s Uherským Hradištěm.',
-        zones:[
-          {name:'Centrum Staré Město', coords:[49.0752,17.4335], type:'centrum', priceBase:590, text:'Lokální zásah s dobrou frekvencí.', cls:'pin-pink', cardTag:'LOKAL'},
-          {name:'Retail tah', coords:[49.0774,17.4398], type:'retail', priceBase:690, text:'Silné pro obchod a služby.', cls:'pin-black', cardTag:'FLOW'},
-          {name:'Napojení na UH', coords:[49.0729,17.4432], type:'trasa', priceBase:790, text:'Dobré pro kombinovanou trasu SM + UH.', cls:'pin-pink', cardTag:'TRASA'}
-        ],
-        route:[[49.0774,17.4398],[49.0752,17.4335],[49.0729,17.4432]]
-      },
-      "Kunovice": {
-        coords:[49.0448,17.4701], zoom:14, short:'KU', badge:'PRŮMYSL + MĚSTO',
-        overlay:'Kunovice mají mix průmyslu, lokálního centra a dopravních tahů.',
-        zones:[
-          {name:'Centrum Kunovice', coords:[49.0448,17.4701], type:'centrum', priceBase:590, text:'Lokální centrum se stabilním pohybem.', cls:'pin-pink', cardTag:'LOKAL'},
-          {name:'Průmyslová zóna', coords:[49.0418,17.4639], type:'B2B zásah', priceBase:890, text:'Vhodné pro firmy, nábor a průmyslové služby.', cls:'pin-black', cardTag:'B2B'},
-          {name:'Tah na UH', coords:[49.0509,17.4768], type:'dopravní tah', priceBase:690, text:'Dobré pro frekvenční průjezd.', cls:'pin-pink', cardTag:'FLOW'}
-        ],
-        route:[[49.0418,17.4639],[49.0448,17.4701],[49.0509,17.4768]]
-      },
-      "Brno": {
-        coords:[49.1951,16.6068], zoom:12, short:'BR', badge:'VELKÉ MĚSTO',
-        overlay:'Brno je pro větší zásah, delší trasu a vyšší rozpočet. Tady už jde o opravdu viditelný městský provoz.',
-        zones:[
-          {name:'Česká / centrum', coords:[49.1969,16.6089], type:'centrum', priceBase:1490, text:'Top pěší tah a vysoká pozornost.', cls:'pin-pink', cardTag:'TOP'},
-          {name:'Hlavní nádraží', coords:[49.1910,16.6113], type:'dopravní uzel', priceBase:1290, text:'Silný průchod i přestupní flow.', cls:'pin-black', cardTag:'FLOW'},
-          {name:'Výstaviště / event', coords:[49.1874,16.5825], type:'event', priceBase:1890, text:'Vhodné pro promo, akce a wow efekt.', cls:'pin-pink', cardTag:'EVENT'}
-        ],
-        route:[[49.1910,16.6113],[49.1969,16.6089],[49.1874,16.5825]]
+      const cityViews = {
+        'Uherské Hradiště': {
+          coords:[49.0698,17.4597], zoom:14, short:'UH', badge:'REÁLNÁ MAPA',
+          zones:[
+            {name:'Masarykovo náměstí', coords:[49.0685014,17.4606206], type:'vysoká pozornost', priceBase:890, text:'Centrum města, pěší tah, ideální pro mobilní reklamu a fotodokumentaci.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Uherské Hradiště, aut. nádr.', coords:[49.0701239,17.4651058], type:'vysoká pozornost', priceBase:890, text:'Centrum města, pěší tah, ideální pro mobilní reklamu a fotodokumentaci.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Mariánské náměstí', coords:[49.0700406,17.4588128], type:'vysoká pozornost', priceBase:890, text:'Centrum města, pěší tah, ideální pro mobilní reklamu a fotodokumentaci.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Městský fotbalový stadion', coords:[49.0655039,17.4714547], type:'vysoká pozornost', priceBase:890, text:'Silná sportovní a event lokalita s výbornou pozorností.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Parkoviště zimní stadion', coords:[49.0691467,17.4730617], type:'vysoká pozornost', priceBase:890, text:'Silná sportovní a event lokalita s výbornou pozorností.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Nádražní oblast', coords:[49.0686,17.4666], type:'prémiová zóna', priceBase:690, text:'Silný průchod lidí a dopravy. Dobré pro rychlou frekvenci zásahu.', cls:'pin-black', cardTag:'FLOW'},
+            {name:'Sportovní zóna', coords:[49.06654,17.4730286], type:'promo / event', priceBase:1200, text:'Vhodné pro event, maskota, promo tým a QR měření.', cls:'pin-pink', cardTag:'EVENT'},
+            {name:'Parkoviště Kaufland', coords:[49.0701819,17.47383], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'},
+            {name:'Parkoviště Tesco', coords:[49.0609792,17.4678153], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'},
+            {name:'Parkoviště Albert hypermarket', coords:[49.0505444,17.4649872], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'},
+            {name:'Parkoviště Nemocnice', coords:[49.064465,17.4526825], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'},
+            {name:'Sady - rozc.', coords:[49.0569258,17.4672661], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'},
+            {name:'Obchodní zóna', coords:[49.0780811,17.4540761], type:'automobilový tah', priceBase:790, text:'Silná automobilová viditelnost. Hodí se pro auto billboard a delší trasu.', cls:'pin-black', cardTag:'AUTO'}
+          ],
+          route:[[49.05025924641249,17.46642916836106],[49.06812366755747,17.466311030371198],[49.06936079550338,17.47337941005421],[49.068140385764494,17.46636206569524],[49.069611560915234,17.466566206622044],[49.070380566952885,17.465902748609924],[49.07049758856732,17.462202694311564],[49.07185167577249,17.45939575656797],[49.07265408040484,17.458936439482663],[49.07258721385406,17.45643571293298],[49.070765065515126,17.45156184830548],[49.06991247774571,17.45475155028683],[49.06670260433219,17.458170910810832],[49.06633479309529,17.459319203524117],[49.06539853402492,17.459650932530177],[49.06499727473742,17.456946065249994],[49.06481336314779,17.45477706790268],[49.067271034525,17.447249371226693],[49.06768899373071,17.445871419768867],[49.06730447136989,17.443778975269105],[49.06549884831773,17.44365138718985],[49.065950260231936,17.45115356624998],[49.0675218104612,17.455236384786108],[49.06501399391632,17.45692054743226],[49.06586666571494,17.466362065482784],[49.050105014321645,17.46626339005926]]
+        },
+        'Zlín': {
+          coords:[49.2244,17.6628], zoom:13, short:'ZL', badge:'KRAJSKÁ ZÓNA',
+          zones:[
+            {name:'Náměstí Míru', coords:[49.2247,17.6663], type:'centrum', priceBase:990, text:'Pěší tah a městský pohyb. Silný brand recall.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Třída T. Bati', coords:[49.2222,17.6624], type:'dopravní tah', priceBase:790, text:'Dlouhá viditelnost pro auto billboard.', cls:'pin-black', cardTag:'FLOW'},
+            {name:'Sportovní hala / event', coords:[49.2277,17.6595], type:'event', priceBase:1350, text:'Vhodné pro promo, maskota a QR akci.', cls:'pin-pink', cardTag:'EVENT'}
+          ],
+          route:[[49.2222,17.6624],[49.2247,17.6663],[49.2277,17.6595]]
+        },
+        'Staré Město': {
+          coords:[49.0752,17.4335], zoom:14, short:'SM', badge:'MÍSTNÍ FLOW',
+          zones:[
+            {name:'Centrum Staré Město', coords:[49.0752,17.4335], type:'centrum', priceBase:590, text:'Lokální zásah s dobrou frekvencí.', cls:'pin-pink', cardTag:'LOKAL'},
+            {name:'Retail tah', coords:[49.0774,17.4398], type:'retail', priceBase:690, text:'Silné pro obchod a služby.', cls:'pin-black', cardTag:'FLOW'},
+            {name:'Napojení na UH', coords:[49.0729,17.4432], type:'trasa', priceBase:790, text:'Dobré pro kombinovanou trasu SM + UH.', cls:'pin-pink', cardTag:'TRASA'}
+          ],
+          route:[[49.0774,17.4398],[49.0752,17.4335],[49.0729,17.4432]]
+        },
+        'Kunovice': {
+          coords:[49.0448,17.4701], zoom:14, short:'KU', badge:'PRŮMYSL + MĚSTO',
+          zones:[
+            {name:'Centrum Kunovice', coords:[49.0448,17.4701], type:'centrum', priceBase:590, text:'Lokální centrum se stabilním pohybem.', cls:'pin-pink', cardTag:'LOKAL'},
+            {name:'Průmyslová zóna', coords:[49.0467092,17.4349894], type:'B2B zásah', priceBase:890, text:'Vhodné pro firmy, nábor a průmyslové služby.', cls:'pin-black', cardTag:'B2B'},
+            {name:'Tah na UH', coords:[49.0509,17.4768], type:'dopravní tah', priceBase:690, text:'Dobré pro frekvenční průjezd.', cls:'pin-pink', cardTag:'FLOW'}
+          ],
+          route:[[49.0418,17.4639],[49.0448,17.4701],[49.0509,17.4768]]
+        },
+        'Brno': {
+          coords:[49.1951,16.6068], zoom:12, short:'BR', badge:'VELKÉ MĚSTO',
+          zones:[
+            {name:'Česká / centrum', coords:[49.1969,16.6089], type:'centrum', priceBase:1490, text:'Top pěší tah a vysoká pozornost.', cls:'pin-pink', cardTag:'TOP'},
+            {name:'Hlavní nádraží', coords:[49.191,16.6113], type:'dopravní uzel', priceBase:1290, text:'Silný průchod i přestupní flow.', cls:'pin-black', cardTag:'FLOW'},
+            {name:'Výstaviště / event', coords:[49.1874,16.5825], type:'event', priceBase:1890, text:'Vhodné pro promo, akce a wow efekt.', cls:'pin-pink', cardTag:'EVENT'}
+          ],
+          route:[[49.191,16.6113],[49.1969,16.6089],[49.1874,16.5825]]
+        }
+      };
+
+      let currentCity = 'Uherské Hradiště';
+      let currentType = 'mobil';
+      let currentIntensity = 3;
+      let markers = [];
+      let currentRoute = null;
+      let mover = null;
+      let moverTimer = null;
+
+      const mapEl = document.getElementById('uh-map');
+      const overlayTitle = document.getElementById('overlayTitle');
+      const overlayBadge = document.getElementById('overlayBadge');
+      const overlayType = document.getElementById('overlayType');
+      const overlayPrice = document.getElementById('overlayPrice');
+      const zoneCards = document.getElementById('zoneCards');
+      const priceValue = document.getElementById('priceValue');
+      const priceHint = document.getElementById('priceHint');
+      const intensityLabel = document.getElementById('intensityLabel');
+      const intensityRange = document.getElementById('intensityRange');
+      const mapCityDropdown = document.getElementById('mapCityDropdown');
+      const mapCityTrigger = document.getElementById('mapCityTrigger');
+      const mapCityLabel = document.getElementById('mapCityLabel');
+      const mapCityOptions = Array.from(document.querySelectorAll('#mapCityDropdown .dropdown-option'));
+      const sidebarCityDropdown = document.getElementById('sidebarCityDropdown');
+      const sidebarCityTrigger = document.getElementById('sidebarCityTrigger');
+      const sidebarCityLabel = document.getElementById('sidebarCityLabel');
+      const sidebarCityOptions = Array.from(document.querySelectorAll('#sidebarCityDropdown .dropdown-option'));
+      const campaignButtons = Array.from(document.querySelectorAll('.campaign-btn'));
+      const topTypeButtons = Array.from(document.querySelectorAll('.top-type-btn'));
+      const legendButtons = Array.from(document.querySelectorAll('.legend-item'));
+
+      if (!mapEl || !overlayTitle || !overlayBadge || !overlayType || !overlayPrice || !zoneCards || !priceValue || !priceHint || !intensityLabel || !intensityRange || !mapCityDropdown || !mapCityTrigger || !mapCityLabel || !sidebarCityDropdown || !sidebarCityTrigger || !sidebarCityLabel) {
+        console.error('Chybí povinné prvky v DOM.');
+        return;
       }
-    };
 
-    let currentCity = 'Uherské Hradiště';
-    let currentType = 'mobil';
-    let currentIntensity = 3;
-    let markers = [];
-    let currentRoute = null;
-    let mover = null;
-    let moverTimer = null;
+      const map = L.map('uh-map', { zoomControl: true }).setView(cityViews[currentCity].coords, cityViews[currentCity].zoom);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
 
-    const map = L.map('uh-map', { zoomControl: true }).setView(cityViews[currentCity].coords, cityViews[currentCity].zoom);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    const makeIcon = (cls) => L.divIcon({
-      className: '',
-      html: `<div class="custom-pin ${cls} pulse-point"></div>`,
-      iconSize: [18,18],
-      iconAnchor: [9,9],
-      popupAnchor: [0,-8]
-    });
-
-    const moverIcon = L.divIcon({
-      className: '',
-      html: `<div style="width:18px;height:18px;border-radius:999px;background:#facc15;border:3px solid #111;box-shadow:0 8px 18px rgba(0,0,0,.18)"></div>`,
-      iconSize:[18,18],
-      iconAnchor:[9,9]
-    });
-
-    function formatPrice(v){
-      return `od ${Math.round(v).toLocaleString('cs-CZ')} Kč`;
-    }
-
-    function typeLabel(type){
-      return ({mobil:'mobilní reklama', auto:'auto billboard', event:'event promo', maskot:'maskot / promo'})[type] || 'mobilní reklama';
-    }
-
-    function typeMultiplier(type){
-      return ({mobil:1, auto:1.45, event:1.8, maskot:1.35})[type] || 1;
-    }
-
-    function intensityMultiplier(level){
-      return ({1:0.8,2:0.95,3:1,4:1.2,5:1.45})[level] || 1;
-    }
-
-    function intensityText(level){
-      return ({1:'1 hod / lehká',2:'2 hod / menší',3:'3 hod / standard',4:'4–5 hod / silná',5:'celoden / top'})[level] || '3 hod / standard';
-    }
-
-    function clearMap(){
-      markers.forEach(m => map.removeLayer(m));
-      markers = [];
-      if(currentRoute){ map.removeLayer(currentRoute); currentRoute = null; }
-      if(mover){ map.removeLayer(mover); mover = null; }
-      if(moverTimer){ clearInterval(moverTimer); moverTimer = null; }
-    }
-
-    function animateMover(points){
-      if(!points || points.length < 2) return;
-      let index = 0;
-      mover = L.marker(points[0], {icon:moverIcon}).addTo(map);
-      moverTimer = setInterval(()=>{
-        index = (index + 1) % points.length;
-        if(mover){ mover.setLatLng(points[index]); }
-      }, 1200);
-    }
-
-    function updateOverlay(cityObj, zone){
-      document.getElementById('overlayTitle').textContent = zone ? zone.name : currentCity;
-      document.getElementById('overlayBadge').textContent = cityObj.badge;
-      document.getElementById('overlayText').textContent = zone ? zone.text : cityObj.overlay;
-      document.getElementById('overlayCity').textContent = cityObj.short;
-      document.getElementById('overlayType').textContent = typeLabel(currentType);
-      const priceBase = zone ? zone.priceBase : cityObj.zones[0].priceBase;
-      document.getElementById('overlayPrice').textContent = formatPrice(priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity));
-    }
-
-    function renderZoneCards(cityObj){
-      const wrap = document.getElementById('zoneCards');
-      wrap.innerHTML = cityObj.zones.map((z, i) => {
-        const price = formatPrice(z.priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity));
-        const tagBg = i % 2 === 0 ? 'bg-black text-yellow-300' : 'bg-pink-600 text-white';
-        return `
-          <div class="rounded-3xl border border-black/10 bg-white p-6 float-card">
-            <div class="text-xs text-black/55">Zóna ${String.fromCharCode(65+i)}</div>
-            <div class="mt-2 text-xl font-extrabold">${z.name}</div>
-            <p class="mt-2 text-sm text-black/70">${z.text}</p>
-            <div class="mt-4 flex items-center justify-between">
-              <div class="text-sm"><span class="font-bold">${price}</span></div>
-              <span class="px-2 py-1 rounded-full ${tagBg} text-xs font-bold">${z.cardTag}</span>
-            </div>
-          </div>`;
-      }).join('');
-    }
-
-    function renderMap(){
-      const cityObj = cityViews[currentCity];
-      clearMap();
-
-      cityObj.zones.forEach((z) => {
-        const price = formatPrice(z.priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity));
-        const marker = L.marker(z.coords, { icon: makeIcon(z.cls) }).addTo(map).bindPopup(`
-          <div style="min-width:220px">
-            <div style="font-weight:800;font-size:16px;margin-bottom:4px">${z.name}</div>
-            <div style="font-size:12px;opacity:.65;margin-bottom:8px">${z.type}</div>
-            <div style="font-size:13px;line-height:1.45;margin-bottom:10px">${z.text}</div>
-            <div style="display:inline-flex;padding:6px 10px;border-radius:999px;background:#111;color:#facc15;font-weight:700;font-size:12px">${price}</div>
-          </div>
-        `);
-        marker.on('click', ()=> updateOverlay(cityObj, z));
-        markers.push(marker);
+      const makeIcon = (cls) => L.divIcon({
+        className: '',
+        html: `<div class="custom-pin ${cls} pulse-point"></div>`,
+        iconSize: [18,18],
+        iconAnchor: [9,9],
+        popupAnchor: [0,-8]
       });
 
-      currentRoute = L.polyline(cityObj.route, {
-        color: currentType === 'auto' ? '#111827' : '#ec4899',
-        weight: currentType === 'event' ? 7 : 5,
-        opacity: 0.82,
-        lineCap: 'round',
-        dashArray: currentType === 'maskot' ? '8 10' : null
-      }).addTo(map);
+      const moverIcon = L.divIcon({
+        className: '',
+        html: '<div style="width:18px;height:18px;border-radius:999px;background:#facc15;border:3px solid #111;box-shadow:0 8px 18px rgba(0,0,0,.18)"></div>',
+        iconSize:[18,18],
+        iconAnchor:[9,9]
+      });
 
-      map.fitBounds(currentRoute.getBounds(), { padding: [35,35] });
-      animateMover(cityObj.route);
-      updateOverlay(cityObj, cityObj.zones[0]);
-      renderZoneCards(cityObj);
+      function formatPrice(v){ return `od ${Math.round(v).toLocaleString('cs-CZ')} Kč`; }
+      function typeLabel(type){ return ({mobil:'mobilní reklama',auto:'auto billboard',event:'event promo',maskot:'maskot / promo'})[type] || 'mobilní reklama'; }
+      function typeMultiplier(type){ return ({mobil:1,auto:1.45,event:1.8,maskot:1.35})[type] || 1; }
+      function intensityMultiplier(level){ return ({1:0.8,2:0.95,3:1,4:1.2,5:1.45})[level] || 1; }
+      function intensityText(level){ return ({1:'1 hod / lehká',2:'2 hod / menší',3:'3 hod / standard',4:'4–5 hod / silná',5:'celoden / top'})[level] || '3 hod / standard'; }
 
-      const basePrice = cityObj.zones[0].priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity);
-      document.getElementById('priceValue').textContent = Math.round(basePrice).toLocaleString('cs-CZ') + ' Kč';
-      document.getElementById('priceHint').textContent = `${typeLabel(currentType)} • ${currentCity} • ${intensityText(currentIntensity)}`;
-      document.getElementById('intensityLabel').textContent = intensityText(currentIntensity);
-    }
+      function clearMap(){
+        markers.forEach(m => map.removeLayer(m));
+        markers = [];
+        if(currentRoute){ map.removeLayer(currentRoute); currentRoute = null; }
+        if(mover){ map.removeLayer(mover); mover = null; }
+        if(moverTimer){ clearInterval(moverTimer); moverTimer = null; }
+      }
 
-    const citySelect = document.getElementById('citySelect');
-    citySelect.addEventListener('change', (e)=>{
-      currentCity = e.target.value;
-      const v = cityViews[currentCity];
-      map.setView(v.coords, v.zoom, {animate:true});
-      renderMap();
-    });
+      function animateMover(points){
+        if(!points || points.length < 2) return;
+        let index = 0;
+        mover = L.marker(points[0], {icon:moverIcon}).addTo(map);
+        moverTimer = setInterval(() => {
+          index = (index + 1) % points.length;
+          if(mover) mover.setLatLng(points[index]);
+        }, 1200);
+      }
 
-    document.querySelectorAll('.campaign-btn').forEach(btn => {
-      btn.addEventListener('click', ()=>{
-        document.querySelectorAll('.campaign-btn').forEach(b => {
-          b.className = 'campaign-btn rounded-2xl bg-white border border-black/10 px-3 py-3';
+      function updateOverlay(cityObj, zone){
+        overlayTitle.textContent = zone ? zone.name : currentCity;
+        overlayBadge.textContent = cityObj.badge;
+        overlayType.textContent = typeLabel(currentType);
+        const priceBase = zone ? zone.priceBase : cityObj.zones[0].priceBase;
+        overlayPrice.textContent = formatPrice(priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity));
+      }
+
+      function renderZoneCards(cityObj){
+        zoneCards.innerHTML = cityObj.zones.map((z, i) => {
+          const price = formatPrice(z.priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity));
+          const tagBg = i % 2 === 0 ? 'bg-black text-yellow-300' : 'bg-pink-600 text-white';
+          return `
+            <div class="rounded-3xl border border-black/10 bg-white p-6 float-card">
+              <div class="text-xs text-black/55">Zóna ${String.fromCharCode(65 + i)}</div>
+              <div class="mt-2 text-xl font-extrabold">${z.name}</div>
+              <p class="mt-2 text-sm text-black/70">${z.text}</p>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="text-sm"><span class="font-bold">${price}</span></div>
+                <span class="px-2 py-1 rounded-full ${tagBg} text-xs font-bold">${z.cardTag}</span>
+              </div>
+            </div>`;
+        }).join('');
+      }
+
+      function syncCitySelectors(value){
+        mapCityLabel.textContent = value;
+        sidebarCityLabel.textContent = value;
+
+        mapCityOptions.forEach(option => {
+          const active = option.dataset.city === value;
+          option.classList.toggle('is-active', active);
+          option.setAttribute('aria-selected', active ? 'true' : 'false');
         });
-        btn.className = 'campaign-btn rounded-2xl bg-black text-yellow-300 px-3 py-3 font-semibold';
-        currentType = btn.dataset.type;
+
+        sidebarCityOptions.forEach(option => {
+          const active = option.dataset.city === value;
+          option.classList.toggle('is-active', active);
+          option.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      }
+
+      function closeDropdown(dropdown, trigger){
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleDropdown(dropdown, trigger){
+        const isOpen = dropdown.classList.contains('open');
+        closeDropdown(mapCityDropdown, mapCityTrigger);
+        closeDropdown(sidebarCityDropdown, sidebarCityTrigger);
+        if(!isOpen){
+          dropdown.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          setTimeout(() => {
+            dropdown.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 50);
+        }
+      }
+
+      function renderMap(){
+        const cityObj = cityViews[currentCity];
+        clearMap();
+
+        cityObj.zones.forEach((z) => {
+          const price = formatPrice(z.priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity));
+          const marker = L.marker(z.coords, { icon: makeIcon(z.cls) }).addTo(map).bindPopup(`
+            <div style="min-width:220px">
+              <div style="font-weight:800;font-size:16px;margin-bottom:4px">${z.name}</div>
+              <div style="font-size:12px;opacity:.65;margin-bottom:8px">${z.type}</div>
+              <div style="font-size:13px;line-height:1.45;margin-bottom:10px">${z.text}</div>
+              <div style="display:inline-flex;padding:6px 10px;border-radius:999px;background:#111;color:#facc15;font-weight:700;font-size:12px">${price}</div>
+            </div>
+          `);
+          marker.on('click', () => updateOverlay(cityObj, z));
+          markers.push(marker);
+        });
+
+        currentRoute = L.polyline(cityObj.route, {
+          color: currentType === 'auto' ? '#111827' : '#ec4899',
+          weight: currentType === 'event' ? 7 : 5,
+          opacity: 0.82,
+          lineCap: 'round',
+          dashArray: currentType === 'maskot' ? '8 10' : null
+        }).addTo(map);
+
+        map.fitBounds(currentRoute.getBounds(), { padding: [35,35] });
+        animateMover(cityObj.route);
+        updateOverlay(cityObj, null);
+        renderZoneCards(cityObj);
+
+        const basePrice = cityObj.zones[0].priceBase * typeMultiplier(currentType) * intensityMultiplier(currentIntensity);
+        priceValue.textContent = Math.round(basePrice).toLocaleString('cs-CZ') + ' Kč';
+        priceHint.textContent = `${typeLabel(currentType)} • ${currentCity} • ${intensityText(currentIntensity)}`;
+        intensityLabel.textContent = intensityText(currentIntensity);
+      }
+
+      function applyCity(value){
+        if(!cityViews[value]) return;
+        currentCity = value;
+        syncCitySelectors(currentCity);
+        closeDropdown(mapCityDropdown, mapCityTrigger);
+        closeDropdown(sidebarCityDropdown, sidebarCityTrigger);
+        renderMap();
+      }
+
+      function setType(type){
+        currentType = type;
+
+        campaignButtons.forEach(b => {
+          b.classList.toggle('campaign-btn-active', b.dataset.type === type);
+        });
+
+        topTypeButtons.forEach(b => {
+          b.classList.toggle('top-type-btn-active', b.dataset.type === type);
+        });
+
+        renderMap();
+      }
+
+      mapCityTrigger.addEventListener('click', () => toggleDropdown(mapCityDropdown, mapCityTrigger));
+      sidebarCityTrigger.addEventListener('click', () => toggleDropdown(sidebarCityDropdown, sidebarCityTrigger));
+
+      mapCityOptions.forEach(option => option.addEventListener('click', () => applyCity(option.dataset.city)));
+      sidebarCityOptions.forEach(option => option.addEventListener('click', () => applyCity(option.dataset.city)));
+
+      document.addEventListener('click', (e) => {
+        if(!mapCityDropdown.contains(e.target)) closeDropdown(mapCityDropdown, mapCityTrigger);
+        if(!sidebarCityDropdown.contains(e.target)) closeDropdown(sidebarCityDropdown, sidebarCityTrigger);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape'){
+          closeDropdown(mapCityDropdown, mapCityTrigger);
+          closeDropdown(sidebarCityDropdown, sidebarCityTrigger);
+        }
+      });
+
+      legendButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.dataset.legend;
+          const cityObj = cityViews[currentCity];
+          const filtered = cityObj.zones.filter(z => {
+            if(type === 'vysoka') return z.type.includes('vysoká') || z.type.includes('centrum');
+            if(type === 'flow') return z.type.includes('prémiová') || z.type.includes('dopravní') || z.type.includes('automobilový') || z.type.includes('retail') || z.type.includes('uzel');
+            if(type === 'event') return z.type.includes('event') || z.type.includes('promo');
+            return true;
+          });
+          if(!filtered.length) return;
+          const bounds = L.latLngBounds(filtered.map(z => z.coords));
+          map.fitBounds(bounds, { padding:[60,60], animate:true });
+        });
+      });
+
+      campaignButtons.forEach(btn => {
+        btn.addEventListener('click', () => setType(btn.dataset.type));
+      });
+
+      topTypeButtons.forEach(btn => {
+        btn.addEventListener('click', () => setType(btn.dataset.type));
+      });
+
+      intensityRange.addEventListener('input', (e) => {
+        currentIntensity = Number(e.target.value);
         renderMap();
       });
-    });
 
-    const intensityRange = document.getElementById('intensityRange');
-    intensityRange.addEventListener('input', (e)=>{
-      currentIntensity = Number(e.target.value);
-      renderMap();
-    });
+      syncCitySelectors(currentCity);
+      setType(currentType);
 
-    renderMap();
+      console.assert(typeof cityViews === 'object', 'cityViews musí existovat');
+      console.assert(mapCityOptions.length > 0, 'mapový dropdown musí mít možnosti');
+      console.assert(sidebarCityOptions.length > 0, 'hlavní dropdown musí mít možnosti');
+      console.assert(topTypeButtons.length === 3, 'horní přepínač musí mít 3 volby');
+      console.assert(typeof formatPrice(890) === 'string', 'formatPrice musí vrátit text');
+      console.assert(typeof intensityText(3) === 'string', 'intensityText musí vrátit text');
+    });
   </script>
 </body>
 </html>
