@@ -271,23 +271,13 @@ textarea {
           Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.
         </p>
         <div class="mt-8 flex flex-wrap gap-3 items-stretch">
-  <a href="#objednat"
-     data-goto="#objednat"
-     class="w-full sm:w-auto flex-1 min-w-[220px] px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold text-center">
-    Objednat reklamu
-  </a>
-
-  <div class="relative w-full sm:w-auto flex-1 min-w-[220px]">
-    <a href="/potisk-tricek.html"
-       class="w-full h-full px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold relative inline-flex items-center justify-center text-center">
-      Potisk triček
-      <span class="badge-akce absolute -top-3 -right-3 px-3 py-1 rounded-full bg-black text-yellow-300 text-xs font-extrabold shadow-lg border border-yellow-400/60">
-        AKCE
-      </span>
-    </a>
-  </div>
-
-  <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center">
+        <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+            <a href="#objednat" data-goto="#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold hover:translate-y-0.5 transition">Objednat reklamu</a>
+            <a href="/potisk-tricek.html" class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-0.5 transition">
+              <span>Chci potisk triček</span>
+              <span class="badge-akce inline-flex items-center justify-center px-2 py-1 rounded-full bg-black text-yellow-300 text-xs">AKCE</span>
+            </a>
+            <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center">
               <span>Chci vydělávat</span>
               <span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
                 <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span></span>
@@ -295,7 +285,7 @@ textarea {
                 <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span></span>
               </span>
             </a>
-      </div>
+          </div>
         <ul class="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
           <li class="bg-white/70 rounded-xl p-3 border border-black/10">Mobilní billboardy</li>
           <li class="bg-white/70 rounded-xl p-3 border border-black/10">Reklama na eventech</li>
