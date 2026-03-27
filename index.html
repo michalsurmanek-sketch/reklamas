@@ -145,6 +145,20 @@ input,
 textarea {
   caret-color: auto;
 }
+    @keyframes iconPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.icon-pulse i {
+  animation: iconPulse 1.8s ease-in-out infinite;
+}
+
+/* jemné zpoždění mezi ikonami */
+.icon-pulse i:nth-child(1) { animation-delay: 0s; }
+.icon-pulse i:nth-child(2) { animation-delay: 0.2s; }
+.icon-pulse i:nth-child(3) { animation-delay: 0.4s; }
 </style>
 
 
@@ -305,15 +319,24 @@ textarea {
       
 
       <div class="mt-5 flex justify-center">
-        <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center shadow-sm">
-          <span>Chci vydělávat</span>
-          <span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
-            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span></span>
-            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="bike" class="w-4 h-4"></i><span>Cyklista</span></span>
-            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span></span>
-          </span>
-        </a>
-      </div>
+  <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center shadow-sm">
+
+    <span>Chci vydělávat</span>
+
+    <span class="icon-pulse flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+      <span class="inline-flex items-center gap-1 whitespace-nowrap">
+        <i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span>
+      </span>
+      <span class="inline-flex items-center gap-1 whitespace-nowrap">
+        <i data-lucide="bike" class="w-4 h-4"></i><span>Cyklista</span>
+      </span>
+      <span class="inline-flex items-center gap-1 whitespace-nowrap">
+        <i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span>
+      </span>
+    </span>
+
+  </a>
+</div>
     </div>
 
   </div>
