@@ -144,30 +144,6 @@ animation:pulse 1.4s infinite
 input,
 textarea {
   caret-color: auto;
-@keyframes iconPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
-}
-
-.icon-pulse i {
-  display: inline-block;
-  transform-origin: center;
-}
-
-/* animace jen pro tlačítko vydělávat */
-.earn-cta:is(:hover, :focus-visible, :active) .icon-pulse > span:nth-child(1) i {
-  animation: iconPulse 1.2s ease-in-out infinite;
-  animation-delay: 0s;
-}
-
-.earn-cta:is(:hover, :focus-visible, :active) .icon-pulse > span:nth-child(2) i {
-  animation: iconPulse 1.2s ease-in-out infinite;
-  animation-delay: 0.15s;
-}
-
-.earn-cta:is(:hover, :focus-visible, :active) .icon-pulse > span:nth-child(3) i {
-  animation: iconPulse 1.2s ease-in-out infinite;
-  animation-delay: 0.3s;
 }
 </style>
 
@@ -196,10 +172,10 @@ textarea {
       <a href="#cenik" data-goto="#cenik" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Ceník</a>
       <a href="#kontakt" data-goto="#kontakt" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Kontakt</a>
       <a href="/reklamas-live.html" class="flex items-center gap-2 font-semibold text-pink-500">
-      <span class="live-dot"></span>LIVE přenos
-      <a href="/affiliate.html" class="earn-cta inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center shadow-sm">
-    </a>
-  </nav>
+        <span class="live-dot"></span>LIVE přenos
+      </a>
+<a href="/reklamas-ridici-affiliate.html" class="relative whitespace-nowrap transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Chci vydělávat</a>      <a href="#objednat" data-goto="#objednat" class="px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition">Objednat</a>
+    </nav>
 
     <!-- Mobile burger -->
     <button id="burger" aria-label="Menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-black/20">
@@ -321,32 +297,25 @@ textarea {
           <img src="reklamas.png" alt="Maskot Reklamas ve žlutém plášti" class="mx-auto max-h-[280px] w-auto object-contain" />
           <div class="mt-4 font-semibold">Maskot Reklamas</div>
           <div class="text-sm text-black/70">Žlutý plášť, skrytá reklama, showman styl</div>
-          <div class="absolute inset-0 pointer-events-none">
+        </div>
       </div>
-     </div>
-    </div>
 
-      
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute right-3 bottom-3 md:right-4 md:bottom-4 rotate-[-6deg] rounded-2xl bg-black text-yellow-300 px-4 py-2 text-sm shadow-lg">
+          od 490 Kč
+        </div>
+      </div>
 
       <div class="mt-5 flex justify-center">
-  <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center shadow-sm">
-
-    <span>Chci vydělávat</span>
-
-    <span class="icon-pulse flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
-      <span class="inline-flex items-center gap-1 whitespace-nowrap">
-        <i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span>
-      </span>
-      <span class="inline-flex items-center gap-1 whitespace-nowrap">
-        <i data-lucide="bike" class="w-4 h-4"></i><span>Cyklista</span>
-      </span>
-      <span class="inline-flex items-center gap-1 whitespace-nowrap">
-        <i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span>
-      </span>
-    </span>
-
-  </a>
-</div>
+        <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border border-black/15 text-black font-semibold hover:bg-white transition text-center shadow-sm">
+          <span>Chci vydělávat</span>
+          <span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span></span>
+            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="bike" class="w-4 h-4"></i><span>Cyklista</span></span>
+            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span></span>
+          </span>
+        </a>
+      </div>
     </div>
 
   </div>
