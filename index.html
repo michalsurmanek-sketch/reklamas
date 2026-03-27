@@ -144,7 +144,6 @@ animation:pulse 1.4s infinite
 input,
 textarea {
   caret-color: auto;
-}
 @keyframes iconPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.18); }
@@ -155,19 +154,18 @@ textarea {
   transform-origin: center;
 }
 
-a:hover .icon-pulse i {
+.earn-cta:is(:hover, :focus-visible, :active) .icon-pulse > span:nth-child(1) i {
   animation: iconPulse 1.2s ease-in-out infinite;
-}
-
-a:hover .icon-pulse > span:nth-child(1) i {
   animation-delay: 0s;
 }
 
-a:hover .icon-pulse > span:nth-child(2) i {
+.earn-cta:is(:hover, :focus-visible, :active) .icon-pulse > span:nth-child(2) i {
+  animation: iconPulse 1.2s ease-in-out infinite;
   animation-delay: 0.15s;
 }
 
-a:hover .icon-pulse > span:nth-child(3) i {
+.earn-cta:is(:hover, :focus-visible, :active) .icon-pulse > span:nth-child(3) i {
+  animation: iconPulse 1.2s ease-in-out infinite;
   animation-delay: 0.3s;
 }
 </style>
