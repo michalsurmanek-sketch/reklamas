@@ -4,11 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Reklamas.cz • Hrdina vaší reklamy ve městě</title>
-  <meta name="theme-color" content="#D4AF37"> 
-  <!-- Google Font -->
+  <meta name="theme-color" content="#D4AF37" />
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- FAVICON & PWA -->
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
@@ -16,146 +15,142 @@
   <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-  html,body{
-    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
-  }
+    html,body{
+      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+    }
 
-  .hand{font-family:"Caveat",cursive;}
-  .cta-nudge{filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));}
+    .hand{font-family:"Caveat",cursive;}
+    .cta-nudge{filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));}
 
-  @keyframes badgePulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 8px 18px rgba(0,0,0,.18); }
-    50% { transform: scale(1.08); box-shadow: 0 10px 22px rgba(236,72,153,.28); }
-  }
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 18px rgba(0,0,0,.18); }
+      50% { transform: scale(1.08); box-shadow: 0 10px 22px rgba(236,72,153,.28); }
+    }
 
-  .badge-akce{
-    animation: badgePulse 1.8s ease-in-out infinite;
-    transform-origin: center;
-  }
+    .badge-akce{
+      animation: badgePulse 1.8s ease-in-out infinite;
+      transform-origin: center;
+    }
 
-  @keyframes stepPulse {
-    0% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
-    8% { transform: scale(1.3); box-shadow:0 0 14px rgba(250,204,21,.9); }
-    16% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
-    100% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
-  }
+    @keyframes stepPulse {
+      0% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+      8% { transform: scale(1.3); box-shadow:0 0 14px rgba(250,204,21,.9); }
+      16% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+      100% { transform: scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+    }
 
-  .step-animate{
-    animation: stepPulse 4s infinite;
-  }
+    .step-animate{
+      animation: stepPulse 4s infinite;
+    }
 
-  @keyframes driveAcross {
-    0% { transform: translateX(-180px); }
-    40% { transform: translateX(calc(50vw - 90px)); }
-    60% { transform: translateX(calc(50vw - 90px)); }
-    100% { transform: translateX(calc(100vw + 180px)); }
-  }
+    @keyframes driveAcross {
+      0% { transform: translateX(-180px); }
+      40% { transform: translateX(calc(50vw - 90px)); }
+      60% { transform: translateX(calc(50vw - 90px)); }
+      100% { transform: translateX(calc(100vw + 180px)); }
+    }
 
-  @keyframes carBob {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-1px); }
-  }
+    @keyframes carBob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-1px); }
+    }
 
-  @keyframes wheelSpin {
-    to { transform: rotate(360deg); }
-  }
+    @keyframes wheelSpin {
+      to { transform: rotate(360deg); }
+    }
 
-  @keyframes mascotPop {
-    0%, 40% { transform: translateY(18px); opacity: 0; }
-    48% { transform: translateY(0); opacity: 1; }
-    58% { transform: translateY(0); opacity: 1; }
-    66%, 100% { transform: translateY(18px); opacity: 0; }
-  }
+    @keyframes mascotPop {
+      0%, 40% { transform: translateY(18px); opacity: 0; }
+      48% { transform: translateY(0); opacity: 1; }
+      58% { transform: translateY(0); opacity: 1; }
+      66%, 100% { transform: translateY(18px); opacity: 0; }
+    }
 
-  @keyframes doorOpen {
-    0%, 40% { transform: rotateY(0deg); }
-    48% { transform: rotateY(55deg); }
-    58% { transform: rotateY(55deg); }
-    66%, 100% { transform: rotateY(0deg); }
-  }
+    @keyframes doorOpen {
+      0%, 40% { transform: rotateY(0deg); }
+      48% { transform: rotateY(55deg); }
+      58% { transform: rotateY(55deg); }
+      66%, 100% { transform: rotateY(0deg); }
+    }
 
-  .live-dot{
-width:10px;
-height:10px;
-border-radius:50%;
-background:#ff004c;
-display:inline-block;
-margin-right:8px;
-animation:pulse 1.4s infinite
-}
+    .live-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#ff004c;
+      display:inline-block;
+      margin-right:8px;
+      animation:pulse 1.4s infinite;
+    }
 
-@keyframes pulse{
-0%{opacity:1;transform:scale(1)}
-50%{opacity:.4;transform:scale(1.6)}
-100%{opacity:1;transform:scale(1)}
-}
+    @keyframes pulse{
+      0%{opacity:1;transform:scale(1)}
+      50%{opacity:.4;transform:scale(1.6)}
+      100%{opacity:1;transform:scale(1)}
+    }
 
-  .footer-car {
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    animation: driveAcross 10s linear infinite;
-    pointer-events: none;
-  }
+    .footer-car {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      animation: driveAcross 10s linear infinite;
+      pointer-events: none;
+    }
 
-  .footer-car svg{ animation: carBob .55s ease-in-out infinite; }
-  .footer-car .wheel{ transform-box: fill-box; transform-origin: center; animation: wheelSpin .7s linear infinite; }
-  .footer-car .door{ transform-origin: 106px 60px; transform-box: fill-box; animation: doorOpen 10s linear infinite; }
-  .footer-car .mascot{ transform-box: fill-box; transform-origin: center; animation: mascotPop 10s linear infinite; }
+    .footer-car svg{ animation: carBob .55s ease-in-out infinite; }
+    .footer-car .wheel{ transform-box: fill-box; transform-origin: center; animation: wheelSpin .7s linear infinite; }
+    .footer-car .door{ transform-origin: 106px 60px; transform-box: fill-box; animation: doorOpen 10s linear infinite; }
+    .footer-car .mascot{ transform-box: fill-box; transform-origin: center; animation: mascotPop 10s linear infinite; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .footer-car { animation: none; }
-    .footer-car svg{ animation: none; }
-    .footer-car .wheel{ animation: none; }
-    .footer-car .door{ animation: none; }
-    .footer-car .mascot{ animation: none; opacity: 1; transform: translateY(0); }
-  }
+    @media (prefers-reduced-motion: reduce) {
+      .footer-car { animation: none; }
+      .footer-car svg{ animation: none; }
+      .footer-car .wheel{ animation: none; }
+      .footer-car .door{ animation: none; }
+      .footer-car .mascot{ animation: none; opacity: 1; transform: translateY(0); }
+    }
 
-  body{
-    position: relative;
-    background-color: #facc15;
-  }
+    body{
+      position: relative;
+      background-color: #facc15;
+    }
 
-  body::before{
-    content:"";
-    position: fixed;
-    inset: 0;
-    background-image: url("reklamashero.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.18;
-    z-index: -1;
-    pointer-events: none;
-  }
- /* vypnout caret všude */
-* {
-  caret-color: transparent;
-}
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background-image: url("reklamashero.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.18;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-/* povolit caret jen tam, kde se píše */
-input,
-textarea {
-  caret-color: auto;
-}
-</style>
+    * {
+      caret-color: transparent;
+    }
 
+    input,
+    textarea,
+    select {
+      caret-color: auto;
+    }
 
+    #gallery-desktop-wrap::-webkit-scrollbar{display:none;}
+    #gallery-desktop-wrap{scrollbar-width:none;-ms-overflow-style:none;}
+  </style>
 </head>
 
 <body class="min-h-screen bg-yellow-400 text-black">
 
-  <!-- Header -->
 <header id="site-header" class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-yellow-400/80 bg-yellow-400/95 border-b border-black/10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-
-    <!-- Logo -->
     <a href="#top" data-goto="#top" class="flex items-center gap-3 cursor-pointer" title="Na začátek">
       <img src="/reklamas-logo.svg" alt="Reklamas logo" class="w-10 h-10 object-contain" />
       <div class="leading-tight">
@@ -164,7 +159,6 @@ textarea {
       </div>
     </a>
 
-    <!-- Desktop menu -->
     <nav class="hidden md:flex items-center gap-6 font-medium">
       <a href="#jak" data-goto="#jak" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Jak to funguje</a>
       <a href="#sluzby" data-goto="#sluzby" class="relative transition hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300">Služby</a>
@@ -173,10 +167,10 @@ textarea {
       <a href="/reklamas-live.html" class="flex items-center gap-2 font-semibold text-pink-500">
         <span class="live-dot"></span>LIVE přenos
       </a>
-<a href="/reklamas-ridici-affiliate.html" class="px-3 py-1.5 rounded-xl border border-black/40 font-semibold transition hover:bg-black hover:text-yellow-300">Chci vydělávat</a>      <a href="#objednat" data-goto="#objednat" class="px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition">Objednat</a>
+      <a href="/reklamas-ridici-affiliate.html" class="px-3 py-1.5 rounded-xl border border-black/40 font-semibold transition hover:bg-black hover:text-yellow-300">Chci vydělávat</a>
+      <a href="#objednat" data-goto="#objednat" class="px-4 py-2 rounded-xl bg-black text-yellow-300 hover:translate-y-0.5 transition">Objednat</a>
     </nav>
 
-    <!-- Mobile burger -->
     <button id="burger" aria-label="Menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-black/20">
       <span class="sr-only">Otevřít menu</span>
       <div class="w-5 h-[2px] bg-black relative">
@@ -184,127 +178,33 @@ textarea {
         <span id="b2" class="absolute left-0 top-1.5 w-5 h-[2px] bg-black transition-all duration-300"></span>
       </div>
     </button>
-
   </div>
 
-  <!-- Mobile panel -->
   <div id="mobile-panel" class="hidden md:hidden absolute left-0 right-0 border-t border-black/10 bg-white text-black shadow-2xl">
     <div class="mx-auto max-w-7xl px-4 py-5">
-
-      <!-- Menu items -->
       <div class="space-y-1 text-base">
         <a href="#sluzby" data-goto="#sluzby" class="flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-yellow-50 transition">
           <i data-lucide="briefcase" class="w-5 h-5"></i>
           <span>Služby</span>
         </a>
-
         <a href="#jak" data-goto="#jak" class="flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-yellow-50 transition">
           <i data-lucide="play-circle" class="w-5 h-5"></i>
           <span>Jak to funguje</span>
         </a>
-
         <a href="#cenik" data-goto="#cenik" class="flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-yellow-50 transition">
           <i data-lucide="coins" class="w-5 h-5"></i>
           <span>Ceník</span>
         </a>
-
         <a href="#kontakt" data-goto="#kontakt" class="flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-yellow-50 transition">
           <i data-lucide="phone" class="w-5 h-5"></i>
           <span>Kontakt</span>
         </a>
-
         <a href="/reklamas-live.html" class="flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-pink-50 transition font-semibold text-pink-500">
           <span class="live-dot"></span>
           <i data-lucide="radio" class="w-5 h-5"></i>
           <span>LIVE přenos</span>
         </a>
-
-        <div class="mt-5 flex justify-center">
-        <a href="/affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border-2 border-black/60 text-black font-semibold hover:bg-white transition text-center shadow-sm">
-          <span>Chci vydělávat</span>
-          <span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
-            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span></span>
-            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="bike" class="w-4 h-4"></i><span>Cyklista</span></span>
-            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span></span>
-          </span>
-        </a>
       </div>
-
-      <!-- CTA -->
-      <a href="#objednat" data-goto="#objednat" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-black text-yellow-300 font-extrabold py-3.5 shadow-lg hover:scale-[1.01] transition">
-        <i data-lucide="rocket" class="w-5 h-5"></i>
-        OBJEDNAT
-      </a>
-
-      <!-- Divider -->
-      <div class="my-5 h-px bg-black/10"></div>
-
-      <!-- Socials -->
-      <div class="flex justify-center gap-4">
-        <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg>
-        </a>
-
-        <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/></svg>
-        </a>
-
-        <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21 8.5a6.5 6.5 0 0 1-4-1.4v6.7a5.3 5.3 0 1 1-4.6-5.3v2.2a3.1 3.1 0 1 0 2.4 3V2h2.2a4.3 4.3 0 0 0 4 4.3v2.2z"/></svg>
-        </a>
-
-        <a href="https://www.youtube.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
-        </a>
-      </div>
-
-      <div id="menu-reklama" class="mt-5"></div>
-    </div>
-  </div>
-</header>
-
-  <!-- Hero -->
-      <section id="top" class="relative overflow-hidden">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-    
-    <div>
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-        Reklamas <span class="underline decoration-pink-600 decoration-8 underline-offset-4">hrdina</span> vaší reklamy ve městě
-      </h1>
-
-      <p class="mt-5 text-lg md:text-xl max-w-xl">
-        Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.
-      </p>
-
-      <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
-        <a href="#objednat" data-goto="#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold hover:translate-y-0.5 transition">
-          Objednat reklamu
-        </a>
-
-        <a href="/potisk-tricek.html" class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-0.5 transition">
-          <span>Chci potisk triček</span>
-          <span class="badge-akce inline-flex items-center justify-center px-2 py-1 rounded-full bg-black text-yellow-300 text-xs">AKCE</span>
-        </a>
-      </div>
-
-      <ul class="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
-        <li class="bg-white/70 rounded-xl p-3 border border-black/10">Mobilní billboardy</li>
-        <li class="bg-white/70 rounded-xl p-3 border border-black/10">Reklama na eventech</li>
-        <li class="bg-white/70 rounded-xl p-3 border border-black/10">QR měření zásahu</li>
-      </ul>
-    </div>
-
-    <!-- Mascot -->
-    <div class="relative">
-      <div class="aspect-[4/5] rounded-3xl bg-white shadow-2xl border border-black/10 p-6 grid place-items-center w-full max-w-[380px] md:w-[340px] lg:w-[380px] max-h-[420px] mx-auto">
-        <div class="text-center">
-          <img src="reklamas.png" alt="Maskot Reklamas ve žlutém plášti" class="mx-auto max-h-[280px] w-auto object-contain" />
-          <div class="mt-4 font-semibold">Maskot Reklamas</div>
-          <div class="text-sm text-black/70">Žlutý plášť, skrytá reklama, showman styl</div>
-        </div>
-      </div>
-
-    
 
       <div class="mt-5 flex justify-center">
         <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border-2 border-black/60 text-black font-semibold hover:bg-white transition text-center shadow-sm">
@@ -316,92 +216,160 @@ textarea {
           </span>
         </a>
       </div>
+
+      <a href="#objednat" data-goto="#objednat" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-black text-yellow-300 font-extrabold py-3.5 shadow-lg hover:scale-[1.01] transition">
+        <i data-lucide="rocket" class="w-5 h-5"></i>
+        OBJEDNAT
+      </a>
+
+      <div class="my-5 h-px bg-black/10"></div>
+
+      <div class="flex justify-center gap-4">
+        <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21 8.5a6.5 6.5 0 0 1-4-1.4v6.7a5.3 5.3 0 1 1-4.6-5.3v2.2a3.1 3.1 0 1 0 2.4 3V2h2.2a4.3 4.3 0 0 0 4 4.3v2.2z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+        </a>
+      </div>
+
+      <div id="menu-reklama" class="mt-5"></div>
+    </div>
+  </div>
+</header>
+
+<section id="top" class="relative overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+        Reklamas <span class="underline decoration-pink-600 decoration-8 underline-offset-4">hrdina</span> vaší reklamy ve městě
+      </h1>
+      <p class="mt-5 text-lg md:text-xl max-w-xl">
+        Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+        <a href="#objednat" data-goto="#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold hover:translate-y-0.5 transition">
+          Objednat reklamu
+        </a>
+        <a href="/potisk-tricek.html" class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-0.5 transition">
+          <span>Chci potisk triček</span>
+          <span class="badge-akce inline-flex items-center justify-center px-2 py-1 rounded-full bg-black text-yellow-300 text-xs">AKCE</span>
+        </a>
+      </div>
+      <ul class="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
+        <li class="bg-white/70 rounded-xl p-3 border border-black/10">Mobilní billboardy</li>
+        <li class="bg-white/70 rounded-xl p-3 border border-black/10">Reklama na eventech</li>
+        <li class="bg-white/70 rounded-xl p-3 border border-black/10">QR měření zásahu</li>
+      </ul>
     </div>
 
+    <div class="relative">
+      <div class="aspect-[4/5] rounded-3xl bg-white shadow-2xl border border-black/10 p-6 grid place-items-center w-full max-w-[380px] md:w-[340px] lg:w-[380px] max-h-[420px] mx-auto">
+        <div class="text-center">
+          <img src="reklamas.png" alt="Maskot Reklamas ve žlutém plášti" class="mx-auto max-h-[280px] w-auto object-contain" />
+          <div class="mt-4 font-semibold">Maskot Reklamas</div>
+          <div class="text-sm text-black/70">Žlutý plášť, skrytá reklama, showman styl</div>
+        </div>
+      </div>
+      <div class="mt-5 flex justify-center">
+        <a href="/reklamas-ridici-affiliate.html" class="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-5 py-3 rounded-2xl bg-white/85 border-2 border-black/60 text-black font-semibold hover:bg-white transition text-center shadow-sm">
+          <span>Chci vydělávat</span>
+          <span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="car-front" class="w-4 h-4"></i><span>Řidič</span></span>
+            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="bike" class="w-4 h-4"></i><span>Cyklista</span></span>
+            <span class="inline-flex items-center gap-1 whitespace-nowrap"><i data-lucide="footprints" class="w-4 h-4"></i><span>Chodec</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
-  
-  <!-- Jak to funguje -->
-  <section id="jak" class="scroll-mt-24 md:scroll-mt-28 bg-white/60">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex items-end justify-between gap-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Jak to funguje</h2>
-        <div class="hidden md:flex items-center gap-2 text-sm text-black/60">
-          <span>Krok</span>
-          <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:0s">1</span>
-          <span>→</span>
-          <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:.6s">2</span>
-          <span>→</span>
-          <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:1.2s">3</span>
-        </div>
-      </div>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-6 relative">
-        <div class="hidden md:block absolute left-0 right-0 top-16 h-0.5 bg-gradient-to-r from-black/10 via-black/20 to-black/10"></div>
-
-        <div class="group relative">
-          <div class="absolute -top-4 left-6 md:left-1/2 md:-translate-x-1/2 inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold shadow-md">1</div>
-          <div class="rounded-2xl border border-black/10 bg-white p-6 pt-8 shadow-sm hover:shadow-md transition">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-yellow-100 grid place-items-center text-2xl">📝</div>
-              <h3 class="font-bold text-lg">Zadání kampaně</h3>
-            </div>
-            <p class="mt-3 text-sm text-black/70">Vyplníte <strong>město</strong>, <strong>termín</strong> a <strong>cíl</strong>. My navrhneme nejlepší řešení.</p>
-            <ul class="mt-3 text-sm text-black/70 space-y-1 list-disc list-inside">
-              <li>Město / lokalita</li>
-              <li>Počet dní / hodin</li>
-              <li>Cíl (prodej, návštěvnost, povědomí)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="group relative">
-          <div class="absolute -top-4 left-6 md:left-1/2 md:-translate-x-1/2 inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold shadow-md">2</div>
-          <div class="rounded-2xl border border-black/10 bg-white p-6 pt-8 shadow-sm hover:shadow-md transition">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-yellow-100 grid place-items-center text-2xl">🗺️</div>
-              <h3 class="font-bold text-lg">Plán trasy & materiály</h3>
-            </div>
-            <p class="mt-3 text-sm text-black/70">Vybereme <strong>trasu</strong> nebo <strong>event</strong>, připravíme <strong>QR</strong>, tisk a vizuály.</p>
-            <div class="mt-3 grid grid-cols-3 gap-2 text-xs">
-              <div class="rounded-lg border border-black/10 bg-yellow-50 p-2 text-center">Trasa</div>
-              <div class="rounded-lg border border-black/10 bg-yellow-50 p-2 text-center">QR kód</div>
-              <div class="rounded-lg border border-black/10 bg-yellow-50 p-2 text-center">Tisk</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="group relative">
-          <div class="absolute -top-4 left-6 md:left-1/2 md:-translate-x-1/2 inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold shadow-md">3</div>
-          <div class="rounded-2xl border border-black/10 bg-white p-6 pt-8 shadow-sm hover:shadow-md transition">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-yellow-100 grid place-items-center text-2xl">🚴‍♂️</div>
-              <h3 class="font-bold text-lg">Realizace & report</h3>
-            </div>
-            <p class="mt-3 text-sm text-black/70">Akce v ulicích. Po skončení dostanete <strong>fotky</strong>, <strong>video</strong> a <strong>report</strong> se skeny QR.</p>
-            <div class="mt-4 rounded-xl border border-black/10 bg-yellow-50 p-3 text-xs">
-              Příklad výsledku: <span class="font-semibold">15 000 zhlédnutí / víkend</span>, 320 skenů QR
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-10 rounded-2xl border border-black/10 bg-black text-yellow-300 p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="text-center md:text-left">
-          <div class="font-bold">Chcete znát přesnou cenu a trasu pro vaše město?</div>
-          <div class="text-yellow-200/80 text-sm">Pošleme návrh do 24 h. Závazně až po schválení.</div>
-        </div>
-        <a href="#objednat" data-goto="#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-yellow-300 text-black font-semibold hover:translate-y-0.5 transition">Nezávazně poptat</a>
+<section id="jak" class="scroll-mt-24 md:scroll-mt-28 bg-white/60">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Jak to funguje</h2>
+      <div class="hidden md:flex items-center gap-2 text-sm text-black/60">
+        <span>Krok</span>
+        <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:0s">1</span>
+        <span>→</span>
+        <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:.6s">2</span>
+        <span>→</span>
+        <span class="step-animate inline-grid place-items-center w-6 h-6 rounded-full bg-black text-yellow-300 font-bold" style="animation-delay:1.2s">3</span>
       </div>
     </div>
-  </section>
 
-<!-- Služby -->
+    <div class="mt-8 grid md:grid-cols-3 gap-6 relative">
+      <div class="hidden md:block absolute left-0 right-0 top-16 h-0.5 bg-gradient-to-r from-black/10 via-black/20 to-black/10"></div>
+
+      <div class="group relative">
+        <div class="absolute -top-4 left-6 md:left-1/2 md:-translate-x-1/2 inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold shadow-md">1</div>
+        <div class="rounded-2xl border border-black/10 bg-white p-6 pt-8 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 grid place-items-center text-2xl">📝</div>
+            <h3 class="font-bold text-lg">Zadání kampaně</h3>
+          </div>
+          <p class="mt-3 text-sm text-black/70">Vyplníte <strong>město</strong>, <strong>termín</strong> a <strong>cíl</strong>. My navrhneme nejlepší řešení.</p>
+          <ul class="mt-3 text-sm text-black/70 space-y-1 list-disc list-inside">
+            <li>Město / lokalita</li>
+            <li>Počet dní / hodin</li>
+            <li>Cíl (prodej, návštěvnost, povědomí)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="group relative">
+        <div class="absolute -top-4 left-6 md:left-1/2 md:-translate-x-1/2 inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold shadow-md">2</div>
+        <div class="rounded-2xl border border-black/10 bg-white p-6 pt-8 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 grid place-items-center text-2xl">🗺️</div>
+            <h3 class="font-bold text-lg">Plán trasy & materiály</h3>
+          </div>
+          <p class="mt-3 text-sm text-black/70">Vybereme <strong>trasu</strong> nebo <strong>event</strong>, připravíme <strong>QR</strong>, tisk a vizuály.</p>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-xs">
+            <div class="rounded-lg border border-black/10 bg-yellow-50 p-2 text-center">Trasa</div>
+            <div class="rounded-lg border border-black/10 bg-yellow-50 p-2 text-center">QR kód</div>
+            <div class="rounded-lg border border-black/10 bg-yellow-50 p-2 text-center">Tisk</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative">
+        <div class="absolute -top-4 left-6 md:left-1/2 md:-translate-x-1/2 inline-grid place-items-center w-10 h-10 rounded-2xl bg-black text-yellow-300 font-extrabold shadow-md">3</div>
+        <div class="rounded-2xl border border-black/10 bg-white p-6 pt-8 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 grid place-items-center text-2xl">🚴‍♂️</div>
+            <h3 class="font-bold text-lg">Realizace & report</h3>
+          </div>
+          <p class="mt-3 text-sm text-black/70">Akce v ulicích. Po skončení dostanete <strong>fotky</strong>, <strong>video</strong> a <strong>report</strong> se skeny QR.</p>
+          <div class="mt-4 rounded-xl border border-black/10 bg-yellow-50 p-3 text-xs">
+            Příklad výsledku: <span class="font-semibold">15 000 zhlédnutí / víkend</span>, 320 skenů QR
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-2xl border border-black/10 bg-black text-yellow-300 p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-center md:text-left">
+        <div class="font-bold">Chcete znát přesnou cenu a trasu pro vaše město?</div>
+        <div class="text-yellow-200/80 text-sm">Pošleme návrh do 24 h. Závazně až po schválení.</div>
+      </div>
+      <a href="#objednat" data-goto="#objednat" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-yellow-300 text-black font-semibold hover:translate-y-0.5 transition">Nezávazně poptat</a>
+    </div>
+  </div>
+</section>
+
 <section id="sluzby" class="scroll-mt-24 md:scroll-mt-28 bg-white">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
     <h2 class="text-3xl md:text-4xl font-extrabold">Rozjeďte reklamu ve městě</h2>
-<p class="mt-2 text-black/70 max-w-2xl">Od aut, kol a chodců s billboardem až po potisk triček, eventy a QR měření. Všechno nastavíme podle cíle kampaně i rozpočtu.</p>
-    
+    <p class="mt-2 text-black/70 max-w-2xl">Od aut, kol a chodců s billboardem až po potisk triček, eventy a QR měření. Všechno nastavíme podle cíle kampaně i rozpočtu.</p>
+
     <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
       <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
         <div class="inline-block text-xs px-2 py-1 rounded-md bg-pink-600 text-white mb-3">Top volba</div>
@@ -438,89 +406,80 @@ textarea {
         <div class="inline-block text-xs px-2 py-1 rounded-md bg-pink-600 text-white mb-3">Novinka</div>
         <h3 class="font-bold text-xl">Chci vydělávat</h3>
         <p class="mt-2 text-sm text-black/70">Zapoj se do sítě Reklamas. Jezdi autem, na kole nebo choď s billboardem a vydělávej.</p>
-        <a href="/affiliate.html" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Otevřít stránku</a>
+        <a href="/reklamas-ridici-affiliate.html" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Otevřít stránku</a>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Galerie / Ukázky práce (mobile carousel + desktop 8 tiles) -->
-  <section id="galerie" class="scroll-mt-24 md:scroll-mt-28">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex items-end justify-between gap-4">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-extrabold">Galerie & Reference</h2>
-          <p class="mt-2 text-black/70">Ukázky z měst a akcí. Klik pro detail.</p>
-        </div>
-        <a href="#kontakt" data-goto="#kontakt" class="hidden md:inline-block px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold">Chci fotoreport</a>
+<section id="galerie" class="scroll-mt-24 md:scroll-mt-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold">Galerie & Reference</h2>
+        <p class="mt-2 text-black/70">Ukázky z měst a akcí. Klik pro detail.</p>
       </div>
+      <a href="#kontakt" data-goto="#kontakt" class="hidden md:inline-block px-4 py-2 rounded-xl bg-pink-600 text-white font-semibold">Chci fotoreport</a>
+    </div>
 
-      <!-- MOBILE: carousel -->
-      <div class="mt-8 md:hidden">
-        <div class="relative rounded-2xl border border-black/10 bg-white overflow-hidden">
-          <div id="gallery-mobile-track" class="flex transition-transform duration-300 will-change-transform touch-pan-x">
-            <!-- slides se naplní JS -->
-          </div>
-
-          <button id="gallery-mobile-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-black/80 text-yellow-300 grid place-items-center shadow-lg">‹</button>
-          <button id="gallery-mobile-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-black/80 text-yellow-300 grid place-items-center shadow-lg">›</button>
-
-          <div class="absolute left-1/2 -translate-x-1/2 bottom-3 px-3 py-1 rounded-full bg-black/70 text-yellow-200 text-xs">
-            <span id="gallery-mobile-indicator">1 / 1</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- DESKTOP: 8 tiles + načíst další -->
-      <div class="mt-8 hidden md:block">
-        <div id="gallery-grid" class="grid grid-cols-4 gap-4">
-          <!-- tiles se naplní JS -->
-        </div>
-
-        <div class="mt-6 flex items-center justify-center gap-3">
-          <button id="gallery-load-more" type="button" class="px-5 py-3 rounded-2xl bg-black text-yellow-300 font-semibold hover:translate-y-0.5 transition">Načíst další</button>
-          <div id="gallery-load-status" class="text-sm text-black/60"></div>
+    <div class="mt-8 md:hidden">
+      <div class="relative rounded-2xl border border-black/10 bg-white overflow-hidden">
+        <div id="gallery-mobile-track" class="flex transition-transform duration-300 will-change-transform touch-pan-x"></div>
+        <button id="gallery-mobile-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-black/80 text-yellow-300 grid place-items-center shadow-lg">‹</button>
+        <button id="gallery-mobile-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-2xl bg-black/80 text-yellow-300 grid place-items-center shadow-lg">›</button>
+        <div class="absolute left-1/2 -translate-x-1/2 bottom-3 px-3 py-1 rounded-full bg-black/70 text-yellow-200 text-xs">
+          <span id="gallery-mobile-indicator">1 / 1</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- LIVE přenos kampaně -->
+    <div class="mt-8 hidden md:block">
+      <div class="relative">
+        <button id="gallery-desktop-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/55 text-yellow-300 border border-yellow-300/25 backdrop-blur grid place-items-center shadow-md hover:bg-black/75 transition" aria-label="Předchozí">
+          <span class="text-lg leading-none">‹</span>
+        </button>
+        <button id="gallery-desktop-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/55 text-yellow-300 border border-yellow-300/25 backdrop-blur grid place-items-center shadow-md hover:bg-black/75 transition" aria-label="Další">
+          <span class="text-lg leading-none">›</span>
+        </button>
+
+        <div id="gallery-desktop-wrap" class="overflow-hidden scroll-smooth">
+          <div id="gallery-grid" class="flex flex-nowrap gap-4 min-w-max px-14"></div>
+        </div>
+
+        <div class="mt-6 flex flex-col items-center justify-center gap-3">
+          <div id="gallery-desktop-dots" class="flex items-center gap-2"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="live" class="scroll-mt-24 md:scroll-mt-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
     <div class="relative overflow-hidden rounded-3xl border border-black/10 bg-black text-white shadow-2xl">
-      
-      <!-- pozadí glow -->
       <div class="absolute inset-0 pointer-events-none">
         <div class="absolute -top-16 -left-10 w-72 h-72 rounded-full bg-pink-600/20 blur-3xl"></div>
         <div class="absolute -bottom-20 right-0 w-72 h-72 rounded-full bg-yellow-300/10 blur-3xl"></div>
       </div>
 
       <div class="relative grid lg:grid-cols-2 gap-8 p-6 md:p-10 items-center">
-        
-        <!-- Text -->
         <div>
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-pink-400 text-xs font-extrabold tracking-wide">
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-pink-500 animate-pulse"></span>
             LIVE PŘENOS
           </div>
-
           <h2 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
             Sledujte reklamní kampaň
             <span class="text-yellow-300">živě z akce</span>
           </h2>
-
           <p class="mt-4 text-white/75 text-base md:text-lg max-w-xl">
-           Živý přenos z terénu. Sledujte, kde právě probíhá promo a co se děje teď.
+            Živý přenos z terénu. Sledujte, kde právě probíhá promo a co se děje teď.
           </p>
-
           <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
             <li class="rounded-2xl border border-white/10 bg-white/5 p-3">🔴 živé video z akce</li>
             <li class="rounded-2xl border border-white/10 bg-white/5 p-3">📍 aktuální lokace kampaně</li>
             <li class="rounded-2xl border border-white/10 bg-white/5 p-3">📷 fotky a dění z terénu</li>
             <li class="rounded-2xl border border-white/10 bg-white/5 p-3">📱 výsledky a QR skeny</li>
           </ul>
-
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="/reklamas-live.html" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold hover:translate-y-[-2px] transition">
               Otevřít LIVE stránku
@@ -531,7 +490,6 @@ textarea {
           </div>
         </div>
 
-        <!-- Náhled -->
         <div>
           <a href="/reklamas-live.html" class="block rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:scale-[1.01] transition">
             <div class="aspect-video relative grid place-items-center bg-gradient-to-br from-black via-zinc-900 to-pink-950">
@@ -539,13 +497,11 @@ textarea {
                 <span class="inline-block w-2.5 h-2.5 rounded-full bg-pink-500 animate-pulse"></span>
                 LIVE
               </div>
-
               <div class="text-center px-6">
                 <div class="text-white/40 text-sm mb-2">Náhled živého přenosu</div>
                 <div class="text-2xl md:text-3xl font-extrabold text-white">Reklamas LIVE</div>
                 <div class="mt-2 text-white/65 text-sm">Přímý přenos kampaně klienta</div>
               </div>
-
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="w-20 h-20 rounded-full bg-white/10 border border-white/20 backdrop-blur grid place-items-center shadow-2xl">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -553,134 +509,107 @@ textarea {
                   </svg>
                 </div>
               </div>
-
               <div class="absolute bottom-4 right-4 rounded-xl bg-black/60 px-3 py-2 text-xs text-white/80 border border-white/10">
                 Uherské Hradiště • právě vysíláme
               </div>
             </div>
           </a>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Ceník -->
-  <section id="cenik" class="scroll-mt-24 md:scroll-mt-28 bg-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <h2 class="text-3xl md:text-4xl font-extrabold">Ceník</h2>
-      <p class="mt-2 text-black/70">Základní orientační ceny bez DPH. Připravíme kalkulaci na míru podle trasy, času a materiálů.</p>
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl border border-black/10 overflow-hidden">
-          <table class="w-full text-left text-sm">
-            <thead class="bg-yellow-100">
-              <tr>
-                <th class="p-3">Služba</th>
-                <th class="p-3">Cena od</th>
-                <th class="p-3">Popis</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="odd:bg-white even:bg-yellow-50">
-                <td class="p-3 font-medium">Mobilní reklama</td>
-                <td class="p-3">490 Kč</td>
-                <td class="p-3 text-black/70">Kolo / chodec s billboardem</td>
-              </tr>
-              <tr class="odd:bg-white even:bg-yellow-50">
-                <td class="p-3 font-medium">Auto billboard</td>
-                <td class="p-3">890 Kč</td>
-                <td class="p-3 text-black/70">Pohyblivá reklama po městě</td>
-              </tr>
-              <tr class="odd:bg-white even:bg-yellow-50">
-                <td class="p-3 font-medium">Potisk trička</td>
-                <td class="p-3">249 Kč</td>
-                <td class="p-3 text-black/70">Logo, text, QR kód</td>
-              </tr>
-              <tr class="odd:bg-white even:bg-yellow-50">
-                <td class="p-3 font-medium">Maskot Reklamas</td>
-                <td class="p-3">1 200 Kč</td>
-                <td class="p-3 text-black/70">2 h promo s fotkami</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="rounded-2xl border border-black/10 p-6 bg-yellow-50">
-          <h3 class="font-bold text-xl">Co je v ceně</h3>
-          <ul class="mt-3 space-y-2 list-disc list-inside text-sm text-black/80">
-            <li>Trasa a harmonogram dle dohody</li>
-            <li>Fotodokumentace a krátké video</li>
-            <li>QR kód pro měření skenů</li>
-            <li>Report po akci (základní)</li>
-          </ul>
-          <a href="#objednat" data-goto="#objednat" class="mt-6 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Chci kalkulaci na míru</a>
-        </div>
+<section id="cenik" class="scroll-mt-24 md:scroll-mt-28 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <h2 class="text-3xl md:text-4xl font-extrabold">Ceník</h2>
+    <p class="mt-2 text-black/70">Základní orientační ceny bez DPH. Připravíme kalkulaci na míru podle trasy, času a materiálů.</p>
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <div class="rounded-2xl border border-black/10 overflow-hidden">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-yellow-100">
+            <tr>
+              <th class="p-3">Služba</th>
+              <th class="p-3">Cena od</th>
+              <th class="p-3">Popis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd:bg-white even:bg-yellow-50">
+              <td class="p-3 font-medium">Mobilní reklama</td>
+              <td class="p-3">490 Kč</td>
+              <td class="p-3 text-black/70">Kolo / chodec s billboardem</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-yellow-50">
+              <td class="p-3 font-medium">Auto billboard</td>
+              <td class="p-3">890 Kč</td>
+              <td class="p-3 text-black/70">Pohyblivá reklama po městě</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-yellow-50">
+              <td class="p-3 font-medium">Potisk trička</td>
+              <td class="p-3">249 Kč</td>
+              <td class="p-3 text-black/70">Logo, text, QR kód</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-yellow-50">
+              <td class="p-3 font-medium">Maskot Reklamas</td>
+              <td class="p-3">1 200 Kč</td>
+              <td class="p-3 text-black/70">2 h promo s fotkami</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="rounded-2xl border border-black/10 p-6 bg-yellow-50">
+        <h3 class="font-bold text-xl">Co je v ceně</h3>
+        <ul class="mt-3 space-y-2 list-disc list-inside text-sm text-black/80">
+          <li>Trasa a harmonogram dle dohody</li>
+          <li>Fotodokumentace a krátké video</li>
+          <li>QR kód pro měření skenů</li>
+          <li>Report po akci (základní)</li>
+        </ul>
+        <a href="#objednat" data-goto="#objednat" class="mt-6 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Chci kalkulaci na míru</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
- <!-- Kontakt -->
 <section id="kontakt" class="scroll-mt-24 md:scroll-mt-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10">
-    
-    <!-- LEVÁ STRANA -->
     <div>
       <h2 class="text-3xl md:text-4xl font-extrabold">Kontakt</h2>
       <p class="mt-2 text-black/70">Napište nám, ozveme se obratem.</p>
 
       <div class="mt-6 grid md:grid-cols-[1fr,220px] gap-6 items-stretch text-sm">
-        
-        <!-- Kontakt -->
         <div class="space-y-3">
           <div><span class="font-semibold">E-mail:</span> <a href="mailto:info@reklamas.cz" class="underline">info@reklamas.cz</a></div>
           <div><span class="font-semibold">Telefon:</span> <a href="tel:+420000000000" class="underline">+420 000 000 000</a></div>
           <div><span class="font-semibold">WhatsApp:</span> +420 000 000 000</div>
         </div>
 
-        <!-- QR -->
         <div class="flex justify-center md:justify-end h-full">
           <div class="w-[180px] h-full px-3 py-3 rounded-2xl bg-white border border-black/10 text-center shadow-sm flex flex-col">
             <div class="text-xs text-black/60 mb-2">QR kontakt</div>
-            <div class="w-full flex-1 bg-black/10 rounded-xl grid place-items-center text-xs text-black/50">
-              QR
-            </div>
+            <div class="w-full flex-1 bg-black/10 rounded-xl grid place-items-center text-xs text-black/50">QR</div>
           </div>
         </div>
       </div>
 
-      <!-- MAPA -->
       <div class="mt-6">
         <div class="flex items-center justify-between gap-3">
           <div class="font-semibold">Mapa</div>
-          <a class="text-xs underline text-black/70 hover:text-pink-600"
-             target="_blank"
-             rel="noopener"
-             href="https://www.google.com/maps/place/Uhersk%C3%A9+Hradi%C5%A1t%C4%9B/@49.06975,17.45969,14z">
-             Otevřít v Mapách
-          </a>
+          <a class="text-xs underline text-black/70 hover:text-pink-600" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Uhersk%C3%A9+Hradi%C5%A1t%C4%9B/@49.06975,17.45969,14z">Otevřít v Mapách</a>
         </div>
 
         <div class="mt-2 rounded-2xl overflow-hidden border border-black/10 bg-white shadow-sm">
           <div class="aspect-[16/10]">
-            <iframe
-              title="Mapa – Reklamas"
-              class="w-full h-full"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?output=embed&hl=cs&q=49.06975,17.45969&z=14">
-            </iframe>
+            <iframe title="Mapa – Reklamas" class="w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?output=embed&hl=cs&q=49.06975,17.45969&z=14"></iframe>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PRAVÁ STRANA (FORM) -->
     <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm" novalidate>
-      
       <div class="text-center mb-2">
-        <div class="hand text-[22px] md:text-[26px] text-black/60 cta-nudge">
-          Trvá to jen 30 sekund… ✍️
-        </div>
+        <div class="hand text-[22px] md:text-[26px] text-black/60 cta-nudge">Trvá to jen 30 sekund… ✍️</div>
       </div>
 
       <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
@@ -689,15 +618,20 @@ textarea {
         <input name="name" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno a firma" required />
         <input name="contact" class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail nebo telefon" required />
 
-        <select name="service" class="px-3 py-2 rounded-xl border border-black/20" required>
-          <option value="">Vyberte službu…</option>
-          <option>Mobilní reklama</option>
-          <option>Auto billboard</option>
-          <option>Potisk triček</option>
-          <option>Reklama na eventech</option>
-          <option>Pronájem Reklamase</option>
-          <option>QR měření kampaně</option>
-        </select>
+        <div class="relative">
+          <select name="service" class="appearance-none w-full px-4 py-3 rounded-2xl border border-black/15 bg-white pr-12 font-medium text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500/30 focus:border-pink-500 hover:border-black/30" required>
+            <option value="" selected>Vyberte službu…</option>
+            <option>Mobilní reklama</option>
+            <option>Auto billboard</option>
+            <option>Potisk triček</option>
+            <option>Reklama na eventech</option>
+            <option>Pronájem Reklamase</option>
+            <option>QR měření kampaně</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-black/50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
 
         <div class="grid grid-cols-2 gap-3">
           <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
@@ -706,17 +640,20 @@ textarea {
 
         <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce poptávku (trasa, čas, cíl)"></textarea>
 
-        <!-- ROZPOČET -->
-        <select name="budget" class="px-3 py-2 rounded-xl border border-black/20">
-          <option value="">Jaký máte rozpočet?</option>
-          <option>do 1 000 Kč</option>
-          <option>1 000 – 5 000 Kč</option>
-          <option>5 000 – 10 000 Kč</option>
-          <option>10 000+ Kč</option>
-          <option>nevím / poradíte mi</option>
-        </select>
+        <div class="relative">
+          <select name="budget" class="appearance-none w-full px-4 py-3 rounded-2xl border border-black/15 bg-white pr-12 font-medium text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500/30 focus:border-pink-500 hover:border-black/30">
+            <option value="" selected>Jaký máte rozpočet?</option>
+            <option>do 1 000 Kč</option>
+            <option>1 000 – 5 000 Kč</option>
+            <option>5 000 – 10 000 Kč</option>
+            <option>10 000+ Kč</option>
+            <option>nevím / poradíte mi</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-black/50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
 
-        <!-- Honeypot -->
         <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
 
         <label class="flex items-start gap-2 text-xs text-black/70">
@@ -724,471 +661,475 @@ textarea {
           Souhlasím se zpracováním údajů za účelem reakce na poptávku.
         </label>
 
-        <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">
-          Odeslat poptávku
-        </button>
-
+        <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Odeslat poptávku</button>
         <div id="form-status" class="text-sm"></div>
       </div>
     </form>
-
   </div>
 </section>
 
-  <!-- Footer -->
-  <footer class="bg-black text-yellow-300">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
-      <div>
-        <div class="font-extrabold text-lg">Reklamas.cz</div>
-        <div class="text-yellow-200/80 text-sm mt-2">Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.</div>
-      </div>
-
-      <div>
-        <div class="font-bold mb-2">Služby</div>
-        <ul class="space-y-1 text-sm text-yellow-200/80">
-          <li>Mobilní reklama</li>
-          <li>Eventy a promo</li>
-          <li>Potisk triček</li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="font-bold mb-2">Dokumenty</div>
-        <ul class="space-y-1 text-sm text-yellow-200/80">
-          <li><a href="/obchodni-podminky.html" class="hover:text-pink-500">Obchodní podmínky</a></li>
-          <li><a href="/ochrana-osobnich-udaju.html" class="hover:text-pink-500">Ochrana údajů</a></li>
-          <li><a href="/cenik.html" class="hover:text-pink-500">Ceník</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="font-bold mb-2">Kontakt</div>
-        <ul class="space-y-1 text-sm text-yellow-200/80">
-          <li><span class="font-semibold">E-mail:</span> <a href="mailto:info@reklamas.cz" class="underline">info@reklamas.cz</a></div>
-          <li><span class="font-semibold">Telefon:</span> <a href="tel:+420000000000" class="underline">+420 000 000 000</a></div>
-          <li>Uherské Hradiště / Zlín / Brno</li>
-        </ul>
-
-        <!-- Sociální sítě -->
-        <div class="mt-4 flex items-center gap-4">
-          <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg>
-          </a>
-          <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="TikTok" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21 8.5a6.5 6.5 0 0 1-4-1.4v6.7a5.3 5.3 0 1 1-4.6-5.3v2.2a3.1 3.1 0 1 0 2.4 3V2h2.2a4.3 4.3 0 0 0 4 4.3v2.2z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
-          </a>
-        </div>
-      </div>
+<footer class="bg-black text-yellow-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
+    <div>
+      <div class="font-extrabold text-lg">Reklamas.cz</div>
+      <div class="text-yellow-200/80 text-sm mt-2">Vaše značka v pohybu: kola, auta, lidé, show, QR sledování. Zajistíme, že si vás všimnou tam, kde to žije.</div>
     </div>
 
-    <div class="relative border-t border-yellow-300/20 text-xs text-yellow-200/70 py-6 text-center overflow-hidden">
-      © <span id="year"></span> Reklamas.cz
-
-      <!-- Žluté auto animace -->
-      <div class="footer-car" aria-hidden="true">
-        <!-- Hezčí auto (billboard styl) -->
-        <svg width="140" height="52" viewBox="0 0 220 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- stín -->
-          <ellipse cx="110" cy="74" rx="86" ry="7" fill="rgba(0,0,0,.25)"/>
-
-          <!-- billboard (dominantnější promo panel) -->
-          <rect x="64" y="2" width="80" height="34" rx="12" fill="#111"/>
-          <rect x="70" y="8" width="68" height="22" rx="9" fill="#ec4899"/>
-          <rect x="70" y="8" width="68" height="22" rx="9" fill="url(#shine)" opacity=".25"/>
-          
-          <!-- text REKLAMAS -->
-          <text x="104" y="23" text-anchor="middle" font-size="10" font-weight="700" fill="#111" font-family="Montserrat, Arial">REKLAMAS</text>
-
-          <rect x="58" y="34" width="6" height="20" rx="3" fill="#111"/>
-          <rect x="144" y="34" width="6" height="20" rx="3" fill="#111"/>
-
-          <!-- karoserie -->
-          <path d="M52 44h96c14 0 26 9 30 22l2 6H30l2-6c4-13 16-22 20-22Z" fill="#facc15"/>
-          <path d="M74 44h46c6 0 11-5 11-11v-7H80v7c0 6-3 11-6 11Z" fill="#fde047"/>
-          <!-- dveře (animace otevření) -->
-          <rect class="door" x="102" y="50" width="28" height="22" rx="5" fill="#111" opacity=".22"/>
-          <rect class="door" x="106" y="52" width="20" height="18" rx="4" fill="#facc15" opacity=".85"/>
-          <circle class="door" cx="126" cy="61" r="1.8" fill="#111" opacity=".55"/>
-
-          <!-- maskot (vyskočí při zastavení) -->
-          <g class="mascot">
-            <!-- plášť -->
-            <path d="M110 36c-8 0-14 6-14 14v10h28V50c0-8-6-14-14-14Z" fill="#facc15"/>
-            <!-- hlava -->
-            <circle cx="110" cy="32" r="6" fill="#111" opacity=".92"/>
-            <!-- oči -->
-            <circle cx="108" cy="31.5" r="1" fill="#fff" opacity=".9"/>
-            <circle cx="112" cy="31.5" r="1" fill="#fff" opacity=".9"/>
-            <!-- logo na plášti -->
-            <rect x="104" y="44" width="12" height="8" rx="3" fill="#111" opacity=".85"/>
-          </g>
-
-          <!-- okna -->
-          <path d="M86 30h40c2 0 4 2 4 4v8H82v-8c0-2 2-4 4-4Z" fill="#111" opacity=".18"/>
-          <path d="M126 30h16c2 0 4 2 4 4v8h-24v-8c0-2 2-4 4-4Z" fill="#111" opacity=".14"/>
-
-          <!-- světla -->
-          <circle cx="44" cy="64" r="4" fill="#111" opacity=".25"/>
-          <circle cx="176" cy="64" r="4" fill="#fff" opacity=".55"/>
-
-          <!-- kola -->
-          <g class="wheel">
-            <circle cx="70" cy="70" r="12" fill="#111"/>
-            <circle cx="70" cy="70" r="6" fill="#f5f5f5" opacity=".85"/>
-            <path d="M70 58v24M58 70h24" stroke="#f5f5f5" stroke-width="2" opacity=".6"/>
-          </g>
-          <g class="wheel">
-            <circle cx="152" cy="70" r="12" fill="#111"/>
-            <circle cx="152" cy="70" r="6" fill="#f5f5f5" opacity=".85"/>
-            <path d="M152 58v24M140 70h24" stroke="#f5f5f5" stroke-width="2" opacity=".6"/>
-          </g>
-
-          <defs>
-            <linearGradient id="shine" x1="36" y1="14" x2="146" y2="34" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#fff" stop-opacity=".6"/>
-              <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+    <div>
+      <div class="font-bold mb-2">Služby</div>
+      <ul class="space-y-1 text-sm text-yellow-200/80">
+        <li>Mobilní reklama</li>
+        <li>Eventy a promo</li>
+        <li>Potisk triček</li>
+      </ul>
     </div>
-  </footer>
 
-  <!-- Lightbox modal -->
-  <div id="lightbox" class="fixed inset-0 z-[9999] hidden">
-    <div id="lightbox-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-    <div class="relative h-full w-full flex items-center justify-center p-4">
-      <button id="lightbox-close" type="button" class="absolute top-4 right-4 w-11 h-11 rounded-2xl bg-white/10 text-white grid place-items-center border border-white/20 hover:bg-white/20 transition" aria-label="Zavřít (Esc)">✕</button>
-      <button id="lightbox-prev" type="button" class="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-2xl bg-white/10 text-white grid place-items-center border border-white/20 hover:bg-white/20 transition" aria-label="Předchozí (←)">‹</button>
-      <button id="lightbox-next" type="button" class="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-2xl bg-white/10 text-white grid place-items-center border border-white/20 hover:bg-white/20 transition" aria-label="Další (→)">›</button>
-      <figure class="relative max-w-5xl w-full">
-        <img id="lightbox-img" src="" alt="Náhled" class="w-full max-h-[78vh] object-contain rounded-2xl shadow-2xl border border-white/10 bg-black" />
-        <figcaption class="mt-3 text-center text-white/80 text-sm">
-          <span id="lightbox-count" class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs mr-2">1 / 1</span>
-          <span id="lightbox-caption"></span>
-        </figcaption>
-      </figure>
+    <div>
+      <div class="font-bold mb-2">Dokumenty</div>
+      <ul class="space-y-1 text-sm text-yellow-200/80">
+        <li><a href="/obchodni-podminky.html" class="hover:text-pink-500">Obchodní podmínky</a></li>
+        <li><a href="/ochrana-osobnich-udaju.html" class="hover:text-pink-500">Ochrana údajů</a></li>
+        <li><a href="/cenik.html" class="hover:text-pink-500">Ceník</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="font-bold mb-2">Kontakt</div>
+      <ul class="space-y-1 text-sm text-yellow-200/80">
+        <div><span class="font-semibold">E-mail:</span> <a href="mailto:info@reklamas.cz" class="underline">info@reklamas.cz</a></div>
+        <div><span class="font-semibold">Telefon:</span> <a href="tel:+420000000000" class="underline">+420 000 000 000</a></div>
+        <li>Uherské Hradiště / Zlín / Brno</li>
+      </ul>
+
+      <div class="mt-4 flex items-center gap-4">
+        <a href="https://www.facebook.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/reklamas.cz" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="TikTok" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21 8.5a6.5 6.5 0 0 1-4-1.4v6.7a5.3 5.3 0 1 1-4.6-5.3v2.2a3.1 3.1 0 1 0 2.4 3V2h2.2a4.3 4.3 0 0 0 4 4.3v2.2z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@reklamas.cz" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-xl bg-yellow-300 text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
-  
+  <div class="relative border-t border-yellow-300/20 text-xs text-yellow-200/70 py-6 text-center overflow-hidden">
+    © <span id="year"></span> Reklamas.cz
 
-  <script>
-    // Rok ve footeru
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <div class="footer-car" aria-hidden="true">
+      <svg width="140" height="52" viewBox="0 0 220 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="110" cy="74" rx="86" ry="7" fill="rgba(0,0,0,.25)"/>
+        <rect x="64" y="2" width="80" height="34" rx="12" fill="#111"/>
+        <rect x="70" y="8" width="68" height="22" rx="9" fill="#ec4899"/>
+        <rect x="70" y="8" width="68" height="22" rx="9" fill="url(#shine)" opacity=".25"/>
+        <text x="104" y="23" text-anchor="middle" font-size="10" font-weight="700" fill="#111" font-family="Montserrat, Arial">REKLAMAS</text>
+        <rect x="58" y="34" width="6" height="20" rx="3" fill="#111"/>
+        <rect x="144" y="34" width="6" height="20" rx="3" fill="#111"/>
+        <path d="M52 44h96c14 0 26 9 30 22l2 6H30l2-6c4-13 16-22 20-22Z" fill="#facc15"/>
+        <path d="M74 44h46c6 0 11-5 11-11v-7H80v7c0 6-3 11-6 11Z" fill="#fde047"/>
+        <rect class="door" x="102" y="50" width="28" height="22" rx="5" fill="#111" opacity=".22"/>
+        <rect class="door" x="106" y="52" width="20" height="18" rx="4" fill="#facc15" opacity=".85"/>
+        <circle class="door" cx="126" cy="61" r="1.8" fill="#111" opacity=".55"/>
+        <g class="mascot">
+          <path d="M110 36c-8 0-14 6-14 14v10h28V50c0-8-6-14-14-14Z" fill="#facc15"/>
+          <circle cx="110" cy="32" r="6" fill="#111" opacity=".92"/>
+          <circle cx="108" cy="31.5" r="1" fill="#fff" opacity=".9"/>
+          <circle cx="112" cy="31.5" r="1" fill="#fff" opacity=".9"/>
+          <rect x="104" y="44" width="12" height="8" rx="3" fill="#111" opacity=".85"/>
+        </g>
+        <path d="M86 30h40c2 0 4 2 4 4v8H82v-8c0-2 2-4 4-4Z" fill="#111" opacity=".18"/>
+        <path d="M126 30h16c2 0 4 2 4 4v8h-24v-8c0-2 2-4 4-4Z" fill="#111" opacity=".14"/>
+        <circle cx="44" cy="64" r="4" fill="#111" opacity=".25"/>
+        <circle cx="176" cy="64" r="4" fill="#fff" opacity=".55"/>
+        <g class="wheel">
+          <circle cx="70" cy="70" r="12" fill="#111"/>
+          <circle cx="70" cy="70" r="6" fill="#f5f5f5" opacity=".85"/>
+          <path d="M70 58v24M58 70h24" stroke="#f5f5f5" stroke-width="2" opacity=".6"/>
+        </g>
+        <g class="wheel">
+          <circle cx="152" cy="70" r="12" fill="#111"/>
+          <circle cx="152" cy="70" r="6" fill="#f5f5f5" opacity=".85"/>
+          <path d="M152 58v24M140 70h24" stroke="#f5f5f5" stroke-width="2" opacity=".6"/>
+        </g>
+        <defs>
+          <linearGradient id="shine" x1="36" y1="14" x2="146" y2="34" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff" stop-opacity=".6"/>
+            <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</footer>
 
-    // Burger toggle
-    const burger = document.getElementById('burger');
-    const panel = document.getElementById('mobile-panel');
-    const b1 = document.getElementById('b1');
-    const b2 = document.getElementById('b2');
-    let open = false;
+<div id="lightbox" class="fixed inset-0 z-[9999] hidden">
+  <div id="lightbox-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+  <div class="relative h-full w-full flex items-center justify-center p-4">
+    <button id="lightbox-close" type="button" class="absolute top-4 right-4 w-11 h-11 rounded-2xl bg-white/10 text-white grid place-items-center border border-white/20 hover:bg-white/20 transition" aria-label="Zavřít (Esc)">✕</button>
+    <button id="lightbox-prev" type="button" class="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-2xl bg-white/10 text-white grid place-items-center border border-white/20 hover:bg-white/20 transition" aria-label="Předchozí (←)">‹</button>
+    <button id="lightbox-next" type="button" class="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-2xl bg-white/10 text-white grid place-items-center border border-white/20 hover:bg-white/20 transition" aria-label="Další (→)">›</button>
+    <figure class="relative max-w-5xl w-full">
+      <img id="lightbox-img" src="" alt="Náhled" class="w-full max-h-[78vh] object-contain rounded-2xl shadow-2xl border border-white/10 bg-black" />
+      <figcaption class="mt-3 text-center text-white/80 text-sm">
+        <span id="lightbox-count" class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs mr-2">1 / 1</span>
+        <span id="lightbox-caption"></span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
 
-    function setOpen(state){
-      open = state;
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      panel.classList.toggle('hidden', !open);
-      if (open) { b1.classList.add('rotate-45','translate-y-[2px]'); b2.classList.add('-rotate-45','-translate-y-[2px]'); }
-      else { b1.classList.remove('rotate-45','translate-y-[2px]'); b2.classList.remove('-rotate-45','-translate-y-[2px]'); }
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const burger = document.getElementById('burger');
+  const panel = document.getElementById('mobile-panel');
+  const b1 = document.getElementById('b1');
+  const b2 = document.getElementById('b2');
+  let open = false;
+
+  function setOpen(state){
+    open = state;
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    panel.classList.toggle('hidden', !open);
+    if (open) {
+      b1.classList.add('rotate-45','translate-y-[2px]');
+      b2.classList.add('-rotate-45','-translate-y-[2px]');
+    } else {
+      b1.classList.remove('rotate-45','translate-y-[2px]');
+      b2.classList.remove('-rotate-45','-translate-y-[2px]');
     }
+  }
 
-    burger.addEventListener('click', ()=> setOpen(!open));
+  burger.addEventListener('click', ()=> setOpen(!open));
 
-    // Auto-close: klik mimo header, Escape, resize
-    const header = document.getElementById('site-header');
-    window.addEventListener('click', (e)=> { if (open && !header.contains(e.target)) setOpen(false); });
-    window.addEventListener('keydown', (e)=> { if (e.key === 'Escape') setOpen(false); });
-    window.addEventListener('resize', ()=> { if (window.innerWidth >= 768) setOpen(false); });
+  const header = document.getElementById('site-header');
+  window.addEventListener('click', (e)=> { if (open && !header.contains(e.target)) setOpen(false); });
+  window.addEventListener('keydown', (e)=> { if (e.key === 'Escape') setOpen(false); });
+  window.addEventListener('resize', ()=> { if (window.innerWidth >= 768) setOpen(false); });
 
-    lucide.createIcons();
+  lucide.createIcons();
 
-    // Smooth scroll s offsetem headeru
-    const goLinks = document.querySelectorAll('[data-goto]');
-    function scrollWithOffset(id){
-      const el = document.querySelector(id);
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const headerH = header ? header.offsetHeight : 0;
-      const top = rect.top + scrollTop - (headerH + 8);
-      window.scrollTo({ top, behavior: 'smooth' });
-      setOpen(false);
-    }
-    goLinks.forEach(a=>{
-      a.addEventListener('click',(e)=>{
-        const id = a.getAttribute('data-goto');
-        if (id){ e.preventDefault(); scrollWithOffset(id); }
-      });
+  const goLinks = document.querySelectorAll('[data-goto]');
+  function scrollWithOffset(id){
+    const el = document.querySelector(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const headerH = header ? header.offsetHeight : 0;
+    const top = rect.top + scrollTop - (headerH + 8);
+    window.scrollTo({ top, behavior: 'smooth' });
+    setOpen(false);
+  }
+  goLinks.forEach(a=>{
+    a.addEventListener('click',(e)=>{
+      const id = a.getAttribute('data-goto');
+      if (id){ e.preventDefault(); scrollWithOffset(id); }
     });
-  </script>
+  });
+</script>
 
-  <!-- Odeslání formuláře -->
-  <script>
-    (function(){
-      const FORM_ENDPOINT = null; // nastav URL (např. Formspree, vlastní API). Když zůstane null, použije se e-mail.
-      const form = document.getElementById('objednat');
-      const statusEl = document.getElementById('form-status');
+<script>
+  (function(){
+    const FORM_ENDPOINT = null;
+    const form = document.getElementById('objednat');
+    const statusEl = document.getElementById('form-status');
 
-      function setStatus(msg, ok=true){
-        if(!statusEl) return;
-        statusEl.textContent = msg;
-        statusEl.className = 'text-sm mt-2 ' + (ok ? 'text-green-700' : 'text-red-700');
+    function setStatus(msg, ok=true){
+      if(!statusEl) return;
+      statusEl.textContent = msg;
+      statusEl.className = 'text-sm mt-2 ' + (ok ? 'text-green-700' : 'text-red-700');
+    }
+
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(form);
+
+      if ((fd.get('company')||'').toString().trim() !== '') return;
+
+      if(!fd.get('name') || !fd.get('contact') || !fd.get('service')){
+        setStatus('Vyplňte prosím povinná pole (jméno, kontakt, služba).', false);
+        return;
       }
 
-      form?.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const fd = new FormData(form);
+      if(!fd.get('consent')){
+        setStatus('Prosím potvrďte souhlas se zpracováním údajů.', false);
+        return;
+      }
 
-        // honeypot
-        if ((fd.get('company')||'').toString().trim() !== '') return;
-
-        // povinná pole quick check
-        if(!fd.get('name') || !fd.get('contact') || !fd.get('service')){
-          setStatus('Vyplňte prosím povinná pole (jméno, kontakt, služba).', false);
-          return;
-        }
-
-        // vyžaduj souhlas
-        if(!fd.get('consent')){
-          setStatus('Prosím potvrďte souhlas se zpracováním údajů.', false);
-          return;
-        }
-
-        const data = Object.fromEntries(fd.entries());
-        const subject = encodeURIComponent('Poptávka – ' + (data.service||'Služba'));
-        const body = encodeURIComponent(
+      const data = Object.fromEntries(fd.entries());
+      const subject = encodeURIComponent('Poptávka – ' + (data.service||'Služba'));
+      const body = encodeURIComponent(
 `Jméno/Firma: ${data.name}
 Kontakt: ${data.contact}
 Služba: ${data.service}
 Město: ${data.city||''}
 Termín: ${data.date||''}
+Rozpočet: ${data.budget||''}
 
 Zpráva:
 ${data.message||''}`
-        );
+      );
 
-        try{
-          if (FORM_ENDPOINT){
-            const res = await fetch(FORM_ENDPOINT, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data)
-            });
-            if(!res.ok) throw new Error('HTTP '+res.status);
-            setStatus('Díky! Poptávka byla odeslána. Ozveme se co nejdřív.');
-            form.reset();
-          } else {
-            // Fake loading 1–1,5 s + přesměrování
-            const btn = form.querySelector('button[type="submit"]');
-            if(btn){
-              btn.disabled = true;
-              btn.classList.add('opacity-70','cursor-not-allowed');
-              btn.textContent = 'Odesílám…';
-            }
-            setStatus('Odesílám poptávku…');
-
-            setTimeout(()=>{
-              window.location.href = `mailto:info@reklamas.cz?subject=${subject}&body=${body}`;
-            }, 1200);
-          }
-        } catch(err){
-          setStatus('Nepodařilo se odeslat. Zkuste to prosím znovu nebo napište na info@reklamas.cz.', false);
-        }
-      });
-    })();
-  </script>
-
-  <!-- Galerie: Lightbox + mobile carousel + desktop 8 tiles + auto-load + ToTop -->
-  <script>
-    (function(){
-      const galleryItems = [
-        { src: "https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_53_55.png", caption: "Ukázka 1" },
-        { src: "https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_53_56.png", caption: "Ukázka 2" },
-        { src: "https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_53_58.png", caption: "Ukázka 3" },
-        { src: "https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_54_01.png", caption: "Ukázka 4" },
-        { src: "https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_54_03.png", caption: "Ukázka 5" }
-      ];
-
-      const grid = document.getElementById('gallery-grid');
-      const loadMoreBtn = document.getElementById('gallery-load-more');
-      const loadStatus = document.getElementById('gallery-load-status');
-
-      const mobileTrack = document.getElementById('gallery-mobile-track');
-      const mobilePrev = document.getElementById('gallery-mobile-prev');
-      const mobileNext = document.getElementById('gallery-mobile-next');
-      const mobileIndicator = document.getElementById('gallery-mobile-indicator');
-
-      const lb = document.getElementById('lightbox');
-      const lbBackdrop = document.getElementById('lightbox-backdrop');
-      const lbImg = document.getElementById('lightbox-img');
-      const lbCaption = document.getElementById('lightbox-caption');
-      const lbCount = document.getElementById('lightbox-count');
-      const lbClose = document.getElementById('lightbox-close');
-      const lbPrev = document.getElementById('lightbox-prev');
-      const lbNext = document.getElementById('lightbox-next');
-
-      let lbIndex = 0;
-      let gridShown = 0;
-      const GRID_STEP = 8;
-
-      function escHtml(s){
-        return (s||'').toString().replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
-      }
-
-      // Lightbox
-      function openLightbox(i){
-        lbIndex = i;
-        const item = galleryItems[lbIndex];
-        if(!item) return;
-        lbImg.src = item.src;
-        lbCaption.textContent = item.caption || '';
-        if(!item.caption){
-          lbCaption.classList.add('hidden');
+      try{
+        if (FORM_ENDPOINT){
+          const res = await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if(!res.ok) throw new Error('HTTP '+res.status);
+          setStatus('Díky! Poptávka byla odeslána. Ozveme se co nejdřív.');
+          form.reset();
         } else {
-          lbCaption.classList.remove('hidden');
+          const btn = form.querySelector('button[type="submit"]');
+          if(btn){
+            btn.disabled = true;
+            btn.classList.add('opacity-70','cursor-not-allowed');
+            btn.textContent = 'Odesílám…';
+          }
+          setStatus('Odesílám poptávku…');
+
+          setTimeout(()=>{
+            window.location.href = `mailto:info@reklamas.cz?subject=${subject}&body=${body}`;
+          }, 1200);
         }
-        if(lbCount) lbCount.textContent = `${lbIndex + 1} / ${galleryItems.length}`;
-        lb.classList.remove('hidden');
-        document.documentElement.style.overflow = 'hidden';
+      } catch(err){
+        setStatus('Nepodařilo se odeslat. Zkuste to prosím znovu nebo napište na info@reklamas.cz.', false);
       }
-      function closeLightbox(){
-        lb.classList.add('hidden');
-        document.documentElement.style.overflow = '';
-        lbImg.src = '';
-        if(lbCount) lbCount.textContent = '';
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    const galleryItems = [
+      { src: 'https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_53_55.png', caption: 'Ukázka 1' },
+      { src: 'https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_53_56.png', caption: 'Ukázka 2' },
+      { src: 'https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_53_58.png', caption: 'Ukázka 3' },
+      { src: 'https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_54_01.png', caption: 'Ukázka 4' },
+      { src: 'https://raw.githubusercontent.com/michalsurmanek-sketch/reklamas/main/ChatGPT%20Image%2022.%201.%202026%2016_54_03.png', caption: 'Ukázka 5' }
+    ];
+
+    const grid = document.getElementById('gallery-grid');
+    const desktopWrap = document.getElementById('gallery-desktop-wrap');
+    const desktopPrev = document.getElementById('gallery-desktop-prev');
+    const desktopNext = document.getElementById('gallery-desktop-next');
+    const desktopDots = document.getElementById('gallery-desktop-dots');
+    
+    const mobileTrack = document.getElementById('gallery-mobile-track');
+    const mobilePrev = document.getElementById('gallery-mobile-prev');
+    const mobileNext = document.getElementById('gallery-mobile-next');
+    const mobileIndicator = document.getElementById('gallery-mobile-indicator');
+
+    const lb = document.getElementById('lightbox');
+    const lbBackdrop = document.getElementById('lightbox-backdrop');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCaption = document.getElementById('lightbox-caption');
+    const lbCount = document.getElementById('lightbox-count');
+    const lbClose = document.getElementById('lightbox-close');
+    const lbPrev = document.getElementById('lightbox-prev');
+    const lbNext = document.getElementById('lightbox-next');
+
+    let lbIndex = 0;
+    let desktopPage = 0;
+    const ITEMS_PER_PAGE = 4;
+    let mobileIndex = 0;
+
+    function escHtml(s){
+      return (s||'').toString().replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+    }
+
+    function openLightbox(i){
+      lbIndex = i;
+      const item = galleryItems[lbIndex];
+      if(!item) return;
+      lbImg.src = item.src;
+      lbCaption.textContent = item.caption || '';
+      if(!item.caption){
+        lbCaption.classList.add('hidden');
+      } else {
         lbCaption.classList.remove('hidden');
       }
-      function prevLightbox(){
-        lbIndex = (lbIndex - 1 + galleryItems.length) % galleryItems.length;
-        openLightbox(lbIndex);
-      }
-      function nextLightbox(){
-        lbIndex = (lbIndex + 1) % galleryItems.length;
-        openLightbox(lbIndex);
-      }
+      if(lbCount) lbCount.textContent = `${lbIndex + 1} / ${galleryItems.length}`;
+      lb.classList.remove('hidden');
+      document.documentElement.style.overflow = 'hidden';
+    }
 
-      lbBackdrop?.addEventListener('click', closeLightbox);
-      lbClose?.addEventListener('click', closeLightbox);
-      lbPrev?.addEventListener('click', prevLightbox);
-      lbNext?.addEventListener('click', nextLightbox);
+    function closeLightbox(){
+      lb.classList.add('hidden');
+      document.documentElement.style.overflow = '';
+      lbImg.src = '';
+      if(lbCount) lbCount.textContent = '';
+      lbCaption.classList.remove('hidden');
+    }
 
-      window.addEventListener('keydown', (e)=>{
-        if(lb.classList.contains('hidden')) return;
-        if(e.key === 'Escape') closeLightbox();
-        if(e.key === 'ArrowLeft') prevLightbox();
-        if(e.key === 'ArrowRight') nextLightbox();
+    function prevLightbox(){
+      lbIndex = (lbIndex - 1 + galleryItems.length) % galleryItems.length;
+      openLightbox(lbIndex);
+    }
+
+    function nextLightbox(){
+      lbIndex = (lbIndex + 1) % galleryItems.length;
+      openLightbox(lbIndex);
+    }
+
+    lbBackdrop?.addEventListener('click', closeLightbox);
+    lbClose?.addEventListener('click', closeLightbox);
+    lbPrev?.addEventListener('click', prevLightbox);
+    lbNext?.addEventListener('click', nextLightbox);
+
+    window.addEventListener('keydown', (e)=>{
+      if(lb.classList.contains('hidden')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') prevLightbox();
+      if(e.key === 'ArrowRight') nextLightbox();
+    });
+
+    let lbTouchX = null;
+    lb?.addEventListener('touchstart', (e)=>{ lbTouchX = e.touches[0]?.clientX ?? null; }, {passive:true});
+    lb?.addEventListener('touchend', (e)=>{
+      if(lbTouchX === null) return;
+      const endX = e.changedTouches[0]?.clientX ?? lbTouchX;
+      const dx = endX - lbTouchX;
+      lbTouchX = null;
+      if(Math.abs(dx) > 40){
+        if(dx > 0) prevLightbox(); else nextLightbox();
+      }
+    }, {passive:true});
+
+    function createTile(item, index){
+      const wrap = document.createElement('button');
+      wrap.type = 'button';
+      wrap.className = 'aspect-square w-[260px] md:w-[calc((100vw-8rem)/4)] max-w-[320px] shrink-0 rounded-2xl bg-white border border-black/10 overflow-hidden hover:shadow-md transition relative';
+      wrap.innerHTML = `
+        <img src="${escHtml(item.src)}" alt="${escHtml(item.caption||'')}" class="w-full h-full object-cover" loading="lazy">
+        <span class="absolute inset-x-0 bottom-0 bg-black/55 text-yellow-100 text-[11px] px-2 py-1 text-left">${escHtml(item.caption||'')}</span>
+      `;
+      wrap.addEventListener('click', ()=> openLightbox(index));
+      return wrap;
+    }
+
+    function renderDesktop(){
+      if(!grid) return;
+      grid.innerHTML = '';
+      galleryItems.forEach((item, index)=>{
+        grid.appendChild(createTile(item, index));
       });
+      renderDesktopDots();
+      updateDesktopButtons();
+    }
 
-      // Swipe in lightbox
-      let lbTouchX = null;
-      lb?.addEventListener('touchstart', (e)=>{ lbTouchX = e.touches[0]?.clientX ?? null; }, {passive:true});
-      lb?.addEventListener('touchend', (e)=>{
-        if(lbTouchX === null) return;
-        const endX = e.changedTouches[0]?.clientX ?? lbTouchX;
-        const dx = endX - lbTouchX;
-        lbTouchX = null;
-        if(Math.abs(dx) > 40){
-          if(dx > 0) prevLightbox(); else nextLightbox();
-        }
-      }, {passive:true});
-
-      // Desktop grid
-      function createTile(item, index){
-        const wrap = document.createElement('button');
-        wrap.type = 'button';
-        wrap.className = "aspect-square rounded-2xl bg-white border border-black/10 overflow-hidden hover:shadow-md transition relative";
-        wrap.innerHTML = `
-          <img src="${escHtml(item.src)}" alt="${escHtml(item.caption||'')}" class="w-full h-full object-cover" loading="lazy">
-          <span class="absolute inset-x-0 bottom-0 bg-black/55 text-yellow-100 text-[11px] px-2 py-1 text-left">${escHtml(item.caption||'')}</span>
-        `;
-        wrap.addEventListener('click', ()=> openLightbox(index));
-        return wrap;
+    function renderDesktopDots(){
+      if(!desktopDots) return;
+      const pageCount = Math.ceil(galleryItems.length / ITEMS_PER_PAGE);
+      desktopDots.innerHTML = '';
+      for(let i = 0; i < pageCount; i++){
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `w-2.5 h-2.5 rounded-full transition ${i === desktopPage ? 'bg-black' : 'bg-black/25 hover:bg-black/45'}`;
+        dot.setAttribute('aria-label', `Strana ${i+1}`);
+        dot.addEventListener('click', ()=> scrollDesktopToPage(i));
+        desktopDots.appendChild(dot);
       }
+    }
 
-      function renderMore(){
-        if(!grid) return;
-        const next = Math.min(gridShown + GRID_STEP, galleryItems.length);
-        for(let i = gridShown; i < next; i++){
-          grid.appendChild(createTile(galleryItems[i], i));
+    function scrollDesktopToPage(page){
+      if(!desktopWrap || !grid?.children?.length) return;
+      const cards = grid.children;
+      const target = cards[Math.min(page * ITEMS_PER_PAGE, cards.length - 1)];
+      desktopPage = page;
+      desktopWrap.scrollTo({ left: target.offsetLeft - 56, behavior: 'smooth' });
+      renderDesktopDots();
+      updateDesktopButtons();
+    }
+
+    function updateDesktopPageFromScroll(){
+      if(!desktopWrap || !grid?.children?.length) return;
+      const cards = Array.from(grid.children);
+      let closestIndex = 0;
+      let smallest = Infinity;
+      const currentLeft = desktopWrap.scrollLeft + 56;
+      cards.forEach((card, idx)=>{
+        const diff = Math.abs(card.offsetLeft - currentLeft);
+        if(diff < smallest){
+          smallest = diff;
+          closestIndex = idx;
         }
-        gridShown = next;
-        if(loadStatus) loadStatus.textContent = gridShown >= galleryItems.length ? "Vše načteno." : `Zobrazeno ${gridShown} z ${galleryItems.length}`;
-        if(loadMoreBtn) loadMoreBtn.classList.toggle('hidden', gridShown >= galleryItems.length);
+      });
+      desktopPage = Math.min(Math.floor(closestIndex / ITEMS_PER_PAGE), Math.ceil(galleryItems.length / ITEMS_PER_PAGE)-1);
+      renderDesktopDots();
+      updateDesktopButtons();
+    }
+
+    function updateDesktopButtons(){
+      const maxPage = Math.ceil(galleryItems.length / ITEMS_PER_PAGE) - 1;
+      if(desktopPrev) desktopPrev.classList.toggle('opacity-40', maxPage <= 0);
+      if(desktopNext) desktopNext.classList.toggle('opacity-40', maxPage <= 0);
+    }
+
+    desktopPrev?.addEventListener('click', ()=>{
+      const maxPage = Math.ceil(galleryItems.length / ITEMS_PER_PAGE) - 1;
+      scrollDesktopToPage(desktopPage <= 0 ? maxPage : desktopPage - 1);
+    });
+
+    desktopNext?.addEventListener('click', ()=>{
+      const maxPage = Math.ceil(galleryItems.length / ITEMS_PER_PAGE) - 1;
+      scrollDesktopToPage(desktopPage >= maxPage ? 0 : desktopPage + 1);
+    });
+
+    desktopWrap?.addEventListener('scroll', ()=>{
+      window.clearTimeout(desktopWrap._scrollTimer);
+      desktopWrap._scrollTimer = window.setTimeout(updateDesktopPageFromScroll, 90);
+    }, {passive:true});
+
+    function renderMobileSlides(){
+      if(!mobileTrack) return;
+      mobileTrack.innerHTML = '';
+      galleryItems.forEach((it, idx)=>{
+        const slide = document.createElement('button');
+        slide.type = 'button';
+        slide.className = 'min-w-full aspect-[4/3] bg-black';
+        slide.innerHTML = `<img src="${escHtml(it.src)}" alt="${escHtml(it.caption||'')}" class="w-full h-full object-cover" loading="lazy">`;
+        slide.addEventListener('click', ()=> openLightbox(idx));
+        mobileTrack.appendChild(slide);
+      });
+      updateMobile();
+    }
+
+    function updateMobile(){
+      if(!mobileTrack) return;
+      mobileTrack.style.transform = `translateX(${mobileIndex * -100}%)`;
+      if(mobileIndicator) mobileIndicator.textContent = `${mobileIndex+1} / ${galleryItems.length}`;
+    }
+
+    function mobilePrevFn(){ mobileIndex = (mobileIndex - 1 + galleryItems.length) % galleryItems.length; updateMobile(); }
+    function mobileNextFn(){ mobileIndex = (mobileIndex + 1) % galleryItems.length; updateMobile(); }
+
+    mobilePrev?.addEventListener('click', mobilePrevFn);
+    mobileNext?.addEventListener('click', mobileNextFn);
+
+    let startX = null;
+    mobileTrack?.addEventListener('touchstart', (e)=>{ startX = e.touches[0]?.clientX ?? null; }, {passive:true});
+    mobileTrack?.addEventListener('touchend', (e)=>{
+      if(startX === null) return;
+      const endX = e.changedTouches[0]?.clientX ?? startX;
+      const dx = endX - startX;
+      startX = null;
+      if(Math.abs(dx) > 40){
+        if(dx > 0) mobilePrevFn(); else mobileNextFn();
       }
+    }, {passive:true});
 
-      loadMoreBtn?.addEventListener('click', renderMore);
+    renderDesktop();
+    renderMobileSlides();
+  })();
+</script>
 
-      // Auto-load on desktop
-      const sentinel = document.createElement('div');
-      sentinel.className = "h-1";
-      if(grid?.parentElement) grid.parentElement.appendChild(sentinel);
-
-      const io = new IntersectionObserver((entries)=>{
-        const ent = entries[0];
-        if(ent.isIntersecting && window.innerWidth >= 768){
-          if(gridShown < galleryItems.length) renderMore();
-        }
-      }, { rootMargin: "400px" });
-
-      io.observe(sentinel);
-
-      // init desktop
-      renderMore();
-
-      // Mobile carousel
-      let mobileIndex = 0;
-
-      function renderMobileSlides(){
-        if(!mobileTrack) return;
-        mobileTrack.innerHTML = '';
-        galleryItems.forEach((it, idx)=>{
-          const slide = document.createElement('button');
-          slide.type = 'button';
-          slide.className = "min-w-full aspect-[4/3] bg-black";
-          slide.innerHTML = `<img src="${escHtml(it.src)}" alt="${escHtml(it.caption||'')}" class="w-full h-full object-cover" loading="lazy">`;
-          slide.addEventListener('click', ()=> openLightbox(idx));
-          mobileTrack.appendChild(slide);
-        });
-        updateMobile();
-      }
-
-      function updateMobile(){
-        if(!mobileTrack) return;
-        mobileTrack.style.transform = `translateX(${mobileIndex * -100}%)`;
-        if(mobileIndicator) mobileIndicator.textContent = `${mobileIndex+1} / ${galleryItems.length}`;
-      }
-
-      function mobilePrevFn(){ mobileIndex = (mobileIndex - 1 + galleryItems.length) % galleryItems.length; updateMobile(); }
-      function mobileNextFn(){ mobileIndex = (mobileIndex + 1) % galleryItems.length; updateMobile(); }
-
-      mobilePrev?.addEventListener('click', mobilePrevFn);
-      mobileNext?.addEventListener('click', mobileNextFn);
-
-      // swipe mobile
-      let startX = null;
-      mobileTrack?.addEventListener('touchstart', (e)=>{ startX = e.touches[0]?.clientX ?? null; }, {passive:true});
-      mobileTrack?.addEventListener('touchend', (e)=>{
-        if(startX === null) return;
-        const endX = e.changedTouches[0]?.clientX ?? startX;
-        const dx = endX - startX;
-        startX = null;
-        if(Math.abs(dx) > 40){
-          if(dx > 0) mobilePrevFn(); else mobileNextFn();
-        }
-      }, {passive:true});
-
-      renderMobileSlides();
-
-      
-
-    })();
-  </script>
 <script>
   fetch('/menu-reklama.html')
     .then(res => {
