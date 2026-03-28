@@ -629,7 +629,7 @@ textarea {
       <h2 class="text-3xl md:text-4xl font-extrabold">Kontakt</h2>
       <p class="mt-2 text-black/70">Napište nám, ozveme se obratem.</p>
 
-      <div class="mt-6 grid md:grid-cols-[1fr,220px] gap-6 items-start text-sm">
+      <div class="mt-6 grid md:grid-cols-[1fr,220px] gap-6 items-stretch text-sm">
         
         <!-- Kontakt -->
         <div class="space-y-3">
@@ -639,10 +639,10 @@ textarea {
         </div>
 
         <!-- QR -->
-        <div class="flex justify-center md:justify-end">
-          <div class="w-[180px] px-3 py-3 rounded-2xl bg-white border border-black/10 text-center shadow-sm">
+        <div class="flex justify-center md:justify-end h-full">
+          <div class="w-[180px] h-full px-3 py-3 rounded-2xl bg-white border border-black/10 text-center shadow-sm flex flex-col">
             <div class="text-xs text-black/60 mb-2">QR kontakt</div>
-            <div class="w-full aspect-square bg-black/10 rounded-xl grid place-items-center text-xs text-black/50">
+            <div class="w-full flex-1 bg-black/10 rounded-xl grid place-items-center text-xs text-black/50">
               QR
             </div>
           </div>
