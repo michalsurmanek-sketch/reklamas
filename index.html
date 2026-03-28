@@ -620,75 +620,111 @@ textarea {
     </div>
   </section>
 
-  <!-- Kontakt -->
-  <section id="kontakt" class="scroll-mt-24 md:scroll-mt-28">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-extrabold">Kontakt</h2>
-        <p class="mt-2 text-black/70">Uherské Hradiště / Zlín a okolí. Napište nám, ozveme se obratem.</p>
-        <div class="mt-6 space-y-3 text-sm">
+ <!-- Kontakt -->
+<section id="kontakt" class="scroll-mt-24 md:scroll-mt-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10">
+    
+    <!-- LEVÁ STRANA -->
+    <div>
+      <h2 class="text-3xl md:text-4xl font-extrabold">Kontakt</h2>
+      <p class="mt-2 text-black/70">Napište nám, ozveme se obratem.</p>
+
+      <div class="mt-6 grid md:grid-cols-[1fr,220px] gap-6 items-start text-sm">
+        
+        <!-- Kontakt -->
+        <div class="space-y-3">
           <div><span class="font-semibold">E-mail:</span> <a href="mailto:info@reklamas.cz" class="underline">info@reklamas.cz</a></div>
           <div><span class="font-semibold">Telefon:</span> <a href="tel:+420000000000" class="underline">+420 000 000 000</a></div>
           <div><span class="font-semibold">WhatsApp:</span> +420 000 000 000</div>
-          <div class="mt-4 inline-block px-3 py-2 rounded-xl bg-white border border-black/10">QR kontakt (doplníme)</div>
+        </div>
 
-          <!-- Mapa (pod QR) -->
-          <div class="mt-4">
-            <div class="flex items-center justify-between gap-3">
-              <div class="font-semibold">Mapa</div>
-              <a class="text-xs underline text-black/70 hover:text-pink-600" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Uhersk%C3%A9+Hradi%C5%A1t%C4%9B/@49.06975,17.45969,14z">Otevřít v Mapách</a>
+        <!-- QR -->
+        <div class="flex justify-center md:justify-end">
+          <div class="w-[180px] px-3 py-3 rounded-2xl bg-white border border-black/10 text-center shadow-sm">
+            <div class="text-xs text-black/60 mb-2">QR kontakt</div>
+            <div class="w-full aspect-square bg-black/10 rounded-xl grid place-items-center text-xs text-black/50">
+              QR
             </div>
-            <div class="mt-2 rounded-2xl overflow-hidden border border-black/10 bg-white shadow-sm">
-              <div class="aspect-[16/10]">
-                <iframe
-                  title="Mapa – Reklamas"
-                  class="w-full h-full"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?output=embed&hl=cs&q=49.06975,17.45969&z=14">
-                </iframe>
-              </div>
-            </div>
-           </div>
+          </div>
         </div>
       </div>
 
-      <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm" novalidate>
-        <div class="text-center mb-2">
-          <div class="hand text-[22px] md:text-[26px] text-black/60 cta-nudge">Trvá to jen 30 sekund… ✍️</div>
+      <!-- MAPA -->
+      <div class="mt-6">
+        <div class="flex items-center justify-between gap-3">
+          <div class="font-semibold">Mapa</div>
+          <a class="text-xs underline text-black/70 hover:text-pink-600"
+             target="_blank"
+             rel="noopener"
+             href="https://www.google.com/maps/place/Uhersk%C3%A9+Hradi%C5%A1t%C4%9B/@49.06975,17.45969,14z">
+             Otevřít v Mapách
+          </a>
         </div>
-        <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
-        <div class="mt-4 grid grid-cols-1 gap-3">
-          <input name="name" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno a firma" required />
-          <input name="contact" class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail nebo telefon" required />
-          <select name="service" class="px-3 py-2 rounded-xl border border-black/20" required>
-            <option value="">Vyberte službu…</option>
-            <option>Mobilní reklama</option>
-            <option>Auto billboard</option>
-            <option>Potisk triček</option>
-            <option>Reklama na eventech</option>
-            <option>Pronájem Reklamase</option>
-            <option>QR měření kampaně</option>
-          </select>
-          <div class="grid grid-cols-2 gap-3">
-            <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
-            <input name="city" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Město / Lokalita" />
+
+        <div class="mt-2 rounded-2xl overflow-hidden border border-black/10 bg-white shadow-sm">
+          <div class="aspect-[16/10]">
+            <iframe
+              title="Mapa – Reklamas"
+              class="w-full h-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?output=embed&hl=cs&q=49.06975,17.45969&z=14">
+            </iframe>
           </div>
-          <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce poptávku (trasa, čas, cíl)"></textarea>
-
-          <!-- Honeypot proti botům -->
-          <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
-
-          <label class="flex items-start gap-2 text-xs text-black/70">
-            <input name="consent" type="checkbox" required class="mt-1" /> Souhlasím se zpracováním údajů za účelem reakce na poptávku.
-          </label>
-
-          <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Odeslat poptávku</button>
-          <div id="form-status" class="text-sm"></div>
         </div>
-      </form>
+      </div>
     </div>
-  </section>
+
+    <!-- PRAVÁ STRANA (FORM) -->
+    <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm" novalidate>
+      
+      <div class="text-center mb-2">
+        <div class="hand text-[22px] md:text-[26px] text-black/60 cta-nudge">
+          Trvá to jen 30 sekund… ✍️
+        </div>
+      </div>
+
+      <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
+
+      <div class="mt-4 grid grid-cols-1 gap-3">
+        <input name="name" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno a firma" required />
+        <input name="contact" class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail nebo telefon" required />
+
+        <select name="service" class="px-3 py-2 rounded-xl border border-black/20" required>
+          <option value="">Vyberte službu…</option>
+          <option>Mobilní reklama</option>
+          <option>Auto billboard</option>
+          <option>Potisk triček</option>
+          <option>Reklama na eventech</option>
+          <option>Pronájem Reklamase</option>
+          <option>QR měření kampaně</option>
+        </select>
+
+        <div class="grid grid-cols-2 gap-3">
+          <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
+          <input name="city" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Město / Lokalita" />
+        </div>
+
+        <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce poptávku (trasa, čas, cíl)"></textarea>
+
+        <!-- Honeypot -->
+        <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <label class="flex items-start gap-2 text-xs text-black/70">
+          <input name="consent" type="checkbox" required class="mt-1" />
+          Souhlasím se zpracováním údajů za účelem reakce na poptávku.
+        </label>
+
+        <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">
+          Odeslat poptávku
+        </button>
+
+        <div id="form-status" class="text-sm"></div>
+      </div>
+    </form>
+
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="bg-black text-yellow-300">
