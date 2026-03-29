@@ -649,8 +649,8 @@
     <input 
       name="date" 
       type="date" 
-      onchange="this.nextElementSibling.style.display='none'"
-      class="px-3 py-2 rounded-xl border border-black/20 w-full text-transparent sm:text-black"
+      oninput="this.nextElementSibling.style.display='none'"
+      class="px-3 py-2 rounded-xl border border-black/20 w-full text-black"
     />
     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-black/50 text-sm sm:hidden">
       Datum
@@ -675,7 +675,6 @@
   </div>
 
 </div>
-   
 
     <!-- MESSAGE -->
     <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Co chcete řešit?"></textarea>
