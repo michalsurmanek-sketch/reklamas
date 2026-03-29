@@ -633,9 +633,22 @@
         </div>
 
         <div class="grid grid-cols-2 gap-3">
-          <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
-          <input name="city" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Město / Lokalita" />
-        </div>
+  <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
+
+  <!-- Mobil -->
+  <input 
+    name="city" 
+    class="px-3 py-2 rounded-xl border border-black/20 sm:hidden" 
+    placeholder="Město" 
+  />
+
+  <!-- Desktop -->
+  <input 
+    name="city" 
+    class="px-3 py-2 rounded-xl border border-black/20 hidden sm:block" 
+    placeholder="Město / Lokalita" 
+  />
+</div>
 
         <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce poptávku (trasa, čas, cíl)"></textarea>
 
