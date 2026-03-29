@@ -642,10 +642,10 @@
     </div>
 
     <!-- DATUM + MĚSTO -->
-<div class="flex gap-3">
+<div class="grid grid-cols-[40%_60%] sm:grid-cols-2 gap-2 sm:gap-3">
 
   <!-- DATUM -->
-  <div class="relative w-[100px]">
+  <div class="relative">
     <input 
       name="date" 
       type="date" 
@@ -658,7 +658,7 @@
   </div>
 
   <!-- MĚSTO -->
-  <div class="flex-1">
+  <div>
     <!-- Mobil -->
     <input 
       name="city" 
@@ -675,6 +675,7 @@
   </div>
 
 </div>
+   
 
     <!-- MESSAGE -->
     <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Co chcete řešit?"></textarea>
