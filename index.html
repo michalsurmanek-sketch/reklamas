@@ -392,11 +392,22 @@
 
 </div>
 
-      <div id="potisk" class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
-        <h3 class="font-bold text-xl">Potisk triček a oblečení</h3>
-        <p class="mt-2 text-sm text-black/70">Trička, mikiny, vesty i pracovní oblečení. Logo, text, QR kód – od 1 ks.</p>
-        <a href="/potisk-tricek.html" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
-      </div>
+      <div id="potisk" class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50 relative overflow-hidden">
+  
+  <!-- Pozadí obrázek -->
+  <div class="absolute inset-0 bg-[url('/potisk.png')] bg-cover bg-center opacity-40"></div>
+  
+  <!-- Překryv -->
+  <div class="absolute inset-0 bg-yellow-50/70"></div>
+
+  <!-- Obsah -->
+  <div class="relative z-10">
+    <h3 class="font-bold text-xl">Potisk triček a oblečení</h3>
+    <p class="mt-2 text-sm text-black/70">Trička, mikiny, vesty i pracovní oblečení. Logo, text, QR kód – od 1 ks.</p>
+    <a href="/potisk-tricek.html" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
+  </div>
+
+</div>
 
       <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
         <h3 class="font-bold text-xl">Reklama na eventech</h3>
