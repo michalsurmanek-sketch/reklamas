@@ -642,13 +642,19 @@
     </div>
 
     <!-- DATUM + MĚSTO -->
-    <div class="grid grid-cols-2 gap-3">
-      <input 
-  name="date" 
-  type="text" 
-  placeholder="Date"
-  class="px-3 py-2 rounded-xl border border-black/20 w-[110px] sm:w-full"
-/>
+    <div class="relative w-[100px] sm:w-full">
+  
+  <input 
+    name="date" 
+    type="date" 
+    onchange="this.nextElementSibling.style.display='none'"
+    class="px-3 py-2 rounded-xl border border-black/20 w-full text-transparent sm:text-black"
+  />
+
+  <!-- fake placeholder jen pro mobil -->
+  <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-black/50 text-sm sm:hidden">
+    Datum
+  </span>
 
       <!-- Mobil -->
       <input 
