@@ -374,12 +374,23 @@
 
     <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
       
-      <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
-        <div class="inline-block text-xs px-2 py-1 rounded-md bg-pink-600 text-white mb-3">Top volba</div>
-        <h3 class="font-bold text-xl">Mobilní reklama</h3>
-        <p class="mt-2 text-sm text-black/70">Auta, kola a chodci s billboardem. Ideální pro městské centrum a trasy s vysokou návštěvností.</p>
-        <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
-      </div>
+      <div class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50 relative overflow-hidden">
+  
+  <!-- Pozadí obrázek -->
+  <div class="absolute inset-0 bg-[url('/reklamashero.png')] bg-cover bg-center opacity-40"></div>
+  
+  <!-- Překryv -->
+  <div class="absolute inset-0 bg-yellow-50/70"></div>
+
+  <!-- Obsah -->
+  <div class="relative z-10">
+    <div class="inline-block text-xs px-2 py-1 rounded-md bg-pink-600 text-white mb-3">Top volba</div>
+    <h3 class="font-bold text-xl">Mobilní reklama</h3>
+    <p class="mt-2 text-sm text-black/70">Auta, kola a chodci s billboardem. Ideální pro městské centrum a trasy s vysokou návštěvností.</p>
+    <a href="#objednat" data-goto="#objednat" class="mt-4 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Zjistit víc</a>
+  </div>
+
+</div>
 
       <div id="potisk" class="rounded-2xl border border-black/10 p-6 shadow-sm hover:shadow-md transition bg-yellow-50">
         <h3 class="font-bold text-xl">Potisk triček a oblečení</h3>
