@@ -610,75 +610,96 @@
     </div>
 
     <form id="objednat" class="scroll-mt-24 md:scroll-mt-28 rounded-2xl bg-white p-6 border border-black/10 shadow-sm" novalidate>
-      <div class="text-center mb-2">
-        <div class="hand text-[22px] md:text-[26px] text-black/60 cta-nudge">Navrhneme řešení na míru… ✍️</div>
-      </div>
-
-      <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
-
-      <div class="mt-4 grid grid-cols-1 gap-3">
-        <input name="name" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno a firma" required />
-        <input name="contact" class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail nebo telefon" required />
-
-        <div class="relative">
-          <select name="service" class="appearance-none w-full px-4 py-3 rounded-2xl border border-black/15 bg-white pr-12 font-medium text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500/30 focus:border-pink-500 hover:border-black/30" required>
-            <option value="" selected>Vyberte službu…</option>
-            <option>Mobilní reklama</option>
-            <option>Auto billboard</option>
-            <option>Potisk triček</option>
-            <option>Reklama na eventech</option>
-            <option>Pronájem Reklamase</option>
-            <option>QR měření kampaně</option>
-          </select>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-  <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
-
-  <!-- Mobil -->
-  <input 
-    name="city" 
-    class="px-3 py-2 rounded-xl border border-black/20 sm:hidden" 
-    placeholder="Město" 
-  />
-
-  <!-- Desktop -->
-  <input 
-    name="city" 
-    class="px-3 py-2 rounded-xl border border-black/20 hidden sm:block" 
-    placeholder="Město / Lokalita" 
-  />
-</div>
-
-        <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Popište krátce poptávku (trasa, čas, cíl)"></textarea>
-
-        <div class="relative">
-          <select name="budget" class="appearance-none w-full px-4 py-3 rounded-2xl border border-black/15 bg-white pr-12 font-medium text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500/30 focus:border-pink-500 hover:border-black/30">
-            <option value="" selected>Jaký máte rozpočet?</option>
-            <option>do 1 000 Kč</option>
-            <option>1 000 – 5 000 Kč</option>
-            <option>5 000 – 10 000 Kč</option>
-            <option>10 000+ Kč</option>
-            <option>nevím / poradíte mi</option>
-          </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-black/50">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/></svg>
-          </div>
-        </div>
-
-        <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
-
-        <label class="flex items-start gap-2 text-xs text-black/70">
-          <input name="consent" type="checkbox" required class="mt-1" />
-          Souhlasím se zpracováním údajů za účelem reakce na poptávku.
-        </label>
-
-        <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">Odeslat poptávku</button>
-        <div id="form-status" class="text-sm"></div>
-      </div>
-    </form>
+  <div class="text-center mb-2">
+    <div class="hand text-[22px] md:text-[26px] text-black/60 cta-nudge">
+      Stačí napsat. Ozveme se vám… ✍️
+    </div>
   </div>
-</section>
+
+  <h3 class="font-bold text-xl">Nezávazná poptávka</h3>
+
+  <div class="mt-4 grid grid-cols-1 gap-3">
+    <input name="name" class="px-3 py-2 rounded-xl border border-black/20" placeholder="Jméno a firma" required />
+    <input name="contact" class="px-3 py-2 rounded-xl border border-black/20" placeholder="E-mail nebo telefon" required />
+
+    <!-- SLUŽBA -->
+    <div class="relative">
+      <select name="service" class="appearance-none w-full px-4 py-3 rounded-2xl border border-black/15 bg-white pr-12 font-medium text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500/30 focus:border-pink-500 hover:border-black/30" required>
+        <option value="" selected>Vyberte službu…</option>
+        <option>Mobilní reklama</option>
+        <option>Auto billboard</option>
+        <option>Potisk triček</option>
+        <option>Reklama na eventech</option>
+        <option>Pronájem Reklamase</option>
+        <option>QR měření kampaně</option>
+      </select>
+
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-black/50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- DATUM + MĚSTO -->
+    <div class="grid grid-cols-2 gap-3">
+      <input name="date" type="date" class="px-3 py-2 rounded-xl border border-black/20" />
+
+      <!-- Mobil -->
+      <input 
+        name="city" 
+        class="px-3 py-2 rounded-xl border border-black/20 sm:hidden" 
+        placeholder="Město" 
+      />
+
+      <!-- Desktop -->
+      <input 
+        name="city" 
+        class="px-3 py-2 rounded-xl border border-black/20 hidden sm:block" 
+        placeholder="Město / Lokalita" 
+      />
+    </div>
+
+    <!-- MESSAGE -->
+    <textarea name="message" class="px-3 py-2 rounded-xl border border-black/20 min-h-[120px]" placeholder="Co chcete řešit?"></textarea>
+
+    <!-- ROZPOČET -->
+    <div class="relative">
+      <select name="budget" class="appearance-none w-full px-4 py-3 rounded-2xl border border-black/15 bg-white pr-12 font-medium text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500/30 focus:border-pink-500 hover:border-black/30">
+        <option value="" selected>Jaký máte rozpočet?</option>
+        <option>do 1 000 Kč</option>
+        <option>1 000 – 5 000 Kč</option>
+        <option>5 000 – 10 000 Kč</option>
+        <option>10 000+ Kč</option>
+        <option>nevím / poradíte mi</option>
+      </select>
+
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-black/50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+    </div>
+
+    <input name="company" class="hidden" tabindex="-1" autocomplete="off" />
+
+    <label class="flex items-start gap-2 text-xs text-black/70">
+      <input name="consent" type="checkbox" required class="mt-1" />
+      Souhlasím se zpracováním údajů za účelem reakce na poptávku.
+    </label>
+
+    <!-- CTA -->
+    <button type="submit" class="px-5 py-3 rounded-2xl bg-pink-600 text-white font-semibold">
+      Odeslat → ozveme se
+    </button>
+
+    <div class="text-xs text-center text-black/50 mt-2">
+      ⚡ Ozýváme se do 24 hodin
+    </div>
+
+    <div id="form-status" class="text-sm"></div>
+  </div>
+</form>
 
 <footer class="bg-black text-yellow-300">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
