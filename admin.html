@@ -9,9 +9,9 @@
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: Arial, sans-serif; }
-    .hidden-ui { display:none; }
-    .tab-btn.active { background:#facc15; color:#111; }
-    .role-btn.active { background:#facc15; border-color:#facc15; color:#111; }
+    .hidden-ui { display: none; }
+    .tab-btn.active { background: #facc15; color: #111; }
+    .role-btn.active { background: #facc15; border-color: #facc15; color: #111; }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-yellow-50 via-white to-white text-black">
@@ -43,7 +43,7 @@
             <div>
               <div class="text-xs uppercase tracking-[0.25em] text-yellow-300">Reklamas Core V2</div>
               <h1 class="text-2xl md:text-4xl font-extrabold mt-1">Systém pro klienty, řidiče, cyklisty a chodce</h1>
-              <p class="text-white/70 mt-2 max-w-3xl">GitHub verze: přihlášení, ukládání do prohlížeče, formulář, dashboard, filtry, stavy a přehled zájemců.</p>
+              <p class="text-white/70 mt-2 max-w-3xl">GitHub verze: přihlášení, ukládání do prohlížeče, formulář, dashboard, filtry, stavy, kampaně a přehled zájemců.</p>
             </div>
             <div class="flex flex-wrap items-center gap-2">
               <span class="rounded-xl bg-yellow-400 text-black px-3 py-1.5 text-sm font-bold">GitHub režim</span>
@@ -53,9 +53,10 @@
         </div>
 
         <div class="p-5 md:p-6">
-          <div class="grid grid-cols-2 rounded-2xl bg-yellow-100 p-1 h-auto max-w-xl">
+          <div class="grid grid-cols-3 rounded-2xl bg-yellow-100 p-1 h-auto max-w-2xl">
             <button id="tab-form" class="tab-btn active rounded-2xl py-3 font-bold transition">Přidat / formulář</button>
             <button id="tab-admin" class="tab-btn rounded-2xl py-3 font-bold transition">Admin přehled</button>
+            <button id="tab-campaigns" class="tab-btn rounded-2xl py-3 font-bold transition">Kampaně</button>
           </div>
 
           <section id="section-form" class="mt-6">
@@ -125,15 +126,6 @@
               </div>
 
               <div class="space-y-6">
-                <div class="rounded-3xl border border-black/10 shadow-sm bg-yellow-50 p-6">
-                  <h3 class="text-xl font-extrabold">Co už to umí</h3>
-                  <div class="mt-4 space-y-4 text-sm">
-                    <div class="rounded-2xl border border-black/10 bg-white p-4"><span class="font-bold">1.</span> Přidává role a automatické ID.</div>
-                    <div class="rounded-2xl border border-black/10 bg-white p-4"><span class="font-bold">2.</span> Ukládá do prohlížeče přes localStorage.</div>
-                    <div class="rounded-2xl border border-black/10 bg-white p-4"><span class="font-bold">3.</span> Třídí, filtruje a mění stav zájemců.</div>
-                  </div>
-                </div>
-
                 <div class="rounded-3xl border border-black/10 shadow-sm bg-white p-6">
                   <h3 class="text-xl font-extrabold">Potvrzení</h3>
                   <div id="submitMessage" class="mt-4 rounded-2xl border border-dashed border-black/15 p-5 text-sm text-black/60">
@@ -234,6 +226,51 @@
               </div>
             </div>
           </section>
+
+          <section id="section-campaigns" class="mt-6 hidden-ui">
+            <div class="grid xl:grid-cols-[360px,1fr] gap-6">
+              <div class="rounded-3xl border border-black/10 shadow-sm bg-white">
+                <div class="p-6 border-b border-black/10">
+                  <h2 class="text-2xl font-extrabold">Nová kampaň</h2>
+                  <p class="mt-2 text-black/65">Vytvoř zakázku a potom k ní přiřaď lidi ze stejného města.</p>
+                </div>
+                <div class="p-6 space-y-4">
+                  <div class="space-y-2">
+                    <label class="block text-sm font-semibold">Název kampaně</label>
+                    <input id="campaignName" type="text" placeholder="Např. Brno centrum duben" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-sm font-semibold">Klient</label>
+                    <input id="campaignClient" type="text" placeholder="Např. Kavárna U Náměstí" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-sm font-semibold">Město</label>
+                    <input id="campaignCity" type="text" placeholder="Brno" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-sm font-semibold">Typ reklamy</label>
+                    <input id="campaignType" type="text" placeholder="Auto / kolo / chodec" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-sm font-semibold">Rozpočet</label>
+                    <input id="campaignBudget" type="text" placeholder="Např. 12 000 Kč" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+                  </div>
+                  <button id="addCampaignBtn" class="w-full rounded-2xl bg-yellow-400 px-5 py-3 font-bold text-black hover:bg-yellow-300 transition">Uložit kampaň</button>
+                  <div id="campaignMessage" class="rounded-2xl border border-dashed border-black/15 p-4 text-sm text-black/55">Po vytvoření kampaně se objeví vpravo v přehledu.</div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h2 class="text-2xl font-extrabold">Přehled kampaní</h2>
+                    <p class="text-black/65">U každé kampaně uvidíš vhodné lidi podle města a můžeš je přiřadit.</p>
+                  </div>
+                </div>
+                <div id="campaignsContainer" class="grid gap-4"></div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -243,6 +280,7 @@
   const ADMIN_PASSWORD = '1234';
   const STORAGE_KEY = 'reklamas_leads_v2';
   const LOGIN_KEY = 'reklamas_admin_logged';
+  const CAMPAIGN_KEY = 'reklamas_campaigns_v1';
 
   const roleLabels = {
     ridic: 'Řidič',
@@ -266,6 +304,7 @@
   ];
 
   let leads = [];
+  let campaigns = [];
   let currentRole = 'ridic';
 
   const loginOverlay = document.getElementById('loginOverlay');
@@ -277,8 +316,10 @@
 
   const tabForm = document.getElementById('tab-form');
   const tabAdmin = document.getElementById('tab-admin');
+  const tabCampaigns = document.getElementById('tab-campaigns');
   const sectionForm = document.getElementById('section-form');
   const sectionAdmin = document.getElementById('section-admin');
+  const sectionCampaigns = document.getElementById('section-campaigns');
 
   const leadForm = document.getElementById('leadForm');
   const roleButtons = document.querySelectorAll('.role-btn');
@@ -304,6 +345,15 @@
   const leadsContainer = document.getElementById('leadsContainer');
   const matchingSuggestion = document.getElementById('matchingSuggestion');
 
+  const campaignName = document.getElementById('campaignName');
+  const campaignClient = document.getElementById('campaignClient');
+  const campaignCity = document.getElementById('campaignCity');
+  const campaignType = document.getElementById('campaignType');
+  const campaignBudget = document.getElementById('campaignBudget');
+  const addCampaignBtn = document.getElementById('addCampaignBtn');
+  const campaignMessage = document.getElementById('campaignMessage');
+  const campaignsContainer = document.getElementById('campaignsContainer');
+
   function loadStoredLeads() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -314,8 +364,22 @@
     }
   }
 
+  function loadStoredCampaigns() {
+    const saved = localStorage.getItem(CAMPAIGN_KEY);
+    if (saved) {
+      campaigns = JSON.parse(saved);
+    } else {
+      campaigns = [];
+      saveCampaigns();
+    }
+  }
+
   function saveLeads() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+  }
+
+  function saveCampaigns() {
+    localStorage.setItem(CAMPAIGN_KEY, JSON.stringify(campaigns));
   }
 
   function setLoggedIn(value) {
@@ -327,11 +391,8 @@
   }
 
   function openApp() {
-    // SCHOVÁNÍ LOGINU NATVRDO
     loginOverlay.style.display = 'none';
     loginOverlay.classList.add('hidden-ui');
-
-    // ZOBRAZENÍ APLIKACE
     app.classList.remove('hidden-ui');
     renderAll();
   }
@@ -349,16 +410,23 @@
   function logout() {
     setLoggedIn(false);
     app.classList.add('hidden-ui');
+    loginOverlay.style.display = 'flex';
     loginOverlay.classList.remove('hidden-ui');
     loginPassword.value = '';
   }
 
   function switchTab(tab) {
     const formActive = tab === 'form';
+    const adminActive = tab === 'admin';
+    const campaignsActive = tab === 'campaigns';
+
     tabForm.classList.toggle('active', formActive);
-    tabAdmin.classList.toggle('active', !formActive);
+    tabAdmin.classList.toggle('active', adminActive);
+    tabCampaigns.classList.toggle('active', campaignsActive);
+
     sectionForm.classList.toggle('hidden-ui', !formActive);
-    sectionAdmin.classList.toggle('hidden-ui', formActive);
+    sectionAdmin.classList.toggle('hidden-ui', !adminActive);
+    sectionCampaigns.classList.toggle('hidden-ui', !campaignsActive);
   }
 
   function updateRoleUI(role) {
@@ -375,9 +443,7 @@
       cityInput.placeholder = 'Brno';
       vehicleInput.placeholder = 'Např. Škoda Octavia';
       kmInput.placeholder = 'Např. 60 km/den';
-    }
-
-    if (role === 'cyklista') {
+    } else if (role === 'cyklista') {
       nameLabel.textContent = 'Jméno a příjmení';
       cityLabel.textContent = 'Město';
       vehicleLabel.textContent = 'Typ kola';
@@ -386,9 +452,7 @@
       cityInput.placeholder = 'Brno';
       vehicleInput.placeholder = 'Např. Horské kolo';
       kmInput.placeholder = 'Např. 25 km/den';
-    }
-
-    if (role === 'chodec') {
+    } else if (role === 'chodec') {
       nameLabel.textContent = 'Jméno a příjmení';
       cityLabel.textContent = 'Město';
       vehicleLabel.textContent = 'Typ promo nosiče';
@@ -397,9 +461,7 @@
       cityInput.placeholder = 'Brno';
       vehicleInput.placeholder = 'Např. Promo tabule';
       kmInput.placeholder = 'Např. 4 hod/den';
-    }
-
-    if (role === 'klient') {
+    } else {
       nameLabel.textContent = 'Název firmy';
       cityLabel.textContent = 'Město kampaně';
       vehicleLabel.textContent = 'Typ reklamy';
@@ -417,6 +479,14 @@
       return Number.isNaN(num) ? acc : Math.max(acc, num);
     }, 2450);
     return `RK-${max + 1}`;
+  }
+
+  function nextCampaignId() {
+    const max = campaigns.reduce((acc, item) => {
+      const num = parseInt(String(item.id).replace('KC-', ''), 10);
+      return Number.isNaN(num) ? acc : Math.max(acc, num);
+    }, 100);
+    return `KC-${max + 1}`;
   }
 
   function addLead(e) {
@@ -487,6 +557,7 @@
   function renderMatching() {
     const clients = leads.filter(x => x.role === 'klient');
     let text = 'Zatím žádné automatické párování. Jakmile přibude klient a lidé ve stejném městě, systém nabídne match.';
+
     for (const client of clients) {
       const partners = leads.filter(x => x.city === client.city && x.role !== 'klient' && x.status !== 'zamitnut').length;
       if (partners > 0) {
@@ -494,6 +565,7 @@
         break;
       }
     }
+
     matchingSuggestion.textContent = text;
   }
 
@@ -576,19 +648,136 @@
     });
   }
 
+  function addCampaign() {
+    const item = {
+      id: nextCampaignId(),
+      name: campaignName.value.trim() || 'Bez názvu kampaně',
+      client: campaignClient.value.trim() || 'Neuvedený klient',
+      city: campaignCity.value.trim() || 'Neuvedené město',
+      type: campaignType.value.trim() || 'Neuvedený typ',
+      budget: campaignBudget.value.trim() || 'Neuvedený rozpočet',
+      assignedLeadIds: []
+    };
+
+    campaigns.unshift(item);
+    saveCampaigns();
+
+    campaignName.value = '';
+    campaignClient.value = '';
+    campaignCity.value = '';
+    campaignType.value = '';
+    campaignBudget.value = '';
+
+    campaignMessage.className = 'rounded-2xl border border-green-200 bg-green-50 p-4 text-sm text-black/70';
+    campaignMessage.innerHTML = `<div class="font-bold text-black">Kampaň uložená.</div><div class="mt-1">Vytvořeno ID <span class="font-extrabold">${item.id}</span>.</div>`;
+
+    renderCampaigns();
+    renderMatching();
+  }
+
+  function toggleAssignLead(campaignId, leadId) {
+    campaigns = campaigns.map(campaign => {
+      if (campaign.id !== campaignId) return campaign;
+      const exists = campaign.assignedLeadIds.includes(leadId);
+      return {
+        ...campaign,
+        assignedLeadIds: exists
+          ? campaign.assignedLeadIds.filter(id => id !== leadId)
+          : [...campaign.assignedLeadIds, leadId]
+      };
+    });
+
+    saveCampaigns();
+    renderCampaigns();
+  }
+
+  function deleteCampaign(campaignId) {
+    campaigns = campaigns.filter(item => item.id !== campaignId);
+    saveCampaigns();
+    renderCampaigns();
+    renderMatching();
+  }
+
+  function renderCampaigns() {
+    campaignsContainer.innerHTML = '';
+
+    if (!campaigns.length) {
+      campaignsContainer.innerHTML = '<div class="rounded-3xl border border-dashed border-black/15 p-10 text-center text-black/55">Zatím tu není žádná kampaň.</div>';
+      return;
+    }
+
+    campaigns.forEach(campaign => {
+      const suitableLeads = leads.filter(item => item.role !== 'klient' && item.city === campaign.city && item.status !== 'zamitnut');
+      const assigned = leads.filter(item => campaign.assignedLeadIds.includes(item.id));
+
+      const card = document.createElement('div');
+      card.className = 'rounded-3xl border border-black/10 shadow-sm bg-white';
+      card.innerHTML = `
+        <div class="p-6">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-xl font-extrabold">${campaign.name}</h3>
+                <span class="rounded-xl bg-black/5 px-3 py-1 text-sm font-semibold">${campaign.id}</span>
+              </div>
+              <div class="mt-2 text-sm text-black/65">${campaign.client} • ${campaign.city} • ${campaign.type}</div>
+            </div>
+            <button class="campaign-delete-btn rounded-2xl border border-red-200 text-red-700 px-4 py-2 font-semibold hover:bg-red-50" data-id="${campaign.id}">Smazat kampaň</button>
+          </div>
+
+          <div class="mt-4 grid md:grid-cols-3 gap-3 text-sm">
+            <div class="rounded-2xl border border-black/10 p-3"><div class="text-black/55">Klient</div><div class="font-semibold mt-1">${campaign.client}</div></div>
+            <div class="rounded-2xl border border-black/10 p-3"><div class="text-black/55">Město</div><div class="font-semibold mt-1">${campaign.city}</div></div>
+            <div class="rounded-2xl border border-black/10 p-3"><div class="text-black/55">Rozpočet</div><div class="font-semibold mt-1">${campaign.budget}</div></div>
+          </div>
+
+          <div class="mt-5">
+            <div class="font-bold">Přiřazení lidé</div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              ${assigned.length ? assigned.map(item => `<span class="rounded-xl bg-yellow-100 px-3 py-2 text-sm font-semibold">${item.name} (${item.id})</span>`).join('') : '<span class="text-sm text-black/55">Zatím nikdo nepřiřazen.</span>'}
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div class="font-bold">Vhodní lidé ze stejného města</div>
+            <div class="mt-3 grid gap-2">
+              ${suitableLeads.length ? suitableLeads.map(item => {
+                const isAssigned = campaign.assignedLeadIds.includes(item.id);
+                return `<div class="rounded-2xl border border-black/10 p-3 flex flex-wrap items-center justify-between gap-3"><div><div class="font-semibold">${item.name}</div><div class="text-sm text-black/60">${roleLabels[item.role]} • ${item.vehicle} • ${item.id}</div></div><button class="assign-btn rounded-2xl px-4 py-2 font-semibold ${isAssigned ? 'bg-black text-white' : 'bg-yellow-400 text-black'}" data-campaign="${campaign.id}" data-lead="${item.id}">${isAssigned ? 'Odebrat' : 'Přiřadit'}</button></div>`;
+              }).join('') : '<div class="text-sm text-black/55">Pro toto město zatím nemáš vhodné lidi.</div>'}
+            </div>
+          </div>
+        </div>
+      `;
+      campaignsContainer.appendChild(card);
+    });
+
+    document.querySelectorAll('.assign-btn').forEach(btn => {
+      btn.addEventListener('click', () => toggleAssignLead(btn.dataset.campaign, btn.dataset.lead));
+    });
+
+    document.querySelectorAll('.campaign-delete-btn').forEach(btn => {
+      btn.addEventListener('click', () => deleteCampaign(btn.dataset.id));
+    });
+  }
+
   function renderAll() {
     renderStats();
     renderCityFilter();
     renderMatching();
     renderLeads();
+    renderCampaigns();
   }
 
   loginBtn.addEventListener('click', tryLogin);
-  loginPassword.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryLogin(); });
+  loginPassword.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') tryLogin();
+  });
   logoutBtn.addEventListener('click', logout);
 
   tabForm.addEventListener('click', () => switchTab('form'));
   tabAdmin.addEventListener('click', () => switchTab('admin'));
+  tabCampaigns.addEventListener('click', () => switchTab('campaigns'));
 
   roleButtons.forEach(btn => btn.addEventListener('click', () => updateRoleUI(btn.dataset.role)));
   leadForm.addEventListener('submit', addLead);
@@ -605,8 +794,16 @@
     renderAll();
   });
 
+  addCampaignBtn.addEventListener('click', addCampaign);
+
   loadStoredLeads();
+  loadStoredCampaigns();
   updateRoleUI('ridic');
+
+  console.assert(typeof nextId === 'function', 'nextId musí existovat');
+  console.assert(typeof nextCampaignId === 'function', 'nextCampaignId musí existovat');
+  console.assert(Array.isArray(initialLeads), 'initialLeads musí být pole');
+  console.assert(document.getElementById('campaignsContainer'), 'campaignsContainer musí existovat');
 
   if (isLoggedIn()) {
     openApp();
