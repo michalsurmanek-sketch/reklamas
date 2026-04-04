@@ -1,3 +1,13 @@
+<?php
+require_once 'config.php';
+
+if (!isLoggedIn()) {
+    header('Location: login.php');
+    exit;
+}
+
+$username = $_SESSION['reklamas_username'] ?? 'admin';
+?>
 <!doctype html>
 <html lang="cs">
 <head>
@@ -32,9 +42,14 @@
             <h1 class="text-2xl md:text-4xl font-extrabold mt-1">Mozek pro klienty, řidiče, cyklisty a chodce</h1>
             <p class="text-white/70 mt-2 max-w-3xl">První HTML verze: veřejný nábor + interní třídění zájemců + jednoduché párování podle města a typu spolupráce.</p>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="rounded-xl bg-yellow-400 text-black px-3 py-1.5 text-sm font-bold">HTML verze</span>
-            <span class="rounded-xl bg-white/10 text-white px-3 py-1.5 text-sm font-semibold">Reklamas.cz styl</span>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="rounded-xl bg-white/10 text-white px-3 py-1.5 text-sm font-semibold">
+              Přihlášen: <?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?>
+            </span>
+            <a href="logout.php" class="rounded-xl bg-yellow-400 text-black px-3 py-1.5 text-sm font-bold hover:bg-yellow-300 transition">
+              Odhlásit
+            </a>
           </div>
         </div>
       </div>
@@ -204,7 +219,7 @@
 
                   <div class="space-y-2">
                     <label class="block text-sm font-semibold">Město</label>
-                    <select id="cityFilter" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black">
+                    <select id="cityFilter" class="w-full rounded-2xl border borderblack/10 px-4 py-3 outline-none focus:border-black">
                       <option value="vse">Všechna města</option>
                     </select>
                   </div>
