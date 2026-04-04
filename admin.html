@@ -47,6 +47,8 @@
             </div>
             <div class="flex flex-wrap items-center gap-2">
               <span class="rounded-xl bg-yellow-400 text-black px-3 py-1.5 text-sm font-bold">GitHub režim</span>
+              <button id="changePasswordBtn" class="rounded-xl bg-yellow-400 text-black px-3 py-1.5 text-sm font-bold hover:bg-yellow-300 transition">Změnit heslo</button>
+              <button id="lockBtn" class="rounded-xl bg-white/10 text-white px-3 py-1.5 text-sm font-semibold hover:bg-white/20 transition">Zamknout</button>
               <button id="logoutBtn" class="rounded-xl bg-white/10 text-white px-3 py-1.5 text-sm font-semibold hover:bg-white/20 transition">Odhlásit</button>
             </div>
           </div>
@@ -276,11 +278,44 @@
     </div>
   </div>
 
+  <div id="passwordModal" class="hidden-ui fixed inset-0 bg-black/70 z-[60] flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-3xl overflow-hidden border border-white/10 bg-white shadow-2xl">
+      <div class="bg-black text-white px-6 py-5">
+        <div class="text-xs uppercase tracking-[0.25em] text-yellow-300">Zabezpečení</div>
+        <h2 class="text-2xl font-extrabold mt-1">Změna hesla</h2>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="space-y-2">
+          <label class="block text-sm font-semibold">Současné heslo</label>
+          <input id="currentPassword" type="password" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+        </div>
+        <div class="space-y-2">
+          <label class="block text-sm font-semibold">Nové heslo</label>
+          <input id="newPassword" type="password" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+        </div>
+        <div class="space-y-2">
+          <label class="block text-sm font-semibold">Potvrdit nové heslo</label>
+          <input id="confirmPassword" type="password" class="w-full rounded-2xl border border-black/10 px-4 py-3 outline-none focus:border-black" />
+        </div>
+        <div id="passwordModalError" class="hidden text-sm text-red-600 font-semibold"></div>
+        <div id="passwordModalSuccess" class="hidden text-sm text-green-700 font-semibold"></div>
+        <div class="flex gap-3">
+          <button id="savePasswordBtn" class="flex-1 rounded-2xl bg-yellow-400 px-5 py-3 font-bold text-black hover:bg-yellow-300 transition">Uložit heslo</button>
+          <button id="closePasswordModalBtn" class="flex-1 rounded-2xl border border-black/10 px-5 py-3 font-semibold hover:bg-yellow-50 transition">Zavřít</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
-  const ADMIN_PASSWORD = '1234';
   const STORAGE_KEY = 'reklamas_leads_v2';
   const LOGIN_KEY = 'reklamas_admin_logged';
   const CAMPAIGN_KEY = 'reklamas_campaigns_v1';
+  const AUTH_KEY = 'reklamas_admin_auth_v2';
+  const SESSION_EXPIRES_KEY = 'reklamas_admin_session_expires';
+  const SESSION_DURATION_MS = 1000 * 60 * 30;
+  const LEGACY_PASSWORD_KEY = 'admin_password';
+  const DEFAULT_PASSWORD = '1234';
 
   const roleLabels = {
     ridic: 'Řidič',
@@ -313,6 +348,8 @@
   const loginPassword = document.getElementById('loginPassword');
   const loginError = document.getElementById('loginError');
   const logoutBtn = document.getElementById('logoutBtn');
+  const lockBtn = document.getElementById('lockBtn');
+  const changePasswordBtn = document.getElementById('changePasswordBtn');
 
   const tabForm = document.getElementById('tab-form');
   const tabAdmin = document.getElementById('tab-admin');
@@ -353,6 +390,14 @@
   const addCampaignBtn = document.getElementById('addCampaignBtn');
   const campaignMessage = document.getElementById('campaignMessage');
   const campaignsContainer = document.getElementById('campaignsContainer');
+  const passwordModal = document.getElementById('passwordModal');
+  const currentPasswordInput = document.getElementById('currentPassword');
+  const newPasswordInput = document.getElementById('newPassword');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+  const passwordModalError = document.getElementById('passwordModalError');
+  const passwordModalSuccess = document.getElementById('passwordModalSuccess');
+  const savePasswordBtn = document.getElementById('savePasswordBtn');
+  const closePasswordModalBtn = document.getElementById('closePasswordModalBtn');
 
   function loadStoredLeads() {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -384,27 +429,96 @@
 
   function setLoggedIn(value) {
     localStorage.setItem(LOGIN_KEY, value ? '1' : '0');
+    if (value) {
+      localStorage.setItem(SESSION_EXPIRES_KEY, String(Date.now() + SESSION_DURATION_MS));
+    } else {
+      localStorage.removeItem(SESSION_EXPIRES_KEY);
+    }
+  }
+
+  function refreshSession() {
+    if (localStorage.getItem(LOGIN_KEY) === '1') {
+      localStorage.setItem(SESSION_EXPIRES_KEY, String(Date.now() + SESSION_DURATION_MS));
+    }
   }
 
   function isLoggedIn() {
-    return localStorage.getItem(LOGIN_KEY) === '1';
+    const logged = localStorage.getItem(LOGIN_KEY) === '1';
+    const expires = Number(localStorage.getItem(SESSION_EXPIRES_KEY) || '0');
+    if (!logged) return false;
+    if (!expires || Date.now() > expires) {
+      setLoggedIn(false);
+      return false;
+    }
+    return true;
   }
 
   function openApp() {
     loginOverlay.style.display = 'none';
     loginOverlay.classList.add('hidden-ui');
     app.classList.remove('hidden-ui');
+    refreshSession();
     renderAll();
   }
 
-  function tryLogin() {
-    if (loginPassword.value === ADMIN_PASSWORD) {
+  async function tryLogin() {
+    const ok = await verifyPassword(loginPassword.value);
+    if (ok) {
       loginError.classList.add('hidden');
       setLoggedIn(true);
       openApp();
+      loginPassword.value = '';
     } else {
       loginError.classList.remove('hidden');
     }
+  }
+
+  function openPasswordModal() {
+    passwordModal.classList.remove('hidden-ui');
+    passwordModal.style.display = 'flex';
+    passwordModalError.classList.add('hidden');
+    passwordModalSuccess.classList.add('hidden');
+    currentPasswordInput.value = '';
+    newPasswordInput.value = '';
+    confirmPasswordInput.value = '';
+  }
+
+  function closePasswordModal() {
+    passwordModal.classList.add('hidden-ui');
+    passwordModal.style.display = 'none';
+  }
+
+  async function changePassword() {
+    passwordModalError.classList.add('hidden');
+    passwordModalSuccess.classList.add('hidden');
+
+    const currentPassword = currentPasswordInput.value;
+    const newPassword = newPasswordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    if (!(await verifyPassword(currentPassword))) {
+      passwordModalError.textContent = 'Současné heslo nesedí.';
+      passwordModalError.classList.remove('hidden');
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      passwordModalError.textContent = 'Nové heslo musí mít aspoň 6 znaků.';
+      passwordModalError.classList.remove('hidden');
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      passwordModalError.textContent = 'Nová hesla se neshodují.';
+      passwordModalError.classList.remove('hidden');
+      return;
+    }
+
+    await storePassword(newPassword);
+    passwordModalSuccess.textContent = 'Heslo bylo změněno.';
+    passwordModalSuccess.classList.remove('hidden');
+    refreshSession();
+    setTimeout(closePasswordModal, 700);
   }
 
   function logout() {
@@ -413,6 +527,51 @@
     loginOverlay.style.display = 'flex';
     loginOverlay.classList.remove('hidden-ui');
     loginPassword.value = '';
+  }
+
+  function lockScreen() {
+    app.classList.add('hidden-ui');
+    loginOverlay.style.display = 'flex';
+    loginOverlay.classList.remove('hidden-ui');
+    loginPassword.value = '';
+    refreshSession();
+  }
+
+  async function sha256(text) {
+    const bytes = new TextEncoder().encode(text);
+    const buffer = await crypto.subtle.digest('SHA-256', bytes);
+    return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function storePassword(password) {
+    const hash = await sha256(password);
+    localStorage.setItem(AUTH_KEY, JSON.stringify({ version: 2, hash }));
+    localStorage.removeItem(LEGACY_PASSWORD_KEY);
+  }
+
+  async function ensurePasswordSetup() {
+    const stored = localStorage.getItem(AUTH_KEY);
+    if (stored) return;
+
+    const legacy = localStorage.getItem(LEGACY_PASSWORD_KEY);
+    if (legacy) {
+      await storePassword(legacy);
+      return;
+    }
+
+    await storePassword(DEFAULT_PASSWORD);
+  }
+
+  async function verifyPassword(password) {
+    const raw = localStorage.getItem(AUTH_KEY);
+    if (!raw) return password === DEFAULT_PASSWORD;
+    try {
+      const parsed = JSON.parse(raw);
+      const hash = await sha256(password);
+      return parsed.hash === hash;
+    } catch {
+      return false;
+    }
   }
 
   function switchTab(tab) {
@@ -769,11 +928,15 @@
     renderCampaigns();
   }
 
-  loginBtn.addEventListener('click', tryLogin);
+  loginBtn.addEventListener('click', () => { tryLogin(); });
   loginPassword.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') tryLogin();
   });
   logoutBtn.addEventListener('click', logout);
+  lockBtn.addEventListener('click', lockScreen);
+  changePasswordBtn.addEventListener('click', openPasswordModal);
+  savePasswordBtn.addEventListener('click', () => { changePassword(); });
+  closePasswordModalBtn.addEventListener('click', closePasswordModal);
 
   tabForm.addEventListener('click', () => switchTab('form'));
   tabAdmin.addEventListener('click', () => switchTab('admin'));
@@ -796,6 +959,19 @@
 
   addCampaignBtn.addEventListener('click', addCampaign);
 
+  document.addEventListener('click', () => {
+    if (!app.classList.contains('hidden-ui')) refreshSession();
+  });
+  document.addEventListener('keydown', () => {
+    if (!app.classList.contains('hidden-ui')) refreshSession();
+  });
+
+  window.addEventListener('storage', () => {
+    loadStoredLeads();
+    loadStoredCampaigns();
+    if (isLoggedIn()) renderAll();
+  });
+
   loadStoredLeads();
   loadStoredCampaigns();
   updateRoleUI('ridic');
@@ -804,10 +980,14 @@
   console.assert(typeof nextCampaignId === 'function', 'nextCampaignId musí existovat');
   console.assert(Array.isArray(initialLeads), 'initialLeads musí být pole');
   console.assert(document.getElementById('campaignsContainer'), 'campaignsContainer musí existovat');
+  console.assert(typeof tryLogin === 'function', 'tryLogin musí existovat');
+  console.assert(typeof verifyPassword === 'function', 'verifyPassword musí existovat');
 
-  if (isLoggedIn()) {
-    openApp();
-  }
+  ensurePasswordSetup().then(() => {
+    if (isLoggedIn()) {
+      openApp();
+    }
+  });
 </script>
 </body>
 </html>
