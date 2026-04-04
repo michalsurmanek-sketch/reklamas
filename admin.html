@@ -327,7 +327,11 @@
   }
 
   function openApp() {
+    // SCHOVÁNÍ LOGINU NATVRDO
+    loginOverlay.style.display = 'none';
     loginOverlay.classList.add('hidden-ui');
+
+    // ZOBRAZENÍ APLIKACE
     app.classList.remove('hidden-ui');
     renderAll();
   }
