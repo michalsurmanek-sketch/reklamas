@@ -589,12 +589,20 @@
   </div>
 </section>
 
-<section id="cenik" class="scroll-mt-24 md:scroll-mt-28 bg-white">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+<section id="cenik" class="scroll-mt-24 md:scroll-mt-28 bg-white relative overflow-hidden">
+
+  <!-- POZADÍ -->
+  <img src="/horizont.png" 
+       alt="" 
+       class="absolute bottom-0 left-0 w-full opacity-20 pointer-events-none select-none">
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 relative z-10">
     <h2 class="text-3xl md:text-4xl font-extrabold">Ceník</h2>
     <p class="mt-2 text-black/70">Základní orientační ceny bez DPH. Připravíme kalkulaci na míru podle trasy, času a materiálů.</p>
+
     <div class="mt-8 grid md:grid-cols-2 gap-6">
-      <div class="rounded-2xl border border-black/10 overflow-hidden">
+      
+      <div class="rounded-2xl border border-black/10 overflow-hidden bg-white/90 backdrop-blur-sm">
         <table class="w-full text-left text-sm">
           <thead class="bg-yellow-100">
             <tr>
@@ -627,7 +635,8 @@
           </tbody>
         </table>
       </div>
-      <div class="rounded-2xl border border-black/10 p-6 bg-yellow-50">
+
+      <div class="rounded-2xl border border-black/10 p-6 bg-yellow-50/90 backdrop-blur-sm">
         <h3 class="font-bold text-xl">Co je v ceně</h3>
         <ul class="mt-3 space-y-2 list-disc list-inside text-sm text-black/80">
           <li>Trasa a harmonogram dle dohody</li>
@@ -635,8 +644,11 @@
           <li>QR kód pro měření skenů</li>
           <li>Report po akci (základní)</li>
         </ul>
-        <a href="#objednat" data-goto="#objednat" class="mt-6 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">Chci kalkulaci na míru</a>
+        <a href="#objednat" data-goto="#objednat" class="mt-6 inline-block px-4 py-2 rounded-xl bg-black text-yellow-300 text-sm font-semibold">
+          Chci kalkulaci na míru
+        </a>
       </div>
+
     </div>
   </div>
 </section>
